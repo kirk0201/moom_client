@@ -9,10 +9,13 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 class App extends Component {
-  state = {
-    isLogin: false,
-    userinfo: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLogin: false,
+      userinfo: null,
+    };
+  }
 
   // componentDidMount() {
   //   this.handleLoginSuccess();
@@ -25,6 +28,7 @@ class App extends Component {
         console.log(res.data);
         this.setState({ isLogin: true, userinfo: res.data });
         console.log(this.state.userinfo);
+        // 페이지 전환 확인
         this.props.history.push("/");
       })
       .catch((err) => {
@@ -32,6 +36,8 @@ class App extends Component {
         console.log(err.message);
         if (err.message === "Request failed with status code 404") {
           this.setState({ isLogin: false });
+          // 페이지 전환 확인
+          this.props.history.push("/login");
         }
       });
   };
