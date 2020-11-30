@@ -1,10 +1,10 @@
-import React from "react";
+import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+
+import { BASEURL } from "../helpurl";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
-
-import { BASEURL } from "../helpurl";
 
 // class형식 로그인 컴포넌트 시작
 class LogIn extends Component {
@@ -50,6 +50,8 @@ class LogIn extends Component {
         this.props.handleLoginSuccess();
       })
       .catch((err) => {
+        console.log(err);
+        console.log(err.message);
         if (err.message === "Request failed with status code 404") {
           this.setState({
             errorMessage:
@@ -87,9 +89,16 @@ class LogIn extends Component {
               <button onClick={this.handleLogin}>Login</button>
             </div>
           </form>
-          <div><button>google로 로그인하기</button></div>
-          <div><button>google로 로그인하기</button></div>
-          <div><Link to="/signup">회원가입</Link><Link to="/">비밀번호찾기</Link></div>
+          <div>
+            <button>google로 로그인하기</button>
+          </div>
+          <div>
+            <button>google로 로그인하기</button>
+          </div>
+          <div>
+            <Link to="/signup">회원가입</Link>
+            <Link to="/">비밀번호찾기</Link>
+          </div>
         </center>
       </div>
     );
