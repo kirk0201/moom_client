@@ -1,5 +1,10 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import { withRouter } from "react-router-dom";
+
+import { BASEURL } from "../helpurl";
+
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 export class SignUp extends Component {
   constructor(props) {
@@ -8,89 +13,100 @@ export class SignUp extends Component {
       email: "",
       name: "",
       password: "",
+      errorMessage: "",
+      errorEmail: "",
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-
-    // FIXME: 방법2
-    // this.handleInputValue = this.handleInputValue.bind(this);
+    this.handleInputSignup = this.handleInputSignup.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
-  handleInputChange(e) {
+
+  // input onchange 이벤트시 setState
+  handleInputSignup = (e) => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-
-    // 각 email, nickname, password에 입력되는 문자열 출력
-    console.log(e.target.value);
-
     this.setState({
       [name]: value,
     });
-  }
+  };
 
-  // FIXME: 방법2
-  //   handleInputValue = (key) => (e) => {
-  //     this.setState({ [key]: e.target.value });
-  //   };
-
-  handleClick = async (e) => {
-    // react포트 변경
-    // package.json 스크립트에서 set PORT=??? && 추가
-
-    console.log("클릭됨", e);
-    const url = "http://localhost:4000/user/signup/";
-    await axios
-      .post(url, {
+  // button onClick 이벤트시 서버와 통신
+  handleSignup = () => {
+    const { email, name, password } = this.state;
+    if (!email) {
+      return this.setState({ errorMessage: "Email을 입력해주세요" });
+    } else if (!name) {
+      return this.setState({ errorMessage: "닉네임을 입력해주세요" });
+    } else if (!password) {
+      this.setState({ errorMessage: "Password를 입력해주세요" });
+    } else {
+      this.setState({ errorMessage: "" });
+    }
+    axios
+      .post(`${BASEURL}/user/signup`, {
         email: this.state.email,
         name: this.state.name,
         password: this.state.password,
       })
       .then((res) => {
         console.log(res);
+        // 페이지 전환 확인
+        this.props.history.push("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+        if (err.message === "Request failed with status code 409") {
+          this.setState({
+            errorEmail: "이미 존재하는 이메일입니다.",
+          });
+        }
       });
   };
 
   render() {
     return (
       <>
-        <p>회원가입</p>
-        <p>moom에 오신 것을 환영합니다 :)</p>
-        <form>
-          <div>
-            <p>{this.state.email}</p>
-            <p>{this.state.password}</p>
-            <p>{this.state.name}</p>
-            <p>이메일</p>
+        <center>
+          <p>회원가입</p>
+          <p>moom에 오신 것을 환영합니다.^^</p>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <p>이메일</p>
+              <input
+                name="email"
+                type="email"
+                placeholder="이메일을 입력해주세요"
+                onChange={this.handleInputSignup}
+              ></input>
+              <button>중복확인</button>
+            </div>
+            {/* 에러메세지 재확인 */}
+            <div>{this.state.errorEmail}</div>
+            <p>닉네임</p>
             <input
-              name="email"
-              type="email"
-              //   onChange={this.handleInputValue("email")}
-              onChange={this.handleInputChange}
+              name="name"
+              type="text"
+              placeholder="닉네임을 입력해주세요"
+              onChange={this.handleInputSignup}
             ></input>
-            <button>중복확인</button>
-          </div>
-          <p>닉네임</p>
-          <input
-            name="name"
-            type="text"
-            // onChange={this.handleInputValue("name")}
-            onChange={this.handleInputChange}
-          ></input>
-          <p>비밀번호</p>
-          <input
-            name="password"
-            type="password"
-            // onChange={this.handleInputValue("password")}
-            onChange={this.handleInputChange}
-          ></input>
-          <div>
-            <button onClick={this.handleClick}>가입하기</button>
-          </div>
-        </form>
+            <p>비밀번호</p>
+            <input
+              name="password"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              onChange={this.handleInputSignup}
+            ></input>
+            <div>
+              <button onClick={this.handleSignup}>가입하기</button>
+            </div>
+            {/* 에러메세지 재확인 */}
+            <div>{this.state.errorMessage}</div>
+          </form>
+        </center>
       </>
     );
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
