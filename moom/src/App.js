@@ -17,9 +17,9 @@ class App extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.handleLoginSuccess();
-  // }
+  componentDidMount() {
+    this.handleLoginSuccess();
+  }
 
   handleLoginSuccess = () => {
     axios
@@ -37,7 +37,7 @@ class App extends Component {
         if (err.message === "Request failed with status code 404") {
           this.setState({ isLogin: false });
           // 페이지 전환 확인
-          this.props.history.push("/login");
+          // this.props.history.push("/login");
         }
       });
   };

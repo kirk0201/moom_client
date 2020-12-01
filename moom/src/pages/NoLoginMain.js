@@ -1,8 +1,11 @@
 import { Component } from "react";
-import { withRouter, Link, Route, Switch } from "react-router-dom";
+import { withRouter, Route, Switch } from "react-router-dom";
 
-import LogIn from "../components/LogIn";
-import SignUp from "../components/SignUp";
+import NoLoginNav from "../components/NoLoginNav";
+import Introduce from "../components/Introduce";
+import Experience from "../components/Experience";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
 
 class NoLoginMain extends Component {
   constructor(props) {
@@ -12,33 +15,30 @@ class NoLoginMain extends Component {
   render() {
     return (
       <div>
-        <header>
-          <Link to="/login">
-            <button>로그인</button>
-          </Link>
-          <Link to="/signup">
-            <button>회원가입</button>
-          </Link>
-          <div>네비 컴포넌트 불러와야함</div>
-        </header>
-        <main>
-          <Switch>
-            <Route
-              path="/login"
-              render={() => {
-                return (
-                  <LogIn handleLoginSuccess={this.props.handleLoginSuccess} />
-                );
-              }}
-            ></Route>
-            <Route
-              path="/signup"
-              render={() => {
-                return <SignUp />;
-              }}
-            ></Route>
-          </Switch>
-        </main>
+        <NoLoginNav />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return <div>비로그인시 메인입니다.</div>;
+            }}
+          ></Route>
+          <Route
+            path="/login"
+            render={() => {
+              return (
+                <LoginPage handleLoginSuccess={this.props.handleLoginSuccess} />
+              );
+            }}
+          ></Route>
+          <Route
+            path="/signup"
+            render={() => {
+              return <SignupPage />;
+            }}
+          ></Route>
+        </Switch>
       </div>
     );
   }
