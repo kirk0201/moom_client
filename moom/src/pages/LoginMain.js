@@ -1,5 +1,11 @@
 import { Component } from "react";
-import { withRouter, Link, Route, Switch } from "react-router-dom";
+import { withRouter, Route, Switch } from "react-router-dom";
+
+import LoginNav from "../components/LoginNav";
+import BasicBody from "../components/BasicBody";
+import CustomBody from "../components/CustomBody";
+import CertainBody from "../components/CertainBody";
+import MyPage from "../pages/MyPage";
 
 class LoginMain extends Component {
   constructor(props) {
@@ -7,13 +13,25 @@ class LoginMain extends Component {
   }
 
   render() {
+    const { isLogin, userInfo } = this.props;
     return (
       <div>
-        <div>네비 컴포넌트 불러와야함</div>
-        <span>{this.props.userinfo.name}</span>
-        <span>{this.props.userinfo.email}</span>
-        <span>{this.props.userinfo.birth}</span>
-        <span>{this.props.userinfo.promise}</span>
+        <LoginNav userInfo={userInfo} isLogin={isLogin} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return <div>로그인시 메인입니다.</div>;
+            }}
+          ></Route>
+          <Route
+            path="/mypage"
+            render={() => {
+              return <MyPage userInfo={userInfo} isLogin={isLogin} />;
+            }}
+          ></Route>
+        </Switch>
       </div>
     );
   }
