@@ -6,6 +6,7 @@ import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+//TODO: 중복확인
 export class SignUp extends Component {
   constructor(props) {
     super(props);
