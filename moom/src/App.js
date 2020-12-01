@@ -13,23 +13,22 @@ class App extends Component {
     super(props);
     this.state = {
       isLogin: false,
-      userinfo: null,
+      userInfo: null,
     };
   }
 
-  // componentDidMount() {
-  //   this.handleLoginSuccess();
-  // }
+  componentDidMount() {
+    this.handleLoginSuccess();
+  }
 
   handleLoginSuccess = () => {
     axios
       .get(`${BASEURL}/user/edit`)
       .then((res) => {
-        console.log(res.data);
-        this.setState({ isLogin: true, userinfo: res.data });
-        console.log(this.state.userinfo);
+        this.setState({ isLogin: true, userInfo: res.data });
         // 페이지 전환 확인
         this.props.history.push("/");
+        // window.location = "/";
       })
       .catch((err) => {
         console.log(err);
@@ -37,13 +36,13 @@ class App extends Component {
         if (err.message === "Request failed with status code 404") {
           this.setState({ isLogin: false });
           // 페이지 전환 확인
-          this.props.history.push("/login");
+          // this.props.history.push("/login");
         }
       });
   };
 
   render() {
-    const { isLogin, userinfo } = this.state;
+    const { isLogin, userInfo } = this.state;
     return (
       <div>
         <Switch>
@@ -51,7 +50,9 @@ class App extends Component {
             path="/"
             render={() => {
               if (isLogin) {
-                return <LoginMain userinfo={userinfo}></LoginMain>;
+                return (
+                  <LoginMain userInfo={userInfo} isLogin={isLogin}></LoginMain>
+                );
               } else {
                 return (
                   <NoLoginMain
