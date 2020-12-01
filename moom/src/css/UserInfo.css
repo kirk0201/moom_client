@@ -2,27 +2,27 @@
 
 .container {
   width: 100%;
-  height: 100%;
   border: 2px solid green;
   display: flex;
-
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 li {
   list-style: none;
 }
 
-.img_box,
-.text_box {
+.img_box {
+  border: 2px solid green;
+  flex-grow: 1;
+  align-self: center;
+  text-align: center;
 }
 
-img {
-  margin-left: 150px;
-  top: 0;
-  left: 0;
-  width: 42%;
-  height: auto;
+.circle {
+  display: inline-block;
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
 }
 
 .text_box {
@@ -30,13 +30,26 @@ img {
   border: 2px solid red;
 }
 .text_box > li {
-  border: 2px solid yellow;
+  border: 2px solid blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 75px;
 }
 
-.span_name {
-  border: 2px solid blue;
+.span_email {
+  flex-grow: 1;
+  /* border: 2px solid black; */
+  /* align-items: center; */
+  text-align: center;
+}
+
+.div_btn_signout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_signout {
+  margin-top: 30px;
+  font-size: 30px;
 }
