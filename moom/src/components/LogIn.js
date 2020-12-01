@@ -31,6 +31,7 @@ class LogIn extends Component {
   // button onClick 이벤트시 서버와 통신
   handleLogin = () => {
     const { email, password } = this.state;
+    const { handleLoginSuccess } = this.props;
     if (!email && !password) {
       return this.setState({
         errorMessage: "Email과  Password를 입력해주세요",
@@ -47,9 +48,7 @@ class LogIn extends Component {
         email: email,
         password: password,
       })
-      .then((res) => {
-        this.props.handleLoginSuccess();
-      })
+      .then(handleLoginSuccess)
       .catch((err) => {
         console.log(err);
         console.log(err.message);
