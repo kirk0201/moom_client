@@ -3,7 +3,8 @@ import { withRouter } from "react-router-dom";
 
 import "../css/UserInfo.css";
 // import profile_img from "../images/profile.jpg";
-// import profile_img from "../images/bidulgi.png";
+
+import SignOutModal from "./SignOutModal";
 import { BASEURL } from "../helpurl";
 
 import axios from "axios";
@@ -13,9 +14,17 @@ class UserInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isImg: this.props.profile,
+      isModalOpen: false,
     };
   }
+
+  openModal = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
+  };
 
   render() {
     // 소셜 칼럼 수정
@@ -68,7 +77,10 @@ class UserInfo extends Component {
         </div>
 
         <div className="div_btn_signout">
-          <button className="btn_signout">moom 회원 탈퇴하기</button>
+          <button className="btn_signout" onClick={this.openModal}>
+            moom 회원 탈퇴하기
+          </button>
+          <SignOutModal open={this.state.isModalOpen} close={this.closeModal} />
         </div>
       </>
     );
