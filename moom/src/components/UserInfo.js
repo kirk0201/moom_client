@@ -1,7 +1,9 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
+
 import "../css/UserInfo.css";
-import profile_img from "../images/profile.jpg";
+// import profile_img from "../images/profile.jpg";
+// import profile_img from "../images/bidulgi.png";
 import { BASEURL } from "../helpurl";
 
 import axios from "axios";
@@ -19,11 +21,7 @@ class UserInfo extends Component {
     // 소셜 칼럼 수정
     // 이미지 업로드 수정
     const { profile, name, email, promise, birth } = this.props.userInfo;
-
-    // TODO: 사진이 있을 경우, 사진이 없을 경우
-    let bgimg = this.props.profile
-      ? `url(${this.props.profile})`
-      : `url(${profile_img})`;
+    const profile_img = `https://t1.daumcdn.net/cfile/tistory/240814485574155029`;
 
     return (
       <>
@@ -31,16 +29,7 @@ class UserInfo extends Component {
         <div className="container">
           <div>
             <span>프로필사진</span>
-            <div
-              className="circle"
-              style={{
-                backgroundImage: bgimg,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            >
-              {/* {profile ? profile : "등록된 사진이 없습니다."} */}
-            </div>
+            <img className="circle" src={profile ? profile : profile_img}></img>
           </div>
           <div className="text_box">
             <li>
