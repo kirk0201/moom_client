@@ -12,31 +12,38 @@ class UserInfoEdit extends Component {
     this.state = {
       promise: "",
       nikname: "",
+      password: "",
+      birth: "",
     };
   }
 
   handleInputUserEdit = (e) => {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
+    let target = e.target;
+    let value = target.value;
+    let name = target.name;
     this.setState({
       [name]: value,
     });
   };
 
-  handleUserEdit = () => {
-    const { promise, nikname } = this.state;
+  handleUserEdit = (e) => {
+    let key = e.target.name;
+    const { promise, nikname, password, birth } = this.state;
     console.log(promise);
     console.log(nikname);
-    // this.props.close();
     axios
       .put(`${BASEURL}/user/edit`, {
         promise: promise,
         name: nikname,
+        password: password,
+        birth: birth,
       })
       .then((res) => {
         console.log(res.data);
-        this.props.close();
+        // 수정 성공하면 인풋창 사라짐
+        this.props.closeInput(key);
+        // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
+        this.props.handleLoginSuccess();
       })
       .catch((err) => {
         console.log(err.message);
@@ -44,7 +51,7 @@ class UserInfoEdit extends Component {
   };
 
   render() {
-    const { info, noInfo, name, type } = this.props;
+    const { info, noInfo, name, type, what } = this.props;
     return (
       <>
         <input
@@ -53,7 +60,9 @@ class UserInfoEdit extends Component {
           placeholder={info ? info : noInfo}
           onChange={this.handleInputUserEdit}
         />
-        <button onClick={this.handleUserEdit}>저장</button>
+        <button name={what} onClick={this.handleUserEdit}>
+          저장
+        </button>
       </>
     );
   }

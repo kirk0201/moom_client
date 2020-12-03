@@ -15,42 +15,21 @@ class UserInfo extends Component {
       isOpenPromise: false,
       isOpenName: false,
       isOpenPassword: false,
+      isOpenBirth: false,
     };
   }
 
-  openInputPromise = () => {
+  openInput = (e) => {
+    let target = e.target;
+    let key = target.name;
     this.setState({
-      isOpenPromise: true,
+      [key]: true,
     });
   };
 
-  closeInputPromise = () => {
+  closeInput = (key) => {
     this.setState({
-      isOpenPromise: false,
-    });
-  };
-
-  openInputName = () => {
-    this.setState({
-      isOpenName: true,
-    });
-  };
-
-  closeInputName = () => {
-    this.setState({
-      isOpenName: false,
-    });
-  };
-
-  openInputPassword = () => {
-    this.setState({
-      isOpenPassword: true,
-    });
-  };
-
-  closeInputPassword = () => {
-    this.setState({
-      isOpenPassword: false,
+      [key]: false,
     });
   };
 
@@ -65,7 +44,9 @@ class UserInfo extends Component {
       type,
     } = this.props.userInfo;
 
-    let { isOpenPromise, isOpenName, isOpenPassword } = this.state;
+    const { handleLoginSuccess } = this.props;
+
+    let { isOpenPromise, isOpenName, isOpenPassword, isOpenBirth } = this.state;
 
     let social = false;
     if (type === "nomal") {
@@ -89,12 +70,16 @@ class UserInfo extends Component {
                   noInfo="이름을 입력해주세요"
                   name="nikname"
                   type="text"
-                  close={this.closeInputName}
+                  what="isOpenName"
+                  closeInput={this.closeInput}
+                  handleLoginSuccess={handleLoginSuccess}
                 />
               ) : (
                 <>
                   <span>{name}</span>
-                  <button onClick={this.openInputName}>수정</button>
+                  <button name="isOpenName" onClick={this.openInput}>
+                    수정
+                  </button>
                 </>
               )}
             </li>
@@ -104,12 +89,31 @@ class UserInfo extends Component {
             </li>
             <li>
               <span>비밀번호 변경:</span>
-              {/* <span>
-                {if(!social)
-                  ? "비밀번호를 변경할 수 없습니다"
-                  : "변경할 비밀번호를 입력해주세요"}
-              </span>
-              <button onClick={this.openInputPassword}>수정</button> */}
+
+              {isOpenPassword ? (
+                <UserInfoEdit
+                  info=""
+                  noInfo="변경할 비밀번호를 입력해주세요"
+                  name="password"
+                  type="password"
+                  what="isOpenPassword"
+                  closeInput={this.closeInput}
+                  handleLoginSuccess={handleLoginSuccess}
+                />
+              ) : (
+                <>
+                  {!social ? (
+                    "비밀번호를 변경할 수 없습니다"
+                  ) : (
+                    <>
+                      <span>변경할 비밀번호를 입력해주세요</span>
+                      <button name="isOpenPassword" onClick={this.openInput}>
+                        수정
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
             </li>
             <li>
               <span>성별:</span>
@@ -118,9 +122,7 @@ class UserInfo extends Component {
                 <option value="female">여성</option>
                 <option value="male">남성</option>
               </select>
-              <button>
-                <span>수정</span>
-              </button>
+              <button>지금은 수정할 수 없어요!</button>
             </li>
             <li>
               <span>나의 다짐:</span>
@@ -130,23 +132,41 @@ class UserInfo extends Component {
                   noInfo="목표를 위한 다짐을 남겨보세요"
                   name="promise"
                   type="text"
-                  close={this.closeInputPromise}
+                  what="isOpenPromise"
+                  closeInput={this.closeInput}
+                  handleLoginSuccess={handleLoginSuccess}
                 />
               ) : (
                 <>
                   <span>
                     {promise ? promise : "목표를 위한 다짐을 남겨보세요"}
                   </span>
-                  <button onClick={this.openInputPromise}>수정</button>
+                  <button name="isOpenPromise" onClick={this.openInput}>
+                    수정
+                  </button>
                 </>
               )}
             </li>
             <li>
               <span>생년 월일:</span>
-              <span>{birth ? birth : "생년월일을 설정하세요"}</span>
-              <button>
-                <span>수정</span>
-              </button>
+              {isOpenBirth ? (
+                <UserInfoEdit
+                  info=""
+                  noInfo="8자리 숫자로 입력해주세요."
+                  name="birth"
+                  type="text"
+                  what="isOpenBirth"
+                  closeInput={this.closeInput}
+                  handleLoginSuccess={handleLoginSuccess}
+                />
+              ) : (
+                <>
+                  <span>{birth ? birth : "생년월일을 설정하세요"}</span>
+                  <button name="isOpenBirth" onClick={this.openInput}>
+                    수정
+                  </button>
+                </>
+              )}
             </li>
           </div>
         </div>
