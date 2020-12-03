@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../css/SignOutModal.css";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { BASEURL } from "../helpurl";
 
 export class SignOutModal extends Component {
   constructor(props) {
@@ -9,14 +10,20 @@ export class SignOutModal extends Component {
   }
 
   handleSignout = () => {
-    let url = "http://localhost:4000/user/signout";
-    axios.delete(url).then((res) => {
-      console.log(res);
-      // 리다이렉트
-      if (res.status === 200) {
-        this.props.history.push("/");
-      }
-    });
+    axios
+      .delete(`${BASEURL}/user/signout`)
+      .then((res) => {
+        console.log(res);
+        // 리다이렉트
+        // TODO: 다른 상태코드에 따른 분기가 필요
+        if (res.status === 200) {
+          // this.props.history.push("/");
+          window.location = "/";
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   render() {
