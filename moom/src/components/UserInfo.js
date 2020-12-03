@@ -4,9 +4,7 @@ import { withRouter } from "react-router-dom";
 import "../css/UserInfo.css";
 import profile_img from "../images/profile.jpg";
 import UserInfoEdit from "./UserInfoEdit";
-
-import axios from "axios";
-axios.defaults.withCredentials = true;
+import SignOutModal from "./SignOutModal";
 
 class UserInfo extends Component {
   constructor(props) {
@@ -16,6 +14,7 @@ class UserInfo extends Component {
       isOpenName: false,
       isOpenPassword: false,
       isOpenBirth: false,
+      isModalOpen: false,
     };
   }
 
@@ -31,6 +30,14 @@ class UserInfo extends Component {
     this.setState({
       [key]: false,
     });
+  }
+
+  openModal = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
   };
 
   render() {
@@ -171,7 +178,10 @@ class UserInfo extends Component {
           </div>
         </div>
         <div className="div_btn_signout">
-          <button className="btn_signout">moom 회원 탈퇴하기</button>
+          <button className="btn_signout" onClick={this.openModal}>
+            moom 회원 탈퇴하기
+          </button>
+          <SignOutModal open={this.state.isModalOpen} close={this.closeModal} />
         </div>
       </>
     );
