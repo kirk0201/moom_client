@@ -9,8 +9,14 @@ class MyPage extends Component {
   }
 
   render() {
-    const { isLogin, userInfo } = this.props;
-    return <UserInfo userInfo={userInfo} isLogin={isLogin} />;
+    const { isLogin, userInfo, handleLoginSuccess } = this.props;
+    return (
+      <UserInfo
+        userInfo={userInfo}
+        isLogin={isLogin}
+        handleLoginSuccess={handleLoginSuccess}
+      />
+    );
   }
 }
 

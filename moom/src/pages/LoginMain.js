@@ -13,7 +13,7 @@ class LoginMain extends Component {
   }
 
   render() {
-    const { isLogin, userInfo } = this.props;
+    const { isLogin, userInfo, handleLoginSuccess } = this.props;
     return (
       <div>
         <LoginNav userInfo={userInfo} isLogin={isLogin} />
@@ -28,7 +28,13 @@ class LoginMain extends Component {
           <Route
             path="/mypage"
             render={() => {
-              return <MyPage userInfo={userInfo} isLogin={isLogin} />;
+              return (
+                <MyPage
+                  userInfo={userInfo}
+                  isLogin={isLogin}
+                  handleLoginSuccess={handleLoginSuccess}
+                />
+              );
             }}
           ></Route>
         </Switch>

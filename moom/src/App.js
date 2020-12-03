@@ -27,7 +27,7 @@ class App extends Component {
       .then((res) => {
         this.setState({ isLogin: true, userInfo: res.data });
         // 페이지 전환 확인
-        this.props.history.push("/");
+        // this.props.history.push("/");
         // window.location = "/";
       })
       .catch((err) => {
@@ -51,7 +51,11 @@ class App extends Component {
             render={() => {
               if (isLogin) {
                 return (
-                  <LoginMain userInfo={userInfo} isLogin={isLogin}></LoginMain>
+                  <LoginMain
+                    userInfo={userInfo}
+                    isLogin={isLogin}
+                    handleLoginSuccess={this.handleLoginSuccess.bind(this)}
+                  ></LoginMain>
                 );
               } else {
                 return (

@@ -2,6 +2,8 @@ import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
+import "../css/LoginNav.css";
+import profile_img from "../images/profile.jpg";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -37,7 +39,10 @@ class LoginNav extends Component {
           </span>
           <Link to="/">
             <button>
-              <p>{profile}</p>
+              <img
+                className="navcircle"
+                src={profile ? profile : profile_img}
+              ></img>
               <p>{name}</p>
             </button>
           </Link>
