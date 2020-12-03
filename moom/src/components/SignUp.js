@@ -6,7 +6,6 @@ import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-
 //TODO: 중복확인
 class SignUp extends Component {
   constructor(props) {
@@ -15,6 +14,7 @@ class SignUp extends Component {
       email: "",
       name: "",
       password: "",
+      sex: "",
       errorMessage: "",
       errorEmail: "",
     };
@@ -34,21 +34,24 @@ class SignUp extends Component {
 
   // button onClick 이벤트시 서버와 통신
   handleSignup = () => {
-    const { email, name, password } = this.state;
+    const { email, name, password, sex } = this.state;
     if (!email) {
       return this.setState({ errorMessage: "Email을 입력해주세요" });
     } else if (!name) {
       return this.setState({ errorMessage: "닉네임을 입력해주세요" });
     } else if (!password) {
-      this.setState({ errorMessage: "Password를 입력해주세요" });
+      return this.setState({ errorMessage: "Password를 입력해주세요" });
+    } else if (!sex) {
+      return this.setState({ errorMessage: "성별을 선택해주세요" });
     } else {
       this.setState({ errorMessage: "" });
     }
     axios
       .post(`${BASEURL}/user/signup`, {
-        email: this.state.email,
-        name: this.state.name,
-        password: this.state.password,
+        email: email,
+        name: name,
+        password: password,
+        sex: sex,
       })
       .then((res) => {
         console.log(res);
@@ -99,6 +102,16 @@ class SignUp extends Component {
               placeholder="비밀번호를 입력해주세요"
               onChange={this.handleInputSignup}
             ></input>
+            <p>성별</p>
+            <select
+              name="sex"
+              value={this.state.sex}
+              onChange={this.handleInputSignup}
+            >
+              <option value="">선택</option>
+              <option value="female">여성</option>
+              <option value="male">남성</option>
+            </select>
             <div>
               <button onClick={this.handleSignup}>가입하기</button>
             </div>
