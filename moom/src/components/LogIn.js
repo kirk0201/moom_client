@@ -91,7 +91,17 @@ class LogIn extends Component {
             <div>{this.state.errorMessage}</div>
           </form>
           <div>
-            <button>google로 로그인하기</button>
+            {/* TODO: GITHUB 새창으로 연결 
+            현재페이지에서 연결하려면 location.href='address'를 이용한다.*/}
+            <button
+              onClick={() =>
+                window.open(
+                  "https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c/"
+                )
+              }
+            >
+              github로 로그인하기
+            </button>
           </div>
           <div>
             <button>google로 로그인하기</button>
