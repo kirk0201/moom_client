@@ -3,12 +3,23 @@ import "../css/SignOutModal.css";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { BASEURL } from "../helpurl";
-
+import "../css/CheckModal.css";
 export class SignOutModal extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isModalOpen: false,
+    };
   }
 
+ 
+  checkmodal = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  closemodal = () => {
+    this.setState({ isModalOpen: false });
+  };
   // 계정삭제 버튼 클릭시 axios요청 함수
   handleSignout = () => {
     axios
@@ -43,7 +54,15 @@ export class SignOutModal extends Component {
                 취소
               </button>
               {/* 삭제 버튼 */}
-              <button onClick={this.handleSignout}>계정 삭제</button>
+              <button onClick={this.checkmodal}>계정 삭제</button>
+              
+              {/*삭제 버튼을 클릭하여 state가 바뀌면 아래 컴퍼넌트에 있는 
+              상항연산자에 의해 모달창이 render됨 */}
+              <CheckModal
+                open={this.state.isModalOpen}
+                close={this.closemodal}
+                signout={this.handleSignout}
+              />
             </div>
           </div>
         ) : null}
@@ -51,5 +70,26 @@ export class SignOutModal extends Component {
     );
   }
 }
-
 export default withRouter(SignOutModal);
+
+// 모달창 추가 확인 함수형 컴퍼넌트 
+export function CheckModal(props) {
+  // props확인 로그
+  // console.log("open : ", props);
+
+  return (
+    <>
+      {props.open ? (
+        <div className="check">
+          <div className="check_modal">
+            <div>정말로 삭제하시겠습니까?</div>
+
+            {/* SignOutModal에서 받은 handleSignout 함수 */}
+            <button onClick={props.signout}>네</button>
+            <button onClick={props.close}>아니오</button>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+}

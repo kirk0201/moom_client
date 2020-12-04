@@ -100,7 +100,6 @@ class LogIn extends Component {
           <div>
 
             <GLogin />
-=======
             {/* TODO: GITHUB 새창으로 연결 
             현재페이지에서 연결하려면 location.href='address'를 이용한다.*/}
             <button
