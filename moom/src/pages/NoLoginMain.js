@@ -12,6 +12,7 @@ class NoLoginMain extends Component {
     super(props);
   }
 
+  // 비로그인시 페인 페이지
   render() {
     return (
       <div>

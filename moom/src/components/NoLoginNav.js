@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NoLoginNav = () => {
+  // 비로그인시 네비 바
   return (
     <div>
       <header>

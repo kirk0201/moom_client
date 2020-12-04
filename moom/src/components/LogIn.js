@@ -19,7 +19,7 @@ class LogIn extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  // input onchange 이벤트시 setState
+  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputLogin = (e) => {
     const target = e.target;
     const value = target.value;
@@ -29,7 +29,7 @@ class LogIn extends Component {
     });
   };
 
-  // button onClick 이벤트시 서버와 통신
+  // 로그인 버튼 클릭시 axios요청 함수
   handleLogin = () => {
     const { email, password } = this.state;
     const { handleLoginSuccess } = this.props;
@@ -49,10 +49,15 @@ class LogIn extends Component {
         email: email,
         password: password,
       })
-      .then(handleLoginSuccess)
+      .then((res) => {
+        console.log(res.data);
+        this.props.handleLoginSuccess();
+      })
       .catch((err) => {
         console.log(err);
         console.log(err.message);
+        // TODO : 페이지 전환 확인 redirect
+        // TODO: 다른 상태코드에 따른 분기가 필요
         if (err.message === "Request failed with status code 404") {
           this.setState({
             errorMessage:
@@ -89,6 +94,7 @@ class LogIn extends Component {
             <div>
               <button onClick={this.handleLogin}>Login</button>
             </div>
+            {/* TODO : 에러메세지 재확인 */}
             <div>{this.state.errorMessage}</div>
           </form>
           <div>

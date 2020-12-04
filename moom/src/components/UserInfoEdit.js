@@ -6,6 +6,7 @@ import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+// TODO: 수정할 수 있는 데이터 형식에 따른 에러 메세지 확인
 class UserInfoEdit extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +18,7 @@ class UserInfoEdit extends Component {
     };
   }
 
+  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputUserEdit = (e) => {
     let target = e.target;
     let value = target.value;
@@ -26,11 +28,10 @@ class UserInfoEdit extends Component {
     });
   };
 
+  // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
   handleUserEdit = (e) => {
     let key = e.target.name;
     const { promise, nikname, password, birth } = this.state;
-    console.log(promise);
-    console.log(nikname);
     axios
       .put(`${BASEURL}/user/edit`, {
         promise: promise,
@@ -45,6 +46,7 @@ class UserInfoEdit extends Component {
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
         this.props.handleLoginSuccess();
       })
+      // TODO: 다른 상태코드에 따른 분기가 필요
       .catch((err) => {
         console.log(err.message);
       });

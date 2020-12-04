@@ -17,15 +17,18 @@ class LoginNav extends Component {
     };
   }
 
-  handleSignout = () => {
+  // 로그아웃 버튼 클릭시 axios요청 함수
+  handleLogout = () => {
     axios.get(`${BASEURL}/user/logout`).then(() => {
       this.setState({ userInfo: null, isLogin: false });
-      // 페이지 전환 확인
+      // TODO : 페이지 전환 확인 redirect
+      // TODO: 다른 상태코드에 따른 분기가 필요
       // this.props.history.push("/");
       window.location = "/";
     });
   };
 
+  // 로그인시 네비 바
   render() {
     const { promise, profile, name } = this.props.userInfo;
     return (
@@ -49,7 +52,7 @@ class LoginNav extends Component {
           <Link to="/mypage">
             <button>마이페이지</button>
           </Link>
-          <button onClick={this.handleSignout}>로그아웃</button>
+          <button onClick={this.handleLogout}>로그아웃</button>
         </header>
       </div>
     );
