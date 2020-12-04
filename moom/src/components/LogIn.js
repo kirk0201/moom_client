@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
+import GLogin from "./GLogin";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -91,6 +92,9 @@ class LogIn extends Component {
             <div>{this.state.errorMessage}</div>
           </form>
           <div>
+
+            <GLogin />
+=======
             {/* TODO: GITHUB 새창으로 연결 
             현재페이지에서 연결하려면 location.href='address'를 이용한다.*/}
             <button
@@ -102,6 +106,7 @@ class LogIn extends Component {
             >
               github로 로그인하기
             </button>
+
           </div>
           <div>
             <button>google로 로그인하기</button>
