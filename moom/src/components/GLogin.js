@@ -27,14 +27,12 @@ class GLogin extends Component {
   render() {
     return (
       <div>
-        <Container>
           <GoogleLogin
             clientId={"AIzaSyCMBQ-yYjSX19a9XwiW7QEzkwurFnNdgag"}
             buttonText="Google"
             onSuccess={this.responseGoogle}
             onFailure={this.responseFail}
           />
-        </Container>
       </div>
     );
   }
