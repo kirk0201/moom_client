@@ -18,6 +18,7 @@ class UserInfo extends Component {
     };
   }
 
+  // 수정 버튼 클릭시 UserInfoEdit를 랜더하는 함수
   openInput = (e) => {
     let target = e.target;
     let key = target.name;
@@ -26,16 +27,19 @@ class UserInfo extends Component {
     });
   };
 
+  // 저장 버튼 클릭시 UserInfoEdit를 닫는 함수
   closeInput = (key) => {
     this.setState({
       [key]: false,
     });
-  }
+  };
 
+  // 회원탈퇴 버튼 클릭시 SignOutModal를 랜더하는 함수
   openModal = () => {
     this.setState({ isModalOpen: true });
   };
 
+  // 취소 버튼 클릭시 SignOutModal를 닫는 함수
   closeModal = () => {
     this.setState({ isModalOpen: false });
   };

@@ -9,12 +9,13 @@ export class SignOutModal extends Component {
     super(props);
   }
 
+  // 계정삭제 버튼 클릭시 axios요청 함수
   handleSignout = () => {
     axios
       .delete(`${BASEURL}/user/signout`)
       .then((res) => {
         console.log(res);
-        // 리다이렉트
+        // TODO : 페이지 전환 확인 redirect
         // TODO: 다른 상태코드에 따른 분기가 필요
         if (res.status === 200) {
           // this.props.history.push("/");

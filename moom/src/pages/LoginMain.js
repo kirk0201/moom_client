@@ -12,6 +12,7 @@ class LoginMain extends Component {
     super(props);
   }
 
+  // 로그인시 메인 페이지
   render() {
     const { isLogin, userInfo, handleLoginSuccess } = this.props;
     return (

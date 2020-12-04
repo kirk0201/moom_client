@@ -8,6 +8,7 @@ class SignupPage extends Component {
     super(props);
   }
 
+  // SignUp 회원가입 요청을 담은 컴포넌트 렌더
   render() {
     return <SignUp />;
   }

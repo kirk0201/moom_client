@@ -6,7 +6,7 @@ import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-//TODO: 중복확인
+// TODO: 이메일 중복 버튼, 서버 요청, 에러 메세지 확인
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class SignUp extends Component {
     this.handleSignup = this.handleSignup.bind(this);
   }
 
-  // input onchange 이벤트시 setState
+  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputSignup = (e) => {
     const target = e.target;
     const value = target.value;
@@ -32,7 +32,7 @@ class SignUp extends Component {
     });
   };
 
-  // button onClick 이벤트시 서버와 통신
+  // 회원가입 버튼 클릭시 axios요청 함수
   handleSignup = () => {
     const { email, name, password, sex } = this.state;
     if (!email) {
@@ -55,7 +55,8 @@ class SignUp extends Component {
       })
       .then((res) => {
         console.log(res);
-        // 페이지 전환 확인
+        // TODO : 페이지 전환 확인 redirect
+        // TODO: 다른 상태코드에 따른 분기가 필요
         this.props.history.push("/login");
       })
       .catch((err) => {
@@ -86,7 +87,7 @@ class SignUp extends Component {
               ></input>
               <button>중복확인</button>
             </div>
-            {/* 에러메세지 재확인 */}
+            {/* TODO : 에러메세지 재확인 */}
             <div>{this.state.errorEmail}</div>
             <p>닉네임</p>
             <input
@@ -115,7 +116,7 @@ class SignUp extends Component {
             <div>
               <button onClick={this.handleSignup}>가입하기</button>
             </div>
-            {/* 에러메세지 재확인 */}
+            {/* TODO : 에러메세지 재확인 */}
             <div>{this.state.errorMessage}</div>
           </form>
         </center>
