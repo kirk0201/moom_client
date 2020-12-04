@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import { withRouter } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-import { Container } from "reactstrap";
 
 class GLogin extends Component {
   constructor(props) {
@@ -13,11 +13,14 @@ class GLogin extends Component {
   }
 
   responseGoogle = (res) => {
+    console.log(res);
     this.setState({
       id: res.googleId,
       name: res.profileObj.name,
       provider: "google",
     });
+    console.log(this.state.id);
+    console.log(this.state.name);
   };
 
   responseFail = (err) => {
@@ -27,17 +30,15 @@ class GLogin extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <GoogleLogin
-            clientId={"AIzaSyCMBQ-yYjSX19a9XwiW7QEzkwurFnNdgag"}
-            buttonText="Google"
-            onSuccess={this.responseGoogle}
-            onFailure={this.responseFail}
-          />
-        </Container>
+        <GoogleLogin
+          clientId={"AIzaSyCMBQ-yYjSX19a9XwiW7QEzkwurFnNdgag"}
+          buttonText="Google"
+          onSuccess={this.responseGoogle}
+          onFailure={this.responseFail}
+        />
       </div>
     );
   }
 }
 
-export default GLogin;
+export default withRouter(GLogin);

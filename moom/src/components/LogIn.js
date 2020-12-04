@@ -1,8 +1,14 @@
 import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import {
+  GithubLoginButton,
+  GoogleLoginButton,
+} from "react-social-login-buttons";
 
 import { BASEURL } from "../helpurl";
+import MyGithubLoginButton from "./GithubLogin";
 import GLogin from "./GLogin";
+import HLogin from "./HLogin";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -32,7 +38,6 @@ class LogIn extends Component {
   // 로그인 버튼 클릭시 axios요청 함수
   handleLogin = () => {
     const { email, password } = this.state;
-    const { handleLoginSuccess } = this.props;
     if (!email && !password) {
       return this.setState({
         errorMessage: "Email과  Password를 입력해주세요",
@@ -98,24 +103,23 @@ class LogIn extends Component {
             <div>{this.state.errorMessage}</div>
           </form>
           <div>
-
+            {/* *** react-소셜명-login을 이용한 로그인 *** */}
+            {/* TODO: GITHUB 새창으로 연결  */}
+            {/* 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
             <GLogin />
-=======
-            {/* TODO: GITHUB 새창으로 연결 
-            현재페이지에서 연결하려면 location.href='address'를 이용한다.*/}
-            <button
+            <HLogin />
+
+            {/* react-social-login-buttons 을 이용한 로그인 */}
+            {/* TODO: 구글은 어떻게 하는지 모르겠음 */}
+            <GithubLoginButton
               onClick={() =>
                 window.open(
                   "https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c/"
                 )
               }
-            >
-              github로 로그인하기
-            </button>
-
-          </div>
-          <div>
-            <button>google로 로그인하기</button>
+            />
+            <GoogleLoginButton />
+            <MyGithubLoginButton />
           </div>
           <div>
             <Link to="/signup">회원가입</Link>
