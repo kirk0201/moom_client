@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
+import GLogin from "./GLogin";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -91,7 +92,7 @@ class LogIn extends Component {
             <div>{this.state.errorMessage}</div>
           </form>
           <div>
-            <button>google로 로그인하기</button>
+            <GLogin />
           </div>
           <div>
             <button>google로 로그인하기</button>
