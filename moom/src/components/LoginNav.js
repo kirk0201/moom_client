@@ -17,11 +17,11 @@ class LoginNav extends Component {
     };
   }
 
-  handleSignout = async () => {
-    await axios.get(`${BASEURL}/user/logout`).then((res) => {
+  handleSignout = () => {
+    axios.get(`${BASEURL}/user/logout`).then(() => {
       this.setState({ userInfo: null, isLogin: false });
       // 페이지 전환 확인
-      //   this.props.history.push("/");
+      // this.props.history.push("/");
       window.location = "/";
     });
   };
