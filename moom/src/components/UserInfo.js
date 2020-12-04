@@ -15,9 +15,6 @@ class UserInfo extends Component {
       isOpenPassword: false,
       isOpenBirth: false,
       isModalOpen: false,
-      isOpenPromise: false,
-      isOpenName: false,
-      isOpenPassword: false,
     };
   }
 
@@ -47,42 +44,6 @@ class UserInfo extends Component {
     this.setState({ isModalOpen: false });
      
   }
-
-  openInputPromise = () => {
-    this.setState({
-      isOpenPromise: true,
-    });
-  };
-
-  closeInputPromise = () => {
-    this.setState({
-      isOpenPromise: false,
-    });
-  };
-
-  openInputName = () => {
-    this.setState({
-      isOpenName: true,
-    });
-  };
-
-  closeInputName = () => {
-    this.setState({
-      isOpenName: false,
-    });
-  };
-
-  openInputPassword = () => {
-    this.setState({
-      isOpenPassword: true,
-    });
-  };
-
-  closeInputPassword = () => {
-    this.setState({
-      isOpenPassword: false,
-    });
-  };
 
   render() {
     const {
