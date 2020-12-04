@@ -31,7 +31,7 @@ class GLogin extends Component {
     return (
       <div>
         <GoogleLogin
-          clientId={"AIzaSyCMBQ-yYjSX19a9XwiW7QEzkwurFnNdgag"}
+          clientId={"580582710505-4pvoq5hh1sirblclblqe5ki810ac1dnn.apps.googleusercontent.com"}
           buttonText="Google"
           onSuccess={this.responseGoogle}
           onFailure={this.responseFail}

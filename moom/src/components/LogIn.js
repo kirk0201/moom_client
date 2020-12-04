@@ -103,6 +103,7 @@ class LogIn extends Component {
             <div>{this.state.errorMessage}</div>
           </form>
           <div>
+              
             {/* *** react-소셜명-login을 이용한 로그인 *** */}
             {/* TODO: GITHUB 새창으로 연결  */}
             {/* 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
