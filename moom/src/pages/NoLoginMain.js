@@ -20,9 +20,11 @@ class NoLoginMain extends Component {
         <Switch>
           <Route
             exact
-            path="/"
+            path="/" 
             render={() => {
-              return <div>비로그인시 메인입니다.</div>;
+              return <div>
+                <Introduce> </Introduce>
+              </div>;
             }}
           ></Route>
           <Route
