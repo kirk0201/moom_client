@@ -74,7 +74,7 @@ class LogIn extends Component {
   render() {
     return (
       <>
-        <center>
+        <center style={{ paddingTop: 30 }}>
           <h1>LogIn 여기에 로고 들어갈 예정</h1>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>

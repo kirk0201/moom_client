@@ -1,6 +1,6 @@
 .intro_container {
   /* position: relative; */
-  background-color: cornsilk;
+  background-image: url("../images/bg1.jpg");
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -14,7 +14,7 @@
 .int_text {
   margin-left: auto;
   margin-right: auto;
-  padding: 250px 50px;
+  /* padding: 250px 50px; */
   width: 70%;
   margin-bottom: 50px;
   display: inlinetext;
