@@ -73,7 +73,7 @@ class SignUp extends Component {
   render() {
     return (
       <>
-        <center>
+        <center style={{ paddingTop: 50 }}>
           <p>회원가입</p>
           <p>moom에 오신 것을 환영합니다.^^</p>
           <form onSubmit={(e) => e.preventDefault()}>
