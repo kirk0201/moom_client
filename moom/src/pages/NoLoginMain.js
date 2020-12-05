@@ -20,11 +20,18 @@ class NoLoginMain extends Component {
         <Switch>
           <Route
             exact
-            path="/" 
+            path="/"
             render={() => {
-              return <div>
-                <Introduce> </Introduce>
-              </div>;
+              return (
+                <>
+                  <div>
+                    <Introduce />
+                  </div>
+                  <div>
+                    <Experience />
+                  </div>
+                </>
+              );
             }}
           ></Route>
           <Route
