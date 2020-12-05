@@ -22,7 +22,16 @@ class NoLoginMain extends Component {
             exact
             path="/"
             render={() => {
-              return <div>비로그인시 메인입니다.</div>;
+              return (
+                <>
+                  <div>
+                    <Introduce />
+                  </div>
+                  <div>
+                    <Experience />
+                  </div>
+                </>
+              );
             }}
           ></Route>
           <Route
