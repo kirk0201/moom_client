@@ -1,18 +1,17 @@
 import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import {
-  GithubLoginButton,
-  GoogleLoginButton,
-} from "react-social-login-buttons";
 
 import { BASEURL } from "../helpurl";
-import MyGithubLoginButton from "./GithubLogin";
 import GLogin from "./GLogin";
-import HLogin from "./HLogin";
+
+import "../css/Login.css";
+import githublogo from "../images/github.svg";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+// TODO : react-github-login을 이용한 버튼 컴포넌트 HLogin 수정
+// import HLogin from "./HLogin";
 class LogIn extends Component {
   constructor(props) {
     super(props);
@@ -103,25 +102,20 @@ class LogIn extends Component {
             <div>{this.state.errorMessage}</div>
           </form>
           <div>
-              
-            {/* *** react-소셜명-login을 이용한 로그인 *** */}
-            {/* TODO: GITHUB 새창으로 연결  */}
-            {/* 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
+            {/* 구글 : 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
             <GLogin />
-            <HLogin />
-
-            {/* react-social-login-buttons 을 이용한 로그인 */}
-            {/* TODO: 구글은 어떻게 하는지 모르겠음 */}
-            <GithubLoginButton
-              onClick={() =>
-                window.open(
-                  "https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c/"
-                )
-              }
-            />
-            <GoogleLoginButton />
-            <MyGithubLoginButton />
+            <div>
+              <button className="github-btn">
+                <a href="https://github.com/login/oauth/authorize?client_id=b6ff5da7d50bfa6451b2">
+                  <div className="github-div">
+                    <img className="github-img" src={githublogo}></img>
+                  </div>
+                  <span className="github-span">Github</span>
+                </a>
+              </button>
+            </div>
           </div>
+
           <div>
             <Link to="/signup">회원가입</Link>
             <Link to="/">비밀번호찾기</Link>
