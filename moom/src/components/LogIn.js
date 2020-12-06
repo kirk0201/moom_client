@@ -56,12 +56,12 @@ class LogIn extends Component {
       .then((res) => {
         console.log(res.data);
         this.props.handleLoginSuccess();
+        // TODO : 페이지 전환 확인 redirect
+        // TODO: 다른 상태코드에 따른 분기가 필요
       })
       .catch((err) => {
         console.log(err);
         console.log(err.message);
-        // TODO : 페이지 전환 확인 redirect
-        // TODO: 다른 상태코드에 따른 분기가 필요
         if (err.message === "Request failed with status code 404") {
           this.setState({
             errorMessage:
@@ -103,10 +103,10 @@ class LogIn extends Component {
           </form>
           <div>
             {/* 구글 : 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
-            <GLogin />
+            <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
             <div>
               <button className="github-btn">
-                <a href="https://github.com/login/oauth/authorize?client_id=b6ff5da7d50bfa6451b2">
+                <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
                     <img className="github-img" src={githublogo}></img>
                   </div>
