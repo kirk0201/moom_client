@@ -1,6 +1,10 @@
 .intro_container {
   /* position: relative; */
   background-image: url("../images/bg1.jpg");
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -9,6 +13,7 @@
   height: 778px;
   padding-top: 100px;
   margin-top: 30px;
+  border-top-width: 41px;
 }
 
 .int_text {

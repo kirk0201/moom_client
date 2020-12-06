@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../css/Introduce.css";
-
+import "../images/bg5.jpg";
 
 export class Introduce extends Component {
   constructor(props) {
