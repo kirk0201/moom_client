@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import "../css/UserInfo.css";
 import profile_img from "../images/profile.jpg";
 import UserInfoEdit from "./UserInfoEdit";
+import UserInfoSex from "./UserInfoSex";
 import SignOutModal from "./SignOutModal";
 
 class UserInfo extends Component {
@@ -14,6 +15,7 @@ class UserInfo extends Component {
       isOpenName: false,
       isOpenPassword: false,
       isOpenBirth: false,
+      isOpenSex: false,
       isModalOpen: false,
     };
   }
@@ -57,7 +59,13 @@ class UserInfo extends Component {
 
     const { handleLoginSuccess, handleLoginFail } = this.props;
 
-    let { isOpenPromise, isOpenName, isOpenPassword, isOpenBirth } = this.state;
+    let {
+      isOpenPromise,
+      isOpenName,
+      isOpenPassword,
+      isOpenBirth,
+      isOpenSex,
+    } = this.state;
 
     let social = false;
     if (type === "nomal") {
@@ -128,12 +136,21 @@ class UserInfo extends Component {
             </li>
             <li>
               <span>성별:</span>
-              <select name="sex" value={sex}>
-                <option value="">선택</option>
-                <option value="female">여성</option>
-                <option value="male">남성</option>
-              </select>
-              <button>지금은 수정할 수 없어요!</button>
+              {isOpenSex ? (
+                <UserInfoSex
+                  info={sex}
+                  what="isOpenSex"
+                  handleLoginSuccess={handleLoginSuccess}
+                  closeInput={this.closeInput}
+                />
+              ) : (
+                <>
+                  <span>{sex ? sex : "성별을 선택해주세요"}</span>
+                  <button name="isOpenSex" onClick={this.openInput}>
+                    수정
+                  </button>
+                </>
+              )}
             </li>
             <li>
               <span>나의 다짐:</span>
