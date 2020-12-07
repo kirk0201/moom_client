@@ -56,6 +56,7 @@ class LogIn extends Component {
       .then((res) => {
         console.log(res.data);
         this.props.handleLoginSuccess();
+        this.props.history.push("/");
         // TODO : 페이지 전환 확인 redirect
         // TODO: 다른 상태코드에 따른 분기가 필요
       })

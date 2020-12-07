@@ -22,25 +22,25 @@ class App extends Component {
     this.handleLoginSuccess();
   }
 
-  // 로그인 여부에 따라 setState로 유저정보 저장하는 함수
+  // 로그인 성공시 setState로 유저정보 저장하는 함수
   handleLoginSuccess = () => {
     axios
       .get(`${BASEURL}/user/edit`)
       .then((res) => {
         this.setState({ isLogin: true, userInfo: res.data });
-        // TODO : 페이지 전환 확인 redirect
-        // TODO: 다른 상태코드에 따른 분기가 필요
-        // this.props.history.push("/");
-        // window.location = "/";
       })
       .catch((err) => {
         console.log(err);
         console.log(err.message);
         if (err.message === "Request failed with status code 404") {
           this.setState({ isLogin: false, userInfo: null });
-          // this.props.history.push("/login");
         }
       });
+  };
+
+  // 로그아웃, 회원탈퇴 등 성공시 setState로 유저정보를 비우는 함수
+  handleLoginFail = () => {
+    this.setState({ isLogin: false, userInfo: null });
   };
 
   // 로그인 여부에 따라 다른 페이지 렌더
@@ -58,6 +58,7 @@ class App extends Component {
                     userInfo={userInfo}
                     isLogin={isLogin}
                     handleLoginSuccess={this.handleLoginSuccess.bind(this)}
+                    handleLoginFail={this.handleLoginFail.bind(this)}
                   ></LoginMain>
                 );
               } else {
