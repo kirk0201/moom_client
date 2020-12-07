@@ -12,7 +12,6 @@ export class SignOutModal extends Component {
     };
   }
 
- 
   checkmodal = () => {
     this.setState({ isModalOpen: true });
   };
@@ -20,6 +19,7 @@ export class SignOutModal extends Component {
   closemodal = () => {
     this.setState({ isModalOpen: false });
   };
+
   // 계정삭제 버튼 클릭시 axios요청 함수
   handleSignout = () => {
     axios
@@ -29,8 +29,9 @@ export class SignOutModal extends Component {
         // TODO : 페이지 전환 확인 redirect
         // TODO: 다른 상태코드에 따른 분기가 필요
         if (res.status === 200) {
-          // this.props.history.push("/");
-          window.location = "/";
+          this.props.handleLoginFail();
+          this.props.history.push("/");
+          // window.location = "/";
         }
       })
       .catch((err) => {
@@ -55,7 +56,7 @@ export class SignOutModal extends Component {
               </button>
               {/* 삭제 버튼 */}
               <button onClick={this.checkmodal}>계정 삭제</button>
-              
+
               {/*삭제 버튼을 클릭하여 state가 바뀌면 아래 컴퍼넌트에 있는 
               상항연산자에 의해 모달창이 render됨 */}
               <CheckModal
@@ -72,7 +73,7 @@ export class SignOutModal extends Component {
 }
 export default withRouter(SignOutModal);
 
-// 모달창 추가 확인 함수형 컴퍼넌트 
+// 모달창 추가 확인 함수형 컴퍼넌트
 export function CheckModal(props) {
   // props확인 로그
   // console.log("open : ", props);

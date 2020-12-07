@@ -16,10 +16,21 @@ class LoginMain extends Component {
 
   // 로그인시 메인 페이지
   render() {
-    const { isLogin, userInfo, handleLoginSuccess } = this.props;
+    const {
+      isLogin,
+      userInfo,
+      handleLoginSuccess,
+      history,
+      handleLoginFail,
+    } = this.props;
     return (
       <div>
-        <LoginNav userInfo={userInfo} isLogin={isLogin} />
+        <LoginNav
+          userInfo={userInfo}
+          isLogin={isLogin}
+          handleLoginFail={handleLoginFail}
+          history={history}
+        />
         <Switch>
           <Route
             exact
@@ -36,6 +47,7 @@ class LoginMain extends Component {
                   userInfo={userInfo}
                   isLogin={isLogin}
                   handleLoginSuccess={handleLoginSuccess}
+                  handleLoginFail={handleLoginFail}
                 />
               );
             }}

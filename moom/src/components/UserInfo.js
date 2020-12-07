@@ -42,8 +42,7 @@ class UserInfo extends Component {
   // 취소 버튼 클릭시 SignOutModal를 닫는 함수
   closeModal = () => {
     this.setState({ isModalOpen: false });
-     
-  }
+  };
 
   render() {
     const {
@@ -56,7 +55,7 @@ class UserInfo extends Component {
       type,
     } = this.props.userInfo;
 
-    const { handleLoginSuccess } = this.props;
+    const { handleLoginSuccess, handleLoginFail } = this.props;
 
     let { isOpenPromise, isOpenName, isOpenPassword, isOpenBirth } = this.state;
 
@@ -186,7 +185,11 @@ class UserInfo extends Component {
           <button className="btn_signout" onClick={this.openModal}>
             moom 회원 탈퇴하기
           </button>
-          <SignOutModal open={this.state.isModalOpen} close={this.closeModal} />
+          <SignOutModal
+            open={this.state.isModalOpen}
+            close={this.closeModal}
+            handleLoginFail={handleLoginFail}
+          />
         </div>
       </>
     );

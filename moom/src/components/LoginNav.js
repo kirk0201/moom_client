@@ -11,20 +11,16 @@ axios.defaults.withCredentials = true;
 class LoginNav extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLogin: this.props.isLogin,
-      userInfo: this.props.userInfo,
-    };
   }
 
   // 로그아웃 버튼 클릭시 axios요청 함수
   handleLogout = () => {
     axios.get(`${BASEURL}/user/logout`).then(() => {
-      this.setState({ userInfo: null, isLogin: false });
+      console.log(this.props.history);
       // TODO : 페이지 전환 확인 redirect
       // TODO: 다른 상태코드에 따른 분기가 필요
-      // this.props.history.push("/");
-      window.location = "/";
+      this.props.handleLoginFail();
+      this.props.history.push("/");
     });
   };
 
