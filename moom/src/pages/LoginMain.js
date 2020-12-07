@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { withRouter, Route, Switch } from "react-router-dom";
+import { withRouter, Route, Switch, Link } from "react-router-dom";
 
 import LoginNav from "../components/LoginNav";
 
@@ -31,12 +31,35 @@ class LoginMain extends Component {
           handleLoginFail={handleLoginFail}
           history={history}
         />
+        <div>
+          <Link to="/">
+            <button>1</button>
+          </Link>
+          <Link to="/custom">
+            <button>2</button>
+          </Link>
+          <Link to="/certain">
+            <button>3</button>
+          </Link>
+        </div>
         <Switch>
           <Route
             exact
             path="/"
             render={() => {
-              return <div>로그인시 메인입니다.</div>;
+              return <BasicBody />;
+            }}
+          ></Route>
+          <Route
+            path="/custom"
+            render={() => {
+              return <CustomBody />;
+            }}
+          ></Route>
+          <Route
+            path="/certain"
+            render={() => {
+              return <CertainBody />;
             }}
           ></Route>
           <Route
