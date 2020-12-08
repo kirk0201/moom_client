@@ -39,6 +39,7 @@ class GLogin extends Component {
         // TODO: 다른 상태코드에 따른 분기가 필요
         console.log(res.data);
         this.props.handleLoginSuccess();
+        this.props.history.push("/");
       })
       .catch((err) => {
         console.log(err);
