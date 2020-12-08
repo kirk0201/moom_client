@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import "../css/UserInfo.css";
 import profile_img from "../images/profile.jpg";
 import UserInfoEdit from "./UserInfoEdit";
+import UserInfoImg from "./UserInfoImg";
 import UserInfoSex from "./UserInfoSex";
 import SignOutModal from "./SignOutModal";
 
@@ -16,6 +17,7 @@ class UserInfo extends Component {
       isOpenPassword: false,
       isOpenBirth: false,
       isOpenSex: false,
+      isOpenProfile: false,
       isModalOpen: false,
     };
   }
@@ -65,6 +67,7 @@ class UserInfo extends Component {
       isOpenPassword,
       isOpenBirth,
       isOpenSex,
+      isOpenProfile,
     } = this.state;
 
     let social = false;
@@ -78,7 +81,25 @@ class UserInfo extends Component {
         <div className="container">
           <div>
             <span>프로필사진</span>
-            <img className="circle" src={profile ? profile : profile_img}></img>
+            {isOpenProfile ? (
+              <UserInfoImg
+                info={profile}
+                noInfo="프로필 이미지를 등록해주세요."
+                what="isOpenProfile"
+                closeInput={this.closeInput}
+                handleLoginSuccess={handleLoginSuccess}
+              />
+            ) : (
+              <>
+                <img
+                  className="circle"
+                  src={profile ? profile : profile_img}
+                ></img>
+                <button name="isOpenProfile" onClick={this.openInput}>
+                  수정
+                </button>
+              </>
+            )}
           </div>
           <div className="text_box">
             <li>
