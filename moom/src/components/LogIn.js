@@ -49,10 +49,14 @@ class LogIn extends Component {
       this.setState({ errorMessage: "" });
     }
     axios
-      .post(`${BASEURL}/user/login`, {
-        email: email,
-        password: password,
-      })
+      .post(
+        `${BASEURL}/user/login`,
+        {
+          email: email,
+          password: password,
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
         console.log(res.data);
         this.props.handleLoginSuccess();

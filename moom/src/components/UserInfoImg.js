@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { imgbbUploader } from "imgbb-uploader";
 
 import { BASEURL } from "../helpurl";
 
@@ -13,42 +12,30 @@ class UserInfoImg extends Component {
     super(props);
     this.state = {
       profile: this.props.info,
-      url: "",
+      fileurl: "",
     };
   }
 
-  handleImgUserEdit = (event) => {
-    let uploadImage = (img) => {
-      let body = new FormData();
-      body.set("key", "8989f183adfcc1a2b136eaa831104b0a");
-      body.append("image", img);
-      return axios({
-        method: "POST",
-        url: "https://api.imgbb.com/1/upload",
-        data: body,
-        crossDomain: true,
-        withCredentials: true,
-      });
-    };
-    uploadImage(event.target.files[0]).then((res) => {
-      console.log(res.data.data);
-    });
-  };
-
-  handleImgUserEditt = (event) => {
-    let key = "8989f183adfcc1a2b136eaa831104b0a";
+  handleImgUserEdit = async (event) => {
     let img = event.target.files[0];
-    var form = new FormData();
-    form.append("image", img);
-    imgbbUploader(key);
+    let formData = new FormData();
+    formData.append("imgFile", img);
+    // 서버에게 업로드 url 생성하는 api 호출
+    const res = await axios.post(`${BASEURL}/user/img`, formData);
+    console.log(res.data.location);
+
+    this.setState({
+      profile: res.data.location,
+      fileurl: res.data.location,
+    });
   };
 
   handleUserEditImg = (e) => {
     let key = e.target.name;
-    const { url } = this.state;
+    const { fileurl } = this.state;
     axios
       .put(`${BASEURL}/user/edit`, {
-        profile: url,
+        profile: fileurl,
       })
       .then((res) => {
         console.log(res.data);
@@ -65,18 +52,22 @@ class UserInfoImg extends Component {
 
   render() {
     const { noInfo, what } = this.props;
-    const { profile, url } = this.state;
+    const { profile, fileurl } = this.state;
     return (
       <div>
-        {profile ? <img src={profile} /> : <div>{noInfo}</div>}
+        {profile ? (
+          <img className="circle" src={profile} />
+        ) : (
+          <div>{noInfo}</div>
+        )}
         <input
           type="file"
-          accept="image/*"
+          name="imgFile"
           onChange={this.handleImgUserEdit}
         ></input>
         <button
           name={what}
-          disabled={url ? false : "disabled"}
+          disabled={fileurl ? false : "disabled"}
           onClick={this.handleUserEditImg}
         >
           저장
