@@ -72,7 +72,7 @@ class UserInfo extends Component {
     } = this.state;
 
     let social = false;
-    if (type === "nomal") {
+    if (type === "normal") {
       social = true;
     }
 
