@@ -4,7 +4,6 @@ import { withRouter, Route, Switch } from "react-router-dom";
 import LoginNav from "../components/LoginNav";
 import BasicBody from "../components/BasicBody";
 import CustomBody from "../components/CustomBody";
-import CertainBody from "../components/CertainBody";
 import MyPage from "../pages/MyPage";
 
 class LoginMain extends Component {
@@ -28,6 +27,7 @@ class LoginMain extends Component {
         />
         <Switch>
           <Route
+            exact
             path="/"
             render={() => {
               return <BasicBody userInfo={userInfo} />;

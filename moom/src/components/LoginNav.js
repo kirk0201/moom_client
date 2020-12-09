@@ -1,18 +1,14 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
-import "../css/LoginNav.css";
 import profile_img from "../images/profile.jpg";
+import "../css/LoginNav.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
 class LoginNav extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   // 로그아웃 버튼 클릭시 axios요청 함수
   handleLogout = () => {
     axios.get(`${BASEURL}/user/logout`).then(() => {

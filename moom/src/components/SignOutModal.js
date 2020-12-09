@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import "../css/SignOutModal.css";
-import axios from "axios";
 import { withRouter } from "react-router-dom";
+
 import { BASEURL } from "../helpurl";
+import "../css/SignOutModal.css";
 import "../css/CheckModal.css";
-export class SignOutModal extends Component {
+
+import axios from "axios";
+axios.defaults.withCredentials = true;
+
+class SignOutModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +81,6 @@ export default withRouter(SignOutModal);
 export function CheckModal(props) {
   // props확인 로그
   // console.log("open : ", props);
-
   return (
     <>
       {props.open ? (
