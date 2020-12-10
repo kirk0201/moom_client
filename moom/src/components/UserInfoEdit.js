@@ -21,8 +21,8 @@ class UserInfoEdit extends Component {
   // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputUserEdit = (e) => {
     let target = e.target;
-    let value = target.value;
-    let name = target.name;
+    let value = target.value;//내가쓴거
+    let name = target.name;//promise
     this.setState({
       [name]: value,
     });
@@ -30,11 +30,11 @@ class UserInfoEdit extends Component {
 
   // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
   handleUserEdit = (e) => {
-    let key = e.target.name;
+    let key = e.target.name; //what=isOpenPromise
     const { promise, nikname, password, birth } = this.state;
     axios
       .put(`${BASEURL}/user/edit`, {
-        promise: promise,
+        promise: promise,//내가쓴거
         name: nikname,
         password: password,
         birth: birth,
@@ -42,7 +42,7 @@ class UserInfoEdit extends Component {
       .then((res) => {
         console.log(res.data);
         // 수정 성공하면 인풋창 사라짐
-        this.props.closeInput(key);
+        this.props.closeInput(key);//isOpenPromise 를 false로 만듬
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
         this.props.handleLoginSuccess();
       })
@@ -57,7 +57,7 @@ class UserInfoEdit extends Component {
     return (
       <>
         <input
-          name={name}
+          name={name} //"promise"
           type={type}
           placeholder={info ? info : noInfo}
           onChange={this.handleInputUserEdit}

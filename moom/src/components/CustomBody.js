@@ -11,14 +11,13 @@ class CustomBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenCustom1: false,
-      isOpenNeck: false,
-      body_part1: "",
+      isOpenCustom: false,
+      body_part: "",
     };
   }
 
   componentDidMount() {
-    this.handleRecentBody();
+    this.handleCustomRecentBody();
   }
 
   openInput = (e) => {
@@ -35,30 +34,13 @@ class CustomBody extends Component {
     });
   };
 
-  //sesState로 최근 커스텀정보 저장하는 함수
   handleCustomRecentBody = () => {
     axios
       .get(`${BASEURL}/data/custom`)
       .then((res) => {
-        console.log(res.data);
+        console.log("res.data==> ", res.data);
         this.setState({
-          body_part1: res.data.body_part1,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err.message);
-      });
-  };
-
-  //setState로 최근 신체정보 저장하는 함수
-  handleRecentBody = () => {
-    axios
-      .get(`${BASEURL}/data/recent`)
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          neck: res.data.neck,
+          body_part: res.data[res.data.length - 1].part_name,
         });
       })
       .catch((err) => {
@@ -68,30 +50,27 @@ class CustomBody extends Component {
   };
 
   render() {
-    let { isOpenNeck, isOpenCustom1 } = this.state;
-    const { neck, body_part1 } = this.state;
-    const { handleRecentBody, handleLoginSuccess } = this.props;
-
+    let { isOpenCustom } = this.state;
+    const { body_part } = this.state.body_part;
     return (
       <>
         <BodyNav />
         <div>
-          {isOpenCustom1 ? (
+          {isOpenCustom ? (
             <CustomBodyCreate
-              info={body_part1}
-              noInfo="부위를 입력하세요"
+              info={body_part}
+              noInfo="특별 관리 부위 작성란"
               type="text"
-              name="body_part1"
-              what="isOpenCustom1"
+              name="body_part"
+              what="isOpenCustom"
               closeInput={this.closeInput}
-              handleRecentBody={handleRecentBody}
-              handleLoginSuccess={handleLoginSuccess}
+              handleCustomRecentBody={this.handleCustomRecentBody}
             />
           ) : (
             <>
-              <span>여기다 새로 생성된 wrist 부위가 나오도록</span>
-              <button name="isOpenCustom1" onClick={this.openInput}>
-                생성
+              <span>{body_part ? body_part : "특별 관리 부위 작성란"}</span>
+              <button name="isOpenCustom" onClick={this.openInput}>
+                수정
               </button>
             </>
           )}
