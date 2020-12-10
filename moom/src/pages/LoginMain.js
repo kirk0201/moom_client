@@ -54,7 +54,7 @@ class LoginMain extends Component {
           <Route
             path="/custom"
             render={() => {
-              return <CustomBody />;
+              return <CustomBody userInfo={userInfo} />;
             }}
           ></Route>
           <Route
