@@ -6,18 +6,14 @@ import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// TODO: 이메일 중복 버튼, 서버 요청, 에러 메세지 확인
 class CustomBodyCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      body_part1: "",
+      body_part: this.body_part,
     };
-    // this.handleInputCreate = this.handleInputCreate.bind(this);
-    // this.handleCreateBodypart = this.handleCreateBodypart.bind(this);
   }
 
-  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputCreate = (e) => {
     const target = e.target;
     const value = target.value;
@@ -27,18 +23,17 @@ class CustomBodyCreate extends Component {
     });
   };
 
-  // 커스텀부위추가 버튼 클릭시 axios요청 함수
   handleCreateBodypart = (e) => {
     let key = e.target.name;
-    const { body_part1 } = this.state;
+    const { body_part } = this.state;
     axios
       .post(`${BASEURL}/data/custom`, {
-        part_name: body_part1,
+        part_name: body_part,
       })
       .then((res) => {
         console.log(res.data);
         this.props.closeInput(key);
-        this.props.handleRecentBody();
+        this.props.handleCustomRecentBody();
       })
       .catch((err) => {
         console.log(err.message);
@@ -46,15 +41,16 @@ class CustomBodyCreate extends Component {
   };
 
   render() {
-    const { info, name, noInfo, what } = this.props;
+    const { name, what, type, info, noInfo } = this.props;
     return (
       <>
         <input
           name={name}
-          placeholder={info ? info : noInfo}
-          onChange={this.handleCreateBodypart}
+          type={type}
+          paleceholder={info ? info : noInfo}
+          onChange={this.handleInputCreate}
         />
-        <button name={what} onClick={this.handleInputCreate}>
+        <button name={what} onClick={this.handleCreateBodypart}>
           저장
         </button>
       </>
