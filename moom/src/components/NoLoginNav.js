@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../css/NologinNav.css";
 
 const NoLoginNav = () => {
   // 비로그인시 네비 바
@@ -9,27 +10,15 @@ const NoLoginNav = () => {
     position: "fixed",
     top: 0,
     width: "100%",
-    height: "50px",
+    height: "35px",
     paddingTop: "20px",
-    backgroundColor: "white",
+    backgroundColor: "gray",
   };
 
   return (
     <div>
       {/* TODO: TOP 최상위버튼 */}
-      <button
-        style={{
-          cursor: "pointer",
-          position: "fixed",
-          top: 70,
-          right: 20,
-          fontSize: 30,
-        }}
-        onClick={() => window.scrollTo(0, 0)}
-      >
-        TOP
-      </button>
-      <header style={style}>
+      <header style={{ ...style }}>
         <Link to="/">
           <button>로고</button>
         </Link>
@@ -39,6 +28,16 @@ const NoLoginNav = () => {
         <Link to="/signup">
           <button>회원가입</button>
         </Link>
+        <button
+          style={{
+            cursor: "pointer",
+            position: "fixed",
+            right: 20,
+          }}
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          TOP
+        </button>
       </header>
     </div>
   );
