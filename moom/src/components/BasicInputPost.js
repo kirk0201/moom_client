@@ -22,7 +22,7 @@ class BasicInputPost extends Component {
     };
   }
 
-  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
+  // input 이벤트시 서버에게 보낼 정보 setState하는 함수
   handleInputBasicPost = (e) => {
     let target = e.target;
     let value = target.value;
@@ -32,7 +32,7 @@ class BasicInputPost extends Component {
     });
   };
 
-  // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
+  // 저장 버튼 클릭시 새로운 수치를 추가하는 axios요청 함수
   handleBasicPost = (e) => {
     let key = e.target.value;
     let part_name = e.target.name;
@@ -77,6 +77,12 @@ class BasicInputPost extends Component {
       });
   };
 
+ // 취소 버튼 클릭시 BasicInputPost을 닫는 함수
+  handlecloseInput = (e) => {
+    let key = e.target.name;
+    this.props.closeInputBodyPost(key);
+  };
+
   render() {
     const { name, what } = this.props;
     return (
@@ -89,6 +95,9 @@ class BasicInputPost extends Component {
         />
         <button name={name} value={what} onClick={this.handleBasicPost}>
           저장
+        </button>
+        <button name={what} onClick={this.handlecloseInput}>
+          취소
         </button>
         <div>{this.state.errorMessage}</div>
       </>

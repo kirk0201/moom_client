@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
+import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import BasicInputPost from "./BasicInputPost";
+
 import male from "../images/maleimg.png";
 import female from "../images/femaleimg.png";
 
-import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
@@ -28,24 +29,14 @@ class BasicBody extends Component {
       isOpenWaist: false,
       isOpenHip: false,
       isOpenThigh: false,
+      isWeightKG: true,
+      isShoulderCM: true,
+      isChestCM: true,
+      isWaistCM: true,
+      isHipCM: true,
+      isThighCM: true,
     };
   }
-
-  // 기록하기 버튼 클릭시 BasicInputPost를 랜더하는 함수
-  openInputBodyPost = (e) => {
-    let target = e.target;
-    let key = target.name;
-    this.setState({
-      [key]: true,
-    });
-  };
-
-  // 저장 버튼 클릭시 BasicInputPost를 닫는 함수
-  closeInputBodyPost = (key) => {
-    this.setState({
-      [key]: false,
-    });
-  };
 
   // BasicBody.js가 실행될 때 자동 실행되는 함수
   componentDidMount() {
@@ -74,6 +65,104 @@ class BasicBody extends Component {
       });
   };
 
+  // KG 혹은 LN으로 바꿔 계산하여 setState하는 함수
+  handleMakeKGtoLN = () => {
+    const { isWeightKG, weight } = this.state;
+    if (isWeightKG) {
+      this.setState({ weight: Math.floor(weight * 2.205) });
+    } else {
+      this.setState({ weight: (weight * 0.454).toFixed(1) });
+    }
+  };
+
+  // CM 혹은 IN으로 바꿔 계산하여 setState하는 함수
+  handleMakeCMtoIN = (key) => {
+    const {
+      isShoulderCM,
+      isChestCM,
+      isWaistCM,
+      isHipCM,
+      isThighCM,
+      shoulder,
+      chest,
+      waist,
+      hip,
+      thigh,
+    } = this.state;
+    if (key === "isShoulderCM") {
+      if (isShoulderCM) {
+        this.setState({ shoulder: (shoulder * 0.3937).toFixed(2) });
+      } else {
+        this.setState({ shoulder: Math.floor(shoulder * 2.54) });
+      }
+    }
+    if (key === "isChestCM") {
+      if (isChestCM) {
+        this.setState({ chest: (chest * 0.3937).toFixed(2) });
+      } else {
+        this.setState({ chest: Math.floor(chest * 2.54) });
+      }
+    }
+    if (key === "isWaistCM") {
+      if (isWaistCM) {
+        this.setState({ waist: (waist * 0.3937).toFixed(2) });
+      } else {
+        this.setState({ waist: Math.floor(waist * 2.54) });
+      }
+    }
+    if (key === "isHipCM") {
+      if (isHipCM) {
+        this.setState({ hip: (hip * 0.3937).toFixed(2) });
+      } else {
+        this.setState({ hip: Math.floor(hip * 2.54) });
+      }
+    }
+    if (key === "isThighCM") {
+      if (isThighCM) {
+        this.setState({ thigh: (thigh * 0.3937).toFixed(2) });
+      } else {
+        this.setState({ thigh: Math.floor(thigh * 2.54) });
+      }
+    }
+  };
+
+  // 단위 변환 버튼 클릭에 따라
+  handleToggleClick = (e) => {
+    let toggle = e.target.name;
+    this.setState((prevState) => ({
+      [toggle]: !prevState[toggle],
+    }));
+    if (toggle === "isWeightKG") {
+      this.handleMakeKGtoLN();
+    } else {
+      this.handleMakeCMtoIN(toggle);
+    }
+  };
+
+  // 기록하기 버튼 클릭시 BasicInputPost를 랜더하는 함수
+  openInputBodyPost = (e) => {
+    console.log();
+    let target = e.target;
+    let key = target.name;
+    this.setState({
+      [key]: true,
+    });
+  };
+
+  // BasicInputPost에서 저장 혹은 취소 버튼 클릭시 닫는 함수
+  closeInputBodyPost = (key) => {
+    this.setState({
+      [key]: false,
+    });
+  };
+
+  // 기록보기 버튼 클릭시 해당하는 부위의 CertainBody으로 이용하는 함수
+  goCertainBody = (e) => {
+    let key = e.target.name;
+    this.props.bodyChoiceSuccess(key);
+    this.props.history.push("/certain");
+  };
+
   render() {
     const { sex } = this.props.userInfo;
     const {
@@ -91,6 +180,12 @@ class BasicBody extends Component {
       isOpenWaist,
       isOpenHip,
       isOpenThigh,
+      isWeightKG,
+      isShoulderCM,
+      isChestCM,
+      isWaistCM,
+      isHipCM,
+      isThighCM,
     } = this.state;
 
     let isMale = false;
@@ -104,7 +199,7 @@ class BasicBody extends Component {
         {sex ? (
           <img src={isMale ? male : female} alt="전신 일러스트"></img>
         ) : (
-          <span>성별을 선택해주세요</span>
+          <span>마이페이지에서 성별을 선택해주세요</span>
         )}
         <div>
           <span>체지방율</span>
@@ -121,13 +216,17 @@ class BasicBody extends Component {
                 {body_fat ? (
                   <>
                     <span>{body_fat}</span>
+                    <span>%</span>
+
                     <button
                       name="isOpenBodyfat"
                       onClick={this.openInputBodyPost}
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="body_fat" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -138,7 +237,6 @@ class BasicBody extends Component {
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>
@@ -160,13 +258,18 @@ class BasicBody extends Component {
                 {weight ? (
                   <>
                     <span>{weight}</span>
+                    <button name="isWeightKG" onClick={this.handleToggleClick}>
+                      {isWeightKG ? "KG" : "LN"}
+                    </button>
                     <button
                       name="isOpenWeight"
                       onClick={this.openInputBodyPost}
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="weight" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -177,7 +280,6 @@ class BasicBody extends Component {
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>
@@ -200,12 +302,20 @@ class BasicBody extends Component {
                   <>
                     <span>{shoulder}</span>
                     <button
+                      name="isShoulderCM"
+                      onClick={this.handleToggleClick}
+                    >
+                      {isShoulderCM ? "CM" : "IN"}
+                    </button>
+                    <button
                       name="isOpenShoulder"
                       onClick={this.openInputBodyPost}
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="shoulder" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -216,7 +326,6 @@ class BasicBody extends Component {
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>
@@ -238,13 +347,18 @@ class BasicBody extends Component {
                 {chest ? (
                   <>
                     <span>{chest}</span>
+                    <button name="isChestCM" onClick={this.handleToggleClick}>
+                      {isChestCM ? "CM" : "IN"}
+                    </button>
                     <button
                       name="isOpencChest"
                       onClick={this.openInputBodyPost}
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="chest" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -255,7 +369,6 @@ class BasicBody extends Component {
                     >
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>
@@ -277,10 +390,15 @@ class BasicBody extends Component {
                 {waist ? (
                   <>
                     <span>{waist}</span>
+                    <button name="isWaistCM" onClick={this.handleToggleClick}>
+                      {isWaistCM ? "CM" : "IN"}
+                    </button>
                     <button name="isOpenWaist" onClick={this.openInputBodyPost}>
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="waist" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -288,7 +406,6 @@ class BasicBody extends Component {
                     <button name="isOpenWaist" onClick={this.openInputBodyPost}>
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>
@@ -310,10 +427,15 @@ class BasicBody extends Component {
                 {hip ? (
                   <>
                     <span>{hip}</span>
+                    <button name="isHipCM" onClick={this.handleToggleClick}>
+                      {isHipCM ? "CM" : "IN"}
+                    </button>
                     <button name="isOpenHip" onClick={this.openInputBodyPost}>
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="hip" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -321,7 +443,6 @@ class BasicBody extends Component {
                     <button name="isOpenHip" onClick={this.openInputBodyPost}>
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>
@@ -343,10 +464,15 @@ class BasicBody extends Component {
                 {thigh ? (
                   <>
                     <span>{thigh}</span>
+                    <button name="isThighCM" onClick={this.handleToggleClick}>
+                      {isThighCM ? "CM" : "IN"}
+                    </button>
                     <button name="isOpenThigh" onClick={this.openInputBodyPost}>
                       기록하기
                     </button>
-                    <button>기록보기</button>
+                    <button name="thigh" onClick={this.goCertainBody}>
+                      기록보기
+                    </button>
                   </>
                 ) : (
                   <>
@@ -354,7 +480,6 @@ class BasicBody extends Component {
                     <button name="isOpenThigh" onClick={this.openInputBodyPost}>
                       기록하기
                     </button>
-                    <button>기록보기</button>
                   </>
                 )}
               </>

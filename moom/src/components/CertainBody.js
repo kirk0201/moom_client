@@ -1,15 +1,26 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
+import { BASEURL } from "../helpurl";
+import BodyNav from "./BodyNav";
+
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 class CertainBody extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      partName: this.props.partName,
+    };
   }
 
   render() {
+    const { partName } = this.state;
     return (
       <>
-        <div>certain바디 컴포넌트 입니다.</div>
+        <BodyNav />
+        <div>{`${partName}을 선택했습니다.`}</div>
       </>
     );
   }
