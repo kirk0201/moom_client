@@ -217,6 +217,7 @@ class BasicBody extends Component {
                   <>
                     <span>{body_fat}</span>
                     <span>%</span>
+
                     <button
                       name="isOpenBodyfat"
                       onClick={this.openInputBodyPost}
