@@ -6,7 +6,6 @@ import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// TODO: 이메일 중복 버튼, 서버 요청, 에러 메세지 확인
 class CustomBodyCreate extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,6 @@ class CustomBodyCreate extends Component {
     };
   }
 
-  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputCreate = (e) => {
     const target = e.target;
     const value = target.value;
@@ -25,7 +23,6 @@ class CustomBodyCreate extends Component {
     });
   };
 
-  // 커스텀부위추가 버튼 클릭시 axios요청 함수
   handleCreateBodypart = (e) => {
     let key = e.target.name;
     const { body_part } = this.state;
