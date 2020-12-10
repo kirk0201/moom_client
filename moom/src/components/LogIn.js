@@ -1,11 +1,10 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
 import GLogin from "./GLogin";
-
-import "../css/Login.css";
 import githublogo from "../images/github.svg";
+import "../css/Login.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;

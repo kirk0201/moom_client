@@ -1,8 +1,9 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 import "../css/UserInfo.css";
 import profile_img from "../images/profile.jpg";
+
 import UserInfoEdit from "./UserInfoEdit";
 import UserInfoImg from "./UserInfoImg";
 import UserInfoSex from "./UserInfoSex";
@@ -71,7 +72,7 @@ class UserInfo extends Component {
     } = this.state;
 
     let social = false;
-    if (type === "nomal") {
+    if (type === "normal") {
       social = true;
     }
 

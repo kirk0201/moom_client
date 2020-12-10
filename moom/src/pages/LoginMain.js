@@ -8,6 +8,19 @@ import CertainBody from "../components/CertainBody";
 import MyPage from "../pages/MyPage";
 
 class LoginMain extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      partName: "weight",
+    };
+  }
+
+  // 특정 신체부위를 지정하여 partName을 setState하는 함수
+  bodyChoiceSuccess = (key) => {
+    console.log(key);
+    this.setState({ partName: key });
+  };
+
   // 로그인시 메인 페이지
   render() {
     const {
@@ -28,15 +41,27 @@ class LoginMain extends Component {
         />
         <Switch>
           <Route
+            exact
             path="/"
             render={() => {
-              return <BasicBody userInfo={userInfo} />;
+              return (
+                <BasicBody
+                  userInfo={userInfo}
+                  bodyChoiceSuccess={this.bodyChoiceSuccess}
+                />
+              );
             }}
           ></Route>
           <Route
             path="/custom"
             render={() => {
               return <CustomBody />;
+            }}
+          ></Route>
+          <Route
+            path="/certain"
+            render={() => {
+              return <CertainBody partName={this.state.partName} />;
             }}
           ></Route>
           <Route
