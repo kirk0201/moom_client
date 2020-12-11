@@ -25,7 +25,6 @@ class GLogin extends Component {
       email: res.profileObj.email,
       profile: res.profileObj.imageUrl,
     });
-    console.log();
     const { id, name, email, profile } = this.state;
     axios
       .post(`${BASEURL}/user/googleoauth`, {
