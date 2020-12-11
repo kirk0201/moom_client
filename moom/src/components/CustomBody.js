@@ -106,6 +106,24 @@ class CustomBody extends Component {
     this.props.history.push("/certain");
   };
 
+  //custom을 삭제하는 함수
+  handleDeleteCustom = (e) => {
+    let part_name = e.target.name;
+    axios
+      .delete(`${BASEURL}/data/custom`, {
+        data: { part_name: part_name },
+        withCredentials: true,
+      })
+      .then((res) => {
+        // 수정 성공하면 custom를 다시 setState하는 함수
+        this.handleCustomRecentBody();
+      })
+      // TODO: 다른 상태코드에 따른 분기가 필요
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   render() {
     const { customs, isOpen, isCM } = this.state;
     const mapcustoms = (data) => {
@@ -141,6 +159,12 @@ class CustomBody extends Component {
                         onClick={this.goCertainBody}
                       >
                         기록보기
+                      </button>
+                      <button
+                        name={custom.part_name}
+                        onClick={this.handleDeleteCustom}
+                      >
+                        삭제
                       </button>
                     </>
                   ) : (
