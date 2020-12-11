@@ -14,17 +14,16 @@ class CustomBodyCreate extends Component {
     };
   }
 
+  // input 테그의 값이 변경될때마다 state에 다시 저장해주는 함수
   handleInputCreate = (e) => {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
+    const value = e.target.value;
     this.setState({
-      [name]: value,
+      body_part: value,
     });
   };
 
-  handleCreateBodypart = (e) => {
-    let key = e.target.name;
+  //새로운 커스텀을 생성 요청을 서버에 보내는 함수
+  handleCreateBodypart = () => {
     const { body_part } = this.state;
     axios
       .post(`${BASEURL}/data/custom`, {
@@ -32,7 +31,6 @@ class CustomBodyCreate extends Component {
       })
       .then((res) => {
         console.log(res.data);
-        this.props.closeInput(key);
         this.props.handleCustomRecentBody();
       })
       .catch((err) => {
@@ -41,16 +39,14 @@ class CustomBodyCreate extends Component {
   };
 
   render() {
-    const { name, what, type, info, noInfo } = this.props;
     return (
       <>
         <input
-          name={name}
-          type={type}
-          paleceholder={info ? info : noInfo}
+          type="text"
+          placeholder="새로운 부위를 추가하세요"
           onChange={this.handleInputCreate}
         />
-        <button name={what} onClick={this.handleCreateBodypart}>
+        <button onClick={this.handleCreateBodypart}>
           저장
         </button>
       </>
