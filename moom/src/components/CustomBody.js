@@ -2,47 +2,57 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import BodyNav from "./BodyNav";
 import CustomBodyCreate from "./CustomBodyCreate";
+import BasicInputPost from "./BasicInputPost";
 
 import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-
-//수정중
+// data/custom get에서 받아온 정보를 저장하는 customs
 class CustomBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenCustom: false,
-      body_part: "",
+      customs: [],
+      isOpen: [],
+      isCM: [],
     };
   }
 
+  // CustomBody.js가 실행될 때 자동 실행되는 함수
   componentDidMount() {
     this.handleCustomRecentBody();
   }
 
-  openInput = (e) => {
-    let target = e.target;
-    let key = target.name;
-    this.setState({
-      [key]: true,
+  // 기록하기 버튼 클릭시 BasicInputPost를 랜더하는 함수
+  openInputBodyPost = (e) => {
+    let index = Number(e.target.name);
+    this.setState((pre) => {
+      pre.isOpen[index] = true;
+      return {
+        isOpen: pre.isOpen,
+      };
     });
   };
 
-  closeInput = (key) => {
-    this.setState({
-      [key]: false,
+  // BasicInputPost에서 저장 혹은 취소 버튼 클릭시 닫는 함수
+  closeInputBodyPost = (index) => {
+    this.setState((pre) => {
+      pre.isOpen[index] = false;
+      return { isOpen: pre.isOpen };
     });
   };
 
+  // setState로 최근 신체정보 저장하는 함수
   handleCustomRecentBody = () => {
     axios
       .get(`${BASEURL}/data/custom`)
       .then((res) => {
         console.log("res.data==> ", res.data);
         this.setState({
-          body_part: res.data[res.data.length - 1].part_name,
+          customs: res.data,
+          isOpen: new Array(res.data.length),
+          isCM: new Array(res.data.length),
         });
       })
       .catch((err) => {
@@ -51,32 +61,113 @@ class CustomBody extends Component {
       });
   };
 
+  // 단위 변환 버튼 클릭에 따라
+  handleToggleClick = (e) => {
+    let part_name = e.target.name;
+    this.handleMakeCMtoIN(part_name);
+  };
+
+  // CM 혹은 IN으로 바꿔 계산하여 setState하는 함수
+  handleMakeCMtoIN = (part_name) => {
+    let customs = this.state.customs;
+    let index;
+    for (let i = 0; i < customs.length; i++) {
+      if (customs[i].part_name === part_name) {
+        index = i;
+        break;
+      }
+    }
+
+    this.setState((pre) => {
+      if (pre.isCM[index]) {
+        pre.customs[index].value = Math.floor(pre.customs[index].value * 2.54);
+        pre.isCM[index] = false;
+        return {
+          customs: pre.customs,
+          isCM: pre.isCM,
+        };
+      } else {
+        pre.customs[index].value = (pre.customs[index].value * 0.3937).toFixed(
+          2
+        );
+        pre.isCM[index] = true;
+        return {
+          customs: pre.customs,
+          isCM: pre.isCM,
+        };
+      }
+    });
+  };
+
+  // 기록보기 버튼 클릭시 해당하는 부위의 CertainBody으로 이용하는 함수
+  goCertainBody = (e) => {
+    let key = e.target.name;
+    this.props.bodyChoiceSuccess(key);
+    this.props.history.push("/certain");
+  };
+
   render() {
-    let { isOpenCustom } = this.state;
-    const { body_part } = this.state.body_part;
+    const { customs, isOpen, isCM } = this.state;
+    const mapcustoms = (data) => {
+      // data/custom get 에서 받아온 배열 정보를 map 함수를 통해 컴포넌트로 만들기
+      return data.map((custom, index) => {
+        return (
+          <div>
+            <span>{custom.part_name}</span>
+            <span>
+              {isOpen[index] ? (
+                <BasicInputPost
+                  name={custom.part_name}
+                  what={index}
+                  closeInputBodyPost={this.closeInputBodyPost}
+                  handleRecentBody={this.handleCustomRecentBody}
+                />
+              ) : (
+                <>
+                  {custom.value ? (
+                    <>
+                      <span>{custom.value}</span>
+                      <button
+                        name={custom.part_name}
+                        onClick={this.handleToggleClick}
+                      >
+                        {isCM[index] ? "CM" : "IN"}
+                      </button>
+                      <button name={index} onClick={this.openInputBodyPost}>
+                        기록하기
+                      </button>
+                      <button
+                        name={custom.part_name}
+                        onClick={this.goCertainBody}
+                      >
+                        기록보기
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <span>수치를 등록해주세요</span>
+                      <button name={index} onClick={this.openInputBodyPost}>
+                        기록하기
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
+            </span>
+          </div>
+        );
+      });
+    };
     return (
       <>
         <BodyNav />
         <div>
-          {isOpenCustom ? (
-            <CustomBodyCreate
-              info={body_part}
-              noInfo="특별 관리 부위 작성란"
-              type="text"
-              name="body_part"
-              what="isOpenCustom"
-              closeInput={this.closeInput}
-              handleCustomRecentBody={this.handleCustomRecentBody}
-            />
-          ) : (
-            <>
-              <span>{body_part ? body_part : "특별 관리 부위 작성란"}</span>
-              <button name="isOpenCustom" onClick={this.openInput}>
-                수정
-              </button>
-            </>
-          )}
+          <CustomBodyCreate
+            closeInputBodyPost={this.closeInputBodyPost}
+            handleCustomRecentBody={this.handleCustomRecentBody}
+          />
         </div>
+        {mapcustoms(customs)}
       </>
     );
   }
