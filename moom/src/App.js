@@ -17,8 +17,8 @@ class App extends Component {
     };
   }
 
-  // App.js가 실행될 때 자동 실행되는 함수
-  componentDidMount() {
+  // App가 생기기 전에 실행되는 함수
+  componentWillMount() {
     this.handleLoginSuccess();
   }
 

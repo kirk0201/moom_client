@@ -13,9 +13,6 @@ class BodyNav extends Component {
           <Link to="/custom">
             <button>2</button>
           </Link>
-          <Link to="/certain">
-            <button>3</button>
-          </Link>
         </div>
       </>
     );
