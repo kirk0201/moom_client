@@ -52,7 +52,7 @@ class BasicBody extends Component {
         if (this.state.basicPartName) {
           this.certainBodyDataGet(this.state.basicPartName);
           this.certainBodyGoalGet(this.state.basicPartName);
-          // this.certainBodyRecent(this.state.basicPartName); // 여기!!!!!!!!!!!!!!!
+          this.certainBodyRecent(this.state.basicPartName); // 여기!!!!!!!!!!!!!!!
         }
       })
       .catch((err) => {
@@ -80,7 +80,7 @@ class BasicBody extends Component {
     axios
       .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
       .then((res) => {
-        this.setState({ basicPartGoal: res.data });
+        this.setState({ basicPartGoal: res.data.goal });
         console.log("확인3");
       })
       .catch((err) => {
@@ -90,57 +90,31 @@ class BasicBody extends Component {
   };
 
   // 왜 안돼!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // certainBodyRecent = (part) => {
-  //   const { body_fat, weight, shoulder, chest, waist, hip, thigh } = this.state;
-  //   if (part === "body_fat") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: body_fat });
-  //   } else if (part === "weight") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: weight });
-  //   } else if (part === "shoulder") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: shoulder });
-  //   } else if (part === "chest") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: chest });
-  //   } else if (part === "waist") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: waist });
-  //   } else if (part === "hip") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: hip });
-  //   } else if (part === "thigh") {
-  //     console.log("확인4");
-  //     this.setState({ basicPartRecent: thigh });
-  //   }
-  // };
-
-  // 여기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // asyncfunction = async (part) => {
-  //   axios
-  //     .get(`${BASEURL}/data/recent`)
-  //     .then((res) => {
-  //       console.log("확인1");
-  //       this.setState({
-  //         body_fat: res.data.body_fat,
-  //         weight: res.data.weight,
-  //         shoulder: res.data.shoulder,
-  //         chest: res.data.chest,
-  //         waist: res.data.waist,
-  //         hip: res.data.hip,
-  //         thigh: res.data.thigh,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       console.log(err.message);
-  //     });
-
-  //   await this.certainBodyDataGet(part);
-  //   await this.certainBodyGoalGet(part);
-  //   await this.certainBodyRecent(part);
-  // };
+  certainBodyRecent = (part) => {
+    const { body_fat, weight, shoulder, chest, waist, hip, thigh } = this.state;
+    if (part === "body_fat") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: body_fat });
+    } else if (part === "weight") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: weight });
+    } else if (part === "shoulder") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: shoulder });
+    } else if (part === "chest") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: chest });
+    } else if (part === "waist") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: waist });
+    } else if (part === "hip") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: hip });
+    } else if (part === "thigh") {
+      console.log("확인4");
+      this.setState({ basicPartRecent: thigh });
+    }
+  };
 
   // 기록보기 버튼 클릭시 basicPartName을 setState하는 함수
   bodyChoiceSuccess = (e) => {
@@ -149,19 +123,19 @@ class BasicBody extends Component {
     localStorage.setItem("basicPartName", key);
     this.certainBodyDataGet(key);
     this.certainBodyGoalGet(key);
-    // this.certainBodyRecent(key); // 여기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    this.certainBodyRecent(key); // 여기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   };
 
   // BasicBody가 생기기 전에 실행되는 함수
   componentDidMount() {
-    this.handleRecentBody(); /// 1번으로 선행
+    this.handleRecentBody();
     const contactData = localStorage.getItem("basicPartName");
     if (contactData) {
       this.setState({ basicPartName: contactData });
       // this.asyncfunction(contactData); // 여기 비동기 시도 해봄!!!!!!!!!!!!!!!!!!!!!!!!!!
       this.certainBodyDataGet(contactData);
       this.certainBodyGoalGet(contactData); // 2번으로 선행
-      // this.certainBodyRecent(contactData); // 여기!!!!!!!!!!! 얘요!!!!!!!!!!!!!!!!
+      this.certainBodyRecent(contactData); // 여기!!!!!!!!!!! 얘요!!!!!!!!!!!!!!!!
     }
   }
 

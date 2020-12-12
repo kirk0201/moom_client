@@ -1,11 +1,21 @@
 /* 페이지당 높이 846px 정도로 구성함 */
+* {
+  font-size: 30px;
+}
+.exp_top {
+  display: flex;
+  justify-content: space-around;
+  background-color: teal;
+  border-top: "6px solid blue";
+}
 .exp_container {
   background-color: teal;
   height: 846px;
   display: flex;
+  justify-content: space-around;
 }
 
-.exp_container div {
+.exp_container > div {
   flex: 1;
   text-align: center;
   margin: 1%;
@@ -18,10 +28,43 @@
 
 .input_size {
   border: 2px solid rgb(255, 123, 0);
+  display: flex;
+  flex-direction: column;
+  justify-items: space-arround;
 }
 
-.right_img {
-  border: 2px solid yellow;
+.input_size_cont {
+  display: flex;
+  border: 1px solid blue;
+  justify-content: space-around;
+  height: 60px;
+}
+
+.input_partname {
+  border: 1px solid yellow;
+}
+.input {
+  display: inline-block;
+  padding: 10px 15px;
+}
+.input_middle {
+  border: 1px solid blue;
+  min-width: 144px;
+}
+.input_middle > input {
+  border-radius: 10px;
+  width: 100px;
+}
+
+.input_right {
+  display: inline-flex;
+  border: 1px solid purple;
+}
+
+.input_right > input {
+  width: 100px;
+  border-radius: 10px;
+  height: 34.44px;
 }
 
 .info_size {

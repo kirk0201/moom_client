@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/Experience.css";
+import ExperienceInput from "./ExperienceInput";
 
 export class Experience extends Component {
   constructor(props) {
@@ -202,14 +203,7 @@ export class Experience extends Component {
     const part7 = "허벅지둘레";
     return (
       <>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            backgroundColor: "teal",
-            borderTop: "6px solid blue",
-          }}
-        >
+        <div className="exp_top">
           <div>신체정보</div>
           <div>
             <div>
@@ -230,79 +224,44 @@ export class Experience extends Component {
               <label for="radio">cm|kg</label>
             </div>
           </div>
-
           <div>목표설정</div>
         </div>
         <div className="exp_container">
           <div className="left_img">좌측 이미지</div>
-          <div
-            className="input_size"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            사이즈 입력
-            <div
-              style={{
-                display: "flex",
-                border: "1px solid black",
-                alignItems: "center",
-              }}
-            >
+          <div className="input_size">
+            <div>사이즈 입력</div>
+            <div className="input_size_cont">
               {/* 입력 div 시작 */}
-              <div style={{ display: "flex", height: 40 }}>
-                <div
-                  style={{
-                    border: "1px solid yellow",
-                    height: 30,
-                  }}
-                >
-                  <span style={{ float: "left" }}>{part1}:</span>
-                </div>
-                <div style={{ border: "1px solid blue" }}>
-                  <input
-                    style={{
-                      borderRadius: 10,
-                      width: 30,
-                      padding: 5,
-                      // margin: "auto",
-                      // padding: "auto",
-                      display: "inline-block",
-                    }}
-                    type="number"
-                    min="0"
-                    onChange={this.handleBodyChange}
-                    name="body1"
-                    value={this.state.body1}
-                  ></input>
-                  <div style={{ display: "inline-block" }}>
-                    {this.state.unit_1}
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: "inline-flex",
-                    border: "1px solid purple",
-                  }}
-                >
-                  <div
-                    style={{
-                      border: "1px solid black",
-                      borderRadius: 10,
-                      backgroundColor: "white",
-                      // padding: 5,
-                      width: 10,
-                      display: "inline-flex",
-                    }}
-                    name="body_1"
-                  >
-                    {this.state.body_1}
-                  </div>
-                  <div>{this.state.unit_1_1}</div>
+              <div className="input_left">
+                <span>{part1} : </span>
+              </div>
+              <div className="input_middle">
+                <input
+                  type="number"
+                  min="0"
+                  onChange={this.handleBodyChange}
+                  name="body1"
+                  value={this.state.body1}
+                ></input>
+                <div style={{ display: "inline-block" }}>
+                  {this.state.unit_1}
                 </div>
               </div>
+              <div className="input_right">
+                <input name="body_1" readOnly value={this.state.body_1}></input>
+                <div>{this.state.unit_1_1}</div>
+              </div>
             </div>
+            <ExperienceInput
+              name={part2}
+              bodyL={this.state.body2}
+              bodyR={this.state.body_2}
+              inputL="body2"
+              inputR="body_2"
+              unitL={this.state.unit_2}
+              unitR={this.state.unit_1_2}
+              handleBodyChange={this.handleBodyChange}
+            />
             <div
               style={{
                 display: "flex",
