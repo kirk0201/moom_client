@@ -6,6 +6,8 @@ import BodyNav from "./BodyNav";
 import BasicData from "./BasicData";
 import CertainData from "./CertainData";
 import Chart from "./CertainChart/Chart"
+import CertainGoal from "./CertainGoal";
+
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -22,6 +24,8 @@ class BasicBody extends Component {
       hip: null,
       thigh: null,
       basicPartName: null,
+      basicPartRecent: null,
+      basicPartGoal: null,
       allBodyData: null,
       isWeightKG: true,
       isShoulderCM: true,
@@ -37,7 +41,6 @@ class BasicBody extends Component {
     axios
       .get(`${BASEURL}/data/recent`)
       .then((res) => {
-        console.log(res.data);
         this.setState({
           body_fat: res.data.body_fat,
           weight: res.data.weight,
@@ -47,23 +50,39 @@ class BasicBody extends Component {
           hip: res.data.hip,
           thigh: res.data.thigh,
         });
+        if (this.state.basicPartName) {
+          this.certainBodyDataGet(this.state.basicPartName);
+          this.certainBodyGoalGet(this.state.basicPartName);
+        }
       })
       .catch((err) => {
         console.log(err);
         console.log(err.message);
       });
-    if (this.state.basicPartName) {
-      this.certainBodyDataGet(this.state.basicPartName);
-    }
   };
 
-  // axios통신으로 특정 신체정보를 setState하는 함수
+  // axios통신으로 특정 신체정보를 모두 setState(배열!!)하는 함수
   certainBodyDataGet = (part) => {
     axios
       .get(`${BASEURL}/data/get`, { params: { part_name: part } })
       .then((res) => {
-        console.log(res.data);
         this.setState({ allBodyData: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
+  // axios통신으로 특정 신체목표와 수치를 setState하는 함수
+  certainBodyGoalGet = (part) => {
+    axios
+      .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
+      .then((res) => {
+        this.setState({
+          basicPartGoal: res.data.goal,
+          basicPartRecent: res.data.recent,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -77,17 +96,18 @@ class BasicBody extends Component {
     this.setState({ basicPartName: key });
     localStorage.setItem("basicPartName", key);
     this.certainBodyDataGet(key);
+    this.certainBodyGoalGet(key);
   };
 
   // BasicBody가 생기기 전에 실행되는 함수
-  componentWillMount() {
+  componentDidMount() {
     this.handleRecentBody();
     const contactData = localStorage.getItem("basicPartName");
-    console.log(contactData);
     if (contactData) {
       this.setState({ basicPartName: contactData });
+      this.certainBodyDataGet(contactData);
+      this.certainBodyGoalGet(contactData);
     }
-    this.certainBodyDataGet(contactData);
   }
 
   // KG 혹은 LN으로 바꿔 계산하여 setState하는 함수
@@ -165,7 +185,7 @@ class BasicBody extends Component {
   };
 
   render() {
-    const { sex } = this.props.userInfo;
+    const { name, sex } = this.props.userInfo;
 
     const {
       body_fat,
@@ -176,6 +196,8 @@ class BasicBody extends Component {
       hip,
       thigh,
       basicPartName,
+      basicPartRecent,
+      basicPartGoal,
       allBodyData,
       isWeightKG,
       isShoulderCM,
@@ -216,8 +238,21 @@ class BasicBody extends Component {
           />
         </div>
         <div>
-          <div>{basicPartName}을 선택했습니다.</div>
-          <div>{DataList}</div>
+          {basicPartName ? (
+            <>
+              <div>{basicPartName}을 선택했습니다.</div>
+              <div>{DataList}</div>
+              <div>
+                <CertainGoal
+                  goal={basicPartGoal}
+                  name={name}
+                  partName={basicPartName}
+                  recent={basicPartRecent}
+                  certainBodyGoalGet={this.certainBodyGoalGet}
+                />
+              </div>
+            </>
+          ) : null}
         </div>
         <div>
           <Chart allBodyData={allBodyData} />
