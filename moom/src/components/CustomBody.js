@@ -5,6 +5,7 @@ import CustomBodyCreate from "./CustomBodyCreate";
 import BasicInputPost from "./BasicInputPost";
 import CertainData from "./CertainData";
 import { BASEURL } from "../helpurl";
+import CertainGoal from "./CertainGoal";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
@@ -20,18 +21,21 @@ class CustomBody extends Component {
       editValue: [],
       allBodyData: [],
       basicPartName: null,
+      basicPartGoal: null,
+      basicPartRecent: null,
     };
   }
 
-  // CustomBody.js가 실행될 때 자동 실행되는 함수
-  componentWillMount() {
+  // BasicBody가 생기기 전에 실행되는 함수
+  componentDidMount() {
     this.handleCustomRecentBody();
     const contactData = localStorage.getItem("customPartName");
     console.log(contactData);
     if (contactData) {
       this.setState({ basicPartName: contactData });
+      this.certainBodyDataGet(contactData);
+      this.certainBodyGoalGet(contactData);
     }
-    this.certainBodyDataGet(contactData);
   }
 
   // 기록하기 버튼 클릭시 BasicInputPost를 랜더하는 함수
@@ -73,6 +77,7 @@ class CustomBody extends Component {
       });
     if (this.state.basicPartName) {
       this.certainBodyDataGet(this.state.basicPartName);
+      this.certainBodyGoalGet(this.state.basicPartName);
     }
   };
 
@@ -197,9 +202,27 @@ class CustomBody extends Component {
     this.setState({ basicPartName: key });
     localStorage.setItem("customPartName", key);
     this.certainBodyDataGet(key);
+    this.certainBodyGoalGet(key);
+  };
+
+  // axios통신으로 특정 신체목표와 수치를 setState하는 함수
+  certainBodyGoalGet = (part) => {
+    axios
+      .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
+      .then((res) => {
+        this.setState({
+          basicPartGoal: res.data.goal,
+          basicPartRecent: res.data.recent,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
   };
 
   render() {
+    const { name, sex } = this.props.userInfo;
     const {
       customs,
       isOpen,
@@ -207,6 +230,8 @@ class CustomBody extends Component {
       editCustom,
       allBodyData,
       basicPartName,
+      basicPartRecent,
+      basicPartGoal,
     } = this.state;
     const mapcustoms = (data) => {
       // data/custom get 에서 받아온 배열 정보를 map 함수를 통해 컴포넌트로 만들기
@@ -252,7 +277,7 @@ class CustomBody extends Component {
                         name={custom.part_name}
                         onClick={this.handleToggleClick}
                       >
-                        {isCM[index] ? "CM" : "IN"}
+                        {isCM[index] ? "IN" : "CM"}
                       </button>
                       <button name={index} onClick={this.openInputBodyPost}>
                         기록하기
@@ -263,19 +288,6 @@ class CustomBody extends Component {
                       >
                         기록보기
                       </button>
-                      {editCustom[index] ? (
-                        <></>
-                      ) : (
-                        <button name={index} onClick={this.handleeditopen}>
-                          수정
-                        </button>
-                      )}
-                      <button
-                        name={custom.part_name}
-                        onClick={this.handleDeleteCustom}
-                      >
-                        삭제
-                      </button>
                     </>
                   ) : (
                     <>
@@ -285,6 +297,19 @@ class CustomBody extends Component {
                       </button>
                     </>
                   )}
+                  {editCustom[index] ? (
+                    <></>
+                  ) : (
+                    <button name={index} onClick={this.handleeditopen}>
+                      수정
+                    </button>
+                  )}
+                  <button
+                    name={custom.part_name}
+                    onClick={this.handleDeleteCustom}
+                  >
+                    삭제
+                  </button>
                 </>
               )}
             </span>
@@ -294,19 +319,43 @@ class CustomBody extends Component {
     };
     const DataList =
       allBodyData &&
-      allBodyData.map((data) => <CertainData data={data} key={data.id} />);
+      allBodyData.map((data) => (
+        <CertainData
+          data={data}
+          key={data.id}
+          certainBodyDataGet={this.certainBodyDataGet}
+          certainBodyGoalGet={this.certainBodyGoalGet}
+          partName={basicPartName}
+        />
+      ));
     return (
       <>
-        <BodyNav />
+        <div>
+          <BodyNav />
+        </div>
         <div>
           <CustomBodyCreate
             closeInputBodyPost={this.closeInputBodyPost}
             handleCustomRecentBody={this.handleCustomRecentBody}
           />
         </div>
+        <div>최근 커스텀 부위 정보</div>
         {mapcustoms(customs)}
-        <div>{basicPartName}을 선택했습니다.</div>
-        <div>{DataList}</div>
+        {basicPartName ? (
+          <>
+            <div>{basicPartName}을 선택했습니다.</div>
+            <div>{DataList}</div>
+            <div>
+              <CertainGoal
+                goal={basicPartGoal}
+                name={name}
+                partName={basicPartName}
+                recent={basicPartRecent}
+                certainBodyGoalGet={this.certainBodyGoalGet}
+              />
+            </div>
+          </>
+        ) : null}
       </>
     );
   }

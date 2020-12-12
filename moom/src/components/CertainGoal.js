@@ -94,7 +94,7 @@ class CertainGoal extends Component {
     const { goal, name, partName, recent } = this.props;
     const { isOpenInputGaol } = this.state;
 
-    let gap = recent - goal;
+    let gap = goal - recent;
     if (Math.sign(gap) === 1) {
       gap = "+" + gap.toFixed(1);
     } else {

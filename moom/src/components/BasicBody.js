@@ -263,7 +263,7 @@ class BasicBody extends Component {
           ) : null}
         </div>
         <div>
-          <Chart allBodyData={allBodyData} />
+          {/* <Chart allBodyData={allBodyData} /> */}
         </div>
       </>
     );
