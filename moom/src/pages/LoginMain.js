@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
-
+import CertainBody from "../components/CertainBody";
 import LoginNav from "../components/LoginNav";
 import BasicBody from "../components/BasicBody";
 import CustomBody from "../components/CustomBody";
