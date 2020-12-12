@@ -26,7 +26,7 @@ class CustomBody extends Component {
   // CustomBody.js가 실행될 때 자동 실행되는 함수
   componentWillMount() {
     this.handleCustomRecentBody();
-    const contactData = localStorage.getItem("basicPartName");
+    const contactData = localStorage.getItem("customPartName");
     console.log(contactData);
     if (contactData) {
       this.setState({ basicPartName: contactData });
@@ -195,7 +195,7 @@ class CustomBody extends Component {
   bodyChoiceSuccess = (e) => {
     let key = e.target.name;
     this.setState({ basicPartName: key });
-    localStorage.setItem("basicPartName", key);
+    localStorage.setItem("customPartName", key);
     this.certainBodyDataGet(key);
   };
 
@@ -263,9 +263,13 @@ class CustomBody extends Component {
                       >
                         기록보기
                       </button>
-                      <button name={index} onClick={this.handleeditopen}>
-                        수정
-                      </button>
+                      {editCustom[index] ? (
+                        <></>
+                      ) : (
+                        <button name={index} onClick={this.handleeditopen}>
+                          수정
+                        </button>
+                      )}
                       <button
                         name={custom.part_name}
                         onClick={this.handleDeleteCustom}
