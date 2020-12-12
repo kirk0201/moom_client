@@ -17,7 +17,7 @@ class BasicInputPost extends Component {
   }
 
   // input 이벤트시 서버에게 보낼 정보 setState하는 함수
-  handleInputBasicPost = (e) => {
+  handleInputGoal = (e) => {
     let value = e.target.value;
     this.setState({
       value: value,
@@ -37,15 +37,12 @@ class BasicInputPost extends Component {
         errorMessage: "입력한 수치를 확인해주세요",
       });
     }
-    console.log(part_value);
-    console.log(part_name);
     axios
       .post(`${BASEURL}/data/write`, {
         value: part_value,
         part_name: part_name,
       })
       .then((res) => {
-        console.log(res.data);
         // 수정 성공하면 인풋창 사라짐
         this.props.closeInputBodyPost(key);
         // 수정 성공하면 그 수치정보를 다시 setState하는 함수
@@ -71,7 +68,7 @@ class BasicInputPost extends Component {
           type="text"
           name={name}
           placeholder="새로운 수치를 입력해주세요"
-          onChange={this.handleInputBasicPost}
+          onChange={this.handleInputGoal}
         />
         <button name={name} value={what} onClick={this.handleBasicPost}>
           저장
