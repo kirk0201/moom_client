@@ -42,6 +42,7 @@ class App extends Component {
   handleLoginFail = () => {
     this.setState({ isLogin: false, userInfo: null });
     localStorage.removeItem("basicPartName");
+    localStorage.removeItem("customPartName");
   };
 
   // 로그인 여부에 따라 다른 페이지 렌더

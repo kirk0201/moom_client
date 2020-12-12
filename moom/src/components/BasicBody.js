@@ -5,9 +5,8 @@ import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import BasicData from "./BasicData";
 import CertainData from "./CertainData";
-import Chart from "./CertainChart/Chart"
+import Chart from "./CertainChart/Chart";
 import CertainGoal from "./CertainGoal";
-
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -262,9 +261,7 @@ class BasicBody extends Component {
             </>
           ) : null}
         </div>
-        <div>
-          <Chart allBodyData={allBodyData} />
-        </div>
+        {/* <div>{allBodyData ? <Chart allBodyData={allBodyData} /> : null}</div> */}
       </>
     );
   }

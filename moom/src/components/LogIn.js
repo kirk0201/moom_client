@@ -57,7 +57,8 @@ class LogIn extends Component {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
+        localStorage.removeItem("basicPartName");
+        localStorage.removeItem("customPartName");
         this.props.handleLoginSuccess();
         this.props.history.push("/");
         // TODO : 페이지 전환 확인 redirect
