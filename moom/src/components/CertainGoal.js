@@ -149,6 +149,7 @@ class CertainGoal extends Component {
                   <button name={partName} onClick={this.handleGoalPostClick}>
                     저장
                   </button>
+                  <button onClick={this.closeInputGoal}>취소</button>
                   <div>
                     {partName}의 가장 최근 수치는{recent}입니다.
                   </div>

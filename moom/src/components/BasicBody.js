@@ -5,9 +5,8 @@ import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import BasicData from "./BasicData";
 import CertainData from "./CertainData";
-import Chart from "./CertainChart/Chart"
+import Chart from "./CertainChart/Chart";
 import CertainGoal from "./CertainGoal";
-
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
