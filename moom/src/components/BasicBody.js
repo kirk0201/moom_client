@@ -209,7 +209,15 @@ class BasicBody extends Component {
 
     const DataList =
       allBodyData &&
-      allBodyData.map((data) => <CertainData data={data} key={data.id} />);
+      allBodyData.map((data) => (
+        <CertainData
+          data={data}
+          key={data.id}
+          certainBodyDataGet={this.certainBodyDataGet}
+          certainBodyGoalGet={this.certainBodyGoalGet}
+          partName={basicPartName}
+        />
+      ));
 
     return (
       <>
