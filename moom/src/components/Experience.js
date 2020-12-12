@@ -239,6 +239,8 @@ export class Experience extends Component {
                 <input
                   type="number"
                   min="0"
+                  max="200"
+                  maxLength="3"
                   onChange={this.handleBodyChange}
                   name="body1"
                   value={this.state.body1}
