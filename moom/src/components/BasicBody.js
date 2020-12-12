@@ -5,6 +5,7 @@ import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import BasicData from "./BasicData";
 import CertainData from "./CertainData";
+import Chart from "./CertainChart/Chart"
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -217,6 +218,9 @@ class BasicBody extends Component {
         <div>
           <div>{basicPartName}을 선택했습니다.</div>
           <div>{DataList}</div>
+        </div>
+        <div>
+          <Chart allBodyData={allBodyData} />
         </div>
       </>
     );

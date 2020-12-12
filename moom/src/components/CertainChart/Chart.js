@@ -3,25 +3,30 @@ import S2Chart from './S2Chart'
 
 class Chart extends Component {
   render() {
+    const  allBodyData = this.props.allBodyData
+    console.log("allBodyData => " , allBodyData)
+    let DateValue = [allBodyData[0].schedule, allBodyData[1].schedule, allBodyData[2].schedule, allBodyData[3].schedule, allBodyData[4].schedule]
+    let BodyValue = [allBodyData[0].value,allBodyData[1].value,allBodyData[2].value,allBodyData[3].value,allBodyData[4].value]
     const graphData = {
         background : '#ffeeee',
         axisX : {
-          fontSize : 'auto', //or number -> fontSize : 15
-          tags : ["1월", "2월", "3월", "4월", "5월", "6월",
-            "7월", "8월", "9월", "10월", "11월", "12월"]
+          fontSize : 15, //or number -> fontSize : 15
+          tags : DateValue
         },
         axisY : {
           fontSize : 'auto',
           min : 0,
-          max : 70,
-          divide : 7
+          // min : Math.floor(allBodyData[0].value),
+          // max : 50, 
+          max : Math.ceil(allBodyData[4].value)+5,          
+          divide : 10
         },
         dataList : [
           {
             name : "테스트 1",
-            values : [0,5,23,1,4,64,16,7,12,2,4,5,1],
+            values : BodyValue,
             color : "#ff0000",
-            fontSize : 20
+            fontSize : 10
           }
         ],
         control : {

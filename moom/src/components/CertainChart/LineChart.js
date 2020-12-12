@@ -73,7 +73,7 @@ class LineChart extends Component {
       const increaseWidth = sizeInfo.body.width / length;
       for(let i=1; i<=length; i++) {
         let x = i * increaseWidth + sizeInfo.left;
-        let y = sizeInfo.body.height * 1.06 + sizeInfo.top;
+        let y = sizeInfo.body.height * 1.08 + sizeInfo.top;
         tags.push({
           type : 'text',
           x : x,
@@ -115,7 +115,7 @@ class LineChart extends Component {
         tags.push({
           type : 'text',
           x : sizeInfo.left * 0.9,
-          y : sizeInfo.body.height - i * increaseHeight + sizeInfo.top + 5,
+          y : sizeInfo.body.height - i * increaseHeight + sizeInfo.top + 1,
           text : i + axisY.min,
           color : '#000000',
           textAnchor : 'end',
