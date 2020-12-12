@@ -5,6 +5,7 @@ import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import BasicData from "./BasicData";
 import CertainData from "./CertainData";
+import Chart from "./CertainChart/Chart";
 import CertainGoal from "./CertainGoal";
 
 import axios from "axios";
@@ -22,7 +23,7 @@ class BasicBody extends Component {
       hip: null,
       thigh: null,
       basicPartName: null,
-      basicPartRecent: null, // 여기!!!!!!!!!!!!!!!
+      basicPartRecent: null,
       basicPartGoal: null,
       allBodyData: null,
       isWeightKG: true,
@@ -39,7 +40,6 @@ class BasicBody extends Component {
     axios
       .get(`${BASEURL}/data/recent`)
       .then((res) => {
-        console.log("확인1");
         this.setState({
           body_fat: res.data.body_fat,
           weight: res.data.weight,
@@ -52,7 +52,6 @@ class BasicBody extends Component {
         if (this.state.basicPartName) {
           this.certainBodyDataGet(this.state.basicPartName);
           this.certainBodyGoalGet(this.state.basicPartName);
-          this.certainBodyRecent(this.state.basicPartName); // 여기!!!!!!!!!!!!!!!
         }
       })
       .catch((err) => {
@@ -61,13 +60,12 @@ class BasicBody extends Component {
       });
   };
 
-  // axios통신으로 특정 신체정보를 setState하는 함수
+  // axios통신으로 특정 신체정보를 모두 setState(배열!!)하는 함수
   certainBodyDataGet = (part) => {
     axios
       .get(`${BASEURL}/data/get`, { params: { part_name: part } })
       .then((res) => {
         this.setState({ allBodyData: res.data });
-        console.log("확인2");
       })
       .catch((err) => {
         console.log(err);
@@ -75,45 +73,20 @@ class BasicBody extends Component {
       });
   };
 
-  // axios통신으로 특정 신체목표를 setState하는 함수
+  // axios통신으로 특정 신체목표와 수치를 setState하는 함수
   certainBodyGoalGet = (part) => {
     axios
       .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
       .then((res) => {
-        this.setState({ basicPartGoal: res.data.goal });
-        console.log("확인3");
+        this.setState({
+          basicPartGoal: res.data.goal,
+          basicPartRecent: res.data.recent,
+        });
       })
       .catch((err) => {
         console.log(err);
         console.log(err.message);
       });
-  };
-
-  // 왜 안돼!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  certainBodyRecent = (part) => {
-    const { body_fat, weight, shoulder, chest, waist, hip, thigh } = this.state;
-    if (part === "body_fat") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: body_fat });
-    } else if (part === "weight") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: weight });
-    } else if (part === "shoulder") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: shoulder });
-    } else if (part === "chest") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: chest });
-    } else if (part === "waist") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: waist });
-    } else if (part === "hip") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: hip });
-    } else if (part === "thigh") {
-      console.log("확인4");
-      this.setState({ basicPartRecent: thigh });
-    }
   };
 
   // 기록보기 버튼 클릭시 basicPartName을 setState하는 함수
@@ -123,7 +96,6 @@ class BasicBody extends Component {
     localStorage.setItem("basicPartName", key);
     this.certainBodyDataGet(key);
     this.certainBodyGoalGet(key);
-    this.certainBodyRecent(key); // 여기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   };
 
   // BasicBody가 생기기 전에 실행되는 함수
@@ -132,10 +104,8 @@ class BasicBody extends Component {
     const contactData = localStorage.getItem("basicPartName");
     if (contactData) {
       this.setState({ basicPartName: contactData });
-      // this.asyncfunction(contactData); // 여기 비동기 시도 해봄!!!!!!!!!!!!!!!!!!!!!!!!!!
       this.certainBodyDataGet(contactData);
-      this.certainBodyGoalGet(contactData); // 2번으로 선행
-      this.certainBodyRecent(contactData); // 여기!!!!!!!!!!! 얘요!!!!!!!!!!!!!!!!
+      this.certainBodyGoalGet(contactData);
     }
   }
 
@@ -225,7 +195,7 @@ class BasicBody extends Component {
       hip,
       thigh,
       basicPartName,
-      basicPartRecent, //여기!!!!!!!!!!!
+      basicPartRecent,
       basicPartGoal,
       allBodyData,
       isWeightKG,
@@ -238,7 +208,15 @@ class BasicBody extends Component {
 
     const DataList =
       allBodyData &&
-      allBodyData.map((data) => <CertainData data={data} key={data.id} />);
+      allBodyData.map((data) => (
+        <CertainData
+          data={data}
+          key={data.id}
+          certainBodyDataGet={this.certainBodyDataGet}
+          certainBodyGoalGet={this.certainBodyGoalGet}
+          partName={basicPartName}
+        />
+      ));
 
     return (
       <>
@@ -276,12 +254,15 @@ class BasicBody extends Component {
                   goal={basicPartGoal}
                   name={name}
                   partName={basicPartName}
-                  //여기!!!!!!!!!!!
                   recent={basicPartRecent}
+                  certainBodyGoalGet={this.certainBodyGoalGet}
                 />
               </div>
             </>
           ) : null}
+        </div>
+        <div>
+          {/* <Chart allBodyData={allBodyData} /> */}
         </div>
       </>
     );
