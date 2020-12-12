@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import Chart from "../components/CertainChart/Chart"
 
 class CertainData extends Component {
   //

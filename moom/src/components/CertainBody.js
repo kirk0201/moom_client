@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
-import Chart from "./CertainChart/Chart";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -22,7 +21,6 @@ class CertainBody extends Component {
       <>
         <BodyNav />
         <div>{`${partName}을 선택했습니다.`}</div>
-        <div><Chart /></div>
       </>
     );
   }
