@@ -50,13 +50,14 @@ class CertainData extends Component {
         this.props.certainBodyDataGet(partName);
         this.props.certainBodyGoalGet(partName);
         this.props.handleRecentBody();
+        this.props.basicBodyDataGet();
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
 
-  // 수정 버튼 클릭시 axios요청 함수
+  // 저장 버튼 클릭시 axios요청 함수
   handleCertainPutClick = (e) => {
     const { partName } = this.props;
     const { value } = this.state;
@@ -66,10 +67,11 @@ class CertainData extends Component {
         value: value,
       })
       .then((res) => {
+        this.closeInputCertain();
         this.props.certainBodyDataGet(partName);
         this.props.certainBodyGoalGet(partName);
         this.props.handleRecentBody();
-        this.closeInputCertain();
+        this.props.basicBodyDataGet();
       })
       .catch((err) => {
         console.log(err.message);
