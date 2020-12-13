@@ -36,12 +36,7 @@ class LoginMain extends Component {
           <Route
             path="/custom"
             render={() => {
-              return (
-                <CustomBody
-                  userInfo={userInfo}
-                  bodyChoiceSuccess={this.bodyChoiceSuccess}
-                />
-              );
+              return <CustomBody userInfo={userInfo} />;
             }}
           ></Route>
           <Route

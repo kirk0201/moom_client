@@ -40,6 +40,20 @@ class BasicBody extends Component {
     };
   }
 
+  // axios통신으로 기본 신체정보를 모두 setState(객체안에 배열!!)하는 함수
+  basicBodyDataGet = () => {
+    axios
+      .get(`${BASEURL}/data/allbasic`)
+      .then((res) => {
+        this.setState({ allBasicData: res.data });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
   // axios통신으로 최근 신체정보를 setState하는 함수
   handleRecentBody = () => {
     axios
@@ -57,6 +71,7 @@ class BasicBody extends Component {
         if (this.state.basicPartName) {
           this.certainBodyDataGet(this.state.basicPartName);
           this.certainBodyGoalGet(this.state.basicPartName);
+          this.basicBodyDataGet();
         }
       })
       .catch((err) => {
@@ -65,27 +80,14 @@ class BasicBody extends Component {
       });
   };
 
-  // axios통신으로 기본 신체정보를 모두 setState(객체안에 배열!!)하는 함수
-  basicBodyDataGet = () => {
-    axios
-      .get(`${BASEURL}/data/allbasic`)
-      .then((res) => {
-        this.setState({ allBasicData: res.data });
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err.message);
-      });
-  };
-
-  // axios통신으로 특정 신체정보를 모두 setState(배열!!)하는 함수
+  // axios통신으로 특정 신체정보를 모두 setState하는 함수
   certainBodyDataGet = (part) => {
     axios
       .get(`${BASEURL}/data/get`, { params: { part_name: part } })
       .then((res) => {
         this.setState({ allBodyData: res.data });
         console.log(res.data);
+        this.basicBodyDataGet();
       })
       .catch((err) => {
         console.log(err);
@@ -116,6 +118,7 @@ class BasicBody extends Component {
     localStorage.setItem("basicPartName", key);
     this.certainBodyDataGet(key);
     this.certainBodyGoalGet(key);
+    this.basicBodyDataGet();
   };
 
   // BasicBody가 생기기 전에 실행되는 함수
@@ -204,6 +207,7 @@ class BasicBody extends Component {
     }
   };
 
+  // select 이벤트시 선택된 chart 반환하는 함수
   handleChangeChart = (e) => {
     let chartTarget = e.target.value;
     if (chartTarget === "CertainLastData") {
@@ -235,7 +239,6 @@ class BasicBody extends Component {
 
   render() {
     const { name, sex } = this.props.userInfo;
-
     const {
       body_fat,
       weight,
@@ -260,6 +263,7 @@ class BasicBody extends Component {
       selectChart,
     } = this.state;
 
+    // map 함수를 통해 CertainData 컴포넌트로 만들기
     const DataList =
       allBodyData &&
       allBodyData.map((data) => (
@@ -268,11 +272,13 @@ class BasicBody extends Component {
           key={data.id}
           certainBodyDataGet={this.certainBodyDataGet}
           certainBodyGoalGet={this.certainBodyGoalGet}
-          handleRecentBody = {this.handleRecentBody}
+          handleRecentBody={this.handleRecentBody}
+          basicBodyDataGet={this.basicBodyDataGet}
           partName={basicPartName}
         />
       ));
 
+    // CustomBody 컴포넌트 리턴
     return (
       <>
         <div>
