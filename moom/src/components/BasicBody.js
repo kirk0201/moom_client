@@ -5,7 +5,8 @@ import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import BasicData from "./BasicData";
 import CertainData from "./CertainData";
-import Chart from "./CertainChart/Chart";
+import CertainChart from "./CertainChart";
+import BasicAllChart from "./BasicAllChart";
 import CertainGoal from "./CertainGoal";
 
 import axios from "axios";
@@ -26,12 +27,16 @@ class BasicBody extends Component {
       basicPartRecent: null,
       basicPartGoal: null,
       allBodyData: null,
+      allBasicData: null,
       isWeightKG: true,
       isShoulderCM: true,
       isChestCM: true,
       isWaistCM: true,
       isHipCM: true,
       isThighCM: true,
+      isAllData: false,
+      isCertain: true,
+      selectChart: "CertainLastData",
     };
   }
 
@@ -60,12 +65,27 @@ class BasicBody extends Component {
       });
   };
 
+  // axios통신으로 기본 신체정보를 모두 setState(객체안에 배열!!)하는 함수
+  basicBodyDataGet = () => {
+    axios
+      .get(`${BASEURL}/data/allbasic`)
+      .then((res) => {
+        this.setState({ allBasicData: res.data });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
   // axios통신으로 특정 신체정보를 모두 setState(배열!!)하는 함수
   certainBodyDataGet = (part) => {
     axios
       .get(`${BASEURL}/data/get`, { params: { part_name: part } })
       .then((res) => {
         this.setState({ allBodyData: res.data });
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -101,6 +121,7 @@ class BasicBody extends Component {
   // BasicBody가 생기기 전에 실행되는 함수
   componentDidMount() {
     this.handleRecentBody();
+    this.basicBodyDataGet();
     const contactData = localStorage.getItem("basicPartName");
     if (contactData) {
       this.setState({ basicPartName: contactData });
@@ -183,6 +204,35 @@ class BasicBody extends Component {
     }
   };
 
+  handleChangeChart = (e) => {
+    let chartTarget = e.target.value;
+    if (chartTarget === "CertainLastData") {
+      this.setState({
+        isAllData: false,
+        isCertain: true,
+        selectChart: "CertainLastData",
+      });
+    } else if (chartTarget === "CertainAllData") {
+      this.setState({
+        isAllData: true,
+        isCertain: true,
+        selectChart: "CertainAllData",
+      });
+    } else if (chartTarget === "BasicLastData") {
+      this.setState({
+        isAllData: false,
+        isCertain: false,
+        selectChart: "BasicLastData",
+      });
+    } else if (chartTarget === "BasicAllData") {
+      this.setState({
+        isAllData: true,
+        isCertain: false,
+        selectChart: "BasicAllData",
+      });
+    }
+  };
+
   render() {
     const { name, sex } = this.props.userInfo;
 
@@ -198,12 +248,16 @@ class BasicBody extends Component {
       basicPartRecent,
       basicPartGoal,
       allBodyData,
+      allBasicData,
       isWeightKG,
       isShoulderCM,
       isChestCM,
       isWaistCM,
       isHipCM,
       isThighCM,
+      isAllData,
+      isCertain,
+      selectChart,
     } = this.state;
 
     const DataList =
@@ -214,6 +268,7 @@ class BasicBody extends Component {
           key={data.id}
           certainBodyDataGet={this.certainBodyDataGet}
           certainBodyGoalGet={this.certainBodyGoalGet}
+          handleRecentBody = {this.handleRecentBody}
           partName={basicPartName}
         />
       ));
@@ -250,6 +305,52 @@ class BasicBody extends Component {
               <div>{basicPartName}을 선택했습니다.</div>
               <div>{DataList}</div>
               <div>
+                <select value={selectChart} onChange={this.handleChangeChart}>
+                  <option value="">선택</option>
+                  <option value="CertainAllData">
+                    All data about {basicPartName}
+                  </option>
+                  <option value="CertainLastData">
+                    Last seven data about {basicPartName}
+                  </option>
+                  <option value="BasicAllData">
+                    All data about basic body
+                  </option>
+                  <option value="BasicLastData">
+                    Last seven data about basic body
+                  </option>
+                </select>
+              </div>
+              <div
+                style={{
+                  width: "650px",
+                }}
+              >
+                {isCertain ? (
+                  <>
+                    {allBodyData ? (
+                      <CertainChart
+                        allBodyData={allBodyData}
+                        partName={basicPartName}
+                        isAllData={isAllData}
+                      />
+                    ) : null}
+                  </>
+                ) : (
+                  <>
+                    {allBasicData ? (
+                      <BasicAllChart
+                        allBasicData={allBasicData}
+                        allBodyData={allBodyData}
+                        partName={basicPartName}
+                        name={name}
+                        isAllData={isAllData}
+                      />
+                    ) : null}
+                  </>
+                )}
+              </div>
+              <div>
                 <CertainGoal
                   goal={basicPartGoal}
                   name={name}
@@ -261,7 +362,6 @@ class BasicBody extends Component {
             </>
           ) : null}
         </div>
-        {/* <div>{allBodyData ? <Chart allBodyData={allBodyData} /> : null}</div> */}
       </>
     );
   }

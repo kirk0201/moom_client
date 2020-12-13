@@ -113,7 +113,7 @@ class LogIn extends Component {
               <button className="github-btn">
                 <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
-                    <img className="github-img" src={githublogo}></img>
+                    <img className="github-img" src={githublogo} alt="github"></img>
                   </div>
                   <span className="github-span">Github</span>
                 </a>

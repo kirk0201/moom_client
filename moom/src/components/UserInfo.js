@@ -94,7 +94,7 @@ class UserInfo extends Component {
               <>
                 <img
                   className="circle"
-                  alt="사진이 어디있을까요?"
+                  alt="프로필사진"
                   src={profile ? profile : profile_img}
                 ></img>
                 <button name="isOpenProfile" onClick={this.openInput}>

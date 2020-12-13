@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import Chart from "../components/CertainChart/Chart"
 
 import { BASEURL } from "../helpurl";
 import axios from "axios";
@@ -50,6 +49,7 @@ class CertainData extends Component {
       .then((res) => {
         this.props.certainBodyDataGet(partName);
         this.props.certainBodyGoalGet(partName);
+        this.props.handleRecentBody();
       })
       .catch((err) => {
         console.log(err.message);
@@ -68,6 +68,7 @@ class CertainData extends Component {
       .then((res) => {
         this.props.certainBodyDataGet(partName);
         this.props.certainBodyGoalGet(partName);
+        this.props.handleRecentBody();
         this.closeInputCertain();
       })
       .catch((err) => {
