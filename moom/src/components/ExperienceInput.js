@@ -12,9 +12,6 @@ export default class ExperienceInput extends Component {
     };
   }
   handleStateChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-
     this.setState({
       radio: !this.state.radio,
     });
@@ -113,7 +110,6 @@ export default class ExperienceInput extends Component {
     }
   };
   render() {
-    console.log("prop : ", this.props);
     return (
       <>
         <div className="input_size_cont">

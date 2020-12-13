@@ -22,8 +22,16 @@
   border-radius: 20px;
 }
 
-.left_img {
+.left_ {
   border: 2px solid red;
+}
+.left_img {
+  /* background-image: url("../images/maleimg.png"); */
+  background-size: cover;
+  min-width: -webkit-fill-available;
+  min-height: -webkit-fill-available;
+  background-repeat: round;
+  border-radius: 40px;
 }
 
 .input_size {
@@ -46,8 +54,8 @@
   padding: 10px 15px;
 }
 /* .input_middle { */
-  /* border: 1px solid blue; */
-  /* min-width: 144px; */
+/* border: 1px solid blue; */
+/* min-width: 144px; */
 /* } */
 .input_middle > input {
   border-radius: 10px;
