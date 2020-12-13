@@ -6,10 +6,12 @@
     "axios": "^0.21.0",
     "highcharts": "^8.2.2",
     "highcharts-react-official": "^3.0.0",
+    "re-resizable": "^6.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-github-login": "^1.0.3",
     "react-google-login": "^5.1.25",
+    "react-jsx-highcharts": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "reactstrap": "^8.7.1"
   },

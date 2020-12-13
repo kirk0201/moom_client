@@ -56,7 +56,7 @@ class UserInfoImg extends Component {
     return (
       <div>
         {profile ? (
-          <img className="circle" src={profile} />
+          <img className="circle" src={profile} alt ="프로필사진"/>
         ) : (
           <div>{noInfo}</div>
         )}
