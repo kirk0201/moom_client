@@ -97,6 +97,10 @@ class CustomBody extends Component {
   // axios통신으로  custom부위를 삭제하는 함수
   handleDeleteCustom = (e) => {
     let part_name = e.target.name;
+    localStorage.setItem("customPartName", null);
+    this.setState({
+      basicPartName: null,
+    });
     axios
       .delete(`${BASEURL}/data/custom`, {
         data: { part_name: part_name },
@@ -123,6 +127,10 @@ class CustomBody extends Component {
         return;
       }
     }
+    localStorage.setItem("customPartName", new_name);
+    this.setState({
+      basicPartName: new_name,
+    });
     axios
       .put(`${BASEURL}/data/custom`, {
         part_name: part_name,
