@@ -36,6 +36,7 @@ class LoginNav extends Component {
             <button>
               <img
                 className="navcircle"
+                alt="사진이 어디있을까요?"
                 src={profile ? profile : profile_img}
               ></img>
               <p>{name}</p>

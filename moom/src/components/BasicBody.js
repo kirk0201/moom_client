@@ -3,10 +3,11 @@ import { withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
-import BasicInputPost from "./BasicInputPost";
-
-import male from "../images/maleimg.png";
-import female from "../images/femaleimg.png";
+import BasicData from "./BasicData";
+import CertainChart from "./CertainChart";
+import CertainEdit from "./CertainEdit";
+import BasicAllChart from "./BasicAllChart";
+import CertainGoal from "./CertainGoal";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -22,33 +23,46 @@ class BasicBody extends Component {
       waist: null,
       hip: null,
       thigh: null,
-      isOpenBodyfat: false,
-      isOpenWeight: false,
-      isOpenShoulder: false,
-      isOpencChest: false,
-      isOpenWaist: false,
-      isOpenHip: false,
-      isOpenThigh: false,
+      basicPartName: null,
+      basicPartRecent: null,
+      basicPartGoal: null,
+      allBodyData: null,
+      allBasicData: null,
       isWeightKG: true,
       isShoulderCM: true,
       isChestCM: true,
       isWaistCM: true,
       isHipCM: true,
       isThighCM: true,
+      isAllData: false,
+      isCertain: true,
+      selectChart: "CertainLastData",
+      isCertainEdit: false,
+      date: null,
+      value: null,
+      id: null,
     };
   }
 
-  // BasicBody.js가 실행될 때 자동 실행되는 함수
-  componentDidMount() {
-    this.handleRecentBody();
-  }
+  // axios통신으로 기본 신체정보를 모두 setState(객체안에 배열!!)하는 함수
+  basicBodyDataGet = () => {
+    axios
+      .get(`${BASEURL}/data/allbasic`)
+      .then((res) => {
+        this.setState({ allBasicData: res.data });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
 
-  // setState로 최근 신체정보 저장하는 함수
+  // axios통신으로 최근 신체정보를 setState하는 함수
   handleRecentBody = () => {
     axios
       .get(`${BASEURL}/data/recent`)
       .then((res) => {
-        console.log(res.data);
         this.setState({
           body_fat: res.data.body_fat,
           weight: res.data.weight,
@@ -58,12 +72,70 @@ class BasicBody extends Component {
           hip: res.data.hip,
           thigh: res.data.thigh,
         });
+        if (this.state.basicPartName) {
+          this.certainBodyDataGet(this.state.basicPartName);
+          this.certainBodyGoalGet(this.state.basicPartName);
+          this.basicBodyDataGet();
+        }
       })
       .catch((err) => {
         console.log(err);
         console.log(err.message);
       });
   };
+
+  // axios통신으로 특정 신체정보를 모두 setState하는 함수
+  certainBodyDataGet = (part) => {
+    axios
+      .get(`${BASEURL}/data/get`, { params: { part_name: part } })
+      .then((res) => {
+        this.setState({ allBodyData: res.data });
+        console.log(res.data);
+        this.basicBodyDataGet();
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
+  // axios통신으로 특정 신체목표와 수치를 setState하는 함수
+  certainBodyGoalGet = (part) => {
+    axios
+      .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
+      .then((res) => {
+        this.setState({
+          basicPartGoal: res.data.goal,
+          basicPartRecent: res.data.recent,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
+  // 기록보기 버튼 클릭시 basicPartName을 setState하는 함수
+  bodyChoiceSuccess = (e) => {
+    let key = e.target.name;
+    this.setState({ basicPartName: key, isCertainEdit: false });
+    localStorage.setItem("basicPartName", key);
+    this.certainBodyDataGet(key);
+    this.certainBodyGoalGet(key);
+    this.basicBodyDataGet();
+  };
+
+  // BasicBody가 생기기 전에 실행되는 함수
+  componentDidMount() {
+    this.handleRecentBody();
+    this.basicBodyDataGet();
+    const contactData = localStorage.getItem("basicPartName");
+    if (contactData) {
+      this.setState({ basicPartName: contactData });
+      this.certainBodyDataGet(contactData);
+      this.certainBodyGoalGet(contactData);
+    }
+  }
 
   // KG 혹은 LN으로 바꿔 계산하여 setState하는 함수
   handleMakeKGtoLN = () => {
@@ -126,7 +198,7 @@ class BasicBody extends Component {
     }
   };
 
-  // 단위 변환 버튼 클릭에 따라
+  // 단위변환 버튼 클릭에 따라 계산해주는 함수로 연결
   handleToggleClick = (e) => {
     let toggle = e.target.name;
     this.setState((prevState) => ({
@@ -139,32 +211,55 @@ class BasicBody extends Component {
     }
   };
 
-  // 기록하기 버튼 클릭시 BasicInputPost를 랜더하는 함수
-  openInputBodyPost = (e) => {
-    console.log();
-    let target = e.target;
-    let key = target.name;
+  // select 이벤트시 선택된 chart 반환하는 함수
+  handleChangeChart = (e) => {
+    let chartTarget = e.target.value;
+    if (chartTarget === "CertainLastData") {
+      this.setState({
+        isAllData: false,
+        isCertain: true,
+        selectChart: "CertainLastData",
+      });
+    } else if (chartTarget === "CertainAllData") {
+      this.setState({
+        isAllData: true,
+        isCertain: true,
+        selectChart: "CertainAllData",
+      });
+    } else if (chartTarget === "BasicLastData") {
+      this.setState({
+        isAllData: false,
+        isCertain: false,
+        selectChart: "BasicLastData",
+      });
+    } else if (chartTarget === "BasicAllData") {
+      this.setState({
+        isAllData: true,
+        isCertain: false,
+        selectChart: "BasicAllData",
+      });
+    }
+  };
+
+  // chart의 포인트 클릭시 해당 데이터의 정보만 setState하는 함수
+  handlePointClick = (date, value, id) => {
     this.setState({
-      [key]: true,
+      date: date,
+      value: value,
+      id: id,
+      isCertainEdit: true,
     });
   };
 
-  // BasicInputPost에서 저장 혹은 취소 버튼 클릭시 닫는 함수
-  closeInputBodyPost = (key) => {
+  // chart의 포인트 클릭시 랜더된 CertainEdit을 닫는 함수
+  handleDeleteEdit = () => {
     this.setState({
-      [key]: false,
+      isCertainEdit: false,
     });
-  };
-
-  // 기록보기 버튼 클릭시 해당하는 부위의 CertainBody으로 이용하는 함수
-  goCertainBody = (e) => {
-    let key = e.target.name;
-    this.props.bodyChoiceSuccess(key);
-    this.props.history.push("/certain");
   };
 
   render() {
-    const { sex } = this.props.userInfo;
+    const { name, sex } = this.props.userInfo;
     const {
       body_fat,
       weight,
@@ -173,318 +268,155 @@ class BasicBody extends Component {
       waist,
       hip,
       thigh,
-      isOpenBodyfat,
-      isOpenWeight,
-      isOpenShoulder,
-      isOpencChest,
-      isOpenWaist,
-      isOpenHip,
-      isOpenThigh,
+      basicPartName,
+      basicPartRecent,
+      basicPartGoal,
+      allBodyData,
+      allBasicData,
       isWeightKG,
       isShoulderCM,
       isChestCM,
       isWaistCM,
       isHipCM,
       isThighCM,
+      isAllData,
+      isCertain,
+      selectChart,
+      isCertainEdit,
+      date,
+      value,
+      id,
     } = this.state;
 
-    let isMale = false;
-    if (sex === "male") {
-      isMale = true;
-    }
+    // map 함수를 통해 CertainData 컴포넌트로 만들기
+    // const DataList =
+    //   allBodyData &&
+    //   allBodyData.map((data) => (
+    //     <CertainData
+    //       data={data}
+    //       key={data.id}
+    //       certainBodyDataGet={this.certainBodyDataGet}
+    //       certainBodyGoalGet={this.certainBodyGoalGet}
+    //       handleRecentBody={this.handleRecentBody}
+    //       basicBodyDataGet={this.basicBodyDataGet}
+    //       partName={basicPartName}
+    //     />
+    //   ));
+
+    // CustomBody 컴포넌트 리턴
     return (
       <>
-        <BodyNav />
-        <div>최근 기본 부위 정보</div>
-        {sex ? (
-          <img src={isMale ? male : female} alt="전신 일러스트"></img>
-        ) : (
-          <span>마이페이지에서 성별을 선택해주세요</span>
-        )}
         <div>
-          <span>체지방율</span>
-          <span>
-            {isOpenBodyfat ? (
-              <BasicInputPost
-                name="body_fat"
-                what="isOpenBodyfat"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {body_fat ? (
-                  <>
-                    <span>{body_fat}</span>
-                    <span>%</span>
-
-                    <button
-                      name="isOpenBodyfat"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
-                    <button name="body_fat" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <span>수치를 등록해주세요</span>
-                    <button
-                      name="isOpenBodyfat"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
-                  </>
-                )}
-              </>
-            )}
-          </span>
+          <BodyNav />
         </div>
         <div>
-          <span>체중</span>
-          <span>
-            {isOpenWeight ? (
-              <BasicInputPost
-                name="weight"
-                what="isOpenWeight"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {weight ? (
-                  <>
-                    <span>{weight}</span>
-                    <button name="isWeightKG" onClick={this.handleToggleClick}>
-                      {isWeightKG ? "KG" : "LN"}
-                    </button>
-                    <button
-                      name="isOpenWeight"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
-                    <button name="weight" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <span>수치를 등록해주세요</span>
-                    <button
-                      name="isOpenWeight"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
-                  </>
-                )}
-              </>
-            )}
-          </span>
+          <BasicData
+            sex={sex}
+            body_fat={body_fat}
+            weight={weight}
+            shoulder={shoulder}
+            chest={chest}
+            waist={waist}
+            hip={hip}
+            thigh={thigh}
+            handleRecentBody={this.handleRecentBody}
+            bodyChoiceSuccess={this.bodyChoiceSuccess}
+            handleToggleClick={this.handleToggleClick}
+            isWeightKG={isWeightKG}
+            isShoulderCM={isShoulderCM}
+            isChestCM={isChestCM}
+            isWaistCM={isWaistCM}
+            isHipCM={isHipCM}
+            isThighCM={isThighCM}
+          />
         </div>
         <div>
-          <span>어깨길이</span>
-          <span>
-            {isOpenShoulder ? (
-              <BasicInputPost
-                name="shoulder"
-                what="isOpenShoulder"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {shoulder ? (
+          {basicPartName ? (
+            <>
+              <div>{basicPartName}을 선택했습니다.</div>
+              {/* <div>{DataList}</div> */}
+              <div>
+                <select value={selectChart} onChange={this.handleChangeChart}>
+                  <option value="">선택</option>
+                  <option value="CertainAllData">
+                    All data about {basicPartName}
+                  </option>
+                  <option value="CertainLastData">
+                    Last seven data about {basicPartName}
+                  </option>
+                  <option value="BasicAllData">
+                    All data about basic body
+                  </option>
+                  <option value="BasicLastData">
+                    Last seven data about basic body
+                  </option>
+                </select>
+              </div>
+              <div
+                style={{
+                  width: "650px",
+                }}
+              >
+                {isCertain ? (
                   <>
-                    <span>{shoulder}</span>
-                    <button
-                      name="isShoulderCM"
-                      onClick={this.handleToggleClick}
-                    >
-                      {isShoulderCM ? "CM" : "IN"}
-                    </button>
-                    <button
-                      name="isOpenShoulder"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
-                    <button name="shoulder" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
+                    {allBodyData ? (
+                      <CertainChart
+                        allBodyData={allBodyData}
+                        partName={basicPartName}
+                        isAllData={isAllData}
+                        handlePointClick={this.handlePointClick}
+                      />
+                    ) : null}
                   </>
                 ) : (
                   <>
-                    <span>수치를 등록해주세요</span>
-                    <button
-                      name="isOpenShoulder"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
+                    {allBasicData ? (
+                      <BasicAllChart
+                        allBasicData={allBasicData}
+                        allBodyData={allBodyData}
+                        partName={basicPartName}
+                        name={name}
+                        isAllData={isAllData}
+                      />
+                    ) : null}
                   </>
                 )}
-              </>
-            )}
-          </span>
-        </div>
-        <div>
-          <span>가슴둘레</span>
-          <span>
-            {isOpencChest ? (
-              <BasicInputPost
-                name="chest"
-                what="isOpencChest"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {chest ? (
+              </div>
+              <div>
+                {isCertainEdit ? (
                   <>
-                    <span>{chest}</span>
-                    <button name="isChestCM" onClick={this.handleToggleClick}>
-                      {isChestCM ? "CM" : "IN"}
-                    </button>
-                    <button
-                      name="isOpencChest"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
-                    <button name="chest" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
+                    <CertainEdit
+                      id={id}
+                      value={value}
+                      date={date}
+                      basicPartName={basicPartName}
+                      certainBodyDataGet={this.certainBodyDataGet}
+                      certainBodyGoalGet={this.certainBodyGoalGet}
+                      handleRecentBody={this.handleRecentBody}
+                      basicBodyDataGet={this.basicBodyDataGet}
+                      handleDeleteEdit={this.handleDeleteEdit}
+                    />
                   </>
                 ) : (
                   <>
-                    <span>수치를 등록해주세요</span>
-                    <button
-                      name="isOpencChest"
-                      onClick={this.openInputBodyPost}
-                    >
-                      기록하기
-                    </button>
+                    <div>
+                      그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할 수
+                      있어요!
+                    </div>
                   </>
                 )}
-              </>
-            )}
-          </span>
-        </div>
-        <div>
-          <span>허리둘레</span>
-          <span>
-            {isOpenWaist ? (
-              <BasicInputPost
-                name="waist"
-                what="isOpenWaist"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {waist ? (
-                  <>
-                    <span>{waist}</span>
-                    <button name="isWaistCM" onClick={this.handleToggleClick}>
-                      {isWaistCM ? "CM" : "IN"}
-                    </button>
-                    <button name="isOpenWaist" onClick={this.openInputBodyPost}>
-                      기록하기
-                    </button>
-                    <button name="waist" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <span>수치를 등록해주세요</span>
-                    <button name="isOpenWaist" onClick={this.openInputBodyPost}>
-                      기록하기
-                    </button>
-                  </>
-                )}
-              </>
-            )}
-          </span>
-        </div>
-        <div>
-          <span>엉덩이둘레</span>
-          <span>
-            {isOpenHip ? (
-              <BasicInputPost
-                name="hip"
-                what="isOpenHip"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {hip ? (
-                  <>
-                    <span>{hip}</span>
-                    <button name="isHipCM" onClick={this.handleToggleClick}>
-                      {isHipCM ? "CM" : "IN"}
-                    </button>
-                    <button name="isOpenHip" onClick={this.openInputBodyPost}>
-                      기록하기
-                    </button>
-                    <button name="hip" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <span>수치를 등록해주세요</span>
-                    <button name="isOpenHip" onClick={this.openInputBodyPost}>
-                      기록하기
-                    </button>
-                  </>
-                )}
-              </>
-            )}
-          </span>
-        </div>
-        <div>
-          <span>허벅지둘레</span>
-          <span>
-            {isOpenThigh ? (
-              <BasicInputPost
-                name="thigh"
-                what="isOpenThigh"
-                closeInputBodyPost={this.closeInputBodyPost}
-                handleRecentBody={this.handleRecentBody}
-              />
-            ) : (
-              <>
-                {thigh ? (
-                  <>
-                    <span>{thigh}</span>
-                    <button name="isThighCM" onClick={this.handleToggleClick}>
-                      {isThighCM ? "CM" : "IN"}
-                    </button>
-                    <button name="isOpenThigh" onClick={this.openInputBodyPost}>
-                      기록하기
-                    </button>
-                    <button name="thigh" onClick={this.goCertainBody}>
-                      기록보기
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <span>수치를 등록해주세요</span>
-                    <button name="isOpenThigh" onClick={this.openInputBodyPost}>
-                      기록하기
-                    </button>
-                  </>
-                )}
-              </>
-            )}
-          </span>
+              </div>
+              <div>
+                <CertainGoal
+                  goal={basicPartGoal}
+                  name={name}
+                  partName={basicPartName}
+                  recent={basicPartRecent}
+                  certainBodyGoalGet={this.certainBodyGoalGet}
+                />
+              </div>
+            </>
+          ) : null}
         </div>
       </>
     );

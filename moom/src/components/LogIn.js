@@ -1,13 +1,46 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-
+import { withRouter } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import { BASEURL } from "../helpurl";
 import GLogin from "./GLogin";
 import githublogo from "../images/github.svg";
 import "../css/Login.css";
 
 import axios from "axios";
+import { withWidth } from "@material-ui/core";
 axios.defaults.withCredentials = true;
+
+const styles = {
+  root: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    margin: "10px",
+  },
+};
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 // TODO : react-github-login을 이용한 버튼 컴포넌트 HLogin 수정
 // import HLogin from "./HLogin";
@@ -57,7 +90,8 @@ class LogIn extends Component {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
+        localStorage.removeItem("basicPartName");
+        localStorage.removeItem("customPartName");
         this.props.handleLoginSuccess();
         this.props.history.push("/");
         // TODO : 페이지 전환 확인 redirect
@@ -76,58 +110,83 @@ class LogIn extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <>
         <center style={{ paddingTop: 30 }}>
           <h1>LogIn 여기에 로고 들어갈 예정</h1>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
-              <p>이메일</p>
-              <input
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="email"
+                label="Email Address"
                 name="email"
-                type="email"
-                placeholder="이메일을 입력해주세요"
+                autoComplete="email"
+                autoFocus
                 onChange={this.handleInputLogin}
-              ></input>
+              />
             </div>
             <div>
-              <p>비밀번호</p>
-              <input
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
                 name="password"
+                label="Password"
                 type="password"
-                placeholder="비밀번호를 입력해주세요"
+                id="password"
+                autoComplete="current-password"
                 onChange={this.handleInputLogin}
-              ></input>
+              />
             </div>
             <div>
-              <button onClick={this.handleLogin}>Login</button>
+              <Button className={classes.root} onClick={this.handleLogin}>
+                LogIn
+              </Button>
             </div>
             {/* TODO : 에러메세지 재확인 */}
             <div>{this.state.errorMessage}</div>
+            <Grid container>
+              <Grid item xs>
+                <Link to="/signup" variant="body2">
+                  Forgot password?
+                </Link>
+                <Link to="/" variant="body2">
+                  {"Don't have an account?"}
+                </Link>
+              </Grid>
+            </Grid>
           </form>
           <div>
             {/* 구글 : 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
-            <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
+            <div>
+              <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
+            </div>
             <div>
               <button className="github-btn">
                 <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
-                    <img className="github-img" src={githublogo}></img>
+                    <img
+                      className="github-img"
+                      src={githublogo}
+                      alt="github"
+                    ></img>
                   </div>
                   <span className="github-span">Github</span>
                 </a>
               </button>
             </div>
           </div>
-
-          <div>
-            <Link to="/signup">회원가입</Link>
-            <Link to="/">비밀번호찾기</Link>
-          </div>
+          <Box mt={8}>
+            <Copyright />
+          </Box>
         </center>
       </>
     );
   }
 }
 
-export default withRouter(LogIn);
+export default withStyles(styles)(LogIn);

@@ -17,7 +17,7 @@ class App extends Component {
     };
   }
 
-  // App.js가 실행될 때 자동 실행되는 함수
+  // App가 생기기 전에 실행되는 함수
   componentDidMount() {
     this.handleLoginSuccess();
   }
@@ -41,6 +41,8 @@ class App extends Component {
   // 로그아웃, 회원탈퇴 등 성공시 setState로 유저정보를 비우는 함수
   handleLoginFail = () => {
     this.setState({ isLogin: false, userInfo: null });
+    localStorage.removeItem("basicPartName");
+    localStorage.removeItem("customPartName");
   };
 
   // 로그인 여부에 따라 다른 페이지 렌더
