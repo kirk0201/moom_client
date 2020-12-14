@@ -6,6 +6,7 @@ import Introduce from "../components/Introduce";
 import Experience from "../components/Experience";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
+import UserStore from "../store/store";
 
 import "../css/NoLoginMain.css"
 
@@ -23,34 +24,34 @@ class NoLoginMain extends Component {
               render={() => {
                 return (
                   <>
+                  <UserStore>
                     <div>
                       <Introduce />
                     </div>
                     <div>
                       <Experience />
                     </div>
-                  </>
-                );
-              }}
-            ></Route>
-            <Route
-              path="/login"
-              render={() => {
-                return (
-                  <LoginPage
-                    handleLoginSuccess={this.props.handleLoginSuccess}
-                  />
-                );
-              }}
-            ></Route>
-            <Route
-              path="/signup"
-              render={() => {
-                return <SignupPage />;
-              }}
-            ></Route>
-          </Switch>
-        </div>
+
+                  </UserStore>
+                </>
+              );
+            }}
+          ></Route>
+          <Route
+            path="/login"
+            render={() => {
+              return (
+                <LoginPage handleLoginSuccess={this.props.handleLoginSuccess} />
+              );
+            }}
+          ></Route>
+          <Route
+            path="/signup"
+            render={() => {
+              return <SignupPage />;
+            }}
+          ></Route>
+        </Switch>
       </div>
     );
   }
