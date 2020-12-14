@@ -13,7 +13,6 @@ import githublogo from "../images/github.svg";
 import "../css/Login.css";
 
 import axios from "axios";
-import { withWidth } from "@material-ui/core";
 axios.defaults.withCredentials = true;
 
 const styles = {
@@ -115,6 +114,7 @@ class LogIn extends Component {
       <>
         <center style={{ paddingTop: 30 }}>
           <h1>LogIn 여기에 로고 들어갈 예정</h1>
+          <p>로그인</p>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -165,7 +165,7 @@ class LogIn extends Component {
             <div>
               <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
             </div>
-            <div>
+            <div  style={{ marginTop: 10}}>
               <button className="github-btn">
                 <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
@@ -189,4 +189,4 @@ class LogIn extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(LogIn));
+export default withStyles(styles)(withRouter(LogIn))
