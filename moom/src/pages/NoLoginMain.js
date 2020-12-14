@@ -8,19 +8,22 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import UserStore from "../store/store";
 
+import "../css/NoLoginMain.css"
+
 class NoLoginMain extends Component {
   // 비로그인시 페인 페이지
   render() {
     return (
       <div>
         <NoLoginNav />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <>
+        <div className="nologin-main">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return (
+                  <>
                   <UserStore>
                     <div>
                       <Introduce />
@@ -28,6 +31,7 @@ class NoLoginMain extends Component {
                     <div>
                       <Experience />
                     </div>
+
                   </UserStore>
                 </>
               );
