@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/NologinNav.css";
+import "../index.css";
 
 const NoLoginNav = () => {
   // 비로그인시 네비 바
@@ -29,6 +30,7 @@ const NoLoginNav = () => {
           <button>회원가입</button>
         </Link>
         <button
+          className="animate-bounce w-6 h-6 ..."
           style={{
             cursor: "pointer",
             position: "fixed",

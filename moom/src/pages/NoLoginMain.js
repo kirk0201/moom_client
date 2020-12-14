@@ -8,7 +8,7 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import UserStore from "../store/store";
 
-import "../css/NoLoginMain.css"
+import "../css/NoLoginMain.css";
 
 class NoLoginMain extends Component {
   // 비로그인시 페인 페이지
@@ -24,34 +24,36 @@ class NoLoginMain extends Component {
               render={() => {
                 return (
                   <>
-                  <UserStore>
-                    <div>
-                      <Introduce />
-                    </div>
-                    <div>
-                      <Experience />
-                    </div>
-
-                  </UserStore>
-                </>
-              );
-            }}
-          ></Route>
-          <Route
-            path="/login"
-            render={() => {
-              return (
-                <LoginPage handleLoginSuccess={this.props.handleLoginSuccess} />
-              );
-            }}
-          ></Route>
-          <Route
-            path="/signup"
-            render={() => {
-              return <SignupPage />;
-            }}
-          ></Route>
-        </Switch>
+                    <UserStore>
+                      <div>
+                        <Introduce />
+                      </div>
+                      <div>
+                        <Experience />
+                      </div>
+                    </UserStore>
+                  </>
+                );
+              }}
+            ></Route>
+            <Route
+              path="/login"
+              render={() => {
+                return (
+                  <LoginPage
+                    handleLoginSuccess={this.props.handleLoginSuccess}
+                  />
+                );
+              }}
+            ></Route>
+            <Route
+              path="/signup"
+              render={() => {
+                return <SignupPage />;
+              }}
+            ></Route>
+          </Switch>
+        </div>
       </div>
     );
   }
