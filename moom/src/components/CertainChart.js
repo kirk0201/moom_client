@@ -39,6 +39,18 @@ class CertainChart extends Component {
         //   enabled: false,
         // },
       },
+      series: {
+        point: {
+          events: {
+            click: (e) => {
+              let date = allDataSchedule[e.point.x];
+              let value = e.point.y;
+              let id = allDataId[e.point.x];
+              this.props.handlePointClick(date, value, id);
+            },
+          },
+        },
+      },
     };
 
     const { partName } = this.props;
@@ -51,6 +63,9 @@ class CertainChart extends Component {
     });
     let allDataSchedule = allBodyData.map((val) => {
       return val.schedule.split("-").slice(1).join("-");
+    });
+    let allDataId = allBodyData.map((val) => {
+      return val.id;
     });
 
     // 특정 부위에 알맞는 제목 및 단위 만들기
@@ -77,6 +92,7 @@ class CertainChart extends Component {
     } else {
       allDataValue = allDataValue.slice().reverse().slice(0, 7).reverse();
       allDataSchedule = allDataSchedule.slice().reverse().slice(0, 7).reverse();
+      allDataId = allDataId.slice().reverse().slice(0, 7).reverse();
       title = `The last seven data recorded about ${partName}`;
       subtitle = `${partName}에 대해 기록된 마지막 일곱개의 데이터입니다.`;
     }
