@@ -6,6 +6,7 @@ import Introduce from "../components/Introduce";
 import Experience from "../components/Experience";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
+import UserStore from "../store/store";
 
 class NoLoginMain extends Component {
   // 비로그인시 페인 페이지
@@ -20,12 +21,14 @@ class NoLoginMain extends Component {
             render={() => {
               return (
                 <>
-                  <div>
-                    <Introduce />
-                  </div>
-                  <div>
-                    <Experience />
-                  </div>
+                  <UserStore>
+                    <div>
+                      <Introduce />
+                    </div>
+                    <div>
+                      <Experience />
+                    </div>
+                  </UserStore>
                 </>
               );
             }}
