@@ -5,8 +5,8 @@ import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import CustomBodyCreate from "./CustomBodyCreate";
 import BasicInputPost from "./BasicInputPost";
-import CertainData from "./CertainData";
 import CertainChart from "./CertainChart";
+import CertainEdit from "./CertainEdit";
 import CertainGoal from "./CertainGoal";
 
 import axios from "axios";
@@ -28,6 +28,10 @@ class CustomBody extends Component {
       basicPartRecent: null,
       isAllData: false,
       selectChart: "CertainLastData",
+      isCertainEdit: false,
+      date: null,
+      value: null,
+      id: null,
     };
   }
 
@@ -243,6 +247,23 @@ class CustomBody extends Component {
     }
   };
 
+  // chart의 포인트 클릭시 해당 데이터의 정보만 setState하는 함수
+  handlePointClick = (date, value, id) => {
+    this.setState({
+      date: date,
+      value: value,
+      id: id,
+      isCertainEdit: true,
+    });
+  };
+
+  // chart의 포인트 클릭시 랜더된 CertainEdit을 닫는 함수
+  handleDeleteEdit = () => {
+    this.setState({
+      isCertainEdit: false,
+    });
+  };
+
   render() {
     const { name } = this.props.userInfo;
     const {
@@ -256,6 +277,10 @@ class CustomBody extends Component {
       basicPartGoal,
       isAllData,
       selectChart,
+      isCertainEdit,
+      date,
+      value,
+      id,
     } = this.state;
 
     // data/custom get 에서 받아온 배열 정보를 map 함수를 통해 컴포넌트로 만들기
@@ -348,18 +373,18 @@ class CustomBody extends Component {
     };
 
     // map 함수를 통해 CertainData 컴포넌트로 만들기
-    const DataList =
-      allBodyData &&
-      allBodyData.map((data) => (
-        <CertainData
-          data={data}
-          key={data.id}
-          certainBodyDataGet={this.certainBodyDataGet}
-          certainBodyGoalGet={this.certainBodyGoalGet}
-          handleRecentBody={this.handleRecentBody}
-          partName={basicPartName}
-        />
-      ));
+    // const DataList =
+    //   allBodyData &&
+    //   allBodyData.map((data) => (
+    //     <CertainData
+    //       data={data}
+    //       key={data.id}
+    //       certainBodyDataGet={this.certainBodyDataGet}
+    //       certainBodyGoalGet={this.certainBodyGoalGet}
+    //       handleRecentBody={this.handleRecentBody}
+    //       partName={basicPartName}
+    //     />
+    //   ));
 
     // CustomBody 컴포넌트 리턴
     return (
@@ -378,7 +403,7 @@ class CustomBody extends Component {
         {basicPartName ? (
           <>
             <div>{basicPartName}을 선택했습니다.</div>
-            <div>{DataList}</div>
+            {/* <div>{DataList}</div> */}
             <div>
               <select value={selectChart} onChange={this.handleChangeChart}>
                 <option value="">선택</option>
@@ -400,8 +425,32 @@ class CustomBody extends Component {
                   allBodyData={allBodyData}
                   partName={basicPartName}
                   isAllData={isAllData}
+                  handlePointClick={this.handlePointClick}
                 />
               ) : null}
+            </div>
+            <div>
+              {isCertainEdit ? (
+                <>
+                  <CertainEdit
+                    id={id}
+                    value={value}
+                    date={date}
+                    basicPartName={basicPartName}
+                    certainBodyDataGet={this.certainBodyDataGet}
+                    certainBodyGoalGet={this.certainBodyGoalGet}
+                    handleRecentBody={this.handleRecentBody}
+                    handleDeleteEdit={this.handleDeleteEdit}
+                  />
+                </>
+              ) : (
+                <>
+                  <div>
+                    그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할 수
+                    있어요!
+                  </div>
+                </>
+              )}
             </div>
             <div>
               <CertainGoal
