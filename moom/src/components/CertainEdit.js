@@ -6,12 +6,12 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 // TODO: 기록할 수 있는 데이터 형식에 따른 에러 메세지 확인
-class CertainData extends Component {
+class CertainEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isOpenInputCertain: false,
-      value: null,
+      editValue: null,
       errorMessage: null,
     };
   }
@@ -31,7 +31,7 @@ class CertainData extends Component {
     });
   };
 
-  // 목표 저장 버튼 클릭시 input태그 닫는 함수
+  // 저장 혹은 취소 버튼 클릭시 input태그 닫는 함수
   closeInputCertain = () => {
     this.setState({
       isOpenInputCertain: false,
@@ -49,6 +49,7 @@ class CertainData extends Component {
       .then((res) => {
         this.props.certainBodyDataGet(partName);
         this.props.certainBodyGoalGet(partName);
+        this.props.handleDeleteEdit();
         this.props.handleRecentBody();
         this.props.basicBodyDataGet();
       })
@@ -70,6 +71,7 @@ class CertainData extends Component {
         this.closeInputCertain();
         this.props.certainBodyDataGet(partName);
         this.props.certainBodyGoalGet(partName);
+        this.props.handleDeleteEdit();
         this.props.handleRecentBody();
         this.props.basicBodyDataGet();
       })
@@ -79,13 +81,18 @@ class CertainData extends Component {
   };
 
   render() {
-    const { id, value, schedule } = this.props.data;
+    const { id, value, date, basicPartName } = this.props;
     const { isOpenInputCertain } = this.state;
+    // 저장 혹은 삭제시 모달창 구현 예정!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     return (
       <>
         <div>
           {isOpenInputCertain ? (
             <>
+              <div>{date}</div>
+              <div>
+                {basicPartName}: {value}
+              </div>
               <input
                 type="text"
                 placeholder="수정할 수치를 입력해주세요!"
@@ -98,13 +105,15 @@ class CertainData extends Component {
             </>
           ) : (
             <>
+              <div>{date}</div>
               <span>
-                {schedule}에 수치는 {value}입니다.
+                {basicPartName}: {value}
               </span>
               <button onClick={this.openInputCertain}>수정</button>
               <button name={id} onClick={this.handleCertainDeleteClick}>
                 삭제
               </button>
+              <button onClick={this.props.handleDeleteEdit}>취소</button>
             </>
           )}
         </div>
@@ -113,4 +122,4 @@ class CertainData extends Component {
   }
 }
 
-export default withRouter(CertainData);
+export default withRouter(CertainEdit);

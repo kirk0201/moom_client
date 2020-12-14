@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
+import { BASEURL } from "../helpurl";
 import BodyNav from "./BodyNav";
 import CustomBodyCreate from "./CustomBodyCreate";
 import BasicInputPost from "./BasicInputPost";
-import CertainData from "./CertainData";
-import { BASEURL } from "../helpurl";
+import CertainChart from "./CertainChart";
+import CertainEdit from "./CertainEdit";
 import CertainGoal from "./CertainGoal";
+
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
@@ -23,19 +26,13 @@ class CustomBody extends Component {
       basicPartName: null,
       basicPartGoal: null,
       basicPartRecent: null,
+      isAllData: false,
+      selectChart: "CertainLastData",
+      isCertainEdit: false,
+      date: null,
+      value: null,
+      id: null,
     };
-  }
-
-  // BasicBody가 생기기 전에 실행되는 함수
-  componentDidMount() {
-    this.handleCustomRecentBody();
-    const contactData = localStorage.getItem("customPartName");
-    console.log(contactData);
-    if (contactData) {
-      this.setState({ basicPartName: contactData });
-      this.certainBodyDataGet(contactData);
-      this.certainBodyGoalGet(contactData);
-    }
   }
 
   // 기록하기 버튼 클릭시 BasicInputPost를 랜더하는 함수
@@ -57,8 +54,28 @@ class CustomBody extends Component {
     });
   };
 
+  handleeditopen = (e) => {
+    let index = e.target.name;
+    this.setState((pre) => {
+      pre.editCustom[index] = !pre.editCustom[index];
+      return {
+        editCustom: pre.editCustom,
+      };
+    });
+  };
+
+  handleeditvalue = (e) => {
+    let index = e.target.name;
+    this.setState((pre) => {
+      pre.editValue[index] = e.target.value;
+      return {
+        editValue: pre.editValue,
+      };
+    });
+  };
+
   // setState로 최근 신체정보 저장하는 함수
-  handleCustomRecentBody = () => {
+  handleRecentBody = () => {
     axios
       .get(`${BASEURL}/data/custom`)
       .then((res) => {
@@ -81,11 +98,108 @@ class CustomBody extends Component {
     }
   };
 
-  // 단위 변환 버튼 클릭에 따라
-  handleToggleClick = (e) => {
+  // axios통신으로  custom부위를 삭제하는 함수
+  handleDeleteCustom = (e) => {
     let part_name = e.target.name;
-    this.handleMakeCMtoIN(part_name);
+    localStorage.setItem("customPartName", null);
+    this.setState({
+      basicPartName: null,
+    });
+    axios
+      .delete(`${BASEURL}/data/custom`, {
+        data: { part_name: part_name },
+        withCredentials: true,
+      })
+      .then((res) => {
+        // 수정 성공하면 custom를 다시 setState하는 함수
+        this.handleRecentBody();
+      })
+      // TODO: 다른 상태코드에 따른 분기가 필요
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
+
+  // axios통신으로  custom부위를 수정하는 함수
+  handleeditCustom = (e) => {
+    let part_name = e.target.name;
+    let index = e.target.value;
+    let new_name = this.state.editValue[index];
+    for (let i of this.state.customs) {
+      if (i.part_name === new_name) {
+        alert("동일한 이름의 커스텀을 사용중입니다.");
+        return;
+      }
+    }
+    localStorage.setItem("customPartName", new_name);
+    this.setState({
+      basicPartName: new_name,
+    });
+    axios
+      .put(`${BASEURL}/data/custom`, {
+        part_name: part_name,
+        new_name: new_name,
+      })
+      .then((res) => {
+        // 수정 성공하면 custom를 다시 setState하는 함수
+        this.handleRecentBody();
+      })
+      // TODO: 다른 상태코드에 따른 분기가 필요
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  // axios통신으로 특정 신체정보를 setState하는 함수
+  certainBodyDataGet = (part) => {
+    axios
+      .get(`${BASEURL}/data/get`, { params: { part_name: part } })
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ allBodyData: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
+  // axios통신으로 특정 신체목표와 수치를 setState하는 함수
+  certainBodyGoalGet = (part) => {
+    axios
+      .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
+      .then((res) => {
+        this.setState({
+          basicPartGoal: res.data.goal,
+          basicPartRecent: res.data.recent,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  };
+
+  // 기록보기 버튼 클릭시 basicPartName을 setState하는 함수
+  bodyChoiceSuccess = (e) => {
+    let key = e.target.name;
+    this.setState({ basicPartName: key });
+    localStorage.setItem("customPartName", key);
+    this.certainBodyDataGet(key);
+    this.certainBodyGoalGet(key);
+  };
+
+  // CustomBody가 생기기 전에 실행되는 함수
+  componentDidMount() {
+    this.handleRecentBody();
+    const contactData = localStorage.getItem("customPartName");
+    console.log(contactData);
+    if (contactData) {
+      this.setState({ basicPartName: contactData });
+      this.certainBodyDataGet(contactData);
+      this.certainBodyGoalGet(contactData);
+    }
+  }
 
   // CM 혹은 IN으로 바꿔 계산하여 setState하는 함수
   handleMakeCMtoIN = (part_name) => {
@@ -119,110 +233,47 @@ class CustomBody extends Component {
     });
   };
 
-  //custom을 삭제하는 함수
-  handleDeleteCustom = (e) => {
+  // 단위 변환 버튼 클릭에 따라 계산해주는 함수로 연결
+  handleToggleClick = (e) => {
     let part_name = e.target.name;
-    axios
-      .delete(`${BASEURL}/data/custom`, {
-        data: { part_name: part_name },
-        withCredentials: true,
-      })
-      .then((res) => {
-        // 수정 성공하면 custom를 다시 setState하는 함수
-        this.handleCustomRecentBody();
-      })
-      // TODO: 다른 상태코드에 따른 분기가 필요
-      .catch((err) => {
-        console.log(err.message);
+    this.handleMakeCMtoIN(part_name);
+  };
+
+  // select 이벤트시 선택된 chart 반환하는 함수
+  handleChangeChart = (e) => {
+    let chartTarget = e.target.value;
+    if (chartTarget === "CertainLastData") {
+      this.setState({
+        isAllData: false,
+        selectChart: "CertainLastData",
       });
-  };
-
-  handleeditopen = (e) => {
-    let index = e.target.name;
-    this.setState((pre) => {
-      pre.editCustom[index] = !pre.editCustom[index];
-      return {
-        editCustom: pre.editCustom,
-      };
-    });
-  };
-
-  handleeditCustom = (e) => {
-    let part_name = e.target.name;
-    let index = e.target.value;
-    let new_name = this.state.editValue[index];
-    for (let i of this.state.customs) {
-      if (i.part_name === new_name) {
-        alert("동일한 이름의 커스텀을 사용중입니다.");
-        return;
-      }
+    } else if (chartTarget === "CertainAllData") {
+      this.setState({
+        isAllData: true,
+        selectChart: "CertainAllData",
+      });
     }
-    axios
-      .put(`${BASEURL}/data/custom`, {
-        part_name: part_name,
-        new_name: new_name,
-      })
-      .then((res) => {
-        // 수정 성공하면 custom를 다시 setState하는 함수
-        this.handleCustomRecentBody();
-      })
-      // TODO: 다른 상태코드에 따른 분기가 필요
-      .catch((err) => {
-        console.log(err.message);
-      });
   };
 
-  handleeditvalue = (e) => {
-    let index = e.target.name;
-    this.setState((pre) => {
-      pre.editValue[index] = e.target.value;
-      return {
-        editValue: pre.editValue,
-      };
+  // chart의 포인트 클릭시 해당 데이터의 정보만 setState하는 함수
+  handlePointClick = (date, value, id) => {
+    this.setState({
+      date: date,
+      value: value,
+      id: id,
+      isCertainEdit: true,
     });
   };
 
-  // axios통신으로 특정 신체정보를 setState하는 함수
-  certainBodyDataGet = (part) => {
-    axios
-      .get(`${BASEURL}/data/get`, { params: { part_name: part } })
-      .then((res) => {
-        console.log(res.data);
-        this.setState({ allBodyData: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err.message);
-      });
-  };
-
-  // 기록보기 버튼 클릭시 basicPartName을 setState하는 함수
-  bodyChoiceSuccess = (e) => {
-    let key = e.target.name;
-    this.setState({ basicPartName: key });
-    localStorage.setItem("customPartName", key);
-    this.certainBodyDataGet(key);
-    this.certainBodyGoalGet(key);
-  };
-
-  // axios통신으로 특정 신체목표와 수치를 setState하는 함수
-  certainBodyGoalGet = (part) => {
-    axios
-      .get(`${BASEURL}/data/goal`, { params: { part_name: part } })
-      .then((res) => {
-        this.setState({
-          basicPartGoal: res.data.goal,
-          basicPartRecent: res.data.recent,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err.message);
-      });
+  // chart의 포인트 클릭시 랜더된 CertainEdit을 닫는 함수
+  handleDeleteEdit = () => {
+    this.setState({
+      isCertainEdit: false,
+    });
   };
 
   render() {
-    const { name, sex } = this.props.userInfo;
+    const { name } = this.props.userInfo;
     const {
       customs,
       isOpen,
@@ -232,9 +283,16 @@ class CustomBody extends Component {
       basicPartName,
       basicPartRecent,
       basicPartGoal,
+      isAllData,
+      selectChart,
+      isCertainEdit,
+      date,
+      value,
+      id,
     } = this.state;
+
+    // data/custom get 에서 받아온 배열 정보를 map 함수를 통해 컴포넌트로 만들기
     const mapcustoms = (data) => {
-      // data/custom get 에서 받아온 배열 정보를 map 함수를 통해 컴포넌트로 만들기
       return data.map((custom, index) => {
         return (
           <div>
@@ -251,14 +309,31 @@ class CustomBody extends Component {
                   value={index}
                   onClick={this.handleeditCustom}
                 >
-                  수정
+                  저장
                 </button>
                 <button name={index} onClick={this.handleeditopen}>
                   취소
                 </button>
               </>
             ) : (
-              <span>{custom.part_name}</span>
+              <>
+                <span>{custom.part_name}</span>
+                {editCustom[index] ? (
+                  <></>
+                ) : (
+                  <>
+                    <button name={index} onClick={this.handleeditopen}>
+                      수정
+                    </button>
+                    <button
+                      name={custom.part_name}
+                      onClick={this.handleDeleteCustom}
+                    >
+                      삭제
+                    </button>
+                  </>
+                )}
+              </>
             )}
             <span>
               {isOpen[index] ? (
@@ -266,7 +341,7 @@ class CustomBody extends Component {
                   name={custom.part_name}
                   what={index}
                   closeInputBodyPost={this.closeInputBodyPost}
-                  handleRecentBody={this.handleCustomRecentBody}
+                  handleRecentBody={this.handleRecentBody}
                 />
               ) : (
                 <>
@@ -297,19 +372,6 @@ class CustomBody extends Component {
                       </button>
                     </>
                   )}
-                  {editCustom[index] ? (
-                    <></>
-                  ) : (
-                    <button name={index} onClick={this.handleeditopen}>
-                      수정
-                    </button>
-                  )}
-                  <button
-                    name={custom.part_name}
-                    onClick={this.handleDeleteCustom}
-                  >
-                    삭제
-                  </button>
                 </>
               )}
             </span>
@@ -317,17 +379,22 @@ class CustomBody extends Component {
         );
       });
     };
-    const DataList =
-      allBodyData &&
-      allBodyData.map((data) => (
-        <CertainData
-          data={data}
-          key={data.id}
-          certainBodyDataGet={this.certainBodyDataGet}
-          certainBodyGoalGet={this.certainBodyGoalGet}
-          partName={basicPartName}
-        />
-      ));
+
+    // map 함수를 통해 CertainData 컴포넌트로 만들기
+    // const DataList =
+    //   allBodyData &&
+    //   allBodyData.map((data) => (
+    //     <CertainData
+    //       data={data}
+    //       key={data.id}
+    //       certainBodyDataGet={this.certainBodyDataGet}
+    //       certainBodyGoalGet={this.certainBodyGoalGet}
+    //       handleRecentBody={this.handleRecentBody}
+    //       partName={basicPartName}
+    //     />
+    //   ));
+
+    // CustomBody 컴포넌트 리턴
     return (
       <>
         <div>
@@ -336,7 +403,7 @@ class CustomBody extends Component {
         <div>
           <CustomBodyCreate
             closeInputBodyPost={this.closeInputBodyPost}
-            handleCustomRecentBody={this.handleCustomRecentBody}
+            handleCustomRecentBody={this.handleRecentBody}
           />
         </div>
         <div>최근 커스텀 부위 정보</div>
@@ -344,7 +411,55 @@ class CustomBody extends Component {
         {basicPartName ? (
           <>
             <div>{basicPartName}을 선택했습니다.</div>
-            <div>{DataList}</div>
+            {/* <div>{DataList}</div> */}
+            <div>
+              <select value={selectChart} onChange={this.handleChangeChart}>
+                <option value="">선택</option>
+                <option value="CertainAllData">
+                  All data about {basicPartName}
+                </option>
+                <option value="CertainLastData">
+                  Last seven data about {basicPartName}
+                </option>
+              </select>
+            </div>
+            <div
+              style={{
+                width: "650px",
+              }}
+            >
+              {allBodyData ? (
+                <CertainChart
+                  allBodyData={allBodyData}
+                  partName={basicPartName}
+                  isAllData={isAllData}
+                  handlePointClick={this.handlePointClick}
+                />
+              ) : null}
+            </div>
+            <div>
+              {isCertainEdit ? (
+                <>
+                  <CertainEdit
+                    id={id}
+                    value={value}
+                    date={date}
+                    basicPartName={basicPartName}
+                    certainBodyDataGet={this.certainBodyDataGet}
+                    certainBodyGoalGet={this.certainBodyGoalGet}
+                    handleRecentBody={this.handleRecentBody}
+                    handleDeleteEdit={this.handleDeleteEdit}
+                  />
+                </>
+              ) : (
+                <>
+                  <div>
+                    그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할 수
+                    있어요!
+                  </div>
+                </>
+              )}
+            </div>
             <div>
               <CertainGoal
                 goal={basicPartGoal}
