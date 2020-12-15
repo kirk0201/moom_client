@@ -1,25 +1,39 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "../css/Experience.css";
 import ExperienceInput from "./ExperienceInput";
 import male from "../images/maleimg.png";
 import female from "../images/femaleimg.png";
+import ExperienceGoal from "./ExperienceGoal";
+import { User } from "../store/store";
 export class Experience extends Component {
+  static contextType = User;
   constructor(props) {
     super(props);
     this.state = {
       sex: false,
+      isClick1: false,
+      isClick2: false,
+      isClick3: false,
+      isClick4: false,
+      isClick5: false,
+      isClick6: false,
+      isClick7: false,
     };
   }
-  componentDidUpdate(prevProps, prevState) {
-    // console.log(prevState);
-    // if (this.state.sex !== prevState.sex) {
-    //   this.setState({});
-    // }
-  }
-  handleSexChange = (e) => {
-    // console.log(e);
-    console.log("!!", e.target.id);
+  handleButtonFalse = (e) => {
+    const name = e.target.name;
+    this.setState({
+      [name]: true,
+    });
+  };
+  handleButtonTrue = (e) => {
+    const name = e.target.name;
+    this.setState({
+      [name]: false,
+    });
+  };
 
+  handleSexChange = (e) => {
     if (e.target.id === "radioW") {
       this.setState({
         sex: true,
@@ -39,8 +53,8 @@ export class Experience extends Component {
     const part5 = "허리둘레";
     const part6 = "엉덩이둘레";
     const part7 = "허벅지둘레";
-    console.log(this.state.sex);
 
+    // 상황에 따른 사진 선택
     let changeSex = this.state.sex ? `url("${female}")` : `url("${male}")`;
     console.log(changeSex);
     return (
@@ -74,20 +88,126 @@ export class Experience extends Component {
             ></img>
           </div>
           <div className="input_size">
-            {/* <div>사이즈 입력</div> */}
-            <ExperienceInput name={part1} unitL="kg" unitR="ln" />
-            <ExperienceInput name={part2} unitL="%" unitR="%" />
-            <ExperienceInput name={part3} unitL="cm" unitR="in" />
-            <ExperienceInput name={part4} unitL="cm" unitR="in" />
-            <ExperienceInput name={part5} unitL="cm" unitR="in" />
-            <ExperienceInput name={part6} unitL="cm" unitR="in" />
-            <ExperienceInput name={part7} unitL="cm" unitR="in" />
+            <ExperienceInput
+              name={part1}
+              temp="isClick1"
+              unitL="kg"
+              unitR="lb"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick1}
+            />
+            <ExperienceInput
+              name={part2}
+              unitL="%"
+              unitR="%"
+              temp="isClick2"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick2}
+            />
+            <ExperienceInput
+              name={part3}
+              unitL="cm"
+              unitR="in"
+              temp="isClick3"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick3}
+            />
+            <ExperienceInput
+              name={part4}
+              unitL="cm"
+              unitR="in"
+              temp="isClick4"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick4}
+            />
+            <ExperienceInput
+              name={part5}
+              unitL="cm"
+              unitR="in"
+              temp="isClick5"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick5}
+            />
+            <ExperienceInput
+              name={part6}
+              unitL="cm"
+              unitR="in"
+              temp="isClick6"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick6}
+            />
+            <ExperienceInput
+              name={part7}
+              unitL="cm"
+              unitR="in"
+              temp="isClick7"
+              handleButtonTrue={this.handleButtonTrue}
+              handleButtonFalse={this.handleButtonFalse}
+              isClick={this.state.isClick7}
+            />
           </div>
 
-          {/* <div className="right_img">우측 이미지</div> */}
-          <div className="info_size">사이즈 정보</div>
+          {/* temp는 해당 컴퍼넌트 안에서 고유한 id값처럼 쓰임 (특정 컴퍼넌트를 선택하기 위함) */}
+          <div className="info_size">
+            사이즈 정보
+            <ExperienceGoal
+              name={part1}
+              temp="isClick1"
+              unitL="kg"
+              unitR="lb"
+              isClick={this.state.isClick1}
+            ></ExperienceGoal>
+            <ExperienceGoal
+              name={part2}
+              temp="isClick2"
+              unitL="%"
+              unitR="%"
+              isClick={this.state.isClick2}
+            ></ExperienceGoal>
+            <ExperienceGoal
+              name={part3}
+              temp="isClick3"
+              unitL="cm"
+              unitR="in"
+              isClick={this.state.isClick3}
+            ></ExperienceGoal>
+            <ExperienceGoal
+              name={part4}
+              temp="isClick4"
+              unitL="cm"
+              unitR="in"
+              isClick={this.state.isClick4}
+            ></ExperienceGoal>
+            <ExperienceGoal
+              name={part5}
+              temp="isClick5"
+              unitL="cm"
+              unitR="in"
+              isClick={this.state.isClick5}
+            ></ExperienceGoal>
+            <ExperienceGoal
+              name={part6}
+              temp="isClick6"
+              unitL="cm"
+              unitR="in"
+              isClick={this.state.isClick6}
+            ></ExperienceGoal>
+            <ExperienceGoal
+              name={part7}
+              temp="isClick7"
+              unitL="cm"
+              unitR="in"
+              isClick={this.state.isClick7}
+            ></ExperienceGoal>
+          </div>
         </div>
-        <div style={{ textAlign: "center", backgroundColor: "teal" }}>
+        <div style={{ textAlign: "center", backgroundColor: "ivory" }}>
           <button style={{ width: 100, height: 60 }}>저장</button>
         </div>
       </>

@@ -5,6 +5,8 @@ import { BASEURL } from "./helpurl";
 import LoginMain from "./pages/LoginMain";
 import NoLoginMain from "./pages/NoLoginMain";
 
+import "../src/css/App.css";
+
 import axios from "axios";
 axios.defaults.withCredentials = true;
 

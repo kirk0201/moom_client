@@ -6,6 +6,9 @@ import Introduce from "../components/Introduce";
 import Experience from "../components/Experience";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
+import UserStore from "../store/store";
+
+import "../css/NoLoginMain.css";
 
 class NoLoginMain extends Component {
   // 비로그인시 페인 페이지
@@ -13,38 +16,44 @@ class NoLoginMain extends Component {
     return (
       <div>
         <NoLoginNav />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <>
-                  <div>
-                    <Introduce />
-                  </div>
-                  <div>
-                    <Experience />
-                  </div>
-                </>
-              );
-            }}
-          ></Route>
-          <Route
-            path="/login"
-            render={() => {
-              return (
-                <LoginPage handleLoginSuccess={this.props.handleLoginSuccess} />
-              );
-            }}
-          ></Route>
-          <Route
-            path="/signup"
-            render={() => {
-              return <SignupPage />;
-            }}
-          ></Route>
-        </Switch>
+        <div className="nologin-main">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return (
+                  <>
+                    <UserStore>
+                      <div>
+                        <Introduce />
+                      </div>
+                      <div>
+                        <Experience />
+                      </div>
+                    </UserStore>
+                  </>
+                );
+              }}
+            ></Route>
+            <Route
+              path="/login"
+              render={() => {
+                return (
+                  <LoginPage
+                    handleLoginSuccess={this.props.handleLoginSuccess}
+                  />
+                );
+              }}
+            ></Route>
+            <Route
+              path="/signup"
+              render={() => {
+                return <SignupPage />;
+              }}
+            ></Route>
+          </Switch>
+        </div>
       </div>
     );
   }

@@ -43,7 +43,7 @@
 
 .input_size_cont {
   display: flex;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   justify-content: space-around;
   height: 60px;
   min-width: 446px;
@@ -81,4 +81,9 @@
 
 .info_size {
   border: 2px solid darkmagenta;
+  font-size: 20px;
+}
+.info_size > input {
+  flex-direction: row;
+  /* width: 50px; */
 }

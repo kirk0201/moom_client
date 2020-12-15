@@ -1,10 +1,42 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import { BASEURL } from "../helpurl";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
+
+const styles = {
+  root: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    margin: "10px",
+  },
+};
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 // TODO: 이메일 중복 버튼, 서버 요청, 에러 메세지 확인
 class SignUp extends Component {
@@ -71,38 +103,55 @@ class SignUp extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <>
         <center style={{ paddingTop: 50 }}>
+          <h1>LogIn 여기에 로고 들어갈 예정</h1>
           <p>회원가입</p>
-          <p>moom에 오신 것을 환영합니다.^^</p>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
-              <p>이메일</p>
-              <input
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="email"
+                label="Email Address"
                 name="email"
+                autoComplete="email"
+                autoFocus
                 type="email"
-                placeholder="이메일을 입력해주세요"
                 onChange={this.handleInputSignup}
-              ></input>
-              <button>중복확인</button>
+              ></TextField>
             </div>
             {/* TODO : 에러메세지 재확인 */}
             <div>{this.state.errorEmail}</div>
-            <p>닉네임</p>
-            <input
-              name="name"
-              type="text"
-              placeholder="닉네임을 입력해주세요"
-              onChange={this.handleInputSignup}
-            ></input>
-            <p>비밀번호</p>
-            <input
-              name="password"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-              onChange={this.handleInputSignup}
-            ></input>
+            <div>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="email"
+                label="Your NickName"
+                autoFocus
+                name="name"
+                type="text"
+                onChange={this.handleInputSignup}
+              ></TextField>
+            </div>
+            <div>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={this.handleInputSignup}
+              ></TextField>
+            </div>
             <p>성별</p>
             <select
               name="sex"
@@ -114,15 +163,20 @@ class SignUp extends Component {
               <option value="male">남성</option>
             </select>
             <div>
-              <button onClick={this.handleSignup}>가입하기</button>
+              <Button className={classes.root} onClick={this.handleSignup}>
+                SignUp
+              </Button>
             </div>
             {/* TODO : 에러메세지 재확인 */}
             <div>{this.state.errorMessage}</div>
           </form>
+          <Box mt={8}>
+            <Copyright />
+          </Box>
         </center>
       </>
     );
   }
 }
 
-export default withRouter(SignUp);
+export default withStyles(styles)(withRouter(SignUp))
