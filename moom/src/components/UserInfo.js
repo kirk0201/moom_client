@@ -78,10 +78,8 @@ class UserInfo extends Component {
 
     return (
       <>
-        <h1>마이페이지</h1>
         <div className="container">
           <div>
-            <span>프로필사진</span>
             {isOpenProfile ? (
               <UserInfoImg
                 info={profile}
@@ -95,17 +93,19 @@ class UserInfo extends Component {
                 <img
                   className="circle"
                   alt="프로필사진"
+                  name="isOpenProfile"
+                  onClick={this.openInput}
                   src={profile ? profile : profile_img}
                 ></img>
-                <button name="isOpenProfile" onClick={this.openInput}>
+                {/* <button name="isOpenProfile" onClick={this.openInput}>
                   수정
-                </button>
+                </button> */}
               </>
             )}
           </div>
-          <div className="text_box">
-            <li>
-              <span>닉네임:</span>
+          <div>
+            <div style={{ marginLeft: 60 ,marginTop: 10}}>
+              <div>닉네임</div>
               {isOpenName ? (
                 <UserInfoEdit
                   info={name}
@@ -124,13 +124,13 @@ class UserInfo extends Component {
                   </button>
                 </>
               )}
-            </li>
-            <li>
-              <span>이메일:</span>
+            </div>
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
+              <div>이메일</div>
               <span className="span_email">{email}</span>
-            </li>
-            <li>
-              <span>비밀번호 변경:</span>
+            </div>
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
+              <div>비밀번호 변경</div>
 
               {isOpenPassword ? (
                 <UserInfoEdit
@@ -148,7 +148,7 @@ class UserInfo extends Component {
                     "비밀번호를 변경할 수 없습니다"
                   ) : (
                     <>
-                      <span>변경할 비밀번호를 입력해주세요</span>
+                      <span>변경할 비밀번호 입력</span>
                       <button name="isOpenPassword" onClick={this.openInput}>
                         수정
                       </button>
@@ -156,9 +156,9 @@ class UserInfo extends Component {
                   )}
                 </>
               )}
-            </li>
-            <li>
-              <span>성별:</span>
+            </div>
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
+              <div>성별</div>
               {isOpenSex ? (
                 <UserInfoSex
                   info={sex}
@@ -174,9 +174,9 @@ class UserInfo extends Component {
                   </button>
                 </>
               )}
-            </li>
-            <li>
-              <span>나의 다짐:</span>
+            </div>
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
+              <div>나의 다짐</div>
               {isOpenPromise ? (
                 <UserInfoEdit
                   info={promise}
@@ -197,9 +197,9 @@ class UserInfo extends Component {
                   </button>
                 </>
               )}
-            </li>
-            <li>
-              <span>생년 월일:</span>
+            </div>
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
+              <div>생년 월일</div>
               {isOpenBirth ? (
                 <UserInfoEdit
                   info=""
@@ -218,7 +218,7 @@ class UserInfo extends Component {
                   </button>
                 </>
               )}
-            </li>
+            </div>
           </div>
         </div>
         <div className="div_btn_signout">

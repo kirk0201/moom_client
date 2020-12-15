@@ -11,6 +11,7 @@ import { BASEURL } from "../helpurl";
 import GLogin from "./GLogin";
 import githublogo from "../images/github.svg";
 import "../css/Login.css";
+import logoimg from "../images/logo700700.png";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -113,8 +114,14 @@ class LogIn extends Component {
     return (
       <>
         <center style={{ paddingTop: 30 }}>
-          <h1>LogIn 여기에 로고 들어갈 예정</h1>
-          <p>로그인</p>
+        <img
+              src={logoimg}
+              style={{
+                width: "300px",
+                height: "auto",
+                marginTop: "5px",
+              }}
+            />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -160,12 +167,12 @@ class LogIn extends Component {
               </Grid>
             </Grid>
           </form>
-          <div>
+          <div className="container">
             {/* 구글 : 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
-            <div>
+            <div style={{ marginTop: 10}}>
               <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
             </div>
-            <div  style={{ marginTop: 10}}>
+            <div  style={{ marginTop: 10 , marginLeft: 10}}>
               <button className="github-btn">
                 <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
