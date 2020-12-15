@@ -62,7 +62,6 @@ function LoginNav(props) {
             root: classes.nav,
           }}
         >
-          <Link to="/">
             <img
               src={logoimg}
               style={{
@@ -71,7 +70,6 @@ function LoginNav(props) {
                 marginTop: "5px",
               }}
             />
-          </Link>
           <div
             style={{
               color: "white",
