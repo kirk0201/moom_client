@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 import { BASEURL } from "../helpurl";
+import Alert from "@material-ui/lab/Alert";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -65,18 +66,31 @@ class BasicInputPost extends Component {
     return (
       <>
         <input
+          class="text-sm rounded-md focus:outline-none focus:text-gray"
           type="text"
           name={name}
-          placeholder="새로운 수치를 입력해주세요"
+          placeholder="새로운 수치를 입력하세요"
           onChange={this.handleInputGoal}
         />
-        <button name={name} value={what} onClick={this.handleBasicPost}>
-          저장
+        <button
+          class="ml-5 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+          name={name}
+          value={what}
+          onClick={this.handleBasicPost}
+        >
+          SAVE
         </button>
-        <button name={what} onClick={this.handlecloseInput}>
-          취소
+        <button
+          class="ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+          name={what}
+          onClick={this.handlecloseInput}
+        >
+          CANCEL
         </button>
-        <div>{this.state.errorMessage}</div>
+        {/* <div>
+          <Alert severity="error">This is an error alert — check it out!</Alert>
+          {this.state.errorMessage}
+        </div> */}
       </>
     );
   }
