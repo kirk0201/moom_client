@@ -46,13 +46,13 @@ export class Experience extends Component {
   };
 
   render() {
-    const part1 = "체중";
-    const part2 = "체지방율";
-    const part3 = "어깨길이";
-    const part4 = "가슴둘레";
-    const part5 = "허리둘레";
-    const part6 = "엉덩이둘레";
-    const part7 = "허벅지둘레";
+    const part1 = "Weight";
+    const part2 = "Body fat";
+    const part3 = "Shoulder";
+    const part4 = "Chest";
+    const part5 = "Waist";
+    const part6 = "Hip";
+    const part7 = "Thigh";
 
     // 상황에 따른 사진 선택
     let changeSex = this.state.sex ? `url("${female}")` : `url("${male}")`;

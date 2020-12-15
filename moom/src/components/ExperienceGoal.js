@@ -92,43 +92,43 @@ export default class ExperienceGoal extends Component {
     // resultR : 목표 값 - 부위 값
     if (this.props.isClick === false) {
       switch (this.props.name) {
-        case "체중":
+        case "Weight":
           resultL = context.goal1;
           if (context.goal1 && context.weightL) {
             resultR = context.goal1 - context.weightL;
           }
           break;
-        case "체지방율":
+        case "Body fat":
           resultL = context.goal2;
           if (context.goal2 && context.body_fatL) {
             resultR = context.goal2 - context.body_fatL;
           }
           break;
-        case "어깨길이":
+        case "Shoulder":
           resultL = context.goal3;
           if (context.goal3 && context.shoulderL) {
             resultR = context.goal3 - context.shoulderL;
           }
           break;
-        case "가슴둘레":
+        case "Chest":
           resultL = context.goal4;
           if (context.goal4 && context.chestL) {
             resultR = context.goal4 - context.chestL;
           }
           break;
-        case "허리둘레":
+        case "Waist":
           resultL = context.goal5;
           if (context.goal5 && context.waistL) {
             resultR = context.goal5 - context.waistL;
           }
           break;
-        case "엉덩이둘레":
+        case "Hip":
           resultL = context.goal6;
           if (context.goal6 && context.hipL) {
             resultR = context.goal6 - context.hipL;
           }
           break;
-        case "허벅지둘레":
+        case "Thigh":
           resultL = context.goal7;
           if (context.goal7 && context.thighL) {
             resultR = context.goal7 - context.thighL;
@@ -143,32 +143,32 @@ export default class ExperienceGoal extends Component {
     // resultR : 단위 변환된 목표 값 - 단위 변환된 부위 값
     else if (this.props.isClick === true) {
       switch (this.props.name) {
-        case "체중":
+        case "Weight":
           resultL = context.goal_1;
           resultR = context.goal_1 - context.weightR;
 
           break;
-        case "체지방율":
+        case "Body fat":
           resultL = context.goal_2;
           resultR = context.goal_2 - context.body_fatL;
           break;
-        case "어깨길이":
+        case "Shoulder":
           resultL = context.goal_3;
           resultR = context.goal_3 - context.shoulderR;
           break;
-        case "가슴둘레":
+        case "Chest":
           resultL = context.goal_4;
           resultR = context.goal_4 - context.chestR;
           break;
-        case "허리둘레":
+        case "Waist":
           resultL = context.goal_5;
           resultR = context.goal_5 - context.waistR;
           break;
-        case "엉덩이둘레":
+        case "Hip":
           resultL = context.goal_6;
           resultR = context.goal_6 - context.hipR;
           break;
-        case "허벅지둘레":
+        case "Thigh":
           resultL = context.goal_7;
           resultR = context.goal_7 - context.thighR;
           break;
