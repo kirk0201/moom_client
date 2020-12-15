@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { BASEURL } from "../helpurl";
+import logoimg from "../images/logo700700.png";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -106,9 +107,15 @@ class SignUp extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center style={{ paddingTop: 50 }}>
-          <h1>LogIn 여기에 로고 들어갈 예정</h1>
-          <p>회원가입</p>
+        <center style={{ paddingTop: 30 }}>
+        <img
+              src={logoimg}
+              style={{
+                width: "300px",
+                height: "auto",
+                marginTop: "5px",
+              }}
+            />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -152,13 +159,12 @@ class SignUp extends Component {
                 onChange={this.handleInputSignup}
               ></TextField>
             </div>
-            <p>성별</p>
             <select
               name="sex"
               value={this.state.sex}
               onChange={this.handleInputSignup}
             >
-              <option value="">선택</option>
+              <option value="">성별</option>
               <option value="female">여성</option>
               <option value="male">남성</option>
             </select>
