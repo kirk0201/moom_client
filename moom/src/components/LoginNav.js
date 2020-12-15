@@ -1,134 +1,296 @@
-import React from "react";
-import { Menu, MenuItem, Toolbar, AppBar, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { BASEURL } from "../helpurl";
 import profile_img from "../images/profile.jpg";
-import "../css/LoginNav.css";
 import axios from "axios";
 import logoimg from "../images/moomlogo.png";
 
-function LoginNav(props) {
-  // props 받아오기
-  const { promise, profile, name } = props.userInfo;
+class LoginNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navTarget: null,
+      hambugerOpen: false,
+      userOpen: false,
+    };
+  }
+
   // 로그아웃 버튼 클릭시 axios요청 함수
-  const handleLogout = () => {
-    handleClose();
+  handleLogout = () => {
     axios.get(`${BASEURL}/user/logout`).then(() => {
-      console.log(props.history);
+      console.log(this.props.history);
       // TODO : 페이지 전환 확인 redirect
       // TODO: 다른 상태코드에 따른 분기가 필요
-      props.handleLoginFail();
-      props.history.push("/");
+      this.props.handleLoginFail();
+      this.props.history.push("/");
     });
   };
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
-  //매뉴 열림
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  handleNav = (value) => {
+    this.setState({ navTarget: value });
   };
 
-  //매뉴 닫침
-  const handleClose = () => {
-    setAnchorEl(null);
+  handleHambuger = (value) => {
+    this.setState({ hambugerOpen: value });
   };
 
-  //TODO: 고정 nav바 css style
-  const useStyles = makeStyles({
-    nav: {
-      display: "block",
-      height: "60px",
-      minHeight: "auto",
-    },
-  });
+  handleUser = (value) => {
+    this.setState({ userOpen: value });
+  };
 
-  const classes = useStyles();
+  render() {
+    const { navTarget, hambugerOpen, userOpen } = this.state;
+    return (
+      <div>
+        <nav class="bg-gray-800">
+          <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <img
+                    class="h-8 w-8"
+                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                    alt="Workflow"
+                  />
+                </div>
+                <div class="hidden md:block">
+                  <div class="ml-10 flex items-baseline space-x-4">
+                    {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+                    <Link to="/">
+                      <span
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        onClick={() => {
+                          this.handleNav("Basic part");
+                        }}
+                      >
+                        기본 부위
+                      </span>
+                    </Link>
+                    <Link to="/">
+                      <span
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        onClick={() => {
+                          this.handleNav("Custom part");
+                        }}
+                      >
+                        커스텀 부위
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-4 flex items-center md:ml-6">
+                  {/* <!-- Profile dropdown --> */}
+                  {this.props.userInfo.promise ? (
+                    <Link to="/mypage">
+                      <span
+                        class="bg-gray-100 text-gray-500 px-3 py-2 rounded-md text-m font-medium"
+                        onClick={() => {
+                          this.handleNav("My page");
+                        }}
+                      >
+                        {this.props.userInfo.promise}
+                      </span>
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
+                  <div class="ml-3 relative">
+                    <div>
+                      <button
+                        class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        id="user-menu"
+                        aria-haspopup="true"
+                        onClick={
+                          userOpen
+                            ? () => this.handleUser(false)
+                            : () => this.handleUser(true)
+                        }
+                      >
+                        <span class="sr-only">Open user menu</span>
+                        <img
+                          class="h-8 w-8 rounded-full"
+                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          alt=""
+                        />
+                      </button>
+                    </div>
+                    {/* <!--
+                Profile dropdown panel, show/hide based on dropdown state.
 
-  return (
-    <div
-      style={{
-        width: "100%",
-        display: "block",
-        minHeight: "auto",
-        padding: "0px",
-        margin: "0px",
-      }}
-    >
-      <AppBar position="static">
-        <Toolbar
-          classes={{
-            root: classes.nav,
-          }}
-        >
-            <img
-              src={logoimg}
-              style={{
-                width: "50px",
-                height: "auto",
-                marginTop: "5px",
-              }}
-            />
-          <div
-            style={{
-              color: "white",
-              position: "fixed",
-              textAlign: "center",
-              top: "20px",
-              left: "25%",
-              width: "50%",
-            }}
-          >
-            {promise ? `나의 다짐: ${promise}` : "등록된 나의 다짐이 없습니다."}
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              --> */}
+                    {userOpen ? (
+                      <div
+                        class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="user-menu"
+                      >
+                        <Link to="/mypage">
+                          <span
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                            onClick={() => {
+                              this.handleNav("My page");
+                            }}
+                          >
+                            마이페이지
+                          </span>
+                        </Link>
+                        <span
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          role="menuitem"
+                          onClick={this.handleLogout}
+                        >
+                          로그아웃
+                        </span>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div class="-mr-2 flex md:hidden">
+                {/* <!-- Mobile menu button --> */}
+                <button class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                  <span class="sr-only">Open main menu</span>
+                  {/* <!--
+              Heroicon name: menu
+
+              Menu open: "hidden", Menu closed: "block"
+            --> */}
+                  <svg
+                    class="block h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                  {/* <!--
+              Heroicon name: x
+
+              Menu open: "block", Menu closed: "hidden"
+            --> */}
+                  <svg
+                    class="hidden h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
-          <div style={{ float: "right" }}>
-            <img
-              alt="사진이 어디있을까요?"
-              src={profile ? profile : profile_img}
-              style={{
-                width: "50px",
-                height: "auto",
-                marginTop: "5px",
-                borderRadius: "50%",
-              }}
-              onClick={handleMenu}
-            />
-            <span>{name}</span>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                <Link to="/mypage">마이페이지</Link>
-              </MenuItem>
-              <MenuItem onClick={handleLogout}>로그아웃</MenuItem>
-            </Menu>
+
+          {/* <!--
+      Mobile menu, toggle classes based on menu state.
+
+      Open: "block", closed: "hidden"
+    --> */}
+          <div class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+              <span class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">
+                기본 부위
+              </span>
+
+              <span class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                커스텀 부위
+              </span>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-700">
+              <div class="flex items-center px-5">
+                <div class="flex-shrink-0">
+                  <img
+                    class="h-10 w-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </div>
+                <div class="ml-3">
+                  <div class="text-base font-medium leading-none text-white">
+                    Tom Cook
+                  </div>
+                  <div class="text-sm font-medium leading-none text-gray-400">
+                    tom@example.com
+                  </div>
+                </div>
+                <button class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                  <span class="sr-only">View notifications</span>
+                  {/* <!-- Heroicon name: bell --> */}
+                  <svg
+                    class="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-3 px-2 space-y-1">
+                <span class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">
+                  Your Profile
+                </span>
+
+                <span class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">
+                  Settings
+                </span>
+              </div>
+            </div>
           </div>
-        </Toolbar>
-      </AppBar>
-      <div className="topbutton">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          TOP
-        </Button>
+        </nav>
+        <header class="bg-white shadow">
+          <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold leading-tight text-gray-900">
+              {navTarget}
+            </h1>
+          </div>
+        </header>
+        <main>
+          <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            {/* <!-- Replace with your content --> */}
+            <div class="px-4 py-6 sm:px-0">
+              <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+            </div>
+            {/* <!-- /End replace --> */}
+          </div>
+        </main>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default withRouter(LoginNav);
