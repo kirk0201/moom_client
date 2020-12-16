@@ -78,7 +78,7 @@ class UserInfo extends Component {
 
     return (
       <>
-        <div className="container">
+        <div className="container" style={{ marginTop: "250px" }}>
           <div>
             {isOpenProfile ? (
               <UserInfoImg
@@ -104,7 +104,7 @@ class UserInfo extends Component {
             )}
           </div>
           <div>
-            <div style={{ marginLeft: 60 ,marginTop: 10}}>
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
               <div>닉네임</div>
               {isOpenName ? (
                 <UserInfoEdit

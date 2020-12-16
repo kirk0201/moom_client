@@ -127,7 +127,7 @@ class SignUp extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center>
+        <center style={{ paddingTop: "125px" }}>
           <img
             src={logoimg}
             style={{
