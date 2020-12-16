@@ -73,7 +73,7 @@ class BasicInputPost extends Component {
           onChange={this.handleInputGoal}
         />
         <button
-          class="ml-5 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+          class="focus:outline-none shadow-md ml-5 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
           name={name}
           value={what}
           onClick={this.handleBasicPost}
@@ -81,7 +81,7 @@ class BasicInputPost extends Component {
           SAVE
         </button>
         <button
-          class="ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+          class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
           name={what}
           onClick={this.handlecloseInput}
         >
