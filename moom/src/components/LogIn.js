@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import Alert from "@material-ui/lab/Alert";
+
 import { BASEURL } from "../helpurl";
 import GLogin from "./GLogin";
 import githublogo from "../images/github.svg";
-import "../css/Login.css";
 import logoimg from "../images/logo700700.png";
+import "../css/Login.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -25,7 +28,15 @@ const styles = {
     color: "white",
     height: 48,
     padding: "0 30px",
-    margin: "10px",
+    marginTop: "13px",
+    width: "230px",
+    "&:focus": {
+      outline: 0,
+    },
+  },
+  errmsg: {
+    marginTop: "20px",
+    width: "290px",
   },
 };
 
@@ -102,8 +113,7 @@ class LogIn extends Component {
         console.log(err.message);
         if (err.message === "Request failed with status code 404") {
           this.setState({
-            errorMessage:
-              "회원 정보를 찾을 수 없습니다. Email과  Password를 확인해주세요.",
+            errorMessage: "회원 정보를 찾을 수 없습니다.",
           });
         }
       });
@@ -113,15 +123,14 @@ class LogIn extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center style={{ paddingTop: 30 }}>
-        <img
-              src={logoimg}
-              style={{
-                width: "300px",
-                height: "auto",
-                marginTop: "5px",
-              }}
-            />
+        <center>
+          <img
+            src={logoimg}
+            style={{
+              width: "250px",
+              height: "auto",
+            }}
+          />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -131,8 +140,8 @@ class LogIn extends Component {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
-                autoFocus
+                // autoComplete="email"
+                // autoFocus
                 onChange={this.handleInputLogin}
               />
             </div>
@@ -155,8 +164,14 @@ class LogIn extends Component {
               </Button>
             </div>
             {/* TODO : 에러메세지 재확인 */}
-            <div>{this.state.errorMessage}</div>
-            <Grid container>
+            <div>
+              {this.state.errorMessage ? (
+                <Alert className={classes.errmsg} severity="error">
+                  {this.state.errorMessage}
+                </Alert>
+              ) : null}
+            </div>
+            {/* <Grid container>
               <Grid item xs>
                 <Link to="/signup" variant="body2">
                   Forgot password?
@@ -165,14 +180,14 @@ class LogIn extends Component {
                   {"Don't have an account?"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </form>
           <div className="container">
             {/* 구글 : 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
-            <div style={{ marginTop: 10}}>
+            <div style={{ marginTop: 20 }}>
               <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
             </div>
-            <div  style={{ marginTop: 10 , marginLeft: 10}}>
+            <div style={{ marginTop: 20, marginLeft: 10 }}>
               <button className="github-btn">
                 <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
@@ -196,4 +211,4 @@ class LogIn extends Component {
   }
 }
 
-export default withStyles(styles)(withRouter(LogIn))
+export default withStyles(styles)(withRouter(LogIn));

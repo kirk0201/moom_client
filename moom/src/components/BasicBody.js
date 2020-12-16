@@ -306,117 +306,119 @@ class BasicBody extends Component {
     // CustomBody 컴포넌트 리턴
     return (
       <>
-        <div>
+        <div class="relative top-96">
           <BodyNav />
         </div>
-        <div>
-          <BasicData
-            sex={sex}
-            body_fat={body_fat}
-            weight={weight}
-            shoulder={shoulder}
-            chest={chest}
-            waist={waist}
-            hip={hip}
-            thigh={thigh}
-            handleRecentBody={this.handleRecentBody}
-            bodyChoiceSuccess={this.bodyChoiceSuccess}
-            handleToggleClick={this.handleToggleClick}
-            isWeightKG={isWeightKG}
-            isShoulderCM={isShoulderCM}
-            isChestCM={isChestCM}
-            isWaistCM={isWaistCM}
-            isHipCM={isHipCM}
-            isThighCM={isThighCM}
-          />
-        </div>
-        <div>
-          {basicPartName ? (
-            <>
-              <div>{basicPartName}을 선택했습니다.</div>
-              {/* <div>{DataList}</div> */}
-              <div>
-                <select value={selectChart} onChange={this.handleChangeChart}>
-                  <option value="">선택</option>
-                  <option value="CertainAllData">
-                    All data about {basicPartName}
-                  </option>
-                  <option value="CertainLastData">
-                    Last seven data about {basicPartName}
-                  </option>
-                  <option value="BasicAllData">
-                    All data about basic body
-                  </option>
-                  <option value="BasicLastData">
-                    Last seven data about basic body
-                  </option>
-                </select>
-              </div>
-              <div
-                style={{
-                  width: "650px",
-                }}
-              >
-                {isCertain ? (
-                  <>
-                    {allBodyData ? (
-                      <CertainChart
-                        allBodyData={allBodyData}
-                        partName={basicPartName}
-                        isAllData={isAllData}
-                        handlePointClick={this.handlePointClick}
+        <div class="ml-10 mr-10">
+          <div>
+            <BasicData
+              sex={sex}
+              body_fat={body_fat}
+              weight={weight}
+              shoulder={shoulder}
+              chest={chest}
+              waist={waist}
+              hip={hip}
+              thigh={thigh}
+              handleRecentBody={this.handleRecentBody}
+              bodyChoiceSuccess={this.bodyChoiceSuccess}
+              handleToggleClick={this.handleToggleClick}
+              isWeightKG={isWeightKG}
+              isShoulderCM={isShoulderCM}
+              isChestCM={isChestCM}
+              isWaistCM={isWaistCM}
+              isHipCM={isHipCM}
+              isThighCM={isThighCM}
+            />
+          </div>
+          <div>
+            {basicPartName ? (
+              <>
+                <div>{basicPartName}을 선택했습니다.</div>
+                {/* <div>{DataList}</div> */}
+                <div>
+                  <select value={selectChart} onChange={this.handleChangeChart}>
+                    <option value="">선택</option>
+                    <option value="CertainAllData">
+                      All data about {basicPartName}
+                    </option>
+                    <option value="CertainLastData">
+                      Last seven data about {basicPartName}
+                    </option>
+                    <option value="BasicAllData">
+                      All data about basic body
+                    </option>
+                    <option value="BasicLastData">
+                      Last seven data about basic body
+                    </option>
+                  </select>
+                </div>
+                <div
+                  style={{
+                    width: "650px",
+                  }}
+                >
+                  {isCertain ? (
+                    <>
+                      {allBodyData ? (
+                        <CertainChart
+                          allBodyData={allBodyData}
+                          partName={basicPartName}
+                          isAllData={isAllData}
+                          handlePointClick={this.handlePointClick}
+                        />
+                      ) : null}
+                    </>
+                  ) : (
+                    <>
+                      {allBasicData ? (
+                        <BasicAllChart
+                          allBasicData={allBasicData}
+                          allBodyData={allBodyData}
+                          partName={basicPartName}
+                          name={name}
+                          isAllData={isAllData}
+                        />
+                      ) : null}
+                    </>
+                  )}
+                </div>
+                <div>
+                  {isCertainEdit ? (
+                    <>
+                      <CertainEdit
+                        id={id}
+                        value={value}
+                        date={date}
+                        basicPartName={basicPartName}
+                        certainBodyDataGet={this.certainBodyDataGet}
+                        certainBodyGoalGet={this.certainBodyGoalGet}
+                        handleRecentBody={this.handleRecentBody}
+                        basicBodyDataGet={this.basicBodyDataGet}
+                        handleDeleteEdit={this.handleDeleteEdit}
                       />
-                    ) : null}
-                  </>
-                ) : (
-                  <>
-                    {allBasicData ? (
-                      <BasicAllChart
-                        allBasicData={allBasicData}
-                        allBodyData={allBodyData}
-                        partName={basicPartName}
-                        name={name}
-                        isAllData={isAllData}
-                      />
-                    ) : null}
-                  </>
-                )}
-              </div>
-              <div>
-                {isCertainEdit ? (
-                  <>
-                    <CertainEdit
-                      id={id}
-                      value={value}
-                      date={date}
-                      basicPartName={basicPartName}
-                      certainBodyDataGet={this.certainBodyDataGet}
-                      certainBodyGoalGet={this.certainBodyGoalGet}
-                      handleRecentBody={this.handleRecentBody}
-                      basicBodyDataGet={this.basicBodyDataGet}
-                      handleDeleteEdit={this.handleDeleteEdit}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <div>
-                      그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할 수
-                      있어요!
-                    </div>
-                  </>
-                )}
-              </div>
-              <div>
-                <CertainGoal
-                  goal={basicPartGoal}
-                  name={name}
-                  partName={basicPartName}
-                  recent={basicPartRecent}
-                  certainBodyGoalGet={this.certainBodyGoalGet}
-                />
-              </div>
-            </>
-          ) : null}
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할
+                        수 있어요!
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div>
+                  <CertainGoal
+                    goal={basicPartGoal}
+                    name={name}
+                    partName={basicPartName}
+                    recent={basicPartRecent}
+                    certainBodyGoalGet={this.certainBodyGoalGet}
+                  />
+                </div>
+              </>
+            ) : null}
+          </div>
         </div>
       </>
     );
