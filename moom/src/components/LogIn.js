@@ -123,7 +123,7 @@ class LogIn extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center style={{ paddingTop: "125px" }}>
+        <center style={{ paddingTop: "170px" }}>
           <img
             src={logoimg}
             style={{
