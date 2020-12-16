@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../css/NologinNav.css";
 import "tailwindcss/tailwind.css";
-import logoimg from "../images/moomlogo.png";
+import logoimg from "../images/logo700700.png";
 
 class NoLoginNav extends Component {
   constructor(props) {
@@ -16,10 +16,20 @@ class NoLoginNav extends Component {
     this.setState({ navTarget: value });
   };
 
+  scrollToIntroduce = () => {
+    this.handleNav("Introduce");
+    window.scrollTo(0, 500);
+  };
+
+  scrollToExperience = () => {
+    this.handleNav("Experience");
+    window.scrollTo(0, 1000);
+  };
+
   // 비로그인시 네비 바
   render() {
     return (
-      <div>
+      <div class="fixed w-full z-10">
         <nav class="bg-gray-800">
           <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -51,18 +61,14 @@ class NoLoginNav extends Component {
                     </Link>
                     <span
                       class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
-                      onClick={() => {
-                        this.handleNav("Introduce");
-                      }}
+                      onClick={this.scrollToIntroduce}
                     >
                       소개
                     </span>
 
                     <span
                       class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
-                      onClick={() => {
-                        this.handleNav("Experience");
-                      }}
+                      onClick={this.scrollToExperience}
                     >
                       체험하기
                     </span>
@@ -140,6 +146,47 @@ class NoLoginNav extends Component {
                   </svg>
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* <!--/
+      Mobile menu, toggle classes based on m/enu state.
+/
+      Open: "block", closed: "hidden"/
+    -->/ */}
+          <div class="block md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+              <Link to="/">
+                <span
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => {
+                    this.handleNav("Main");
+                  }}
+                >
+                  메인
+                </span>
+              </Link>
+              <Link to="/login">
+                <span
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => {
+                    this.handleNav("Login");
+                  }}
+                >
+                  로그인
+                </span>
+              </Link>
+              <Link to="/signup">
+                <span
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => {
+                    this.handleNav("Sign up");
+                  }}
+                >
+                  회원가입
+                </span>
+              </Link>
             </div>
           </div>
         </nav>

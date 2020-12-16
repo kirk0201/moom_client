@@ -113,15 +113,15 @@ class LogIn extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center style={{ paddingTop: 30 }}>
-        <img
-              src={logoimg}
-              style={{
-                width: "300px",
-                height: "auto",
-                marginTop: "5px",
-              }}
-            />
+        <center style={{ paddingTop: "125px" }}>
+          <img
+            src={logoimg}
+            style={{
+              width: "300px",
+              height: "auto",
+              marginTop: "5px",
+            }}
+          />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -169,10 +169,10 @@ class LogIn extends Component {
           </form>
           <div className="container">
             {/* 구글 : 현재페이지에서 연결하려면 location.href='address'를 이용한다. */}
-            <div style={{ marginTop: 10}}>
+            <div style={{ marginTop: 10 }}>
               <GLogin handleLoginSuccess={this.props.handleLoginSuccess} />
             </div>
-            <div  style={{ marginTop: 10 , marginLeft: 10}}>
+            <div style={{ marginTop: 10, marginLeft: 10 }}>
               <button className="github-btn">
                 <a href="https://github.com/login/oauth/authorize?client_id=c30e06847f78a8951b9c&redirect_uri=https://m00m.cf/user/gitoauth&scope=user">
                   <div className="github-div">
@@ -196,4 +196,4 @@ class LogIn extends Component {
   }
 }
 
-export default withStyles(styles)(withRouter(LogIn))
+export default withStyles(styles)(withRouter(LogIn));

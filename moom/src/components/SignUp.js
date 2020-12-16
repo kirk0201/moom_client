@@ -107,15 +107,15 @@ class SignUp extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center style={{ paddingTop: 30 }}>
-        <img
-              src={logoimg}
-              style={{
-                width: "300px",
-                height: "auto",
-                marginTop: "5px",
-              }}
-            />
+        <center style={{ paddingTop: "125px" }}>
+          <img
+            src={logoimg}
+            style={{
+              width: "300px",
+              height: "auto",
+              marginTop: "5px",
+            }}
+          />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -185,4 +185,4 @@ class SignUp extends Component {
   }
 }
 
-export default withStyles(styles)(withRouter(SignUp))
+export default withStyles(styles)(withRouter(SignUp));
