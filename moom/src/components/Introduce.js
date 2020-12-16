@@ -65,7 +65,7 @@ export class Introduce extends Component {
     let slide3 = this.state.selectSlide === 3 ? "fade" : "selectSlide";
     return (
       <>
-        <div class="slideshow-container">
+        <div class="slideshow-container" style={{ marginTop: "165px" }}>
           <div class={slide1}>
             <div class="numbertext">1 / 3</div>
             <img class="slide-img" src={bg1} alt="이미지 어디감?" />

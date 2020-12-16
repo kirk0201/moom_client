@@ -59,19 +59,22 @@ class NoLoginNav extends Component {
                         메인
                       </span>
                     </Link>
-                    <span
-                      class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
-                      onClick={this.scrollToIntroduce}
-                    >
-                      소개
-                    </span>
-
-                    <span
-                      class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
-                      onClick={this.scrollToExperience}
-                    >
-                      체험하기
-                    </span>
+                    <Link to="/">
+                      <span
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        onClick={this.scrollToIntroduce}
+                      >
+                        소개
+                      </span>
+                    </Link>
+                    <Link to="/">
+                      <span
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        onClick={this.scrollToExperience}
+                      >
+                        체험하기
+                      </span>
+                    </Link>
                   </div>
                 </div>
               </div>
