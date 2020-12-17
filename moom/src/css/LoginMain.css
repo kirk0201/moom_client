@@ -1,4 +1,6 @@
 .login-main {
   overflow-x: auto;
-  padding: 50px 80px;
+  padding-top: 120px;
+  padding-left: 80px;
+  padding-right: 80px;
 }

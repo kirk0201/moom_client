@@ -87,15 +87,15 @@ class BasicData extends Component {
 
     return (
       <>
-        <div class="pt-7 pl-7 tracking-tight text-2xl font-bold ">
+        <div class="pt-3 pl-7 tracking-tight text-2xl font-bold">
           <span class="text-gray-900">Recent</span>
           <span class=" pl-1 text-purple-400">Basic body</span>
         </div>
-        <div class="md:flex pt-7 pl-7">
+        <div class="md:flex pl-7">
           <div class="w-48 h-auto">
             {sex ? (
               <img
-                class="pt-10"
+                class="pt-16"
                 src={isMale ? male : female}
                 alt="전신 일러스트"
               ></img>
@@ -114,8 +114,8 @@ class BasicData extends Component {
               </div>
             )}
           </div>
-          <div class="pt-3 pl-14">
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+          <div class="pt-2 pl-14 mr-16">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Body fat
               </span>
@@ -134,11 +134,13 @@ class BasicData extends Component {
                         <div class="flex items-center justify-between">
                           <div class="flex items-center">
                             <span class="text-2xl font-medium">{body_fat}</span>
-                            <span class="text-sm font-bold pl-2">%</span>
+                          </div>
+                          <div class="absolute ml-14">
+                            <span class="text-sm font-bold pl-2 ml-2">%</span>
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-24 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenBodyfat"
                               onClick={this.openInputBodyPost}
                             >
@@ -174,7 +176,7 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Weight
               </span>
@@ -241,7 +243,7 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Shoulder
               </span>
@@ -308,7 +310,7 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Chest
               </span>
@@ -375,7 +377,7 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Waist
               </span>
@@ -442,7 +444,7 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Hip
               </span>
@@ -509,7 +511,7 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="shadow mb-2 bg-white rounded-md p-2 border border-dashed border-gray-300 hover:border-gray-500">
+            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
               <span class="text-base font-bold text-purple-600 hover:text-purple-400">
                 Thigh
               </span>
