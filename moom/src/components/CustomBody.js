@@ -274,6 +274,7 @@ class CustomBody extends Component {
 
   render() {
     const { name } = this.props.userInfo;
+    const { handleHeader, header } = this.props;
     const {
       customs,
       isOpen,
@@ -398,7 +399,7 @@ class CustomBody extends Component {
     return (
       <>
         <div>
-          <BodyNav />
+          <BodyNav handleHeader={handleHeader} header={header} />
         </div>
         <div>
           <CustomBodyCreate

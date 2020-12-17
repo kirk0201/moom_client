@@ -9,7 +9,6 @@ class LoginNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navTarget: null,
       hambugerOpen: false,
       userOpen: false,
     };
@@ -40,7 +39,8 @@ class LoginNav extends Component {
   };
 
   render() {
-    const { navTarget, hambugerOpen, userOpen } = this.state;
+    const { hambugerOpen, userOpen } = this.state;
+    const { handleHeader, header } = this.props;
     const { promise, email, profile, name } = this.props.userInfo;
     return (
       <div class="w-full z-10">
@@ -58,7 +58,7 @@ class LoginNav extends Component {
                       <span
                         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={() => {
-                          this.handleNav("Basic part");
+                          handleHeader("Basic part");
                         }}
                       >
                         기본 부위
@@ -68,7 +68,7 @@ class LoginNav extends Component {
                       <span
                         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={() => {
-                          this.handleNav("Custom part");
+                          handleHeader("Custom part");
                         }}
                       >
                         커스텀 부위
@@ -85,7 +85,7 @@ class LoginNav extends Component {
                       <span
                         class="bg-gray-100 text-gray-500 px-3 py-2 rounded-md text-m font-medium"
                         onClick={() => {
-                          this.handleNav("My page");
+                          handleHeader("My page");
                         }}
                       >
                         {promise}
@@ -281,7 +281,7 @@ class LoginNav extends Component {
         <header class="bg-white shadow hidden md:block">
           <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold leading-tight text-gray-900">
-              {navTarget ? navTarget : "Basic part"}
+              {header ? header : "Basic part"}
             </h1>
           </div>
         </header>

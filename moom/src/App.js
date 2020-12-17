@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       isLogin: false,
       userInfo: null,
+      header: null,
     };
   }
 
@@ -23,6 +24,11 @@ class App extends Component {
   componentDidMount() {
     this.handleLoginSuccess();
   }
+
+  // header 이름 변경
+  handleHeader = (value) => {
+    this.setState({ header: value });
+  };
 
   // 로그인 성공시 setState로 유저정보 저장하는 함수
   handleLoginSuccess = () => {
@@ -63,6 +69,8 @@ class App extends Component {
                     isLogin={isLogin}
                     handleLoginSuccess={this.handleLoginSuccess.bind(this)}
                     handleLoginFail={this.handleLoginFail.bind(this)}
+                    handleHeader={this.handleHeader}
+                    header={this.state.header}
                   ></LoginMain>
                 );
               } else {

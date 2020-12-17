@@ -33,7 +33,7 @@ class NoLoginNav extends Component {
 
   scrollToExperience = () => {
     this.handleNav("Experience");
-    window.scrollTo(0, 1490);
+    window.scrollTo(0, 1550);
   };
 
   // 비로그인시 네비 바
