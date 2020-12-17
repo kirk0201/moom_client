@@ -260,7 +260,7 @@ export default class ExperienceInput extends Component {
               <button
                 name={this.props.temp}
                 onClick={this.props.handleButtonFalse}
-                className="w-full border-b-4 font-bold focus:shadow-xl focus:bg-gray-500 border-gray-400 rounded-md h-1/3 justify-center justify-self-center focus:outline-none text-white rounded-br-3xl hover:bg-blue-300 bg-purple-300 rounded-tl-3xl border-black"
+                className="w-full border-b-4 font-bold focus:shadow-xl focus:bg-gray-500 border-gray-400 rounded-md h-1/3 justify-center justify-self-center focus:outline-none text-white rounded-br-3xl hover:bg-blue-300 bg-purple-300 rounded-tl-3xl"
               >
                 {this.state.unitR}
               </button>
@@ -277,7 +277,7 @@ export default class ExperienceInput extends Component {
               <button
                 name={this.props.temp}
                 onClick={this.props.handleButtonFalse}
-                className="w-full border-b-4 font-bold focus:shadow-xl focus:bg-gray-500 border-gray-400 rounded-md h-1/3 justify-center justify-self-center focus:outline-none text-white rounded-br-3xl hover:bg-blue-300 bg-purple-300 rounded-tl-3xl border-black"
+                className="w-full border-b-4 font-bold focus:shadow-xl focus:bg-gray-500 border-gray-400 rounded-md h-1/3 justify-center justify-self-center focus:outline-none text-white rounded-br-3xl hover:bg-blue-300 bg-purple-300 rounded-tl-3xl"
               >
                 {this.state.unitR}
               </button>
