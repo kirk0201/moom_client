@@ -59,9 +59,9 @@ class BasicAllChart extends Component {
     return (
       <div className="app">
         <div className="chart-container">
-          <HighchartsChart plotOptions={plotOptions}>
+          {/* <HighchartsChart plotOptions={plotOptions}> */}
             {/* 다크 스타일 모드 */}
-            {/* <HighchartsChart styledMode> */}
+            <HighchartsChart styledMode>
             <Chart />
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
