@@ -62,7 +62,7 @@ class CertainChart extends Component {
       return val.value;
     });
     let allDataSchedule = allBodyData.map((val) => {
-      return val.schedule.split("-").slice(1).join("-");
+      return val.schedule.split("-").slice(1).join("/");
     });
     let allDataId = allBodyData.map((val) => {
       return val.id;
@@ -110,9 +110,9 @@ class CertainChart extends Component {
           lockAspectRatio
         > */}
         <div className="chart-container">
-          <HighchartsChart plotOptions={plotOptions}>
-            {/* 다크 스타일 모드 */}
-            {/* <HighchartsChart styledMode> */}
+          {/* <HighchartsChart plotOptions={plotOptions}> */}
+          {/* 다크 스타일 모드 */}
+          <HighchartsChart styledMode plotOptions={plotOptions}>
             <Chart type="spline" />
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>

@@ -1,0 +1,10 @@
+.certain {
+  width: 680px;
+}
+
+.chart {
+  width: 630px;
+  height: 350px;
+  position: absolute;
+  margin-left: 12px;
+}
