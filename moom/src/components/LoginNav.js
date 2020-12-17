@@ -43,7 +43,7 @@ class LoginNav extends Component {
     const { navTarget, hambugerOpen, userOpen } = this.state;
     const { promise, email, profile, name } = this.props.userInfo;
     return (
-      <div class="w-full">
+      <div class="w-full z-10">
         <nav class="bg-gray-800">
           <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
