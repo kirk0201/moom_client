@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import Alert from "@material-ui/lab/Alert";
+
 import { BASEURL } from "../helpurl";
+import logoimg from "../images/logo700700.png";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -21,7 +27,19 @@ const styles = {
     color: "white",
     height: 48,
     padding: "0 30px",
-    margin: "10px",
+    marginTop: "7px",
+    width: "230px",
+    "&:focus": {
+      outline: 0,
+    },
+  },
+  select: {
+    width: "230px",
+    margin: "15px",
+  },
+  errmsg: {
+    marginTop: "20px",
+    width: "290px",
   },
 };
 
@@ -59,6 +77,9 @@ class SignUp extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
+    console.log("불리니?");
+    console.log(name);
+    console.log(value);
     this.setState({
       [name]: value,
     });
@@ -96,7 +117,7 @@ class SignUp extends Component {
         console.log(err.message);
         if (err.message === "Request failed with status code 409") {
           this.setState({
-            errorEmail: "이미 존재하는 이메일입니다.",
+            errorMessage: "이미 존재하는 이메일입니다.",
           });
         }
       });
@@ -106,9 +127,14 @@ class SignUp extends Component {
     const { classes } = this.props;
     return (
       <>
-        <center style={{ paddingTop: 50 }}>
-          <h1>LogIn 여기에 로고 들어갈 예정</h1>
-          <p>회원가입</p>
+        <center style={{ paddingTop: "170px" }}>
+          <img
+            src={logoimg}
+            style={{
+              width: "250px",
+              height: "auto",
+            }}
+          />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <TextField
@@ -118,14 +144,12 @@ class SignUp extends Component {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
-                autoFocus
+                // autoComplete="email"
+                // autoFocus
                 type="email"
                 onChange={this.handleInputSignup}
               ></TextField>
             </div>
-            {/* TODO : 에러메세지 재확인 */}
-            <div>{this.state.errorEmail}</div>
             <div>
               <TextField
                 variant="outlined"
@@ -133,7 +157,6 @@ class SignUp extends Component {
                 required
                 id="email"
                 label="Your NickName"
-                autoFocus
                 name="name"
                 type="text"
                 onChange={this.handleInputSignup}
@@ -148,27 +171,38 @@ class SignUp extends Component {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
                 onChange={this.handleInputSignup}
               ></TextField>
             </div>
-            <p>성별</p>
-            <select
-              name="sex"
-              value={this.state.sex}
-              onChange={this.handleInputSignup}
-            >
-              <option value="">선택</option>
-              <option value="female">여성</option>
-              <option value="male">남성</option>
-            </select>
+            <FormControl className={classes.select} variant="outlined">
+              <InputLabel htmlFor="outlined-age-native-simple">
+                Gender
+              </InputLabel>
+              <Select
+                native
+                name="sex"
+                value={this.state.sex}
+                onChange={this.handleInputSignup}
+                label="Gender"
+              >
+                <option aria-label="None" value="" />
+                <option value="female">여성</option>
+                <option value="male">남성</option>
+              </Select>
+            </FormControl>
             <div>
               <Button className={classes.root} onClick={this.handleSignup}>
                 SignUp
               </Button>
             </div>
             {/* TODO : 에러메세지 재확인 */}
-            <div>{this.state.errorMessage}</div>
+            <div>
+              {this.state.errorMessage ? (
+                <Alert className={classes.errmsg} severity="error">
+                  {this.state.errorMessage}
+                </Alert>
+              ) : null}
+            </div>
           </form>
           <Box mt={8}>
             <Copyright />
@@ -179,4 +213,4 @@ class SignUp extends Component {
   }
 }
 
-export default withStyles(styles)(withRouter(SignUp))
+export default withStyles(styles)(withRouter(SignUp));

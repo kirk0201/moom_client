@@ -2,11 +2,10 @@
 
 /* .container {
   width: 100%;
-  border: 2px solid green;
   display: flex;
-  justify-content: space-between;
-} */
 
+  justify-content: center;
+}
 li {
   list-style: none;
 }
@@ -27,7 +26,6 @@ li {
 
 .text_box {
   width: 60%;
-  border: 2px solid red;
 }
 .text_box > li {
   border: 2px solid blue;

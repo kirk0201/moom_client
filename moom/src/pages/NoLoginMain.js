@@ -3,6 +3,7 @@ import { withRouter, Route, Switch } from "react-router-dom";
 
 import NoLoginNav from "../components/NoLoginNav";
 import Introduce from "../components/Introduce";
+import Description from "../components/Description";
 import Experience from "../components/Experience";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
@@ -27,6 +28,9 @@ class NoLoginMain extends Component {
                     <UserStore>
                       <div>
                         <Introduce />
+                      </div>
+                      <div>
+                        <Description />
                       </div>
                       <div>
                         <Experience />

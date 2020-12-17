@@ -11,7 +11,7 @@
   font-size: 14px;
   font-weight: 500;
   font-family: Roboto, sans-serif;
-  height: 45px;
+  height: 43px;
 }
 .github-btn:hover {
   opacity: 0.9;
@@ -39,4 +39,10 @@
 
 a {
   text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
