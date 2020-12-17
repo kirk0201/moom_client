@@ -36,17 +36,78 @@ export class Experience extends Component {
 
   handleGoalState = (e) => {
     let id = e.target.id;
-    // console.log(e.target.id);
-    console.log(e.target);
+
     if (e.target.checked === true) {
-      console.log("통과");
-      if (id === "isClick1") this.setState({ show1: true });
-      if (id === "isClick2") this.setState({ show2: true });
-      if (id === "isClick3") this.setState({ show3: true });
-      if (id === "isClick4") this.setState({ show4: true });
-      if (id === "isClick5") this.setState({ show5: true });
-      if (id === "isClick6") this.setState({ show6: true });
-      if (id === "isClick7") this.setState({ show7: true });
+      if (id === "isClick1")
+        this.setState({
+          show1: true,
+          show2: false,
+          show3: false,
+          show4: false,
+          show5: false,
+          show6: false,
+          show7: false,
+        });
+      if (id === "isClick2")
+        this.setState({
+          show1: false,
+          show2: true,
+          show3: false,
+          show4: false,
+          show5: false,
+          show6: false,
+          show7: false,
+        });
+      if (id === "isClick3")
+        this.setState({
+          show1: false,
+          show2: false,
+          show3: true,
+          show4: false,
+          show5: false,
+          show6: false,
+          show7: false,
+        });
+      if (id === "isClick4")
+        this.setState({
+          show1: false,
+          show2: false,
+          show3: false,
+          show4: true,
+          show5: false,
+          show6: false,
+          show7: false,
+        });
+      if (id === "isClick5")
+        this.setState({
+          show1: false,
+          show2: false,
+          show3: false,
+          show4: false,
+          show5: true,
+          show6: false,
+          show7: false,
+        });
+      if (id === "isClick6")
+        this.setState({
+          show1: false,
+          show2: false,
+          show3: false,
+          show4: false,
+          show5: false,
+          show6: true,
+          show7: false,
+        });
+      if (id === "isClick7")
+        this.setState({
+          show1: false,
+          show2: false,
+          show3: false,
+          show4: false,
+          show5: false,
+          show6: false,
+          show7: true,
+        });
     } else if (e.target.checked === false) {
       if (id === "isClick1") this.setState({ show1: false });
       if (id === "isClick2") this.setState({ show2: false });
@@ -133,7 +194,7 @@ export class Experience extends Component {
           </div>
 
           {/* 남여 이미지 div */}
-          <div className="exp_container">
+          <div className="exp_container pb-20">
             <div className="left_ flex w-1/4 bg-white border-none">
               <img
                 className="h-full w-full border-solid hover:border-gray-500 shadow-lg border-gray-300 border rounded-3xl"
@@ -141,8 +202,8 @@ export class Experience extends Component {
                 alt="전신 일러스트"
               ></img>
             </div>
-            <div className="flex whitespace-normal border-solid border border-black w-1"></div>
-            <div className="input_size flex-col w-2/4">
+            <div className="flex whitespace-normal border-dashed border border-gray-400"></div>
+            <div className="input_size flex-col w-3/5 z-0">
               <ExperienceInput
                 name={part1}
                 temp="isClick1"
@@ -278,8 +339,9 @@ export class Experience extends Component {
               ></ExperienceGoal>
             </div>
           </div>
+          <div className="border border-solid border-t-2 whitespace-pre w-5/6 text-center border-gray-300"></div>
           <div className="mx-20 text-center p-12">
-            <button className=" w-48 h-32 hover:bg-gray-300 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-400 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid">
+            <button className=" z-50 w-48 h-32 hover:bg-gray-400 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-600 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid">
               저장
             </button>
           </div>

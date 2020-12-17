@@ -18,12 +18,6 @@ export default class ExperienceInput extends Component {
   }
   // 단위 변환하기 전과 후의 값을 모두 가지고 있기 위해 2개씩의 매서드 필요
 
-  componentDidMount() {
-    console.log(this.radioInput.current);
-  }
-  radioOn = (e) => {
-    console.log(e.target);
-  };
   handleBodyChange = (e) => {
     const context = this.context.actions;
     const value = e.target.value;
@@ -208,9 +202,9 @@ export default class ExperienceInput extends Component {
     }
     // 버튼 스타일
     let noError =
-      " border-b-4 shadow-lg hover:bg-gray-200 rounded-md text-3xl w-3/4 text-center focus:outline-none hover:border-blue-300 mb-2 ml-2";
+      " border-b-4 shadow-lg hover:bg-gray-200 font-bold rounded-md text-3xl w-3/4 text-center focus:outline-none hover:border-blue-300 mb-2 ml-2";
     let isError =
-      " border-b-4 border-red-200 text-red-500 shadow-lg hover:bg-gray-200 rounded-md text-3xl w-3/4 text-center focus:outline-none hover:border-red-300 mb-2 ml-2";
+      " border-b-4 border-red-200 text-red-500 font-bold shadow-lg hover:bg-gray-200 rounded-md text-3xl w-3/4 text-center focus:outline-none hover:border-red-300 mb-2 ml-2";
 
     // 목표 컴퍼넌트 state 관리
     let onToggleName;
@@ -233,7 +227,7 @@ export default class ExperienceInput extends Component {
     return (
       <>
         {/* Container (div * 3) */}
-        <div className="flex shadow-xl m-1 mb-4 h-24 bg-white rounded-md border border-dashed border-gray-300 hover:border-gray-500">
+        <div className="flex shadow-xl mt-20  m-1 h-24 bg-white rounded-md border-2 border-solid border-gray-200 hover:border-gray-400">
           {/* 좌측 div */}
           <div className="flex flex-col w-2/6">
             <div className="flex ml-3 text-2xl font-bold text-purple-600 hover:text-purple-400">
@@ -294,7 +288,7 @@ export default class ExperienceInput extends Component {
                 type="text"
                 value={resultR}
                 readOnly
-                className=" shadow-lg flex-grow mb-2 border-b-4 hover:border-blue-300 w-4/5 bg-white text-3xl hover:bg-gray-200 hover:border-b-2 text-center focus:outline-none rounded-md"
+                className=" shadow-lg cursor-not-allowed flex-grow mb-2 border-b-4 font-bold hover:border-blue-300 w-4/5 bg-white text-3xl hover:bg-gray-200 hover:border-b-2 text-center focus:outline-none rounded-md"
               />
               <div className="flex-grow text-2xl text-gray-400 mt-4 font-bold ">
                 {this.props.isClick ? this.state.unitL : this.state.unitR}

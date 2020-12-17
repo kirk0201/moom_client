@@ -38,9 +38,9 @@ li {
 .span_email {
   flex-grow: 1;
   /* border: 2px solid black; */
-  /* align-items: center; */
-  text-align: center;
-}
+/* align-items: center; */
+/* text-align: center;
+} */
 
 .div_btn_signout {
   display: flex;

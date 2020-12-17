@@ -211,8 +211,8 @@ export default class ExperienceGoal extends Component {
     return (
       <>
         {this.props.show ? (
-          <div className="container pb-6 border-t border-l border-r border-solid rounded-bl-3xl rounded-br-3xl border-gray-200  bg-gray-50 rounded-md m-auto py-10">
-            <div className="flex-row border-4 border-gray-400 w-100 h-auto md:h-64 bg-100 shadow-2xl rounded-lg p-6">
+          <div className="container border-t border-l border-r border-solid rounded-bl-3xl rounded-br-3xl border-gray-200  bg-gray-50 rounded-md m-auto">
+            <div className="flex-row border-4 border-gray-400 w-100 md:h-64 bg-100 shadow-2xl rounded-lg p-6">
               {/* <!-- 묶음 입력 --> */}
               <div className=" flex pb-7 space-x-10">
                 {/* <!-- 최측 입력  div --> */}
@@ -233,7 +233,7 @@ export default class ExperienceGoal extends Component {
                       onChange={this.handleGoalChange}
                       maxLength="4"
                       value={resultL}
-                      className="h-full hover:bg-gray-200 focus:outline-none text-3xl w-1/2 text-center"
+                      className="h-full font-bold hover:bg-gray-200 focus:outline-none text-3xl w-1/2 text-center"
                     />
                     <span className="text-gray-400 font-bold text-2xl">
                       {this.props.isClick ? this.state.unitR : this.state.unitL}
@@ -253,7 +253,7 @@ export default class ExperienceGoal extends Component {
                       type="text"
                       readOnly
                       value={currentValue}
-                      className="h-full focus:outline-none text-3xl w-1/2 text-center"
+                      className="h-full focus:outline-none font-bold cursor-not-allowed text-3xl w-1/2 text-center"
                     />
                     <span className="text-gray-400 font-bold text-2xl">
                       {this.props.isClick ? this.state.unitR : this.state.unitL}
