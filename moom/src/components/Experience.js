@@ -339,7 +339,7 @@ export class Experience extends Component {
               ></ExperienceGoal>
             </div>
           </div>
-          <div className="border border-solid border-t-2 whitespace-pre w-5/6 text-center border-gray-300"></div>
+          <div className="border border-solid border-t-2 mx-auto w-5/6 border-gray-300"></div>
           <div className="mx-20 text-center p-12">
             <button className=" z-50 w-48 h-32 hover:bg-gray-400 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-600 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid">
               저장
