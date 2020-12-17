@@ -260,6 +260,7 @@ class BasicBody extends Component {
 
   render() {
     const { name, sex } = this.props.userInfo;
+    const { handleHeader, header } = this.props;
     const {
       body_fat,
       weight,
@@ -307,7 +308,7 @@ class BasicBody extends Component {
     return (
       <>
         <div class="relative top-96">
-          <BodyNav />
+          <BodyNav handleHeader={handleHeader} header={header} />
         </div>
         <div class="ml-10 mr-10">
           <div>

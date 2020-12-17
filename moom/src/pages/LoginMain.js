@@ -9,6 +9,7 @@ import "../css/LoginMain.css";
 
 class LoginMain extends Component {
   // 로그인시 메인 페이지
+
   render() {
     const {
       isLogin,
@@ -16,6 +17,8 @@ class LoginMain extends Component {
       handleLoginSuccess,
       history,
       handleLoginFail,
+      handleHeader,
+      header,
     } = this.props;
 
     return (
@@ -25,6 +28,8 @@ class LoginMain extends Component {
           isLogin={isLogin}
           handleLoginFail={handleLoginFail}
           history={history}
+          header={header}
+          handleHeader={handleHeader}
         />
         <div className="login-main">
           <Switch>
@@ -32,13 +37,25 @@ class LoginMain extends Component {
               exact
               path="/"
               render={() => {
-                return <BasicBody userInfo={userInfo} />;
+                return (
+                  <BasicBody
+                    userInfo={userInfo}
+                    handleHeader={handleHeader}
+                    header={header}
+                  />
+                );
               }}
             ></Route>
             <Route
               path="/custom"
               render={() => {
-                return <CustomBody userInfo={userInfo} />;
+                return (
+                  <CustomBody
+                    userInfo={userInfo}
+                    handleHeader={handleHeader}
+                    header={header}
+                  />
+                );
               }}
             ></Route>
             <Route
