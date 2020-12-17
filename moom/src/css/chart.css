@@ -1,5 +1,5 @@
 /* 다크 모드 테마 관련 css */
-/* @import url(https://code.highcharts.com/7.0.0/css/themes/dark-unica.css); */
+@import url(https://code.highcharts.com/7.0.0/css/themes/dark-unica.css);
 
 /* 리사이즈 관련 css  */
 /* .box {
@@ -32,3 +32,9 @@
     top: -15px;
     left: -15px;
   } */
+
+/* 스타일 모드시 클랴스로 접근하여 색상 지정 */
+.highcharts-color-0 {
+  fill: #6b46c1;
+  stroke: #6b46c1;
+}

@@ -8,6 +8,7 @@ import CertainChart from "./CertainChart";
 import CertainEdit from "./CertainEdit";
 import BasicAllChart from "./BasicAllChart";
 import CertainGoal from "./CertainGoal";
+import "../css/BasicBody.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -288,6 +289,13 @@ class BasicBody extends Component {
       id,
     } = this.state;
 
+    let partName = basicPartName;
+    if (basicPartName) {
+      if (partName.toUpperCase()) {
+        partName = partName.toUpperCase();
+      }
+    }
+
     // map 함수를 통해 CertainData 컴포넌트로 만들기
     // const DataList =
     //   allBodyData &&
@@ -309,7 +317,7 @@ class BasicBody extends Component {
         <div class="relative top-96">
           <BodyNav />
         </div>
-        <div class="ml-10 mr-10">
+        <div class="mt-2 ml-10 mr-10 mb-10 md:flex">
           <div>
             <BasicData
               sex={sex}
@@ -331,47 +339,26 @@ class BasicBody extends Component {
               isThighCM={isThighCM}
             />
           </div>
-          <div>
+          <div class="mt-5">
             {basicPartName ? (
               <>
-                <div>{basicPartName}을 선택했습니다.</div>
-                {/* <div>{DataList}</div> */}
-                <div>
-                  <select value={selectChart} onChange={this.handleChangeChart}>
-                    <option value="">선택</option>
-                    <option value="CertainAllData">
-                      All data about {basicPartName}
-                    </option>
-                    <option value="CertainLastData">
-                      Last seven data about {basicPartName}
-                    </option>
-                    <option value="BasicAllData">
-                      All data about basic body
-                    </option>
-                    <option value="BasicLastData">
-                      Last seven data about basic body
-                    </option>
-                  </select>
-                </div>
-                <div
-                  style={{
-                    width: "650px",
-                  }}
-                >
-                  {isCertain ? (
-                    <>
-                      {allBodyData ? (
+                {isCertain ? (
+                  <>
+                    {allBodyData ? (
+                      <div className="chart">
                         <CertainChart
                           allBodyData={allBodyData}
                           partName={basicPartName}
                           isAllData={isAllData}
                           handlePointClick={this.handlePointClick}
                         />
-                      ) : null}
-                    </>
-                  ) : (
-                    <>
-                      {allBasicData ? (
+                      </div>
+                    ) : null}
+                  </>
+                ) : (
+                  <>
+                    {allBasicData ? (
+                      <div className="chart">
                         <BasicAllChart
                           allBasicData={allBasicData}
                           allBodyData={allBodyData}
@@ -379,35 +366,71 @@ class BasicBody extends Component {
                           name={name}
                           isAllData={isAllData}
                         />
-                      ) : null}
-                    </>
-                  )}
-                </div>
-                <div>
-                  {isCertainEdit ? (
-                    <>
-                      <CertainEdit
-                        id={id}
-                        value={value}
-                        date={date}
-                        basicPartName={basicPartName}
-                        certainBodyDataGet={this.certainBodyDataGet}
-                        certainBodyGoalGet={this.certainBodyGoalGet}
-                        handleRecentBody={this.handleRecentBody}
-                        basicBodyDataGet={this.basicBodyDataGet}
-                        handleDeleteEdit={this.handleDeleteEdit}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <div>
-                        그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할
-                        수 있어요!
                       </div>
-                    </>
-                  )}
+                    ) : null}
+                  </>
+                )}
+                <div className="certain mt-9 mb-4 pt-80 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                  <div class="tracking-tight md:flex items-center justify-between">
+                    <div class="font-bold text-2xl text-gray-800">
+                      {partName}
+                    </div>
+
+                    {/* <div>{DataList}</div> */}
+                    <div>
+                      <select
+                        class="mt-1 rounded-sm border border-dashed text-xs font-medium text-gray-800 border-gray-300 hover:border-purple-500 p-1  bg-white shadow flex items-center focus:outline-none"
+                        value={selectChart}
+                        onChange={this.handleChangeChart}
+                      >
+                        <option class="hover:bg-white" value="">
+                          CHOSSE
+                        </option>
+                        <option value="CertainAllData">
+                          ALL DATA ABOUT {partName}
+                        </option>
+                        <option value="CertainLastData">
+                          LAST SEVEN DATA ABOUT {partName}
+                        </option>
+                        <option value="BasicAllData">
+                          ALL DATA ABOUT BASIC BODY
+                        </option>
+                        <option value="BasicLastData">
+                          LAST SEVEN DATA ABOUT BASIC BODY
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    {isCertainEdit ? (
+                      <>
+                        <CertainEdit
+                          id={id}
+                          value={value}
+                          date={date}
+                          basicPartName={basicPartName}
+                          certainBodyDataGet={this.certainBodyDataGet}
+                          certainBodyGoalGet={this.certainBodyGoalGet}
+                          handleRecentBody={this.handleRecentBody}
+                          basicBodyDataGet={this.basicBodyDataGet}
+                          handleDeleteEdit={this.handleDeleteEdit}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          class="text-sm text-left text-gray-600 bg-gray-200 border border-gray-400 h-12 flex items-center p-4 rounded-sm"
+                          role="alert"
+                        >
+                          그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할
+                          수 있어요!
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <div>
+                <div className="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
                   <CertainGoal
                     goal={basicPartGoal}
                     name={name}

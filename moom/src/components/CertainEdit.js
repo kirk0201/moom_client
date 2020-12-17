@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
+import SaveIcon from "@material-ui/icons/Save";
+import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
+
 import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -41,7 +46,8 @@ class CertainEdit extends Component {
   // 삭제 버튼 클릭시 axios요청 함수
   handleCertainDeleteClick = (e) => {
     const { partName } = this.props;
-    let id = e.target.name;
+    let id = e.currentTarget.name;
+    console.log(id);
     axios
       .delete(`${BASEURL}/data/delete/${id}`, {
         withCredentials: true,
@@ -62,7 +68,8 @@ class CertainEdit extends Component {
   handleCertainPutClick = (e) => {
     const { partName } = this.props;
     const { value } = this.state;
-    let id = e.target.name;
+    let id = e.currentTarget.name;
+    console.log(id);
     axios
       .put(`${BASEURL}/data/edit/${id}`, {
         value: value,
@@ -84,36 +91,94 @@ class CertainEdit extends Component {
     const { id, value, date, basicPartName } = this.props;
     const { isOpenInputCertain } = this.state;
     // 저장 혹은 삭제시 모달창 구현 예정!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    let unit = "CM";
+    if (basicPartName === "body_fat") {
+      unit = "%";
+    } else if (basicPartName === "weight") {
+      unit = "KG";
+    }
+
     return (
       <>
         <div>
           {isOpenInputCertain ? (
             <>
-              <div>{date}</div>
               <div>
-                {basicPartName}: {value}
+                <span class="ml-1 text-sm font-medium text-purple-900 rounded p-1 bg-purple-100">
+                  {date}
+                </span>
               </div>
-              <input
-                type="text"
-                placeholder="수정할 수치를 입력해주세요!"
-                onChange={this.handleInputCertain}
-              />
-              <button name={id} onClick={this.handleCertainPutClick}>
-                저장
-              </button>
-              <button onClick={this.closeInputCertain}>취소</button>
+              <div class="flex justify-between">
+                <div>
+                  <span class="font-extrabold text-6xl text-gray-900">
+                    {value}
+                  </span>
+                  <span class="ml-1 mt-7 text-2xl text-purple-900 font-medium">
+                    {unit}
+                  </span>
+                </div>
+                <div class="mt-8">
+                  <input
+                    class="mr-3 border-b border-solid border-gray-300 focus:outline-none focus:text-gray"
+                    type="text"
+                    placeholder="수정할 수치를 입력하세요"
+                    onChange={this.handleInputCertain}
+                  />
+                  <button
+                    class="opacity-50 mr-1 focus:outline-none"
+                    name={id}
+                    onClick={this.handleCertainPutClick}
+                  >
+                    <SaveIcon />
+                  </button>
+                  <button
+                    class="opacity-50 mr-1 focus:outline-none"
+                    onClick={this.closeInputCertain}
+                  >
+                    <CloseOutlinedIcon />
+                  </button>
+                </div>
+              </div>
             </>
           ) : (
             <>
-              <div>{date}</div>
-              <span>
-                {basicPartName}: {value}
-              </span>
-              <button onClick={this.openInputCertain}>수정</button>
-              <button name={id} onClick={this.handleCertainDeleteClick}>
-                삭제
-              </button>
-              <button onClick={this.props.handleDeleteEdit}>취소</button>
+              <div>
+                <span class="ml-1 text-sm font-medium text-purple-900 rounded p-1 bg-purple-100">
+                  {date}
+                </span>
+              </div>
+              <div class="flex justify-between">
+                <div>
+                  <span class="font-extrabold text-6xl text-gray-900">
+                    {value}
+                  </span>
+                  <span class="ml-1 mt-7 text-2xl text-purple-900 font-medium">
+                    {unit}
+                  </span>
+                </div>
+
+                <div class="mt-8 opacity-50">
+                  <button
+                    class="mr-1 focus:outline-none"
+                    onClick={this.openInputCertain}
+                  >
+                    <CreateIcon />
+                  </button>
+                  <button
+                    class="mr-1 focus:outline-none"
+                    name={id}
+                    onClick={this.handleCertainDeleteClick}
+                  >
+                    <DeleteIcon />
+                  </button>
+                  <button
+                    class="mr-1 focus:outline-none"
+                    onClick={this.props.handleDeleteEdit}
+                  >
+                    <CloseOutlinedIcon />
+                  </button>
+                </div>
+              </div>
             </>
           )}
         </div>
