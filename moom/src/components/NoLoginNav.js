@@ -9,6 +9,7 @@ class NoLoginNav extends Component {
     super(props);
     this.state = {
       navTarget: null,
+      navOpen: false,
     };
   }
 
@@ -16,18 +17,28 @@ class NoLoginNav extends Component {
     this.setState({ navTarget: value });
   };
 
+  handleNavOpen = (value) => {
+    this.setState({ navOpen: value });
+  };
+
+  scrollToMain = () => {
+    this.handleNav("Main");
+    window.scrollTo(0, 0);
+  };
+
   scrollToIntroduce = () => {
     this.handleNav("Introduce");
-    window.scrollTo(0, 500);
+    window.scrollTo(0, 590);
   };
 
   scrollToExperience = () => {
     this.handleNav("Experience");
-    window.scrollTo(0, 1000);
+    window.scrollTo(0, 1490);
   };
 
   // 비로그인시 네비 바
   render() {
+    const { navOpen } = this.state;
     return (
       <div class="fixed w-full z-10">
         <nav class="bg-gray-800">
@@ -52,9 +63,7 @@ class NoLoginNav extends Component {
                     <Link to="/">
                       <span
                         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
-                        onClick={() => {
-                          this.handleNav("Main");
-                        }}
+                        onClick={this.scrollToMain}
                       >
                         메인
                       </span>
@@ -112,41 +121,46 @@ class NoLoginNav extends Component {
 
               Menu open: "hidden", Menu closed: "block"
             --> */}
-                  <svg
-                    class="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
+                  {!navOpen ? (
+                    <svg
+                      class="block h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                      onClick={() => this.handleNavOpen(true)}
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      class="block h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                      onClick={() => this.handleNavOpen(false)}
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  )}
                   {/* <!--
               Heroicon name: x
 
               Menu open: "block", Menu closed: "hidden"
             --> */}
-                  <svg
-                    class="hidden h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
                 </button>
               </div>
             </div>
@@ -157,43 +171,47 @@ class NoLoginNav extends Component {
 /
       Open: "block", closed: "hidden"/
     -->/ */}
-          <div class="block md:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-              <Link to="/">
-                <span
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => {
-                    this.handleNav("Main");
-                  }}
-                >
-                  메인
-                </span>
-              </Link>
-              <Link to="/login">
-                <span
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => {
-                    this.handleNav("Login");
-                  }}
-                >
-                  로그인
-                </span>
-              </Link>
-              <Link to="/signup">
-                <span
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => {
-                    this.handleNav("Sign up");
-                  }}
-                >
-                  회원가입
-                </span>
-              </Link>
+          {navOpen ? (
+            <div class="block md:hidden">
+              <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+                <Link to="/">
+                  <span
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => {
+                      this.handleNav("Main");
+                    }}
+                  >
+                    메인
+                  </span>
+                </Link>
+                <Link to="/login">
+                  <span
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => {
+                      this.handleNav("Login");
+                    }}
+                  >
+                    로그인
+                  </span>
+                </Link>
+                <Link to="/signup">
+                  <span
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => {
+                      this.handleNav("Sign up");
+                    }}
+                  >
+                    회원가입
+                  </span>
+                </Link>
+              </div>
             </div>
-          </div>
+          ) : (
+            <></>
+          )}
         </nav>
-        <header class="bg-white shadow">
+        <header class="bg-white shadow hidden md:block">
           <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold leading-tight text-gray-900">
               {this.state.navTarget}
