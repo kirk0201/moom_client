@@ -7,7 +7,7 @@
 }
 .exp_container {
   background-color: white;
-  height: 846px;
+  /* height: 846px; */
   display: flex;
   justify-content: space-around;
 }
@@ -27,5 +27,5 @@
 .input_size {
   display: flex;
   flex-direction: column;
-  justify-items: space-arround;
+  /* justify-items: space-arround; */
 }
