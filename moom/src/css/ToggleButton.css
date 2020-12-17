@@ -1,0 +1,146 @@
+:root {
+  --bg-btn: #fed7d7;
+  --btn-color: #e53e3e;
+
+  --bg-btn1: #c6f6d5;
+  --btn-color2: #38a169;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#isClick1:checked ~ .btn-change_on1::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+
+#isClick2:checked ~ .btn-change_on2::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+#isClick3:checked ~ .btn-change_on3::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+#isClick4:checked ~ .btn-change_on4::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+#isClick5:checked ~ .btn-change_on5::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+#isClick6:checked ~ .btn-change_on6::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+#isClick7:checked ~ .btn-change_on7::before {
+  transition: 0.3s;
+  transform: translateX(23px);
+}
+.btn-change {
+  background-color: var(--bg-btn);
+}
+.btn-change_on1 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on2 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on3 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on4 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on5 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on6 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on7 {
+  background-color: var(--bg-btn1);
+}
+.btn-change_on1::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change_on2::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change_on3::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change_on4::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change_on5::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change_on6::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change_on7::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color2);
+  transition: 0.3s;
+  transform: translateX(0);
+}
+.btn-change::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--btn-color);
+  transition: 0.3s;
+  transform: translateX(0);
+}

@@ -1,82 +1,31 @@
 /* 페이지당 높이 846px 정도로 구성함 */
 
+/* ------------------------------ */
 .exp_top {
   display: flex;
-  justify-content: space-around;
-  background-color: ivory;
-  border-top: "6px solid blue";
+  /* background-color: white; */
 }
 .exp_container {
-  background-color: ivory;
+  background-color: white;
   height: 846px;
   display: flex;
   justify-content: space-around;
 }
 
 .exp_container > div {
-  flex: 1;
   text-align: center;
   margin: 1%;
-  border-radius: 20px;
 }
 
-.left_ {
-  border: 2px solid red;
-}
-.left_img {
-  /* background-image: url("../images/maleimg.png"); */
-  background-size: cover;
-  min-width: -webkit-fill-available;
-  min-height: -webkit-fill-available;
-  background-repeat: round;
-  border-radius: 40px;
-}
+/* .left_img {
+  background: no-repeat;
+
+  background-position-x: center;
+  background-position: center;
+} */
 
 .input_size {
-  /* border: 2px solid rgb(255, 123, 0); */
   display: flex;
   flex-direction: column;
   justify-items: space-arround;
-}
-
-.input_size_cont {
-  display: flex;
-  border: 1px solid blue;
-  justify-content: space-around;
-  height: 60px;
-  min-width: 446px;
-}
-
-.input {
-  display: inline-block;
-  padding: 10px 15px;
-}
-
-.input_middle > input {
-  border-radius: 10px;
-  width: 100px;
-  height: 30px;
-  font-size: 30px;
-}
-.input_middle > button {
-  display: inline-block;
-  font-size: 25px;
-}
-.input_right {
-  display: inline-flex;
-  /* border: 1px solid purple; */
-}
-
-.input_right > input {
-  width: 100px;
-  border-radius: 10px;
-  height: 34.44px;
-  font-size: 30px;
-}
-
-.info_size {
-  border: 2px solid darkmagenta;
-}
-.info_size > input {
-  flex-direction: row;
 }

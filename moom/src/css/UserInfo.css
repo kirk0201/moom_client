@@ -1,11 +1,11 @@
 /* * { box-sizing: border-box }; */
 
-.container {
+/* .container {
   width: 100%;
   border: 2px solid green;
   display: flex;
   justify-content: space-between;
-}
+} */
 
 li {
   list-style: none;

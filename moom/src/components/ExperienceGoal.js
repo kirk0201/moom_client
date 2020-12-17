@@ -176,35 +176,120 @@ export default class ExperienceGoal extends Component {
           break;
       }
     }
+
+    const temp = this.props.temp;
+    let currentValue;
+    if (temp === "isClick1")
+      this.props.isClick
+        ? (currentValue = context.weightR)
+        : (currentValue = context.weightL);
+    else if (temp === "isClick2")
+      this.props.isClick
+        ? (currentValue = context.body_fatR)
+        : (currentValue = context.body_fatL);
+    else if (temp === "isClick3")
+      this.props.isClick
+        ? (currentValue = context.shoulderR)
+        : (currentValue = context.shoulderL);
+    else if (temp === "isClick4")
+      this.props.isClick
+        ? (currentValue = context.chestR)
+        : (currentValue = context.chestL);
+    else if (temp === "isClick5")
+      this.props.isClick
+        ? (currentValue = context.waistR)
+        : (currentValue = context.waistL);
+    else if (temp === "isClick6")
+      this.props.isClick
+        ? (currentValue = context.hipR)
+        : (currentValue = context.hipL);
+    else if (temp === "isClick7")
+      this.props.isClick
+        ? (currentValue = context.thighR)
+        : (currentValue = context.thighL);
+
     return (
       <>
-        <div className="input_size_cont">
-          <div className="input_left">
-            <span>목표 {this.props.name}</span>
+        {this.props.show ? (
+          <div className="container pb-6 border-t border-l border-r border-solid rounded-bl-3xl rounded-br-3xl border-gray-200  bg-gray-50 rounded-md m-auto py-10">
+            <div className="flex-row border-4 border-gray-400 w-100 h-auto md:h-64 bg-100 shadow-2xl rounded-lg p-6">
+              {/* <!-- 묶음 입력 --> */}
+              <div className=" flex pb-7 space-x-10">
+                {/* <!-- 최측 입력  div --> */}
+                <div className=" w-1/2 shadow-xl text-2xl border-solid border-2 border-gray-200 rounded-2xl">
+                  <div className="mt-2 mb-1 mx-20 shadow text-center border-gray-200 border-solid border-b-2">
+                    <span className=" text-gray-400 text-2xl font-bold">
+                      Your{" "}
+                    </span>
+                    <span className="text-purple-600 text-2xl font-bold ">
+                      Goal
+                    </span>
+                  </div>
+                  <div className="text-center h-14">
+                    <input
+                      type="number"
+                      min="0"
+                      name={this.props.temp}
+                      onChange={this.handleGoalChange}
+                      maxLength="4"
+                      value={resultL}
+                      className="h-full hover:bg-gray-200 focus:outline-none text-3xl w-1/2 text-center"
+                    />
+                    <span className="text-gray-400 font-bold text-2xl">
+                      {this.props.isClick ? this.state.unitR : this.state.unitL}
+                    </span>
+                  </div>
+                </div>
+                {/* <!-- 우측 입력 --> */}
+                <div className=" w-1/2 shadow-xl text-2xl border-solid border-2 border-gray-200 rounded-2xl">
+                  <div className="mt-2 mb-1 shadow mx-14 text-center border-b-2 border-solid border-gray-200">
+                    <span className=" text-gray-400  font-bold">Current </span>
+                    <span className="text-purple-600 font-bold">
+                      {this.props.name}
+                    </span>
+                  </div>
+                  <div className="text-center h-14">
+                    <input
+                      type="text"
+                      readOnly
+                      value={currentValue}
+                      className="h-full focus:outline-none text-3xl w-1/2 text-center"
+                    />
+                    <span className="text-gray-400 font-bold text-2xl">
+                      {this.props.isClick ? this.state.unitR : this.state.unitL}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              {/* <!-- 하단 입력 --> */}
+
+              <div className="border-2 border-solid border-gray-200 rounded-lg h-1/3 shadow-lg">
+                <div className="flex justify-center mt-3">
+                  <span className=" text-3xl pr-2 text-blue-400 animate-bounce font-bold">
+                    목표
+                  </span>
+                  <span className=" text-3xl pr-6">까지</span>
+                  <input
+                    type="text"
+                    readOnly
+                    className={
+                      Number(resultR) < 0
+                        ? " text-red-500 focus:outline-none font-bold border-none w-1/4 text-center border text-3xl"
+                        : "text-blue-500 focus:outline-none font-bold border-none w-1/4 text-center border text-3xl"
+                    }
+                    // className={"border-none w-1/4 text-center border text-3xl"}
+                    value={resultR}
+                  />
+                  <span className="text-2xl pr-6 mt-2 font-bold text-gray-500">
+                    {this.props.isClick ? this.state.unitR : this.state.unitL}
+                  </span>
+                  <span className="text-3xl">남았습니다</span>
+                  <span className="text-3xl font-bold italic ml-2">!!!</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="input_middle">
-            <input
-              type="number"
-              min="0"
-              name={this.props.temp}
-              onChange={this.handleGoalChange}
-              maxLength="4"
-              value={resultL}
-            ></input>
-            <button>
-              {this.props.isClick ? this.state.unitR : this.state.unitL}
-            </button>
-            <span>까지</span>
-          </div>
-          {/* 오른쪽 끝 div 예비 코드 */}
-          <div className="input_right">
-            <input name="bodyR" readOnly value={resultR}></input>
-            <button>
-              {this.props.isClick ? this.state.unitR : this.state.unitL}
-            </button>
-            <div>남았습니다</div>
-          </div>
-        </div>
+        ) : null}
       </>
     );
   }
