@@ -28,6 +28,7 @@ class UserpwdEdit extends Component {
     });
   };
 
+  
   // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
   handleUserEdit = (e) => {
     let key = e.target.name; //what=isOpenPromise
@@ -64,7 +65,7 @@ class UserpwdEdit extends Component {
             <div class="w-full inline-flex border-b">
               <img class="w-5 h-8 pt-2" src={keyimg}></img>
               <input
-                name={name}
+                name={name} //"promise"
                 type={type}
                 placeholder={info ? info : noInfo}
                 onChange={this.handleInputUserEdit}
@@ -81,7 +82,7 @@ class UserpwdEdit extends Component {
             >
               <svg
                 fill="none"
-                class="w-6 text-gray-400 mx-auto"
+                class="w-4 text-white mr-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
@@ -89,7 +90,7 @@ class UserpwdEdit extends Component {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                 />
               </svg>
               저장
