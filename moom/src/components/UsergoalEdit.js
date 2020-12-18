@@ -1,43 +1,48 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import seximg from "../images/sex.png"
-
+import mygoal from "../images/mygoal.png"
 import { BASEURL } from "../helpurl";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
 // TODO: 수정할 수 있는 데이터 형식에 따른 에러 메세지 확인
-class UserInfoSex extends Component {
+class UsergoalEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sex: this.props.info,
+      promise: "",
+      nikname: "",
+      password: "",
+      birth: "",
     };
   }
 
-  // select 이벤트시 서버에게 보낼 정보 저장하는 함수
-  handleSelectUserEdit = (e) => {
+  // input 이벤트시 서버에게 보낼 정보 저장하는 함수
+  handleInputUserEdit = (e) => {
     let target = e.target;
-    let value = target.value;
+    let value = target.value;//내가쓴거
+    let name = target.name;//promise
     this.setState({
-      sex: value,
+      [name]: value,
     });
   };
 
   // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
-  handleUserEditSex = (e) => {
-    let key = e.target.name;
-    console.log(key);
-    const { sex } = this.state;
+  handleUserEdit = (e) => {
+    let key = e.target.name; //what=isOpenPromise
+    const { promise, nikname, password, birth } = this.state;
     axios
       .put(`${BASEURL}/user/edit`, {
-        sex: sex,
+        promise: promise,//내가쓴거
+        name: nikname,
+        password: password,
+        birth: birth,
       })
       .then((res) => {
         console.log(res.data);
         // 수정 성공하면 인풋창 사라짐
-        this.props.closeInput(key);
+        this.props.closeInput(key);//isOpenPromise 를 false로 만듬
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
         this.props.handleLoginSuccess();
       })
@@ -48,27 +53,28 @@ class UserInfoSex extends Component {
   };
 
   render() {
-    const { sex } = this.state;
-    const { what } = this.props;
+    const { info, noInfo, name, type, what } = this.props;
     return (
-        <>
-        <hr />
-        <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-4/12 max-w-sm mx-auto">성별</h2>
+      <>
+      <hr />
+      <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
+                    <h2 class="md:w-4/12 max-w-sm mx-auto">나의다짐</h2>
 
                     <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
-                        <img class="w-5 h-8 pt-2" src={seximg}></img>
-                  <select value={sex} onChange={this.handleSelectUserEdit} class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4">
-                   <option value="">선택</option>
-                   <option value="female">female</option>
-                   <option value="male">male</option>
-                  </select>
+                        <img class="w-5 h-8 pt-2" src={mygoal}></img>
+                <input
+                          name={name} //"promise"
+                          type={type}
+                          placeholder={info ? info : noInfo}
+                          onChange={this.handleInputUserEdit}
+                  class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                />
               </div>
             </div>
 
             <div class="md:w-3/12 text-center md:pl-6">
-              <button name={what} onClick={this.handleUserEditSex} class="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right">
+              <button name={what} onClick={this.handleUserEdit} class="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right">
                 <svg
                   fill="none"
                   class="w-4 text-white mr-2"
@@ -91,4 +97,4 @@ class UserInfoSex extends Component {
   }
 }
 
-export default withRouter(UserInfoSex);
+export default withRouter(UsergoalEdit);

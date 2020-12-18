@@ -3,8 +3,16 @@ import { withRouter } from "react-router-dom";
 
 import "../css/UserInfo.css";
 import profile_img from "../images/profile.jpg";
+import birthimg from "../images/birth.png";
+import seximg from "../images/sex.png"
+import mygoal from "../images/mygoal.png"
+import keyimg from "../images/keyimg.png"
+import nickname from "../images/nickname.png"
 
 import UserInfoEdit from "./UserInfoEdit";
+import UserbirthEdit from "./UserbirthEdit";
+import UsergoalEdit from "./UsergoalEdit";
+import UserpwdEdit from "./UserInfoEdit";
 import UserInfoImg from "./UserInfoImg";
 import UserInfoSex from "./UserInfoSex";
 import SignOutModal from "./SignOutModal";
@@ -104,11 +112,10 @@ class UserInfo extends Component {
             )}
           </div>
           <div>
-            <div style={{ marginLeft: 60, marginTop: 10 }}>
+            <div style={{ marginLeft: 80, marginTop: 10 }}>
               <div class="md:inline-flex space-y-4 md:space-y-0 w-full p-4 text-gray-500 items-center">
                 <h2 class="md:w-1/3 max-w-sm mx-auto">Account</h2>
-                <div class="md:w-2/3 max-w-sm mx-auto">
-                  <label class="text-sm text-gray-400">Email</label>
+                <div style={{ marginLeft: 40 }}class="md:w-2/3 max-w-sm mx-auto">                  
                   <div class="w-full inline-flex border">
                     <div class="pt-2 w-1/12 bg-gray-100 bg-opacity-50">
                       <svg
@@ -155,21 +162,7 @@ class UserInfo extends Component {
 
                     <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
-                        <div class="w-1/12 pt-2">
-                          <svg
-                            fill="none"
-                            class="w-6 text-gray-400 mx-auto"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                            />
-                          </svg>
-                        </div>
+                        <img class="w-5 h-8 pt-2" src={nickname}></img>
                         <input
                           type="text"
                           class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
@@ -207,7 +200,7 @@ class UserInfo extends Component {
 
             <div style={{ marginLeft: 60, marginTop: 10 }}>
               {isOpenPassword ? (
-                <UserInfoEdit
+                <UserpwdEdit
                   info=""
                   noInfo="변경할 비밀번호를 입력해주세요"
                   name="password"
@@ -224,25 +217,11 @@ class UserInfo extends Component {
                     <>
                       <hr />
                       <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                        <h2 class="md:w-4/12 max-w-sm mx-auto">비밀번호</h2>
+                    <h2 class="md:w-4/12 max-w-sm mx-auto">비밀번호</h2>
 
-                        <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
-                          <div class="w-full inline-flex border-b">
-                            <div class="w-1/12 pt-2">
-                              <svg
-                                fill="none"
-                                class="w-6 text-gray-400 mx-auto"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                                />
-                              </svg>
-                            </div>
+                    <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
+                      <div class="w-full inline-flex border-b">
+                        <img class="w-5 h-8 pt-2" src={keyimg}></img>
                             <input
                               type="password"
                               class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
@@ -282,7 +261,7 @@ class UserInfo extends Component {
 
             <div style={{ marginLeft: 60, marginTop: 10 }}>
               {isOpenPromise ? (
-                <UserInfoEdit
+                <UsergoalEdit
                   info={promise}
                   noInfo="목표를 위한 다짐을 남겨보세요"
                   name="promise"
@@ -299,21 +278,7 @@ class UserInfo extends Component {
 
                     <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
-                        <div class="w-1/12 pt-2">
-                          <svg
-                            fill="none"
-                            class="w-6 text-gray-400 mx-auto"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                            />
-                          </svg>
-                        </div>
+                        <img class="w-5 h-8 pt-2" src={mygoal}></img>
                         <input
                           type="text"
                           class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
@@ -367,21 +332,7 @@ class UserInfo extends Component {
 
                     <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
-                        <div class="w-1/12 pt-2">
-                          <svg
-                            fill="none"
-                            class="w-6 text-gray-400 mx-auto"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                            />
-                          </svg>
-                        </div>
+                        <img class="w-5 h-8 pt-2" src={seximg}></img>
                         <input
                           type="text"
                           class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
@@ -419,7 +370,7 @@ class UserInfo extends Component {
 
             <div style={{ marginLeft: 60, marginTop: 10 }}>
               {isOpenBirth ? (
-                <UserInfoEdit
+                <UserbirthEdit
                   info=""
                   noInfo="8자리 숫자로 입력해주세요."
                   name="birth"
@@ -436,18 +387,10 @@ class UserInfo extends Component {
 
                     <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
-                        <div class="w-1/12 pt-2">
-                          <svg
-                            fill="none"
-                            class="w-6 text-gray-400 mx-auto"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            style={{ backgroundImage: { birth } }}
-                          ></svg>
-                        </div>
+                        <img class="w-5 h-8 pt-2" src={birthimg}></img>
                         <input
                           type="text"
-                          class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                          class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-2"
                           placeholder={birth ? birth : "생년월일을 설정하세요"}
                         />
                       </div>
