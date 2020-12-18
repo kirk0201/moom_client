@@ -32,9 +32,7 @@ class NoLoginMain extends Component {
                       <div>
                         <Description />
                       </div>
-                      <div>
-                        <Experience />
-                      </div>
+                      <Experience />
                     </UserStore>
                   </>
                 );

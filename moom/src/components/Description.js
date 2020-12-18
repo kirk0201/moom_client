@@ -24,9 +24,14 @@ export class Description extends Component {
           style={{
             width: "100%",
             padding: "0px",
+            maxWidth: "1700px",
+            minWidth: "1600px",
+            maxHeight: "2000px",
             borderRadius: "10px",
             overflow: "Hidden",
-            margin: "0px 0px 25px 0px",
+            marginTop: "25px",
+            marginLeft: "auto",
+            marginRight: "auto",
             backgroundColor: "rgb(240,240,255)",
           }}
         >

@@ -157,7 +157,10 @@ export class Experience extends Component {
 
     return (
       <>
-        <div className="pt-2 mx-20 my-20 border-solid border rounded-3xl border-gray-300 shadow-2xl">
+        <div
+          className="max-w-screen-2xl ml-auto mr-auto pt-2 mx-20 my-20 border-solid border rounded-3xl border-gray-300 shadow-2xl"
+          style={{ minWidth: "1500px" }}
+        >
           {/* 탑 div */}
 
           {/* 성별 버튼 */}
