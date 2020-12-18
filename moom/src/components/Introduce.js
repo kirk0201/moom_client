@@ -14,7 +14,7 @@ export class Introduce extends Component {
   }
 
   componentDidMount() {
-    let intervalId = setInterval(this.slideTimer, 6000);
+    let intervalId = setInterval(this.slideTimer, 600000);
     this.setState({ intervalId: intervalId });
   }
 
@@ -33,14 +33,14 @@ export class Introduce extends Component {
 
   switchSlide = (n) => {
     clearInterval(this.state.intervalId);
-    let intervalId = setInterval(this.slideTimer, 6000000);
+    let intervalId = setInterval(this.slideTimer, 600000);
     this.setState({ intervalId: intervalId });
     this.setState({ selectSlide: n });
   };
 
   nextSlide = (n) => {
     clearInterval(this.state.intervalId);
-    let intervalId = setInterval(this.slideTimer, 6000000);
+    let intervalId = setInterval(this.slideTimer, 600000);
     this.setState({ intervalId: intervalId });
     if (n) {
       this.setState((pre) => {
@@ -65,7 +65,10 @@ export class Introduce extends Component {
     let slide3 = this.state.selectSlide === 3 ? "fade" : "selectSlide";
     return (
       <>
-        <div class="slideshow-container" style={{ marginTop: "165px" }}>
+        <div
+          class="slideshow-container"
+          style={{ marginTop: "165px"}}
+        >
           <div class={slide1}>
             <div class="numbertext">1 / 3</div>
             <img class="slide-img" src={bg1} alt="이미지 어디감?" />
