@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import nickname from "../images/nickname.png";
+import keyimg from "../images/keyimg.png";
 import { BASEURL } from "../helpurl";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
 // TODO: 수정할 수 있는 데이터 형식에 따른 에러 메세지 확인
-class UserinfoEdit extends Component {
+class UserpwdEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,13 +58,13 @@ class UserinfoEdit extends Component {
       <>
         <hr />
         <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-          <h2 class="md:w-4/12 max-w-sm mx-auto">닉네임</h2>
+          <h2 class="md:w-4/12 max-w-sm mx-auto">비밀번호</h2>
 
           <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
             <div class="w-full inline-flex border-b">
-              <img class="w-5 h-8 pt-2" src={nickname}></img>
+              <img class="w-5 h-8 pt-2" src={keyimg}></img>
               <input
-                name={name} //"promise"
+                name={name}
                 type={type}
                 placeholder={info ? info : noInfo}
                 onChange={this.handleInputUserEdit}
@@ -81,7 +81,7 @@ class UserinfoEdit extends Component {
             >
               <svg
                 fill="none"
-                class="w-4 text-white mr-2"
+                class="w-6 text-gray-400 mx-auto"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
@@ -89,7 +89,7 @@ class UserinfoEdit extends Component {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 />
               </svg>
               저장
@@ -101,4 +101,4 @@ class UserinfoEdit extends Component {
   }
 }
 
-export default withRouter(UserinfoEdit);
+export default withRouter(UserpwdEdit);
