@@ -1,4 +1,5 @@
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "../css/Experience.css";
 import ExperienceInput from "./ExperienceInput";
 import male from "../images/maleimg.png";
@@ -165,8 +166,8 @@ export class Experience extends Component {
 
           {/* 성별 버튼 */}
           <div className="flex pt-10">
-            <div className="w-2/6 place-content-center text-center">
-              <div className=" bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
+            <div className="w-2/6 text-center pr-12">
+              <div className="bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
                 <button
                   className=" focus:bg-blue-200 inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-white rounded-l-full px-4 py-2"
                   id="radioM"
@@ -179,7 +180,7 @@ export class Experience extends Component {
                   </span>
                 </button>
                 <button
-                  class=" focus:bg-blue-200 inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-white rounded-r-full px-4 py-2"
+                  class=" focus:bg-blue-200  inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-white rounded-r-full px-4 py-2"
                   id="radioW"
                   onClick={this.handleSexChange}
                 >
@@ -198,7 +199,7 @@ export class Experience extends Component {
 
           {/* 남여 이미지 div */}
           <div className="exp_container pb-20">
-            <div className="left_ flex w-1/4 bg-white border-none">
+            <div className="left_ place-content-center flex w-1/4 bg-white border-none">
               <img
                 className="h-full border-solid hover:border-gray-500 shadow-lg border-gray-300 border rounded-3xl"
                 src={this.state.sex ? female : male}
@@ -344,7 +345,11 @@ export class Experience extends Component {
           </div>
           <div className="border border-solid border-t-2 mx-auto w-5/6 border-gray-300"></div>
           <div className="mx-20 text-center p-12">
-            <button className=" z-50 w-48 h-32 hover:bg-gray-400 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-600 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid">
+            <button
+              // 로그인 창으로 이동
+              onClick={() => this.props.history.push("/login")}
+              className="z-50 w-48 h-32 hover:bg-gray-400 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-600 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid"
+            >
               저장
             </button>
           </div>
@@ -354,4 +359,4 @@ export class Experience extends Component {
   }
 }
 
-export default Experience;
+export default withRouter(Experience);
