@@ -8,7 +8,10 @@
 
 
 ## 사용 스택
-
+<details>
+<summary>Client</summary>
+  ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
+</details>
 
 ## 문의
 
