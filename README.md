@@ -8,12 +8,19 @@
 
 
 ## 사용 스택
-<details>
+<details markdown="1">
 <summary>Client</summary>
-  <div markdown="1">
-![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
-</div>
+    ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
 </details>
+<details markdown="1">
+<summary>Server</summary>
+    ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
+</details>
+<details markdown="1">
+<summary>Deploy</summary>
+    ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
+</details>
+
 
 ## 문의
 
