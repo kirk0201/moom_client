@@ -8,18 +8,29 @@
 
 
 ## 사용 스택
-<details markdown="1">
-<summary>Client</summary>
+* ### Client<br>
     ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
-</details>
-<details markdown="1">
-<summary>Server</summary>
+    ![image](https://img.shields.io/static/v1?label=&message=axios&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=react&color=orange&style=flat&logo=react)
+    ![image](https://img.shields.io/static/v1?label=&message=tailwind&color=orange&style=flat&logo=Tailwindcss)
+    ![image](https://img.shields.io/static/v1?label=&message=highcharts&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=multer-s3&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=contextAPI&color=orange&style=flat&logo=)
+    <br>
+* ### Server<br>
     ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
-</details>
-<details markdown="1">
-<summary>Deploy</summary>
-    ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
-</details>
+    ![image](https://img.shields.io/static/v1?label=&message=sequelize&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=express&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=mysql&color=orange&style=flat&logo=mysql)
+    <br>
+* ### Deploy<br>
+    ![image](https://img.shields.io/static/v1?label=&message=EC2&color=orange&style=flat&logo=amazonaws)
+    ![image](https://img.shields.io/static/v1?label=&message=S3&color=orange&style=flat&logo=amazonaws)
+    ![image](https://img.shields.io/static/v1?label=&message=RDS&color=orange&style=flat&logo=amazonaws)
+    ![image](https://img.shields.io/static/v1?label=&message=Route-53&color=orange&style=flat&logo=amazonaws)
+    ![image](https://img.shields.io/static/v1?label=&message=CloudFront&color=orange&style=flat&logo=amazonaws)
+    <br>
+
 
 
 ## 문의
