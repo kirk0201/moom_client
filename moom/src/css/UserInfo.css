@@ -17,13 +17,6 @@ li {
   text-align: center;
 }
 
-.circle {
-  display: inline-block;
-  width: 350px;
-  height: 350px;
-  border-radius: 175px;
-}
-
 .text_box {
   width: 60%;
 }
@@ -50,4 +43,11 @@ li {
 .btn_signout {
   margin-top: 30px;
   font-size: 30px;
+}
+
+.circle {
+  display: inline-block;
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
 }
