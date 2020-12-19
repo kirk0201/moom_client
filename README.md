@@ -10,7 +10,9 @@
 ## 사용 스택
 <details>
 <summary>Client</summary>
-  ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
+  <div markdown="1">
+![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
+</div>
 </details>
 
 ## 문의
