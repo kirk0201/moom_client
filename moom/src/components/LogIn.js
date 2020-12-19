@@ -80,12 +80,15 @@ class LogIn extends Component {
   // 로그인 버튼 클릭시 axios요청 함수
   handleLogin = () => {
     const { email, password } = this.state;
+    let regexp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     if (!email && !password) {
       return this.setState({
         errorMessage: "Email과  Password를 입력해주세요",
       });
     } else if (!email) {
       return this.setState({ errorMessage: "Email을 입력해주세요" });
+    } else if (!regexp.test(email)) {
+      return this.setState({ errorMessage: "올바른 Email 형식이 아닙니다" });
     } else if (!password) {
       return this.setState({ errorMessage: "Password를 입력해주세요" });
     } else {
