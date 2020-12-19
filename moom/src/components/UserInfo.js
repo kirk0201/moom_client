@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 import "../css/UserInfo.css";
-import profile_img from "../images/profile.jpg";
+import profile_male from "../images/profilemale.svg";
+import profile_female from "../images/profilefemale.svg";
 import birthimg from "../images/birth.png";
 import seximg from "../images/sex.png";
 import mygoal from "../images/mygoal.png";
@@ -84,9 +85,16 @@ class UserInfo extends Component {
       social = true;
     }
 
+    let profile_img;
+    if (sex === "female") {
+      profile_img = profile_female;
+    } else {
+      profile_img = profile_male;
+    }
+
     return (
       <>
-        <div className="container">
+        <div className="container mt-10">
           <div>
             {isOpenProfile ? (
               <UserInfoImg
@@ -105,9 +113,9 @@ class UserInfo extends Component {
                   onClick={this.openInput}
                   src={profile ? profile : profile_img}
                 ></img>
-                {/* <button name="isOpenProfile" onClick={this.openInput}>
+                <button name="isOpenProfile" onClick={this.openInput}>
                   수정
-                </button> */}
+                </button>
               </>
             )}
           </div>

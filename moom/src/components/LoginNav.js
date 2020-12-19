@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { BASEURL } from "../helpurl";
+
 import profile_img from "../images/profile.jpg";
+import profile_male from "../images/profilemale.svg";
+import profile_female from "../images/profilefemale.svg";
+
 import axios from "axios";
 import logoimg from "../images/logo700700.png";
 
@@ -42,6 +46,14 @@ class LoginNav extends Component {
     const { hambugerOpen, userOpen } = this.state;
     const { handleHeader, header } = this.props;
     const { promise, email, profile, name } = this.props.userInfo;
+
+    let profile_img;
+    if (sex === "female") {
+      profile_img = profile_female;
+    } else {
+      profile_img = profile_male;
+    }
+
     return (
       <div class="w-full z-10">
         <nav class="bg-gray-800">
