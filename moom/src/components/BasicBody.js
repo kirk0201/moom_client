@@ -315,133 +315,173 @@ class BasicBody extends Component {
     // CustomBody 컴포넌트 리턴
     return (
       <>
-        <div class="relative top-96">
+        <div class="nav relative top-96">
           <BodyNav handleHeader={handleHeader} header={header} />
         </div>
-        <div class="mt-2 ml-10 mr-10 mb-10 md:flex">
-          <div>
-            <BasicData
-              sex={sex}
-              body_fat={body_fat}
-              weight={weight}
-              shoulder={shoulder}
-              chest={chest}
-              waist={waist}
-              hip={hip}
-              thigh={thigh}
-              handleRecentBody={this.handleRecentBody}
-              bodyChoiceSuccess={this.bodyChoiceSuccess}
-              handleToggleClick={this.handleToggleClick}
-              isWeightKG={isWeightKG}
-              isShoulderCM={isShoulderCM}
-              isChestCM={isChestCM}
-              isWaistCM={isWaistCM}
-              isHipCM={isHipCM}
-              isThighCM={isThighCM}
-            />
+
+        <div class="custom mb-10">
+          <div class="tracking-tight text-2xl font-bold">
+            <span class="text-gray-900">Recent</span>
+            <span class=" pl-1 text-purple-400">Basic body</span>
           </div>
-          <div class="mt-5">
-            {basicPartName ? (
-              <>
-                {isCertain ? (
-                  <>
-                    {allBodyData ? (
-                      <div className="chart">
-                        <CertainChart
-                          allBodyData={allBodyData}
-                          partName={basicPartName}
-                          isAllData={isAllData}
-                          handlePointClick={this.handlePointClick}
-                        />
-                      </div>
-                    ) : null}
-                  </>
-                ) : (
-                  <>
-                    {allBasicData ? (
-                      <div className="chart">
-                        <BasicAllChart
-                          allBasicData={allBasicData}
-                          allBodyData={allBodyData}
-                          partName={basicPartName}
-                          name={name}
-                          isAllData={isAllData}
-                        />
-                      </div>
-                    ) : null}
-                  </>
-                )}
-                <div className="certain mt-9 mb-4 pt-80 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
-                  <div class="tracking-tight md:flex items-center justify-between">
-                    <div class="font-bold text-2xl text-gray-800">
-                      {partName}
-                    </div>
 
-                    {/* <div>{DataList}</div> */}
-                    <div>
-                      <select
-                        class="mt-1 rounded-sm border border-dashed text-xs font-medium text-gray-800 border-gray-300 hover:border-purple-500 p-1  bg-white shadow flex items-center focus:outline-none"
-                        value={selectChart}
-                        onChange={this.handleChangeChart}
-                      >
-                        <option class="hover:bg-white" value="">
-                          CHOSSE
-                        </option>
-                        <option value="CertainAllData">
-                          ALL DATA ABOUT {partName}
-                        </option>
-                        <option value="CertainLastData">
-                          LAST SEVEN DATA ABOUT {partName}
-                        </option>
-                        <option value="BasicAllData">
-                          ALL DATA ABOUT BASIC BODY
-                        </option>
-                        <option value="BasicLastData">
-                          LAST SEVEN DATA ABOUT BASIC BODY
-                        </option>
-                      </select>
-                    </div>
-                  </div>
+          <div class="flex mt-4">
+            <div className="max-w-2xl min-w-min">
+              <BasicData
+                sex={sex}
+                body_fat={body_fat}
+                weight={weight}
+                shoulder={shoulder}
+                chest={chest}
+                waist={waist}
+                hip={hip}
+                thigh={thigh}
+                handleRecentBody={this.handleRecentBody}
+                bodyChoiceSuccess={this.bodyChoiceSuccess}
+                handleToggleClick={this.handleToggleClick}
+                isWeightKG={isWeightKG}
+                isShoulderCM={isShoulderCM}
+                isChestCM={isChestCM}
+                isWaistCM={isWaistCM}
+                isHipCM={isHipCM}
+                isThighCM={isThighCM}
+              />
+            </div>
+            <div class="mt-5">
+              {basicPartName ? (
+                <>
+                  {isCertain ? (
+                    <>
+                      {allBodyData && allBodyData.length ? (
+                        <>
+                          <div className="chart">
+                            <CertainChart
+                              allBodyData={allBodyData}
+                              partName={basicPartName}
+                              isAllData={isAllData}
+                              handlePointClick={this.handlePointClick}
+                            />
+                          </div>
+                          <div className="certain mt-9 mb-4 pt-80 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                            <div class="tracking-tight md:flex items-center justify-between">
+                              <div class="font-bold text-2xl text-gray-800">
+                                {partName}
+                              </div>
+                              <div>
+                                <select
+                                  class="mt-1 rounded-sm border border-dashed text-xs font-medium text-gray-800 border-gray-300 hover:border-purple-500 p-1  bg-white shadow flex items-center focus:outline-none"
+                                  value={selectChart}
+                                  onChange={this.handleChangeChart}
+                                >
+                                  <option class="hover:bg-white" value="">
+                                    CHOSSE
+                                  </option>
+                                  <option value="CertainAllData">
+                                    ALL DATA ABOUT {partName}
+                                  </option>
+                                  <option value="CertainLastData">
+                                    LAST SEVEN DATA ABOUT {partName}
+                                  </option>
+                                  <option value="BasicAllData">
+                                    ALL DATA ABOUT BASIC BODY
+                                  </option>
+                                  <option value="BasicLastData">
+                                    LAST SEVEN DATA ABOUT BASIC BODY
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
 
-                  <div class="mt-4">
-                    {isCertainEdit ? (
-                      <>
-                        <CertainEdit
-                          id={id}
-                          value={value}
-                          date={date}
-                          basicPartName={basicPartName}
-                          certainBodyDataGet={this.certainBodyDataGet}
-                          certainBodyGoalGet={this.certainBodyGoalGet}
-                          handleRecentBody={this.handleRecentBody}
-                          basicBodyDataGet={this.basicBodyDataGet}
-                          handleDeleteEdit={this.handleDeleteEdit}
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <div
-                          class="text-sm text-left text-gray-600 bg-gray-200 border border-gray-400 h-12 flex items-center p-4 rounded-sm"
-                          role="alert"
-                        >
-                          그래프 포인트를 클릭하면 원하는 날짜의 데이터를 수정할
-                          수 있어요!
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-                <div className="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
-                  <CertainGoal
-                    goal={basicPartGoal}
-                    name={name}
-                    partName={basicPartName}
-                    recent={basicPartRecent}
-                    certainBodyGoalGet={this.certainBodyGoalGet}
-                  />
-                </div>
-              </>
-            ) : null}
+                            <div class="mt-4">
+                              {isCertainEdit ? (
+                                <>
+                                  <CertainEdit
+                                    id={id}
+                                    value={value}
+                                    date={date}
+                                    basicPartName={basicPartName}
+                                    certainBodyDataGet={this.certainBodyDataGet}
+                                    certainBodyGoalGet={this.certainBodyGoalGet}
+                                    handleRecentBody={this.handleRecentBody}
+                                    basicBodyDataGet={this.basicBodyDataGet}
+                                    handleDeleteEdit={this.handleDeleteEdit}
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <div
+                                    class="text-sm text-left text-gray-600 bg-gray-200 border border-gray-400 h-12 flex items-center p-4 rounded-sm"
+                                    role="alert"
+                                  >
+                                    그래프 포인트를 클릭하면 원하는 날짜의
+                                    데이터를 수정할 수 있어요!
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                          <div className="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                            <CertainGoal
+                              goal={basicPartGoal}
+                              name={name}
+                              partName={basicPartName}
+                              recent={basicPartRecent}
+                              certainBodyGoalGet={this.certainBodyGoalGet}
+                            />
+                          </div>
+                        </>
+                      ) : null}
+                    </>
+                  ) : (
+                    <>
+                      {allBasicData ? (
+                        <>
+                          <div className="chart">
+                            <BasicAllChart
+                              allBasicData={allBasicData}
+                              allBodyData={allBodyData}
+                              partName={basicPartName}
+                              name={name}
+                              isAllData={isAllData}
+                            />
+                          </div>
+                          <div className="certain mt-9 mb-4 pt-80 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                            <div class="tracking-tight md:flex items-center justify-between">
+                              <div class="font-bold text-2xl text-gray-800">
+                                BASIC BODY
+                              </div>
+                              <div>
+                                <select
+                                  class="mt-1 rounded-sm border border-dashed text-xs font-medium text-gray-800 border-gray-300 hover:border-purple-500 p-1  bg-white shadow flex items-center focus:outline-none"
+                                  value={selectChart}
+                                  onChange={this.handleChangeChart}
+                                >
+                                  <option class="hover:bg-white" value="">
+                                    CHOSSE
+                                  </option>
+                                  <option value="CertainAllData">
+                                    ALL DATA ABOUT {partName}
+                                  </option>
+                                  <option value="CertainLastData">
+                                    LAST SEVEN DATA ABOUT {partName}
+                                  </option>
+                                  <option value="BasicAllData">
+                                    ALL DATA ABOUT BASIC BODY
+                                  </option>
+                                  <option value="BasicLastData">
+                                    LAST SEVEN DATA ABOUT BASIC BODY
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      ) : null}
+                    </>
+                  )}
+                </>
+              ) : null}
+            </div>
           </div>
         </div>
       </>

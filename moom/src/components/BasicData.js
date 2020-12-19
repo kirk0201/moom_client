@@ -87,10 +87,7 @@ class BasicData extends Component {
 
     return (
       <>
-        <div class="pt-3 pl-7 tracking-tight text-2xl font-bold">
-          <span class="text-gray-900">Recent</span>
-          <span class=" pl-1 text-purple-400">Basic body</span>
-        </div>
+
         <div class="md:flex pl-7">
           <div class="w-48 h-auto">
             {sex ? (

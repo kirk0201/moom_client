@@ -8,3 +8,19 @@
   position: absolute;
   margin-left: 12px;
 }
+
+.custom {
+  width: 1330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav {
+  width: 1450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .basic {
+  min-width: 600px;
+} */
