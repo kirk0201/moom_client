@@ -54,9 +54,9 @@ class UserInfoSex extends Component {
         <>
         <hr />
         <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-4/12 max-w-sm mx-auto">성별</h2>
+                    <h2 class="md:w-3/12 max-w-sm mx-auto">성별</h2>
 
-                    <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
+                    <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
                         <img class="w-5 h-8 pt-2" src={seximg}></img>
                   <select value={sex} onChange={this.handleSelectUserEdit} class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4">
