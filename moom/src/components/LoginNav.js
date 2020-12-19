@@ -54,6 +54,9 @@ class LoginNav extends Component {
       profile_img = profile_male;
     }
 
+
+    console.log("????????????????????", this.props.userInfo.promise);
+
     return (
       <div class="w-full z-10">
         <nav class="bg-gray-800">

@@ -227,7 +227,7 @@ export default class ExperienceInput extends Component {
     return (
       <>
         {/* Container (div * 3) */}
-        <div className="flex shadow-xl mt-20  m-1 h-24 bg-white rounded-md border-2 border-solid border-gray-200 hover:border-gray-400">
+        <div className="flex shadow-xl m-1 h-24 bg-white rounded-md border-2 border-solid border-gray-200 hover:border-gray-400">
           {/* 좌측 div */}
           <div className="flex flex-col w-2/6">
             <div className="flex ml-3 text-2xl font-bold text-purple-600 hover:text-purple-400">

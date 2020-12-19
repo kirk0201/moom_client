@@ -7,7 +7,7 @@
 }
 .exp_container {
   background-color: white;
-  /* height: 846px; */
+  height: 100%;
   display: flex;
   justify-content: space-around;
 }
