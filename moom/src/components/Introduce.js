@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../css/Introduce.css";
 import bg5 from "../images/bg-3.jpg";
 import bg3 from "../images/bg-2.jpg";
 import bg1 from "../images/bg-1.jpg";
+import "tailwindcss/tailwind.css";
 
 export class Introduce extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ export class Introduce extends Component {
   }
 
   componentDidMount() {
-    let intervalId = setInterval(this.slideTimer, 6000);
+    let intervalId = setInterval(this.slideTimer, 600000);
     this.setState({ intervalId: intervalId });
   }
 
@@ -33,14 +35,14 @@ export class Introduce extends Component {
 
   switchSlide = (n) => {
     clearInterval(this.state.intervalId);
-    let intervalId = setInterval(this.slideTimer, 6000);
+    let intervalId = setInterval(this.slideTimer, 600000);
     this.setState({ intervalId: intervalId });
     this.setState({ selectSlide: n });
   };
 
   nextSlide = (n) => {
     clearInterval(this.state.intervalId);
-    let intervalId = setInterval(this.slideTimer, 6000);
+    let intervalId = setInterval(this.slideTimer, 600000);
     this.setState({ intervalId: intervalId });
     if (n) {
       this.setState((pre) => {
@@ -74,6 +76,7 @@ export class Introduce extends Component {
             {/* <span class="slidebutton" to="/">
               click1
             </span> */}
+            <div className="startbutton1">지금 시작하기</div>
             <a href="https://kr.freepik.com/photos/people" class="origin">
               People 사진는 aleksandarlittlewolf - kr.freepik.com가 제작함
             </a>
@@ -87,6 +90,7 @@ export class Introduce extends Component {
             {/* <span class="slidebutton" to="/">
               click2
             </span> */}
+            <div className="startbutton2">지금 시작하기</div>
             <a href="https://kr.freepik.com/photos/people" class="origin">
               People 사진는 diana.grytsku - kr.freepik.com가 제작함
             </a>
@@ -100,6 +104,7 @@ export class Introduce extends Component {
             {/* <span class="slidebutton" to="/">
               click3
             </span> */}
+            <div className="startbutton3">지금 시작하기</div>
             <a href="https://kr.freepik.com/photos/people" class="origin">
               People 사진는 wayhomestudio - kr.freepik.com가 제작함
             </a>

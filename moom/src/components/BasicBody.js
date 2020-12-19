@@ -347,7 +347,7 @@ class BasicBody extends Component {
                 isThighCM={isThighCM}
               />
             </div>
-            <div class="mt-5">
+            <div>
               {basicPartName ? (
                 <>
                   {isCertain ? (
@@ -362,7 +362,7 @@ class BasicBody extends Component {
                               handlePointClick={this.handlePointClick}
                             />
                           </div>
-                          <div className="certain mt-9 mb-4 pt-80 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                          <div className="certain mt-2 mb-4 pt-96 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
                             <div class="tracking-tight md:flex items-center justify-between">
                               <div class="font-bold text-2xl text-gray-800">
                                 {partName}
@@ -445,7 +445,7 @@ class BasicBody extends Component {
                               isAllData={isAllData}
                             />
                           </div>
-                          <div className="certain mt-9 mb-4 pt-80 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                          <div className="certain mt-2 mb-4 pt-96 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
                             <div class="tracking-tight md:flex items-center justify-between">
                               <div class="font-bold text-2xl text-gray-800">
                                 BASIC BODY
