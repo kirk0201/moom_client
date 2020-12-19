@@ -80,7 +80,7 @@ class BodyNav extends Component {
         {header === "Custom part" ? (
           <div class="grid text-gray-400 ">
             <div
-              class="justify-self-start"
+              class="justify-self-start mr-3"
               onClick={() => handleHeader("Basic part")}
             >
               <Link to="/">
