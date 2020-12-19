@@ -47,7 +47,7 @@ class UserpwdEdit extends Component {
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
         this.props.handleLoginSuccess();
       })
-      // TODO: 다른 상태코드에 따른 분기가 필요
+      // TODO: 다른  상태코드에 따른 분기가 필요
       .catch((err) => {
         console.log(err.message);
       });
@@ -59,9 +59,9 @@ class UserpwdEdit extends Component {
       <>
         <hr />
         <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-          <h2 class="md:w-4/12 max-w-sm mx-auto">비밀번호</h2>
+          <h2 class="md:w-3/12 max-w-sm mx-auto">비밀번호</h2>
 
-          <div class="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
+          <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
             <div class="w-full inline-flex border-b">
               <img class="w-5 h-8 pt-2" src={keyimg}></img>
               <input

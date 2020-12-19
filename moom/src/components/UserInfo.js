@@ -167,6 +167,7 @@ class UserInfo extends Component {
                           type="text"
                           class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                           placeholder={name}
+                          disabled
                         />
                       </div>
                     </div>
@@ -202,7 +203,7 @@ class UserInfo extends Component {
               {isOpenPassword ? (
                 <UserpwdEdit
                   info=""
-                  noInfo="변경할 비밀번호를 입력해주세요"
+                  noInfo="새 비밀번호 입력"
                   name="password"
                   type="password"
                   what="isOpenPassword"
@@ -226,6 +227,7 @@ class UserInfo extends Component {
                               type="password"
                               class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                               placeholder="새 비밀번호 입력"
+                              disabled
                             />
                           </div>
                         </div>
@@ -285,6 +287,7 @@ class UserInfo extends Component {
                           placeholder={
                             promise ? promise : "목표를 위한 다짐을 남겨보세요"
                           }
+                          disabled
                         />
                       </div>
                     </div>
@@ -337,6 +340,7 @@ class UserInfo extends Component {
                           type="text"
                           class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                           placeholder={sex ? sex : "성별을 선택해주세요"}
+                          disabled
                         />
                       </div>
                     </div>
@@ -392,6 +396,7 @@ class UserInfo extends Component {
                           type="text"
                           class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-2"
                           placeholder={birth ? birth : "생년월일을 설정하세요"}
+                          disabled
                         />
                       </div>
                     </div>
