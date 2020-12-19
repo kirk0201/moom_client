@@ -57,8 +57,8 @@ class UserbirthEdit extends Component {
     return (
       <>
       <hr />
-      <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-3/12 max-w-sm mx-auto">생년월일</h2>
+      <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
+                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">생년월일</h2>
 
                     <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
@@ -68,7 +68,7 @@ class UserbirthEdit extends Component {
                           type={type}
                           placeholder={info ? info : noInfo}
                           onChange={this.handleInputUserEdit}
-                  class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                  class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                 />
               </div>
             </div>

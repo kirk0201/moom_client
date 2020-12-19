@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 import "../css/UserInfo.css";
-import profile_male from "../images/profilemale.svg";
-import profile_female from "../images/profilefemale.svg";
+import profile_img from "../images/profile.jpg";
 import birthimg from "../images/birth.png";
-import seximg from "../images/sex.png";
-import mygoal from "../images/mygoal.png";
-import keyimg from "../images/keyimg.png";
-import nickname from "../images/nickname.png";
+import seximg from "../images/sex.png"
+import mygoal from "../images/mygoal.png"
+import keyimg from "../images/keyimg.png"
+import nickname from "../images/nickname.png"
 
 import UserInfoEdit from "./UserInfoEdit";
 import UserbirthEdit from "./UserbirthEdit";
@@ -85,16 +84,9 @@ class UserInfo extends Component {
       social = true;
     }
 
-    let profile_img;
-    if (sex === "female") {
-      profile_img = profile_female;
-    } else {
-      profile_img = profile_male;
-    }
-
     return (
       <>
-        <div className="container mt-10">
+        <div className="container">
           <div>
             {isOpenProfile ? (
               <UserInfoImg
@@ -113,17 +105,17 @@ class UserInfo extends Component {
                   onClick={this.openInput}
                   src={profile ? profile : profile_img}
                 ></img>
-                <button name="isOpenProfile" onClick={this.openInput}>
+                {/* <button name="isOpenProfile" onClick={this.openInput}>
                   수정
-                </button>
+                </button> */}
               </>
             )}
           </div>
           <div>
-            <div style={{ marginLeft: 70, marginTop: 10 }}>
-              <div class="md:inline-flex space-y-4 md:space-y-0 w-full p-4 text-gray-500 items-center">
-                <h2 class="md:w-1/3 max-w-sm mx-auto">Account</h2>
-                <div class="md:w-2/3 max-w-sm mx-auto">
+            <div style={{ marginLeft: 60, marginTop: 10 }}>
+              <div class="md:inline-flex space-y-4 md:space-y-0 w-full p-1 text-gray-500 items-center">
+                <h2 class="text-xl text-gray-900 md:w-1/3 max-w-sm mx-auto">Account</h2>
+                <div class="md:w-2/3 max-w-sm mx-auto">                  
                   <div class="w-full inline-flex border">
                     <div class="pt-2 w-1/12 bg-gray-100 bg-opacity-50">
                       <svg
@@ -142,7 +134,7 @@ class UserInfo extends Component {
                     </div>
                     <input
                       type="email"
-                      class="w-11/12 focus:outline-none focus:text-gray-600 p-2"
+                      class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2"
                       placeholder={email}
                       disabled
                     />
@@ -165,17 +157,16 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-3/6 max-w-sm mx-auto">닉네임</h2>
+                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
+                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">닉네임</h2>
 
                     <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
                         <img class="w-5 h-8 pt-2" src={nickname}></img>
                         <input
                           type="text"
-                          class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                          class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                           placeholder={name}
-                          disabled
                         />
                       </div>
                     </div>
@@ -211,7 +202,7 @@ class UserInfo extends Component {
               {isOpenPassword ? (
                 <UserpwdEdit
                   info=""
-                  noInfo="새 비밀번호 입력"
+                  noInfo="변경할 비밀번호를 입력해주세요"
                   name="password"
                   type="password"
                   what="isOpenPassword"
@@ -225,17 +216,16 @@ class UserInfo extends Component {
                   ) : (
                     <>
                       <hr />
-                      <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                        <h2 class="md:w-3/12 max-w-sm mx-auto">비밀번호</h2>
+                      <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
+                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">비밀번호</h2>
 
-                        <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
-                          <div class="w-full inline-flex border-b">
-                            <img class="w-5 h-8 pt-2" src={keyimg}></img>
+                    <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
+                      <div class="w-full inline-flex border-b">
+                        <img class="w-5 h-8 pt-2" src={keyimg}></img>
                             <input
                               type="password"
-                              class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                              class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                               placeholder="새 비밀번호 입력"
-                              disabled
                             />
                           </div>
                         </div>
@@ -283,19 +273,18 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-3/12 max-w-sm mx-auto">나의다짐</h2>
+                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
+                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">나의다짐</h2>
 
                     <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
                         <img class="w-5 h-8 pt-2" src={mygoal}></img>
                         <input
                           type="text"
-                          class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                          class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                           placeholder={
                             promise ? promise : "목표를 위한 다짐을 남겨보세요"
                           }
-                          disabled
                         />
                       </div>
                     </div>
@@ -338,17 +327,16 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-3/12 max-w-sm mx-auto">성별</h2>
+                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
+                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">성별</h2>
 
                     <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
                         <img class="w-5 h-8 pt-2" src={seximg}></img>
                         <input
                           type="text"
-                          class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                          class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
                           placeholder={sex ? sex : "성별을 선택해주세요"}
-                          disabled
                         />
                       </div>
                     </div>
@@ -394,17 +382,16 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                    <h2 class="md:w-3/12 max-w-sm mx-auto">생년월일</h2>
+                  <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
+                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">생년월일</h2>
 
                     <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
                       <div class="w-full inline-flex border-b">
                         <img class="w-5 h-8 pt-2" src={birthimg}></img>
                         <input
                           type="text"
-                          class="w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-2"
+                          class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-900 p-2 ml-2"
                           placeholder={birth ? birth : "생년월일을 설정하세요"}
-                          disabled
                         />
                       </div>
                     </div>
@@ -463,7 +450,6 @@ class UserInfo extends Component {
             open={this.state.isModalOpen}
             close={this.closeModal}
             handleLoginFail={handleLoginFail}
-            username={this.props.userInfo.name}
           />
         </div>
       </>
