@@ -42,6 +42,7 @@ class LoginNav extends Component {
     const { hambugerOpen, userOpen } = this.state;
     const { handleHeader, header } = this.props;
     const { promise, email, profile, name } = this.props.userInfo;
+    console.log("????????????????????", this.props.userInfo.promise);
     return (
       <div class="w-full z-10">
         <nav class="bg-gray-800">

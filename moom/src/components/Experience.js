@@ -200,7 +200,7 @@ export class Experience extends Component {
           <div className="exp_container pb-20">
             <div className="left_ flex w-1/4 bg-white border-none">
               <img
-                className="h-full w-full border-solid hover:border-gray-500 shadow-lg border-gray-300 border rounded-3xl"
+                className="h-full border-solid hover:border-gray-500 shadow-lg border-gray-300 border rounded-3xl"
                 src={this.state.sex ? female : male}
                 alt="전신 일러스트"
               ></img>
