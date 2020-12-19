@@ -88,6 +88,10 @@ class SignUp extends Component {
   // 회원가입 버튼 클릭시 axios요청 함수
   handleSignup = () => {
     const { email, name, password, sex } = this.state;
+    let regexp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    if (!regexp.test(email)) {
+      return this.setState({ errorMessage: "올바른 Email 형식이 아닙니다" });
+    }
     if (!email) {
       return this.setState({ errorMessage: "Email을 입력해주세요" });
     } else if (!name) {
@@ -134,6 +138,7 @@ class SignUp extends Component {
               width: "250px",
               height: "auto",
             }}
+            art={"로고 이미지"}
           />
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
@@ -158,7 +163,7 @@ class SignUp extends Component {
                 id="email"
                 label="Your NickName"
                 name="name"
-                type="text"
+                type="email"
                 onChange={this.handleInputSignup}
               ></TextField>
             </div>
