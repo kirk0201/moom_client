@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { BASEURL } from "../helpurl";
 
-import profile_img from "../images/profile.jpg";
 import profile_male from "../images/profilemale.svg";
 import profile_female from "../images/profilefemale.svg";
 
@@ -45,7 +44,7 @@ class LoginNav extends Component {
   render() {
     const { hambugerOpen, userOpen } = this.state;
     const { handleHeader, header } = this.props;
-    const { promise, email, profile, name } = this.props.userInfo;
+    const { promise, email, profile, name, sex } = this.props.userInfo;
 
     let profile_img;
     if (sex === "female") {
@@ -53,7 +52,6 @@ class LoginNav extends Component {
     } else {
       profile_img = profile_male;
     }
-
 
     console.log("????????????????????", this.props.userInfo.promise);
 
@@ -124,7 +122,7 @@ class LoginNav extends Component {
                         <span class="sr-only">Open user menu</span>
                         <img
                           class="h-8 w-8 rounded-full"
-                          src={profile}
+                          src={profile ? profile : profile_img}
                           alt=""
                         />
                       </button>
