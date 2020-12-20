@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import mygoal from "../images/mygoal.png"
+import mygoal from "../images/mygoal.png";
 import { BASEURL } from "../helpurl";
 
 import axios from "axios";
@@ -21,8 +21,8 @@ class UsergoalEdit extends Component {
   // input 이벤트시 서버에게 보낼 정보 저장하는 함수
   handleInputUserEdit = (e) => {
     let target = e.target;
-    let value = target.value;//내가쓴거
-    let name = target.name;//promise
+    let value = target.value; //내가쓴거
+    let name = target.name; //promise
     this.setState({
       [name]: value,
     });
@@ -34,7 +34,7 @@ class UsergoalEdit extends Component {
     const { promise, nikname, password, birth } = this.state;
     axios
       .put(`${BASEURL}/user/edit`, {
-        promise: promise,//내가쓴거
+        promise: promise, //내가쓴거
         name: nikname,
         password: password,
         birth: birth,
@@ -42,7 +42,7 @@ class UsergoalEdit extends Component {
       .then((res) => {
         console.log(res.data);
         // 수정 성공하면 인풋창 사라짐
-        this.props.closeInput(key);//isOpenPromise 를 false로 만듬
+        this.props.closeInput(key); //isOpenPromise 를 false로 만듬
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
         this.props.handleLoginSuccess();
       })
@@ -56,25 +56,29 @@ class UsergoalEdit extends Component {
     const { info, noInfo, name, type, what } = this.props;
     return (
       <>
-      <hr />
-      <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
-                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">나의다짐</h2>
-
-                    <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
-                      <div class="w-full inline-flex border-b">
-                        <img class="w-5 h-8 pt-2" src={mygoal}></img>
-                <input
-                          name={name} //"promise"
-                          type={type}
-                          placeholder={info ? info : noInfo}
-                          onChange={this.handleInputUserEdit}
-                  class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
-                />
-              </div>
+        <hr />
+        <div class="mt-2 pb-4 inline-flex items-center w-full">
+          <span class="pt-1 mr-12 text-lg font-medium text-gray-800">
+            나의다짐
+          </span>
+          <div class="flex justify-between items-center md:w-9/12">
+            <div class="flex truncate md:w-10/12">
+              <img class="w-5 h-8 pt-2 mr-3 text-gray-500" src={mygoal}></img>
+              <input
+                name={name} //"promise"
+                type={type}
+                placeholder={info ? info : noInfo}
+                onChange={this.handleInputUserEdit}
+                class="text-lg pt-2 pr-2 md:w-10/12 text-gray-900 focus:outline-none focus:text-gray-900"
+              />
             </div>
 
-            <div class="md:w-3/12 text-center md:pl-6">
-              <button name={what} onClick={this.handleUserEdit} class="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right">
+            <div>
+              <button
+                name={what}
+                onClick={this.handleUserEdit}
+                class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+              >
                 <svg
                   fill="none"
                   class="w-4 text-white mr-2"
@@ -92,6 +96,7 @@ class UsergoalEdit extends Component {
               </button>
             </div>
           </div>
+        </div>
       </>
     );
   }
