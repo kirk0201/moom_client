@@ -17,7 +17,7 @@ export class Introduce extends Component {
   }
 
   componentDidMount() {
-    let intervalId = setInterval(this.slideTimer, 600000);
+    let intervalId = setInterval(this.slideTimer, 6000);
     this.setState({ intervalId: intervalId });
   }
 
@@ -36,14 +36,14 @@ export class Introduce extends Component {
 
   switchSlide = (n) => {
     clearInterval(this.state.intervalId);
-    let intervalId = setInterval(this.slideTimer, 600000);
+    let intervalId = setInterval(this.slideTimer, 6000);
     this.setState({ intervalId: intervalId });
     this.setState({ selectSlide: n });
   };
 
   nextSlide = (n) => {
     clearInterval(this.state.intervalId);
-    let intervalId = setInterval(this.slideTimer, 600000);
+    let intervalId = setInterval(this.slideTimer, 6000);
     this.setState({ intervalId: intervalId });
     if (n) {
       this.setState((pre) => {
