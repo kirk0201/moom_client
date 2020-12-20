@@ -85,6 +85,7 @@ export class Description extends Component {
                     marginRight: "auto",
                   }}
                   src={feat1}
+                  alt="기능설명1"
                 ></img>
                 <div
                   style={{
@@ -130,6 +131,7 @@ export class Description extends Component {
                     marginRight: "auto",
                   }}
                   src={feat2}
+                  alt="기능설명2"
                 ></img>
                 <div
                   style={{
@@ -176,6 +178,7 @@ export class Description extends Component {
                     marginRight: "auto",
                   }}
                   src={feat3}
+                  alt="기능설명3"
                 ></img>
                 <div
                   style={{
@@ -230,6 +233,7 @@ export class Description extends Component {
                     marginLeft: "auto",
                     marginRight: "auto",
                   }}
+                  alt="기능설명4"
                   src={feat4}
                 ></img>
                 <div
@@ -276,6 +280,7 @@ export class Description extends Component {
                     marginLeft: "auto",
                     marginRight: "auto",
                   }}
+                  alt="기능설명5"
                   src={feat5}
                 ></img>
                 <div
@@ -348,6 +353,7 @@ export class Description extends Component {
                     marginTop: "25%",
                   }}
                   src={reviewer1}
+                  alt="평점1"
                 ></img>
                 <div
                   style={{
@@ -391,11 +397,25 @@ export class Description extends Component {
                   <img
                     style={{ width: "10%", height: "60%", marginLeft: "10%" }}
                     src={star}
+                    alt="별1"
                   ></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
                   <img
+                    style={{ width: "10%", height: "60%" }}
+                    src={star}
+                    alt="별2"
+                  ></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    src={star}
+                    alt="별3"
+                  ></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    src={star}
+                    alt="별4"
+                  ></img>
+                  <img
+                    alt="별5"
                     style={{ width: "10%", height: "60%", marginRight: "10%" }}
                     src={star}
                   ></img>
@@ -433,6 +453,7 @@ export class Description extends Component {
                     marginTop: "25%",
                   }}
                   src={reviewer2}
+                  alt="평점2"
                 ></img>
                 <div
                   style={{
@@ -476,13 +497,27 @@ export class Description extends Component {
                   <img
                     style={{ width: "10%", height: "60%", marginLeft: "10%" }}
                     src={star}
+                    alt="별1"
                   ></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    alt="별2"
+                    src={star}
+                  ></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    alt="별3"
+                    src={star}
+                  ></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    alt="별4"
+                    src={star}
+                  ></img>
                   <img
                     style={{ width: "10%", height: "60%", marginRight: "10%" }}
                     src={star}
+                    alt="별5"
                   ></img>
                 </div>
               </div>
@@ -517,6 +552,7 @@ export class Description extends Component {
                     margin: "auto",
                     marginTop: "25%",
                   }}
+                  alt="평점3"
                   src={reviewer3}
                 ></img>
                 <div
@@ -563,13 +599,27 @@ export class Description extends Component {
                   <img
                     style={{ width: "10%", height: "60%", marginLeft: "10%" }}
                     src={star}
+                    alt="별1"
                   ></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
-                  <img style={{ width: "10%", height: "60%" }} src={star}></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    alt="별2"
+                    src={star}
+                  ></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    alt="별3"
+                    src={star}
+                  ></img>
+                  <img
+                    style={{ width: "10%", height: "60%" }}
+                    alt="별4"
+                    src={star}
+                  ></img>
                   <img
                     style={{ width: "10%", height: "60%", marginRight: "10%" }}
                     src={star}
+                    alt="별5"
                   ></img>
                 </div>
               </div>

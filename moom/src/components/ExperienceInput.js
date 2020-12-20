@@ -306,7 +306,7 @@ export default class ExperienceInput extends Component {
                 onClick={this.props.handleGoalState}
               />
               <label
-                for={this.props.temp}
+                htmlFor={this.props.temp}
                 ref={this.radioInput}
                 className={
                   this.props.show

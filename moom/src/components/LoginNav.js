@@ -21,7 +21,7 @@ class LoginNav extends Component {
   handleLogout = () => {
     this.handleNav(null);
     axios.get(`${BASEURL}/user/logout`).then(() => {
-      console.log(this.props.history);
+      // console.log(this.props.history);
       // TODO : 페이지 전환 확인 redirect
       // TODO: 다른 상태코드에 따른 분기가 필요
       this.props.handleLoginFail();
@@ -53,23 +53,21 @@ class LoginNav extends Component {
       profile_img = profile_male;
     }
 
-    console.log("????????????????????", this.props.userInfo.promise);
-
     return (
-      <div class="w-full z-10">
-        <nav class="bg-gray-800">
-          <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <img class="h-12 w-12" src={logoimg} alt="Workflow" />
+      <div className="w-full z-10">
+        <nav className="bg-gray-800">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <img className="h-12 w-12" src={logoimg} alt="Workflow" />
                 </div>
-                <div class="hidden md:block">
-                  <div class="ml-10 flex items-baseline space-x-4">
+                <div className="hidden md:block">
+                  <div className="ml-10 flex items-baseline space-x-4">
                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                     <Link to="/">
                       <span
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={() => {
                           handleHeader("Basic part");
                         }}
@@ -79,7 +77,7 @@ class LoginNav extends Component {
                     </Link>
                     <Link to="/custom">
                       <span
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={() => {
                           handleHeader("Custom part");
                         }}
@@ -90,13 +88,13 @@ class LoginNav extends Component {
                   </div>
                 </div>
               </div>
-              <div class="hidden md:block">
-                <div class="ml-4 flex items-center md:ml-6">
+              <div className="hidden md:block">
+                <div className="ml-4 flex items-center md:ml-6">
                   {/* <!-- Profile dropdown --> */}
                   {promise ? (
                     <Link to="/mypage">
                       <span
-                        class="bg-gray-100 text-gray-500 px-3 py-2 rounded-md text-m font-medium"
+                        className="bg-gray-100 text-gray-500 px-3 py-2 rounded-md text-m font-medium"
                         onClick={() => {
                           handleHeader("My page");
                         }}
@@ -107,10 +105,10 @@ class LoginNav extends Component {
                   ) : (
                     <></>
                   )}
-                  <div class="ml-3 relative">
+                  <div className="ml-3 relative">
                     <div>
                       <button
-                        class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                         id="user-menu"
                         aria-haspopup="true"
                         onClick={
@@ -119,9 +117,9 @@ class LoginNav extends Component {
                             : () => this.handleUser(true)
                         }
                       >
-                        <span class="sr-only">Open user menu</span>
+                        <span className="sr-only">Open user menu</span>
                         <img
-                          class="h-8 w-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={profile ? profile : profile_img}
                           alt=""
                         />
@@ -139,14 +137,14 @@ class LoginNav extends Component {
               --> */}
                     {userOpen ? (
                       <div
-                        class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="user-menu"
                       >
                         <Link to="/mypage">
                           <span
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                             onClick={() => {
                               handleHeader("My page");
@@ -156,7 +154,7 @@ class LoginNav extends Component {
                           </span>
                         </Link>
                         <span
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           role="menuitem"
                           onClick={this.handleLogout}
                         >
@@ -169,17 +167,17 @@ class LoginNav extends Component {
                   </div>
                 </div>
               </div>
-              <div class="-mr-2 flex md:hidden">
+              <div className="-mr-2 flex md:hidden">
                 {/* <!-- Mobile menu button --> */}
                 <button
-                  class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   onClick={() => {
                     hambugerOpen
                       ? this.handleHambuger(false)
                       : this.handleHambuger(true);
                   }}
                 >
-                  <span class="sr-only">Open main menu</span>
+                  <span className="sr-only">Open main menu</span>
                   {/* <!--
               Heroicon name: menu
 
@@ -187,7 +185,7 @@ class LoginNav extends Component {
             --> */}
                   {!hambugerOpen ? (
                     <svg
-                      class="block h-6 w-6"
+                      className="block h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -195,15 +193,15 @@ class LoginNav extends Component {
                       aria-hidden="true"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M4 6h16M4 12h16M4 18h16"
                       />
                     </svg>
                   ) : (
                     <svg
-                      class="block h-6 w-6"
+                      className="block h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -211,9 +209,9 @@ class LoginNav extends Component {
                       aria-hidden="true"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
@@ -229,12 +227,12 @@ class LoginNav extends Component {
       Open: "block", closed: "hidden"
     --> */}
           {hambugerOpen ? (
-            <div class="block md:hidden">
-              <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="block md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                 <Link to="/">
                   <span
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => {
                       this.handleNav("Basic part");
                     }}
@@ -244,7 +242,7 @@ class LoginNav extends Component {
                 </Link>
                 <Link to="/custom">
                   <span
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => {
                       this.handleNav("Custom part");
                     }}
@@ -253,24 +251,28 @@ class LoginNav extends Component {
                   </span>
                 </Link>
               </div>
-              <div class="pt-4 pb-3 border-t border-gray-700">
-                <div class="flex items-center px-5">
-                  <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full" src={profile} alt="" />
+              <div className="pt-4 pb-3 border-t border-gray-700">
+                <div className="flex items-center px-5">
+                  <div className="flex-shrink-0">
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={profile}
+                      alt=""
+                    />
                   </div>
-                  <div class="ml-3">
-                    <div class="text-base font-medium leading-none text-white">
+                  <div className="ml-3">
+                    <div className="text-base font-medium leading-none text-white">
                       {name}
                     </div>
-                    <div class="text-sm font-medium leading-none text-gray-400">
+                    <div className="text-sm font-medium leading-none text-gray-400">
                       {email}
                     </div>
                   </div>
                 </div>
-                <div class="mt-3 px-2 space-y-1">
+                <div className="mt-3 px-2 space-y-1">
                   <Link to="/mypage">
                     <span
-                      class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                       onClick={() => {
                         this.handleNav("My page");
                       }}
@@ -279,7 +281,7 @@ class LoginNav extends Component {
                     </span>
                   </Link>
                   <span
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                     onClick={this.handleLogout}
                   >
                     Logout
@@ -291,9 +293,9 @@ class LoginNav extends Component {
             <></>
           )}
         </nav>
-        <header class="bg-white shadow hidden md:block">
-          <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold leading-tight text-gray-900">
+        <header className="bg-white shadow hidden md:block">
+          <div className="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold leading-tight text-gray-900">
               {header ? header : "Basic part"}
             </h1>
           </div>

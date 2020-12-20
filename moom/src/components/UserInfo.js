@@ -95,14 +95,14 @@ class UserInfo extends Component {
     return (
       <>
         <div className="mypage mt-10 mb-36">
-          <div class="tracking-tight text-2xl font-bold">
-            <span class="text-gray-900">Info</span>
-            <span class="text-purple-400">mation</span>
+          <div className="tracking-tight text-2xl font-bold">
+            <span className="text-gray-900">Info</span>
+            <span className="text-purple-400">mation</span>
           </div>
 
-          <div class="flex mt-7 ml-10">
-            <div class="row-span-6">
-              <div class="text-lg font-medium text-gray-800">프로필사진</div>
+          <div className="flex mt-7 ml-10">
+            <div className="row-span-6">
+              <div className="text-lg font-medium text-gray-800">프로필사진</div>
               {isOpenProfile ? (
                 <UserInfoImg
                   info={profile}
@@ -120,20 +120,20 @@ class UserInfo extends Component {
                     src={profile ? profile : profile_img}
                   ></img>
                   <button
-                    class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                    className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
                     name="isOpenProfile"
                     onClick={this.openInput}
                   >
                     <svg
                       fill="none"
-                      class="text-white w-6"
+                      className="text-white w-6"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                       />
                     </svg>
@@ -143,25 +143,25 @@ class UserInfo extends Component {
               )}
             </div>
 
-            <div class="box ml-20">
-              <div class="mt-5 pb-4 inline-flex items-center">
-                <span class="pt-1 mr-16 text-lg font-medium text-gray-800">
+            <div className="box ml-20">
+              <div className="mt-5 pb-4 inline-flex items-center">
+                <span className="pt-1 mr-16 text-lg font-medium text-gray-800">
                   이메일
                 </span>
                 <svg
                   fill="none"
-                  class="pt-1 w-6 mx-auto mr-3 text-gray-500"
+                  className="pt-1 w-6 mx-auto mr-3 text-gray-500"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span class="text-xl text-gray-800">{email}</span>
+                <span className="text-xl text-gray-800">{email}</span>
               </div>
               {/* 이메일 */}
 
@@ -178,17 +178,17 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="mt-2 pb-4 inline-flex items-center w-full">
-                    <span class="pt-1 mr-16 text-lg font-medium text-gray-800">
+                  <div className="mt-2 pb-4 inline-flex items-center w-full">
+                    <span className="pt-1 mr-16 text-lg font-medium text-gray-800">
                       닉네임
                     </span>
-                    <div class="flex justify-between items-center md:w-9/12">
-                      <div class="flex truncate md:w-10/12">
+                    <div className="flex justify-between items-center md:w-9/12">
+                      <div className="flex truncate md:w-10/12">
                         <img
-                          class="w-5 h-8 pt-2 mr-3 text-gray-500"
+                          className="w-5 h-8 pt-2 mr-3 text-gray-500"
                           src={nickname}
                         ></img>
-                        <span class="truncate pt-2 pr-10 text-gray-800 text-xl">
+                        <span className="truncate pt-2 pr-10 text-gray-800 text-xl">
                           {name}
                         </span>
                       </div>
@@ -197,18 +197,18 @@ class UserInfo extends Component {
                         <button
                           name="isOpenName"
                           onClick={this.openInput}
-                          class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                          className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
                         >
                           <svg
                             fill="none"
-                            class="w-6 text-white mx-auto"
+                            className="w-6 text-white mx-auto"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                             />
                           </svg>
@@ -233,14 +233,14 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="mt-2 pb-4 inline-flex items-center w-full">
-                    <span class="pt-1 mr-12 text-lg font-medium text-gray-800">
+                  <div className="mt-2 pb-4 inline-flex items-center w-full">
+                    <span className="pt-1 mr-12 text-lg font-medium text-gray-800">
                       비밀번호
                     </span>
-                    <div class="flex justify-between items-center md:w-9/12">
-                      <div class="flex">
-                        <img class="w-5 h-8 pt-2 mr-3" src={keyimg}></img>
-                        <span class="pt-2 pr-10 text-lg text-gray-500">
+                    <div className="flex justify-between items-center md:w-9/12">
+                      <div className="flex">
+                        <img className="w-5 h-8 pt-2 mr-3" src={keyimg}></img>
+                        <span className="pt-2 pr-10 text-lg text-gray-500">
                           {social
                             ? "비밀번호를 변경할 수 없습니다"
                             : "변경할 비밀번호를 입력해주세요"}
@@ -251,18 +251,18 @@ class UserInfo extends Component {
                         <button
                           name="isOpenPassword"
                           onClick={this.openInput}
-                          class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                          className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
                         >
                           <svg
                             fill="none"
-                            class="w-6 text-white mx-auto"
+                            className="w-6 text-white mx-auto"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                             />
                           </svg>
@@ -287,15 +287,15 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="mt-2 pb-4 inline-flex items-center w-full">
-                    <span class="pt-1 mr-12 text-lg font-medium text-gray-800">
+                  <div className="mt-2 pb-4 inline-flex items-center w-full">
+                    <span className="pt-1 mr-12 text-lg font-medium text-gray-800">
                       나의다짐
                     </span>
 
-                    <div class="flex justify-between items-center md:w-9/12">
-                      <div class="md:w-10/12 flex truncate">
-                        <img class="w-5 h-8 pt-2 mr-3" src={mygoal}></img>
-                        <span class="truncate pt-2 pr-10 text-xl text-gray-800">
+                    <div className="flex justify-between items-center md:w-9/12">
+                      <div className="md:w-10/12 flex truncate">
+                        <img className="w-5 h-8 pt-2 mr-3" src={mygoal}></img>
+                        <span className="truncate pt-2 pr-10 text-xl text-gray-800">
                           {promise ? promise : "목표를 위한 다짐을 남겨보세요"}
                         </span>
                       </div>
@@ -304,18 +304,18 @@ class UserInfo extends Component {
                         <button
                           name="isOpenPromise"
                           onClick={this.openInput}
-                          class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                          className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
                         >
                           <svg
                             fill="none"
-                            class="w-6 text-white mx-auto"
+                            className="w-6 text-white mx-auto"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                             />
                           </svg>
@@ -337,14 +337,14 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="mt-2 pb-4 inline-flex w-full items-center">
-                    <span class="pt-1 mr-20 text-lg font-medium text-gray-800">
+                  <div className="mt-2 pb-4 inline-flex w-full items-center">
+                    <span className="pt-1 mr-20 text-lg font-medium text-gray-800">
                       성별
                     </span>
-                    <div class="flex justify-between items-center md:w-9/12">
-                      <div class="flex">
-                        <img class="w-5 h-8 pt-2 mr-3" src={seximg}></img>
-                        <span class="pt-2 pr-10 text-xl text-gray-800">
+                    <div className="flex justify-between items-center md:w-9/12">
+                      <div className="flex">
+                        <img className="w-5 h-8 pt-2 mr-3" src={seximg}></img>
+                        <span className="pt-2 pr-10 text-xl text-gray-800">
                           {sex ? sex : "성별을 선택해주세요"}
                         </span>
                       </div>
@@ -352,18 +352,18 @@ class UserInfo extends Component {
                         <button
                           name="isOpenSex"
                           onClick={this.openInput}
-                          class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                          className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
                         >
                           <svg
                             fill="none"
-                            class="w-6 text-white mx-auto"
+                            className="w-6 text-white mx-auto"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                             />
                           </svg>
@@ -388,15 +388,15 @@ class UserInfo extends Component {
               ) : (
                 <>
                   <hr />
-                  <div class="mt-2 pb-4 inline-flex items-center w-full">
-                    <span class="pt-1 mr-12 text-lg font-medium text-gray-800">
+                  <div className="mt-2 pb-4 inline-flex items-center w-full">
+                    <span className="pt-1 mr-12 text-lg font-medium text-gray-800">
                       생년월일
                     </span>
 
-                    <div class="flex justify-between items-center md:w-9/12">
-                      <div class="flex">
-                        <img class="w-5 h-8 pt-2 mr-3" src={birthimg}></img>
-                        <span class="pt-2 pr-10 text-xl text-gray-800">
+                    <div className="flex justify-between items-center md:w-9/12">
+                      <div className="flex">
+                        <img className="w-5 h-8 pt-2 mr-3" src={birthimg}></img>
+                        <span className="pt-2 pr-10 text-xl text-gray-800">
                           {birth ? birth : "생년월일을 설정하세요"}
                         </span>
                       </div>
@@ -405,18 +405,18 @@ class UserInfo extends Component {
                         <button
                           name="isOpenBirth"
                           onClick={this.openInput}
-                          class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                          className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
                         >
                           <svg
                             fill="none"
-                            class="w-6 text-white mx-auto"
+                            className="w-6 text-white mx-auto"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                             />
                           </svg>
@@ -434,22 +434,22 @@ class UserInfo extends Component {
         </div>
         {/* 모두다 */}
 
-        <hr class="mt-10" />
-        <div class="out mt-10 text-right text-gray-500">
+        <hr className="mt-10" />
+        <div className="out mt-10 text-right text-gray-500">
           <button
             onClick={this.openModal}
-            class="inline-flex items-center focus:outline-none mr-4"
+            className="inline-flex items-center focus:outline-none mr-4"
           >
             <svg
               fill="none"
-              class="w-4 mr-2"
+              className="w-4 mr-2"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
               />
             </svg>
@@ -459,6 +459,7 @@ class UserInfo extends Component {
             open={this.state.isModalOpen}
             close={this.closeModal}
             handleLoginFail={handleLoginFail}
+            username={this.props.userInfo.name}
           />
         </div>
       </>

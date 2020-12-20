@@ -66,14 +66,14 @@ class BasicInputPost extends Component {
     return (
       <>
         <input
-          class="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none focus:text-gray"
+          className="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none focus:text-gray"
           type="text"
           name={name}
           placeholder="새로운 수치를 입력하세요"
           onChange={this.handleInputGoal}
         />
         <button
-          class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+          className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
           name={name}
           value={what}
           onClick={this.handleBasicPost}
@@ -81,7 +81,7 @@ class BasicInputPost extends Component {
           SAVE
         </button>
         <button
-          class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+          className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
           name={what}
           onClick={this.handlecloseInput}
         >

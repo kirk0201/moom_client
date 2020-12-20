@@ -40,7 +40,7 @@ class UserbirthEdit extends Component {
         birth: birth,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         // 수정 성공하면 인풋창 사라짐
         this.props.closeInput(key); //isOpenPromise 를 false로 만듬
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
@@ -57,19 +57,19 @@ class UserbirthEdit extends Component {
     return (
       <>
         <hr />
-        <div class="mt-2 pb-4 inline-flex items-center w-full">
-          <span class="pt-1 mr-12 text-lg font-medium text-gray-800">
+        <div className="mt-2 pb-4 inline-flex items-center w-full">
+          <span className="pt-1 mr-12 text-lg font-medium text-gray-800">
             생년월일
           </span>
-          <div class="flex justify-between items-center md:w-9/12">
-            <div class="flex truncate md:w-10/12">
-              <img class="w-5 h-8 pt-2 mr-3 text-gray-500" src={birthimg}></img>
+          <div className="flex justify-between items-center md:w-9/12">
+            <div className="flex truncate md:w-10/12">
+              <img className="w-5 h-8 pt-2 mr-3 text-gray-500" src={birthimg}></img>
               <input
                 name={name} //"promise"
                 type={type}
                 placeholder={info ? info : noInfo}
                 onChange={this.handleInputUserEdit}
-                class="text-lg pt-2 pr-2 md:w-10/12 text-gray-900 focus:outline-none focus:text-gray-900"
+                className="text-lg pt-2 pr-2 md:w-10/12 text-gray-900 focus:outline-none focus:text-gray-900"
               />
             </div>
 
@@ -77,18 +77,18 @@ class UserbirthEdit extends Component {
               <button
                 name={what}
                 onClick={this.handleUserEdit}
-                class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
               >
                 <svg
                   fill="none"
-                  class="w-4 text-white mr-2"
+                  className="w-4 text-white mr-2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>

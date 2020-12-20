@@ -47,7 +47,7 @@ class CertainEdit extends Component {
   handleCertainDeleteClick = (e) => {
     const { partName } = this.props;
     let id = e.currentTarget.name;
-    console.log(id);
+    // console.log(id);
     axios
       .delete(`${BASEURL}/data/delete/${id}`, {
         withCredentials: true,
@@ -69,7 +69,7 @@ class CertainEdit extends Component {
     const { partName } = this.props;
     const { value } = this.state;
     let id = e.currentTarget.name;
-    console.log(id);
+    // console.log(id);
     axios
       .put(`${BASEURL}/data/edit/${id}`, {
         value: value,
@@ -104,35 +104,35 @@ class CertainEdit extends Component {
           {isOpenInputCertain ? (
             <>
               <div>
-                <span class="ml-1 text-sm font-medium text-purple-900 rounded p-1 bg-purple-100">
+                <span className="ml-1 text-sm font-medium text-purple-900 rounded p-1 bg-purple-100">
                   {date}
                 </span>
               </div>
-              <div class="flex justify-between">
+              <div className="flex justify-between">
                 <div>
-                  <span class="font-extrabold text-6xl text-gray-900">
+                  <span className="font-extrabold text-6xl text-gray-900">
                     {value}
                   </span>
-                  <span class="ml-1 mt-7 text-2xl text-purple-900 font-medium">
+                  <span className="ml-1 mt-7 text-2xl text-purple-900 font-medium">
                     {unit}
                   </span>
                 </div>
-                <div class="mt-8">
+                <div className="mt-8">
                   <input
-                    class="mr-3 border-b border-solid border-gray-300 focus:outline-none focus:text-gray"
+                    className="mr-3 border-b border-solid border-gray-300 focus:outline-none focus:text-gray"
                     type="text"
                     placeholder="수정할 수치를 입력하세요"
                     onChange={this.handleInputCertain}
                   />
                   <button
-                    class="opacity-50 mr-1 focus:outline-none"
+                    className="opacity-50 mr-1 focus:outline-none"
                     name={id}
                     onClick={this.handleCertainPutClick}
                   >
                     <SaveIcon />
                   </button>
                   <button
-                    class="opacity-50 mr-1 focus:outline-none"
+                    className="opacity-50 mr-1 focus:outline-none"
                     onClick={this.closeInputCertain}
                   >
                     <CloseOutlinedIcon />
@@ -143,36 +143,36 @@ class CertainEdit extends Component {
           ) : (
             <>
               <div>
-                <span class="ml-1 text-sm font-medium text-purple-900 rounded p-1 bg-purple-100">
+                <span className="ml-1 text-sm font-medium text-purple-900 rounded p-1 bg-purple-100">
                   {date}
                 </span>
               </div>
-              <div class="flex justify-between">
+              <div className="flex justify-between">
                 <div>
-                  <span class="font-extrabold text-6xl text-gray-900">
+                  <span className="font-extrabold text-6xl text-gray-900">
                     {value}
                   </span>
-                  <span class="ml-1 mt-7 text-2xl text-purple-900 font-medium">
+                  <span className="ml-1 mt-7 text-2xl text-purple-900 font-medium">
                     {unit}
                   </span>
                 </div>
 
-                <div class="mt-8 opacity-50">
+                <div className="mt-8 opacity-50">
                   <button
-                    class="mr-1 focus:outline-none"
+                    className="mr-1 focus:outline-none"
                     onClick={this.openInputCertain}
                   >
                     <CreateIcon />
                   </button>
                   <button
-                    class="mr-1 focus:outline-none"
+                    className="mr-1 focus:outline-none"
                     name={id}
                     onClick={this.handleCertainDeleteClick}
                   >
                     <DeleteIcon />
                   </button>
                   <button
-                    class="mr-1 focus:outline-none"
+                    className="mr-1 focus:outline-none"
                     onClick={this.props.handleDeleteEdit}
                   >
                     <CloseOutlinedIcon />

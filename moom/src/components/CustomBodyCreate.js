@@ -48,7 +48,7 @@ class CustomBodyCreate extends Component {
         part_name: body_part,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.props.handleCustomRecentBody();
         this.closeInputCustom();
       })
@@ -63,25 +63,25 @@ class CustomBodyCreate extends Component {
       <>
         {isOpenInputCustom ? (
           <>
-            <div class="w-72 h-20 shadow mb-4 mr-4 bg-white rounded-md border border-dashed border-gray-300 hover:border-gray-500">
-              <div class="mt-2 flex justify-between">
-                <div class="pl-11 text-center mt-3">
+            <div className="w-72 h-20 shadow mb-4 mr-4 bg-white rounded-md border border-dashed border-gray-300 hover:border-gray-500">
+              <div className="mt-2 flex justify-between">
+                <div className="pl-11 text-center mt-3">
                   <input
-                    class="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none text-gray-800"
+                    className="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none text-gray-800"
                     type="text"
                     placeholder="새로운 부위를 추가하세요"
                     onChange={this.handleInputCreate}
                   />
                 </div>
-                <div class="ml-1 opacity-50 mt-3 mr-3">
+                <div className="ml-1 opacity-50 mt-3 mr-3">
                   <button
-                    class="mr-1 focus:outline-none"
+                    className="mr-1 focus:outline-none"
                     onClick={this.handleCreateBodypart}
                   >
                     <SaveIcon />
                   </button>
                   <button
-                    class="focus:outline-none"
+                    className="focus:outline-none"
                     onClick={this.closeInputCustom}
                   >
                     <CloseOutlinedIcon />
@@ -92,16 +92,16 @@ class CustomBodyCreate extends Component {
           </>
         ) : (
           <>
-            <div class="w-72 h-20 shadow mb-4 mr-4 bg-white rounded-md border border-dashed border-gray-300 hover:border-gray-500">
-              <div class="mt-3 text-sm font-semibold tracking-tight text-center">
-                <span class=" text-gray-500">새로운</span>
-                <span class="pl-1 text-purple-600">부위</span>
-                <span class="text-gray-600">를 추가하세요</span>
+            <div className="w-72 h-20 shadow mb-4 mr-4 bg-white rounded-md border border-dashed border-gray-300 hover:border-gray-500">
+              <div className="mt-3 text-sm font-semibold tracking-tight text-center">
+                <span className=" text-gray-500">새로운</span>
+                <span className="pl-1 text-purple-600">부위</span>
+                <span className="text-gray-600">를 추가하세요</span>
               </div>
 
-              <div class="text-center pt-1 opacity-60">
+              <div className="text-center pt-1 opacity-60">
                 <button
-                  class="m-auto focus:outline-none"
+                  className="m-auto focus:outline-none"
                   onClick={this.openInputCustom}
                 >
                   <AddIcon />

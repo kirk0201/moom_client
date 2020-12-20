@@ -77,9 +77,6 @@ class SignUp extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    console.log("불리니?");
-    console.log(name);
-    console.log(value);
     this.setState({
       [name]: value,
     });
@@ -111,7 +108,7 @@ class SignUp extends Component {
         sex: sex,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         // TODO : 페이지 전환 확인 redirect
         // TODO: 다른 상태코드에 따른 분기가 필요
         this.props.history.push("/login");

@@ -29,7 +29,7 @@ class SignOutModal extends Component {
     axios
       .delete(`${BASEURL}/user/signout`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         // TODO : 페이지 전환 확인 redirect
         // TODO: 다른 상태코드에 따른 분기가 필요
         if (res.status === 200) {
@@ -45,7 +45,6 @@ class SignOutModal extends Component {
 
   render() {
     const { open, close } = this.props;
-
     return (
       <>
         {open ? (
