@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../css/Introduce.css";
 import bg5 from "../images/bg-3.jpg";
@@ -76,7 +77,12 @@ export class Introduce extends Component {
             {/* <span class="slidebutton" to="/">
               click1
             </span> */}
-            <div className="startbutton1">지금 시작하기</div>
+            <div
+              className="startbutton1"
+              onClick={() => this.props.history.push("/login")}
+            >
+              지금 시작하기
+            </div>
             <a href="https://kr.freepik.com/photos/people" class="origin">
               People 사진는 aleksandarlittlewolf - kr.freepik.com가 제작함
             </a>
@@ -90,7 +96,12 @@ export class Introduce extends Component {
             {/* <span class="slidebutton" to="/">
               click2
             </span> */}
-            <div className="startbutton2">지금 시작하기</div>
+            <div
+              className="startbutton2"
+              onClick={() => this.props.history.push("/login")}
+            >
+              지금 시작하기
+            </div>
             <a href="https://kr.freepik.com/photos/people" class="origin">
               People 사진는 diana.grytsku - kr.freepik.com가 제작함
             </a>
@@ -104,7 +115,12 @@ export class Introduce extends Component {
             {/* <span class="slidebutton" to="/">
               click3
             </span> */}
-            <div className="startbutton3">지금 시작하기</div>
+            <div
+              className="startbutton3"
+              onClick={() => this.props.history.push("/login")}
+            >
+              지금 시작하기
+            </div>
             <a href="https://kr.freepik.com/photos/people" class="origin">
               People 사진는 wayhomestudio - kr.freepik.com가 제작함
             </a>
@@ -128,4 +144,4 @@ export class Introduce extends Component {
   }
 }
 
-export default Introduce;
+export default withRouter(Introduce);

@@ -28,7 +28,6 @@ class UserpwdEdit extends Component {
     });
   };
 
-  
   // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
   handleUserEdit = (e) => {
     let key = e.target.name; //what=isOpenPromise
@@ -58,43 +57,44 @@ class UserpwdEdit extends Component {
     return (
       <>
         <hr />
-        <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
-          <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">비밀번호</h2>
-
-          <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
-            <div class="w-full inline-flex border-b">
-              <img class="w-5 h-8 pt-2" src={keyimg}></img>
+        <div class="mt-2 pb-4 inline-flex items-center w-full">
+          <span class="pt-1 mr-12 text-lg font-medium text-gray-800">
+            비밀번호
+          </span>
+          <div class="flex justify-between items-center md:w-9/12">
+            <div class="flex truncate md:w-10/12">
+              <img class="w-5 h-8 pt-2 mr-3 text-gray-500" src={keyimg}></img>
               <input
                 name={name} //"promise"
                 type={type}
                 placeholder={info ? info : noInfo}
                 onChange={this.handleInputUserEdit}
-                class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4"
+                class="text-lg pt-2 pr-2 md:w-10/12 text-gray-900 focus:outline-none focus:text-gray-900"
               />
             </div>
-          </div>
 
-          <div class="md:w-3/12 text-center md:pl-6">
-            <button
-              name={what}
-              onClick={this.handleUserEdit}
-              class="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right"
-            >
-              <svg
-                fill="none"
-                class="w-4 text-white mr-2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div>
+              <button
+                name={what}
+                onClick={this.handleUserEdit}
+                class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
-              저장
-            </button>
+                <svg
+                  fill="none"
+                  class="w-4 text-white mr-2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                저장
+              </button>
+            </div>
           </div>
         </div>
       </>

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
+
 import LoginNav from "../components/LoginNav";
 import BasicBody from "../components/BasicBody";
 import CustomBody from "../components/CustomBody";
 import MyPage from "../pages/MyPage";
-
-import "../css/LoginMain.css";
 
 class LoginMain extends Component {
   // 로그인시 메인 페이지

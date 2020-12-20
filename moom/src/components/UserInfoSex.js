@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import seximg from "../images/sex.png"
+import seximg from "../images/sex.png";
 
 import { BASEURL } from "../helpurl";
 
@@ -51,24 +51,31 @@ class UserInfoSex extends Component {
     const { sex } = this.state;
     const { what } = this.props;
     return (
-        <>
+      <>
         <hr />
-        <div class="md:inline-flex w-full space-y-4 md:space-y-0 p-1 text-gray-500 items-center">
-                    <h2 class="text-xl text-gray-900 md:w-3/12 max-w-sm mx-auto">성별</h2>
+        <div class="mt-2 pb-4 inline-flex items-center w-full">
+          <span class="pt-1 mr-20 text-lg font-medium text-gray-800">성별</span>
 
-                    <div class="md:w-6/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
-                      <div class="w-full inline-flex border-b">
-                        <img class="w-5 h-8 pt-2" src={seximg}></img>
-                  <select value={sex} onChange={this.handleSelectUserEdit} class="text-xl text-gray-900 w-11/12 focus:outline-none focus:text-gray-600 p-2 ml-4">
-                   <option value="">선택</option>
-                   <option value="female">female</option>
-                   <option value="male">male</option>
-                  </select>
-              </div>
+          <div class="flex justify-between items-center md:w-9/12">
+            <div class="flex truncate md:w-10/12">
+              <img class="w-5 h-8 pt-2 mr-3 text-gray-500" src={seximg}></img>
+              <select
+                value={sex}
+                onChange={this.handleSelectUserEdit}
+                class="text-lg pt-2 pr-2 text-gray-900 w-10/12 focus:outline-none"
+              >
+                <option value="">선택</option>
+                <option value="female">female</option>
+                <option value="male">male</option>
+              </select>
             </div>
 
-            <div class="md:w-3/12 text-center md:pl-6">
-              <button name={what} onClick={this.handleUserEditSex} class="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right">
+            <div>
+              <button
+                name={what}
+                onClick={this.handleUserEditSex}
+                class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+              >
                 <svg
                   fill="none"
                   class="w-4 text-white mr-2"
@@ -86,6 +93,7 @@ class UserInfoSex extends Component {
               </button>
             </div>
           </div>
+        </div>
       </>
     );
   }
