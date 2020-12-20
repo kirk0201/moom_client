@@ -65,13 +65,14 @@ class UserInfoImg extends Component {
         ) : (
           <div>{noInfo}</div>
         )}
-        <div class="flex items-center">
-          <input
-            type="file"
-            name="imgFile"
-            onChange={this.handleImgUserEdit}
-            class=" text-gray-900 focus:outline-none md:w-6/12"
-          ></input>
+
+        <input
+          type="file"
+          name="imgFile"
+          onChange={this.handleImgUserEdit}
+          class="-mr-2 text-gray-900 truncate focus:outline-none"
+        ></input>
+        <div class="mt-2 flex items-center">
           <button
             class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
             name={what}
@@ -101,7 +102,7 @@ class UserInfoImg extends Component {
           >
             <svg
               fill="none"
-              class="w-4 text-white mr-2"
+              class="w-6 text-white mx-auto"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
@@ -109,7 +110,7 @@ class UserInfoImg extends Component {
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
               />
             </svg>
             취소

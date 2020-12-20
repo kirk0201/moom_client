@@ -101,7 +101,7 @@ class UserInfo extends Component {
           </div>
 
           <div class="flex mt-7 ml-10">
-            <div class="row-span-4">
+            <div class="row-span-6">
               <div class="text-lg font-medium text-gray-800">프로필사진</div>
               {isOpenProfile ? (
                 <UserInfoImg
