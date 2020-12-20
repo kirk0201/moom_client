@@ -28,14 +28,14 @@ class UserInfoSex extends Component {
   // 저장 버튼 클릭시 회원정보 수정하는 axios요청 함수
   handleUserEditSex = (e) => {
     let key = e.target.name;
-    console.log(key);
+    // console.log(key);
     const { sex } = this.state;
     axios
       .put(`${BASEURL}/user/edit`, {
         sex: sex,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         // 수정 성공하면 인풋창 사라짐
         this.props.closeInput(key);
         // 수정 성공하면 그 유저정보를 다시 가지고 오는 함수
@@ -53,16 +53,16 @@ class UserInfoSex extends Component {
     return (
       <>
         <hr />
-        <div class="mt-2 pb-4 inline-flex items-center w-full">
-          <span class="pt-1 mr-20 text-lg font-medium text-gray-800">성별</span>
+        <div className="mt-2 pb-4 inline-flex items-center w-full">
+          <span className="pt-1 mr-20 text-lg font-medium text-gray-800">성별</span>
 
-          <div class="flex justify-between items-center md:w-9/12">
-            <div class="flex truncate md:w-10/12">
-              <img class="w-5 h-8 pt-2 mr-3 text-gray-500" src={seximg}></img>
+          <div className="flex justify-between items-center md:w-9/12">
+            <div className="flex truncate md:w-10/12">
+              <img className="w-5 h-8 pt-2 mr-3 text-gray-500" src={seximg}></img>
               <select
                 value={sex}
                 onChange={this.handleSelectUserEdit}
-                class="text-lg pt-2 pr-2 text-gray-900 w-10/12 focus:outline-none"
+                className="text-lg pt-2 pr-2 text-gray-900 w-10/12 focus:outline-none"
               >
                 <option value="">선택</option>
                 <option value="female">female</option>
@@ -74,18 +74,18 @@ class UserInfoSex extends Component {
               <button
                 name={what}
                 onClick={this.handleUserEditSex}
-                class="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
+                className="bg-purple-300 focus:outline-none hover:bg-purple-400 shadow-md p-1 pr-2 rounded-md flex items-center text-center font-medium text-white"
               >
                 <svg
                   fill="none"
-                  class="w-4 text-white mr-2"
+                  className="w-4 text-white mr-2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>

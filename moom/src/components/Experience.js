@@ -142,7 +142,7 @@ export class Experience extends Component {
       this.setState({
         sex: false,
       });
-    console.log(e.target);
+
   };
 
   render() {
@@ -180,7 +180,7 @@ export class Experience extends Component {
                   </span>
                 </button>
                 <button
-                  class=" focus:bg-blue-200  inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-white rounded-r-full px-4 py-2"
+                  className=" focus:bg-blue-200  inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-white rounded-r-full px-4 py-2"
                   id="radioW"
                   onClick={this.handleSexChange}
                 >

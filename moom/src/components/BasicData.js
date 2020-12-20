@@ -88,22 +88,22 @@ class BasicData extends Component {
     return (
       <>
 
-        <div class="md:flex pl-7">
-          <div class="w-48 h-auto">
+        <div className="md:flex pl-7">
+          <div className="w-48 h-auto">
             {sex ? (
               <img
-                class="pt-16"
+                className="pt-16"
                 src={isMale ? male : female}
                 alt="전신 일러스트"
               ></img>
             ) : (
-              // <div class="pt-4">
+              // <div className="pt-4">
               //   <Alert className={classes.errSex} severity="warning">
               //     마이페이지에서 <br />
               //     성별을 선택해주세요!
               //   </Alert>
               // </div>
-              <div class="pt-4">
+              <div className="pt-4">
                 <Alert severity="warning">
                   마이페이지에서 <br />
                   성별을 선택해주세요!
@@ -111,9 +111,9 @@ class BasicData extends Component {
               </div>
             )}
           </div>
-          <div class="pt-2 pl-14 mr-16">
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+          <div className="pt-2 pl-14 mr-16">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Body fat
               </span>
               <div>
@@ -128,23 +128,23 @@ class BasicData extends Component {
                   <>
                     {body_fat ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{body_fat}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{body_fat}</span>
                           </div>
-                          <div class="absolute ml-14">
-                            <span class="text-sm font-bold pl-2 ml-2">%</span>
+                          <div className="absolute ml-14">
+                            <span className="text-sm font-bold pl-2 ml-2">%</span>
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenBodyfat"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none hadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none hadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="body_fat"
                               onClick={bodyChoiceSuccess}
                             >
@@ -155,12 +155,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpenBodyfat"
                             onClick={this.openInputBodyPost}
                           >
@@ -173,8 +173,8 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Weight
               </span>
               <div>
@@ -189,13 +189,13 @@ class BasicData extends Component {
                   <>
                     {weight ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{weight}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{weight}</span>
                           </div>
-                          <div class="absolute ml-14">
+                          <div className="absolute ml-14">
                             <button
-                              class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                              className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                               name="isWeightKG"
                               onClick={handleToggleClick}
                             >
@@ -204,14 +204,14 @@ class BasicData extends Component {
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenWeight"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="weight"
                               onClick={bodyChoiceSuccess}
                             >
@@ -222,12 +222,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpenWeight"
                             onClick={this.openInputBodyPost}
                           >
@@ -240,8 +240,8 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Shoulder
               </span>
               <div>
@@ -256,13 +256,13 @@ class BasicData extends Component {
                   <>
                     {shoulder ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{shoulder}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{shoulder}</span>
                           </div>
-                          <div class="absolute ml-14">
+                          <div className="absolute ml-14">
                             <button
-                              class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                              className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                               name="isShoulderCM"
                               onClick={handleToggleClick}
                             >
@@ -271,14 +271,14 @@ class BasicData extends Component {
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenShoulder"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="shoulder"
                               onClick={bodyChoiceSuccess}
                             >
@@ -289,12 +289,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpenShoulder"
                             onClick={this.openInputBodyPost}
                           >
@@ -307,8 +307,8 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Chest
               </span>
               <div>
@@ -323,13 +323,13 @@ class BasicData extends Component {
                   <>
                     {chest ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{chest}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{chest}</span>
                           </div>
-                          <div class="absolute ml-14">
+                          <div className="absolute ml-14">
                             <button
-                              class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                              className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                               name="isChestCM"
                               onClick={handleToggleClick}
                             >
@@ -338,14 +338,14 @@ class BasicData extends Component {
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpencChest"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="chest"
                               onClick={bodyChoiceSuccess}
                             >
@@ -356,12 +356,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpencChest"
                             onClick={this.openInputBodyPost}
                           >
@@ -374,8 +374,8 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Waist
               </span>
               <div>
@@ -390,13 +390,13 @@ class BasicData extends Component {
                   <>
                     {waist ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{waist}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{waist}</span>
                           </div>
-                          <div class="absolute ml-14">
+                          <div className="absolute ml-14">
                             <button
-                              class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                              className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                               name="isWaistCM"
                               onClick={handleToggleClick}
                             >
@@ -405,14 +405,14 @@ class BasicData extends Component {
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenWaist"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="waist"
                               onClick={bodyChoiceSuccess}
                             >
@@ -423,12 +423,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpenWaist"
                             onClick={this.openInputBodyPost}
                           >
@@ -441,8 +441,8 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Hip
               </span>
               <div>
@@ -457,13 +457,13 @@ class BasicData extends Component {
                   <>
                     {hip ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{hip}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{hip}</span>
                           </div>
-                          <div class="absolute ml-14">
+                          <div className="absolute ml-14">
                             <button
-                              class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                              className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                               name="isHipCM"
                               onClick={handleToggleClick}
                             >
@@ -472,14 +472,14 @@ class BasicData extends Component {
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenHip"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="hip"
                               onClick={bodyChoiceSuccess}
                             >
@@ -490,12 +490,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpenHip"
                             onClick={this.openInputBodyPost}
                           >
@@ -508,8 +508,8 @@ class BasicData extends Component {
                 )}
               </div>
             </div>
-            <div class="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
-              <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+            <div className="w-72 shadow mb-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+              <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                 Thigh
               </span>
               <div>
@@ -524,13 +524,13 @@ class BasicData extends Component {
                   <>
                     {thigh ? (
                       <>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <span class="text-2xl font-medium">{thigh}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-2xl font-medium">{thigh}</span>
                           </div>
-                          <div class="absolute ml-14">
+                          <div className="absolute ml-14">
                             <button
-                              class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                              className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                               name="isThighCM"
                               onClick={handleToggleClick}
                             >
@@ -539,14 +539,14 @@ class BasicData extends Component {
                           </div>
                           <div>
                             <button
-                              class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="isOpenThigh"
                               onClick={this.openInputBodyPost}
                             >
                               RECORD
                             </button>
                             <button
-                              class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                              className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                               name="thigh"
                               onClick={bodyChoiceSuccess}
                             >
@@ -557,12 +557,12 @@ class BasicData extends Component {
                       </>
                     ) : (
                       <>
-                        <div class="flex items-center justify-between">
-                          <span class="shadow-md ml-2 text-2xl font-normal text-gray-700">
+                        <div className="flex items-center justify-between">
+                          <span className="shadow-md ml-2 text-2xl font-normal text-gray-700">
                             --
                           </span>
                           <button
-                            class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name="isOpenThigh"
                             onClick={this.openInputBodyPost}
                           >

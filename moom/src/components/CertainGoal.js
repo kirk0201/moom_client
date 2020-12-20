@@ -128,35 +128,35 @@ class CertainGoal extends Component {
             <>
               {isOpenInputGaol ? (
                 <>
-                  <div class="flex pb-2 space-x-10">
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                  <div className="flex pb-2 space-x-10">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           YOUR
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           GOAL
                         </span>
                       </div>
-                      <div class="flex justify-between">
-                        <div class="pl-11 text-center mt-3">
+                      <div className="flex justify-between">
+                        <div className="pl-11 text-center mt-3">
                           <input
-                            class="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none text-gray-800"
+                            className="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none text-gray-800"
                             type="text"
                             placeholder="수정할 목표를 입력하세요"
                             onChange={this.handleInputGoal}
                           />
                         </div>
-                        <div class="ml-1 opacity-50 mt-3 mr-3">
+                        <div className="ml-1 opacity-50 mt-3 mr-3">
                           <button
                             name={partName}
-                            class="mr-1 focus:outline-none"
+                            className="mr-1 focus:outline-none"
                             onClick={this.handleGoalPutClick}
                           >
                             <SaveIcon />
                           </button>
                           <button
-                            class="focus:outline-none"
+                            className="focus:outline-none"
                             onClick={this.closeInputGoal}
                           >
                             <CloseOutlinedIcon />
@@ -165,20 +165,20 @@ class CertainGoal extends Component {
                       </div>
                     </div>
 
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           RECENT
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           {part}
                         </span>
                       </div>
-                      <div class="text-center mb-1">
-                        <span class="font-extrabold text-4xl text-gray-900">
+                      <div className="text-center mb-1">
+                        <span className="font-extrabold text-4xl text-gray-900">
                           {recent}
                         </span>
-                        <span class="tracking-tight font-bold text-gray-500">
+                        <span className="tracking-tight font-bold text-gray-500">
                           {unit}
                         </span>
                       </div>
@@ -187,34 +187,34 @@ class CertainGoal extends Component {
                 </>
               ) : (
                 <>
-                  <div class="flex pb-5 space-x-10">
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                  <div className="flex pb-5 space-x-10">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           YOUR
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           GOAL
                         </span>
                       </div>
-                      <div class="flex justify-between">
-                        <div class="pl-28 text-center mb-1">
-                          <span class="font-extrabold text-4xl text-gray-900">
+                      <div className="flex justify-between">
+                        <div className="pl-28 text-center mb-1">
+                          <span className="font-extrabold text-4xl text-gray-900">
                             {goal}
                           </span>
-                          <span class="tracking-tight font-bold text-gray-500">
+                          <span className="tracking-tight font-bold text-gray-500">
                             {unit}
                           </span>
                         </div>
-                        <div class="opacity-50 mt-3 mr-3">
+                        <div className="opacity-50 mt-3 mr-3">
                           <button
-                            class="mr-1 focus:outline-none"
+                            className="mr-1 focus:outline-none"
                             onClick={this.openInputGoal}
                           >
                             <CreateIcon />
                           </button>
                           <button
-                            class="focus:outline-none"
+                            className="focus:outline-none"
                             name={partName}
                             onClick={this.handleGoalDeleteClick}
                           >
@@ -224,37 +224,37 @@ class CertainGoal extends Component {
                       </div>
                     </div>
 
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           RECENT
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           {part}
                         </span>
                       </div>
-                      <div class="text-center mb-1">
-                        <span class="font-extrabold text-4xl text-gray-900">
+                      <div className="text-center mb-1">
+                        <span className="font-extrabold text-4xl text-gray-900">
                           {recent}
                         </span>
-                        <span class="tracking-tight font-bold text-gray-500">
+                        <span className="tracking-tight font-bold text-gray-500">
                           {unit}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div class="p-1 flex justify-center items-center shadow-md border border-dashed border-gray-300 rounded-2xl">
-                    <span class="pr-1 text-2xl text-gray-900 font-bold">
+                  <div className="p-1 flex justify-center items-center shadow-md border border-dashed border-gray-300 rounded-2xl">
+                    <span className="pr-1 text-2xl text-gray-900 font-bold">
                       목표
                     </span>
-                    <span class="pr-5 pt-1 text-sm text-gray-800 font-semibold">
+                    <span className="pr-5 pt-1 text-sm text-gray-800 font-semibold">
                       까지
                     </span>
-                    <span class="text-purple-800 tracking-tight pt-2 animate-bounce font-extrabold text-4xl">
+                    <span className="text-purple-800 tracking-tight pt-2 animate-bounce font-extrabold text-4xl">
                       {gap}
                     </span>
-                    <span class="pl-5 pt-1 text-sm text-gray-800 font-semibold">
+                    <span className="pl-5 pt-1 text-sm text-gray-800 font-semibold">
                       남았습니다!
                     </span>
                   </div>
@@ -265,35 +265,35 @@ class CertainGoal extends Component {
             <>
               {isOpenInputGaol ? (
                 <>
-                  <div class="flex pb-2 space-x-10">
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                  <div className="flex pb-2 space-x-10">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           YOUR
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           GOAL
                         </span>
                       </div>
-                      <div class="flex justify-between">
-                        <div class="pl-11 text-center mt-3">
+                      <div className="flex justify-between">
+                        <div className="pl-11 text-center mt-3">
                           <input
-                            class="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none text-gray-800"
+                            className="p-1 text-sm border-b border-solid border-gray-300 focus:outline-none text-gray-800"
                             type="text"
                             placeholder="새로운 목표를 입력하세요"
                             onChange={this.handleInputGoal}
                           />
                         </div>
-                        <div class="ml-1 opacity-50 mt-3 mr-3">
+                        <div className="ml-1 opacity-50 mt-3 mr-3">
                           <button
                             name={partName}
-                            class="mr-1 focus:outline-none"
+                            className="mr-1 focus:outline-none"
                             onClick={this.handleGoalPostClick}
                           >
                             <SaveIcon />
                           </button>
                           <button
-                            class="focus:outline-none"
+                            className="focus:outline-none"
                             onClick={this.closeInputGoal}
                           >
                             <CloseOutlinedIcon />
@@ -302,20 +302,20 @@ class CertainGoal extends Component {
                       </div>
                     </div>
 
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           RECENT
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           {part}
                         </span>
                       </div>
-                      <div class="text-center mb-1">
-                        <span class="font-extrabold text-4xl text-gray-900">
+                      <div className="text-center mb-1">
+                        <span className="font-extrabold text-4xl text-gray-900">
                           {recent}
                         </span>
-                        <span class="tracking-tight font-bold text-gray-500">
+                        <span className="tracking-tight font-bold text-gray-500">
                           {unit}
                         </span>
                       </div>
@@ -324,20 +324,20 @@ class CertainGoal extends Component {
                 </>
               ) : (
                 <>
-                  <div class="flex pb-2 space-x-10">
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                  <div className="flex pb-2 space-x-10">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           YOUR
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           GOAL
                         </span>
                       </div>
 
-                      <div class="text-center mt-3 opacity-70">
+                      <div className="text-center mt-3 opacity-70">
                         <button
-                          class="m-auto focus:outline-none"
+                          className="m-auto focus:outline-none"
                           onClick={this.openInputGoal}
                         >
                           <AddIcon />
@@ -345,20 +345,20 @@ class CertainGoal extends Component {
                       </div>
                     </div>
 
-                    <div class="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
-                      <div class="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span class="tracking-tight text-gray-500 font-bold">
+                    <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
+                      <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
+                        <span className="tracking-tight text-gray-500 font-bold">
                           RECENT
                         </span>
-                        <span class="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
                           {part}
                         </span>
                       </div>
-                      <div class="text-center mb-1">
-                        <span class="font-extrabold text-4xl text-gray-900">
+                      <div className="text-center mb-1">
+                        <span className="font-extrabold text-4xl text-gray-900">
                           {recent}
                         </span>
-                        <span class="tracking-tight font-bold text-gray-500">
+                        <span className="tracking-tight font-bold text-gray-500">
                           {unit}
                         </span>
                       </div>

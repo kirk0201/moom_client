@@ -85,7 +85,7 @@ class CustomBody extends Component {
     axios
       .get(`${BASEURL}/data/custom`)
       .then((res) => {
-        console.log("res.data==> ", res.data);
+        // console.log("res.data==> ", res.data);
         this.setState({
           customs: res.data,
           isOpen: new Array(res.data.length),
@@ -165,8 +165,8 @@ class CustomBody extends Component {
     axios
       .get(`${BASEURL}/data/get`, { params: { part_name: part } })
       .then((res) => {
-        console.log(res.data);
-        console.log(res.data.length);
+        // console.log(res.data);
+        // console.log(res.data.length);
         this.setState({ allBodyData: res.data });
       })
       .catch((err) => {
@@ -204,7 +204,7 @@ class CustomBody extends Component {
   componentDidMount() {
     this.handleRecentBody();
     const contactData = localStorage.getItem("customPartName");
-    console.log(contactData);
+    // console.log(contactData);
     if (contactData) {
       this.setState({ basicPartName: contactData });
       this.certainBodyDataGet(contactData);
@@ -307,22 +307,22 @@ class CustomBody extends Component {
     const mapcustoms = (data) => {
       return data.map((custom, index) => {
         return (
-          <div class="w-72 h-20 shadow mb-4 mr-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
+          <div className="w-72 h-20 shadow mb-4 mr-4 bg-white rounded-md p-3 border border-dashed border-gray-300 hover:border-gray-500">
             {editCustom[index] ? (
               <>
-                <div class="flex justify-between">
+                <div className="flex justify-between">
                   <div>
                     <input
-                      class=" border-b border-solid border-gray-300 focus:outline-none text-gray-800"
+                      className=" border-b border-solid border-gray-300 focus:outline-none text-gray-800"
                       type="text"
                       placeholder={custom.part_name}
                       name={index}
                       onChange={this.handleeditvalue}
                     />
                   </div>
-                  <div class="opacity-50">
+                  <div className="opacity-50">
                     <button
-                      class="mr-1 focus:outline-none"
+                      className="mr-1 focus:outline-none"
                       name={custom.part_name}
                       value={index}
                       onClick={this.handleeditCustom}
@@ -330,7 +330,7 @@ class CustomBody extends Component {
                       <SaveIcon />
                     </button>
                     <button
-                      class="focus:outline-none"
+                      className="focus:outline-none"
                       name={index}
                       onClick={this.handleeditopen}
                     >
@@ -341,9 +341,9 @@ class CustomBody extends Component {
               </>
             ) : (
               <>
-                <div class="flex justify-between">
+                <div className="flex justify-between">
                   <div>
-                    <span class="text-base font-bold text-purple-600 hover:text-purple-400">
+                    <span className="text-base font-bold text-purple-600 hover:text-purple-400">
                       {custom.part_name}
                     </span>
                   </div>
@@ -351,16 +351,16 @@ class CustomBody extends Component {
                     <></>
                   ) : (
                     <>
-                      <div class="opacity-50">
+                      <div className="opacity-50">
                         <button
-                          class="mr-1 focus:outline-none"
+                          className="mr-1 focus:outline-none"
                           name={index}
                           onClick={this.handleeditopen}
                         >
                           <CreateIcon />
                         </button>
                         <button
-                          class="focus:outline-none"
+                          className="focus:outline-none"
                           name={custom.part_name}
                           onClick={this.handleDeleteCustom}
                         >
@@ -385,15 +385,15 @@ class CustomBody extends Component {
                 <>
                   {custom.value ? (
                     <>
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                          <span class="text-2xl font-medium">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <span className="text-2xl font-medium">
                             {custom.value}
                           </span>
                         </div>
-                        <div class="absolute ml-14">
+                        <div className="absolute ml-14">
                           <button
-                            class="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
+                            className="shadow-md text-xs mt-1 focus:outline-none font-medium ml-2 rounded p-1 bg-gray-200 hover:bg-gray-300"
                             name={custom.part_name}
                             onClick={this.handleToggleClick}
                           >
@@ -402,14 +402,14 @@ class CustomBody extends Component {
                         </div>
                         <div>
                           <button
-                            class="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-12 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name={index}
                             onClick={this.openInputBodyPost}
                           >
                             RECORD
                           </button>
                           <button
-                            class="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                            className="focus:outline-none shadow-md ml-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                             name={custom.part_name}
                             onClick={this.bodyChoiceSuccess}
                           >
@@ -420,12 +420,12 @@ class CustomBody extends Component {
                     </>
                   ) : (
                     <>
-                      <div class="flex items-center justify-between">
-                        <span class="ml-2 text-2xl font-normal text-gray-700">
+                      <div className="flex items-center justify-between">
+                        <span className="ml-2 text-2xl font-normal text-gray-700">
                           --
                         </span>
                         <button
-                          class="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
+                          className="focus:outline-none shadow-md ml-36 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded p-1 text-xs"
                           name={index}
                           onClick={this.openInputBodyPost}
                         >
@@ -459,18 +459,18 @@ class CustomBody extends Component {
     // CustomBody 컴포넌트 리턴
     return (
       <>
-        <div class="nav relative top-96">
+        <div className="nav relative top-96">
           <BodyNav handleHeader={handleHeader} header={header} />
         </div>
 
-        <div class="custom mb-10">
-          <div class="tracking-tight text-2xl font-bold">
-            <span class="text-gray-900">Recent</span>
-            <span class=" pl-1 text-purple-400">Custom body</span>
+        <div className="custom mb-10">
+          <div className="tracking-tight text-2xl font-bold">
+            <span className="text-gray-900">Recent</span>
+            <span className=" pl-1 text-purple-400">Custom body</span>
           </div>
 
-          <div class="grid grid-cols-2 max-w-screen-xl mt-9">
-            <div class="flex flex-wrap max-w-2xl min-w-min">
+          <div className="grid grid-cols-2 max-w-screen-xl mt-9">
+            <div className="flex flex-wrap max-w-2xl min-w-min">
               <CustomBodyCreate
                 closeInputBodyPost={this.closeInputBodyPost}
                 handleCustomRecentBody={this.handleRecentBody}
@@ -478,12 +478,12 @@ class CustomBody extends Component {
               {mapcustoms(customs)}
             </div>
 
-            <div class="row-span-5 ml-4">
+            <div className="row-span-5 ml-4">
               {basicPartName ? (
                 <>
                   {allBodyData.length ? (
                     <>
-                      <div className="chart">
+                      <div classNameName="chart">
                         <CertainChart
                           allBodyData={allBodyData}
                           partName={basicPartName}
@@ -491,18 +491,18 @@ class CustomBody extends Component {
                           handlePointClick={this.handlePointClick}
                         />
                       </div>
-                      <div className="certain mb-4 pt-96 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
-                        <div class="tracking-tight md:flex items-center justify-between">
-                          <div class="font-bold text-2xl text-gray-800">
+                      <div classNameName="certain mb-4 pt-96 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                        <div className="tracking-tight md:flex items-center justify-between">
+                          <div className="font-bold text-2xl text-gray-800">
                             {basicPartName}
                           </div>
                           <div>
                             <select
-                              class="mt-1 rounded-sm border border-dashed text-xs font-medium text-gray-800 border-gray-300 hover:border-purple-500 p-1  bg-white shadow flex items-center focus:outline-none"
+                              className="mt-1 rounded-sm border border-dashed text-xs font-medium text-gray-800 border-gray-300 hover:border-purple-500 p-1  bg-white shadow flex items-center focus:outline-none"
                               value={selectChart}
                               onChange={this.handleChangeChart}
                             >
-                              <option class="hover:bg-white" value="">
+                              <option className="hover:bg-white" value="">
                                 CHOSSE
                               </option>
                               <option value="CertainAllData">
@@ -532,7 +532,7 @@ class CustomBody extends Component {
                           ) : (
                             <>
                               <div
-                                class="text-sm text-left text-gray-600 bg-gray-200 border border-gray-400 h-12 flex items-center p-4 rounded-sm"
+                                className="text-sm text-left text-gray-600 bg-gray-200 border border-gray-400 h-12 flex items-center p-4 rounded-sm"
                                 role="alert"
                               >
                                 그래프 포인트를 클릭하면 원하는 날짜의 데이터를
@@ -542,7 +542,7 @@ class CustomBody extends Component {
                           )}
                         </div>
                       </div>
-                      <div className="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                      <div classNameName="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
                         <CertainGoal
                           goal={basicPartGoal}
                           name={name}

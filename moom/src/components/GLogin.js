@@ -36,7 +36,7 @@ class GLogin extends Component {
       .then((res) => {
         // TODO : 페이지 전환 확인 redirect
         // TODO: 다른 상태코드에 따른 분기가 필요
-        console.log(res.data);
+        // console.log(res.data);
         this.props.handleLoginSuccess();
         this.props.history.push("/");
       })

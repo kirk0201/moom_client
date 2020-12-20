@@ -40,15 +40,15 @@ class NoLoginNav extends Component {
   render() {
     const { navOpen } = this.state;
     return (
-      <div class="fixed w-full z-10">
-        <nav class="bg-gray-800">
-          <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
+      <div className="fixed w-full z-10">
+        <nav className="bg-gray-800">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
                   <Link to="/">
                     <img
-                      class="h-12 w-12"
+                      className="h-12 w-12"
                       src={logoimg}
                       alt="Workflow"
                       onClick={() => {
@@ -57,12 +57,12 @@ class NoLoginNav extends Component {
                     />
                   </Link>
                 </div>
-                <div class="hidden md:block">
-                  <div class="ml-10 flex items-baseline space-x-4">
+                <div className="hidden md:block">
+                  <div className="ml-10 flex items-baseline space-x-4">
                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                     <Link to="/">
                       <span
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={this.scrollToMain}
                       >
                         메인
@@ -70,7 +70,7 @@ class NoLoginNav extends Component {
                     </Link>
                     <Link to="/">
                       <span
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={this.scrollToIntroduce}
                       >
                         소개
@@ -78,7 +78,7 @@ class NoLoginNav extends Component {
                     </Link>
                     <Link to="/">
                       <span
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                         onClick={this.scrollToExperience}
                       >
                         체험하기
@@ -87,15 +87,15 @@ class NoLoginNav extends Component {
                   </div>
                 </div>
               </div>
-              <div class="hidden md:block">
-                <div class="ml-4 flex items-center md:ml-6">
+              <div className="hidden md:block">
+                <div className="ml-4 flex items-center md:ml-6">
                   {/* <!-- Profile dropdown --> */}
                   <Link to="/login">
                     <span
                       onClick={() => {
                         this.handleNav("Login");
                       }}
-                      class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                     >
                       로그인
                     </span>
@@ -105,17 +105,17 @@ class NoLoginNav extends Component {
                       onClick={() => {
                         this.handleNav("Sign up");
                       }}
-                      class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
                     >
                       회원가입
                     </span>
                   </Link>
                 </div>
               </div>
-              <div class="-mr-2 flex md:hidden">
+              <div className="-mr-2 flex md:hidden">
                 {/* <!-- Mobile menu button --> */}
-                <button class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                  <span class="sr-only">Open main menu</span>
+                <button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                  <span className="sr-only">Open main menu</span>
                   {/* <!--
               Heroicon name: menu
 
@@ -123,7 +123,7 @@ class NoLoginNav extends Component {
             --> */}
                   {!navOpen ? (
                     <svg
-                      class="block h-6 w-6"
+                      className="block h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -132,15 +132,15 @@ class NoLoginNav extends Component {
                       onClick={() => this.handleNavOpen(true)}
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M4 6h16M4 12h16M4 18h16"
                       />
                     </svg>
                   ) : (
                     <svg
-                      class="block h-6 w-6"
+                      className="block h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -149,9 +149,9 @@ class NoLoginNav extends Component {
                       onClick={() => this.handleNavOpen(false)}
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
@@ -167,17 +167,17 @@ class NoLoginNav extends Component {
           </div>
 
           {/* <!--/
-      Mobile menu, toggle classes based on m/enu state.
+      Mobile menu, toggle classNamees based on m/enu state.
 /
       Open: "block", closed: "hidden"/
     -->/ */}
           {navOpen ? (
-            <div class="block md:hidden">
-              <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="block md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                 <Link to="/">
                   <span
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => {
                       this.handleNav("Main");
                     }}
@@ -187,7 +187,7 @@ class NoLoginNav extends Component {
                 </Link>
                 <Link to="/login">
                   <span
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => {
                       this.handleNav("Login");
                     }}
@@ -197,7 +197,7 @@ class NoLoginNav extends Component {
                 </Link>
                 <Link to="/signup">
                   <span
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => {
                       this.handleNav("Sign up");
                     }}
@@ -211,9 +211,9 @@ class NoLoginNav extends Component {
             <></>
           )}
         </nav>
-        <header class="bg-white shadow hidden md:block">
-          <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold leading-tight text-gray-900">
+        <header className="bg-white shadow hidden md:block">
+          <div className="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold leading-tight text-gray-900">
               {this.state.navTarget}
             </h1>
           </div>
