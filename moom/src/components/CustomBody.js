@@ -483,7 +483,7 @@ class CustomBody extends Component {
                 <>
                   {allBodyData.length ? (
                     <>
-                      <div classNameName="chart">
+                      <div className="chart">
                         <CertainChart
                           allBodyData={allBodyData}
                           partName={basicPartName}
@@ -491,7 +491,7 @@ class CustomBody extends Component {
                           handlePointClick={this.handlePointClick}
                         />
                       </div>
-                      <div classNameName="certain mb-4 pt-96 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                      <div className="certain mb-4 pt-96 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
                         <div className="tracking-tight md:flex items-center justify-between">
                           <div className="font-bold text-2xl text-gray-800">
                             {basicPartName}
@@ -542,7 +542,7 @@ class CustomBody extends Component {
                           )}
                         </div>
                       </div>
-                      <div classNameName="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
+                      <div className="certain pt-5 pl-10 pb-5 pr-10 bg-white shadow-lg rounded-lg border border-dashed border-gray-300 hover:border-gray-500">
                         <CertainGoal
                           goal={basicPartGoal}
                           name={name}

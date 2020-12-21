@@ -63,7 +63,7 @@ class UserpwdEdit extends Component {
           </span>
           <div className="flex justify-between items-center md:w-9/12">
             <div className="flex truncate md:w-10/12">
-              <img className="w-5 h-8 pt-2 mr-3 text-gray-500" src={keyimg}></img>
+              <img className="w-5 h-8 pt-2 mr-3 text-gray-500" src={keyimg} alt="이미지 어디감?"></img>
               <input
                 name={name} //"promise"
                 type={type}
