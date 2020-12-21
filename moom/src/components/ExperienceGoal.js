@@ -56,6 +56,7 @@ export default class ExperienceGoal extends Component {
           break;
         case "isClick2":
           context.setGoal2(value);
+          context.setGoal_2(value);
           break;
         case "isClick3":
           context.setGoal3(value * 2.54);
