@@ -130,6 +130,7 @@ class SignUp extends Component {
       <>
         <center style={{ paddingTop: "170px" }}>
           <img
+          alt="이미지 어디감?"
             src={logoimg}
             style={{
               width: "250px",

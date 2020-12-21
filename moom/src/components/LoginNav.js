@@ -121,7 +121,7 @@ class LoginNav extends Component {
                         <img
                           className="h-8 w-8 rounded-full"
                           src={profile ? profile : profile_img}
-                          alt=""
+                          alt="이미지 어디감?"
                         />
                       </button>
                     </div>
@@ -257,7 +257,7 @@ class LoginNav extends Component {
                     <img
                       className="h-10 w-10 rounded-full"
                       src={profile}
-                      alt=""
+                      alt="이미지 어디감?"
                     />
                   </div>
                   <div className="ml-3">

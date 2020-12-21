@@ -185,6 +185,7 @@ class UserInfo extends Component {
                     <div className="flex justify-between items-center md:w-9/12">
                       <div className="flex truncate md:w-10/12">
                         <img
+                        alt="이미지 어디감?"
                           className="w-5 h-8 pt-2 mr-3 text-gray-500"
                           src={nickname}
                         ></img>
@@ -239,7 +240,7 @@ class UserInfo extends Component {
                     </span>
                     <div className="flex justify-between items-center md:w-9/12">
                       <div className="flex">
-                        <img className="w-5 h-8 pt-2 mr-3" src={keyimg}></img>
+                        <img className="w-5 h-8 pt-2 mr-3" src={keyimg} alt="이미지 어디감?"></img>
                         <span className="pt-2 pr-10 text-lg text-gray-500">
                           {social
                             ? "비밀번호를 변경할 수 없습니다"
@@ -294,7 +295,7 @@ class UserInfo extends Component {
 
                     <div className="flex justify-between items-center md:w-9/12">
                       <div className="md:w-10/12 flex truncate">
-                        <img className="w-5 h-8 pt-2 mr-3" src={mygoal}></img>
+                        <img className="w-5 h-8 pt-2 mr-3" src={mygoal} alt="이미지 어디감?"></img>
                         <span className="truncate pt-2 pr-10 text-xl text-gray-800">
                           {promise ? promise : "목표를 위한 다짐을 남겨보세요"}
                         </span>
@@ -343,7 +344,7 @@ class UserInfo extends Component {
                     </span>
                     <div className="flex justify-between items-center md:w-9/12">
                       <div className="flex">
-                        <img className="w-5 h-8 pt-2 mr-3" src={seximg}></img>
+                        <img className="w-5 h-8 pt-2 mr-3" src={seximg} alt="이미지 어디감?"></img>
                         <span className="pt-2 pr-10 text-xl text-gray-800">
                           {sex ? sex : "성별을 선택해주세요"}
                         </span>
@@ -395,7 +396,7 @@ class UserInfo extends Component {
 
                     <div className="flex justify-between items-center md:w-9/12">
                       <div className="flex">
-                        <img className="w-5 h-8 pt-2 mr-3" src={birthimg}></img>
+                        <img className="w-5 h-8 pt-2 mr-3" src={birthimg} alt="이미지 어디감?"></img>
                         <span className="pt-2 pr-10 text-xl text-gray-800">
                           {birth ? birth : "생년월일을 설정하세요"}
                         </span>

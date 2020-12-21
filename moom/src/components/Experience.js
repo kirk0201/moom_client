@@ -174,7 +174,7 @@ export class Experience extends Component {
                   onClick={this.handleSexChange}
                   defaultChecked
                 >
-                  <img id="radioM" src={sM} />
+                  <img id="radioM" src={sM} alt="이미지 어디감?"/>
                   <span id="radioM" className="font-bold">
                     Male
                   </span>
@@ -184,7 +184,7 @@ export class Experience extends Component {
                   id="radioW"
                   onClick={this.handleSexChange}
                 >
-                  <img id="radioW" src={sW} className=""></img>
+                  <img id="radioW" src={sW} alt="이미지 어디감?"></img>
                   <span id="radioW" className="font-bold">
                     Female
                   </span>
