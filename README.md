@@ -27,19 +27,19 @@
 
 ## 사용 스택
 * ### Client<br>
-    ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
-    ![image](https://img.shields.io/static/v1?label=&message=axios&color=orange&style=flat&logo=)
-    ![image](https://img.shields.io/static/v1?label=&message=react&color=orange&style=flat&logo=react)
-    ![image](https://img.shields.io/static/v1?label=&message=tailwind&color=orange&style=flat&logo=Tailwindcss)
-    ![image](https://img.shields.io/static/v1?label=&message=highcharts&color=orange&style=flat&logo=)
-    ![image](https://img.shields.io/static/v1?label=&message=multer-s3&color=orange&style=flat&logo=)
-    ![image](https://img.shields.io/static/v1?label=&message=contextAPI&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=Javascript&color=orange&style=flat&logo=javascript)
+    ![image](https://img.shields.io/static/v1?label=&message=React&color=orange&style=flat&logo=react)
+    ![image](https://img.shields.io/static/v1?label=&message=Axios&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=Tailwind&color=orange&style=flat&logo=Tailwindcss)
+    ![image](https://img.shields.io/static/v1?label=&message=Highcharts&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=ContextAPI&color=orange&style=flat&logo=)
     <br>
 * ### Server<br>
-    ![image](https://img.shields.io/static/v1?label=&message=javascript&color=orange&style=flat&logo=javascript)
-    ![image](https://img.shields.io/static/v1?label=&message=sequelize&color=orange&style=flat&logo=)
-    ![image](https://img.shields.io/static/v1?label=&message=express&color=orange&style=flat&logo=)
-    ![image](https://img.shields.io/static/v1?label=&message=mysql&color=orange&style=flat&logo=mysql)
+    ![image](https://img.shields.io/static/v1?label=&message=Javascript&color=orange&style=flat&logo=javascript)
+    ![image](https://img.shields.io/static/v1?label=&message=Sequelize&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=Express&color=orange&style=flat&logo=)
+    ![image](https://img.shields.io/static/v1?label=&message=Mysql&color=orange&style=flat&logo=mysql)
+    ![image](https://img.shields.io/static/v1?label=&message=Multer-s3&color=orange&style=flat&logo=)
     <br>
 * ### Deploy<br>
     ![image](https://img.shields.io/static/v1?label=&message=EC2&color=orange&style=flat&logo=amazonaws)
