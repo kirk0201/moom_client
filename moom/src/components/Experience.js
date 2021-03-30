@@ -159,8 +159,8 @@ export class Experience extends Component {
     return (
       <>
         <div
-          className="max-w-screen-2xl ml-auto mr-auto pt-2 mx-20 my-20 border-solid border rounded-3xl border-gray-300 shadow-2xl"
-          style={{ minWidth: "1500px" }}
+          className="max-w-screen-2xl m-auto pt-2 mx-20 my-20 border-solid border rounded-3xl border-gray-300 shadow-2xl"
+          
         >
           {/* 탑 div */}
 

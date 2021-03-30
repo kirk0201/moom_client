@@ -26,11 +26,13 @@ class NoLoginNav extends Component {
     window.scrollTo(0, 0);
   };
 
+  // 소개 버튼
   scrollToIntroduce = () => {
     this.handleNav("Introduce");
     window.scrollTo(0, 590);
   };
 
+  // 체험하기 버튼튼
   scrollToExperience = () => {
     this.handleNav("Experience");
     window.scrollTo(0, 1550);

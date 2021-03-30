@@ -72,17 +72,18 @@ export class Introduce extends Component {
           <div className={slide1}>
             <div className="numbertext">1 / 3</div>
             <img className="slide-img" src={bg1} alt="이미지 어디감?" />
-            <div className="text1">
-              뭄으로 체계적인 신체 관리를 시작해보세요
+            <div className="text_ad text_ad1_h">
+              체계적인 신체 관리를 시작해보세요
             </div>
-            <div className="subtext1">- 즐거운 변화를 만들어 드립니다 -</div>
+            <div>
+              <div className="subtext subtext1_h">
+                즐거운 변화를 만들어 드립니다 <br/>
+                <button className="button1_h border-solid border-2 rounded-lg mt-5 p-3 border-gray-200 font-bold bg-blue-100">지금 시작하기</button>
+              </div>
+            </div>
             
-            <div
-              className="startbutton1"
-              onClick={() => this.props.history.push("/login")}
-            >
-              지금 시작하기
-            </div>
+            
+            
             <a href="https://kr.freepik.com/photos/people" className="origin">
               People 사진는 aleksandarlittlewolf - kr.freepik.com가 제작함
             </a>
@@ -91,17 +92,20 @@ export class Introduce extends Component {
           <div className={slide2}>
             <div className="numbertext">2 / 3</div>
             <img className="slide-img" src={bg3} alt="이미지 어디감?" />
-            <div className="text2">어느 부위든 기록하고 분석 하세요</div>
-            <div className="subtext2">
-              - 원하는 모든곳을 관리할수 있습니다 -
-            </div>
-            
-            <div
-              className="startbutton2"
+            <div className="text_ad text_ad2_h">어느 부위든 기록하고 <span className="long_Text">분석 하세요</span></div>
+            <div className="subtext subtext2_h">
+            원하는 모든곳을 관리할수 있습니다
+            <br/>
+              <button
+              // className="startbutton2"
+              className="border-solid border-2 rounded-lg mt-5 p-3 border-gray-200 font-bold bg-blue-100"
               onClick={() => this.props.history.push("/login")}
             >
               지금 시작하기
+            </button>
             </div>
+            
+            
             <a href="https://kr.freepik.com/photos/people" className="origin">
               People 사진는 diana.grytsku - kr.freepik.com가 제작함
             </a>
@@ -110,14 +114,16 @@ export class Introduce extends Component {
           <div className={slide3}>
             <div className="numbertext">3 / 3</div>
             <img className="slide-img" src={bg5} alt="이미지 어디감?" />
-            <div className="text3">건강한 신체를 느껴보세요</div>
-            <div className="subtext3">- 뭄과 함께라면 가능합니다 -</div>
-            
-            <div
-              className="startbutton3"
+            <div className="text_ad text_ad3_h">건강한 신체를 느껴보세요</div>
+            <div className="subtext subtext3_h">뭄과 함께라면 가능합니다
+            <br/>
+            <button
+              // className="startbutton3"
+              className="border-solid border-2 rounded-lg mt-5 p-3 border-gray-200 font-bold bg-blue-100"
               onClick={() => this.props.history.push("/login")}
             >
               지금 시작하기
+            </button>
             </div>
             <a href="https://kr.freepik.com/photos/people" className="origin">
               People 사진는 wayhomestudio - kr.freepik.com가 제작함

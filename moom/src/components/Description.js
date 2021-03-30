@@ -1,6 +1,7 @@
 import { Hidden } from "@material-ui/core";
 import React, { Component } from "react";
 import "tailwindcss/tailwind.css";
+import "../css/Description.css";
 import feat1 from "../images/feat1.svg";
 import feat2 from "../images/feat2.svg";
 import feat3 from "../images/feat3.svg";
@@ -20,19 +21,16 @@ export class Description extends Component {
   render() {
     return (
       <>
-        <div
+        <div className="border-gray-100 border-solid border-2 shadow-xl"
           style={{
-            width: "100%",
-            padding: "0px",
-            maxWidth: "1700px",
-            minWidth: "1600px",
+            width: "90%",
+            paddingTop: "20px",
             maxHeight: "2000px",
             borderRadius: "10px",
             overflow: "Hidden",
             marginTop: "25px",
             marginLeft: "auto",
             marginRight: "auto",
-            backgroundColor: "rgb(240,240,255)",
           }}
         >
           <div
@@ -40,41 +38,42 @@ export class Description extends Component {
             style={{
               width: "100%",
               padding: "0px",
-              margin: "0px",
+              margin: "0px",              
             }}
           >
             <div
               style={{
-                width: "100%",
                 height: "100px",
+                margin: "auto",
                 borderBottom: "5px solid black",
                 display: "flex",
                 justifyContent: "space-around",
                 fontSize: "60px",
                 fontWeight: "bold",
-                paddingRight: "80%",
+                margin:"0 50px"
               }}
             >
-              feat
+              Feat
             </div>
-            <div
+            <div className="content_wrap"
               style={{
-                width: "100%",
-                height: "300px",
+                // width: "100%",
+                // height: "300px",
                 display: "flex",
+                flexWrap: "wrap",
                 justifyContent: "space-around",
               }}
             >
               <div
-                className="feat1"
+                className="feat feat1 border-gray-100 border-2 border-solid shadow-xl hover:bg-purple-100"
                 style={{
-                  width: "20%",
-                  height: "250px",
-                  marginTop: "auto",
-                  marginBottom: "auto",
-                  marginLeft: "12%",
-                  borderRadius: "30px",
-                  backgroundColor: "rgb(255,255,255)",
+                  // width: "30%",
+                  // height: "250px",
+                  // marginTop: "auto",
+                  // marginBottom: "auto",
+                  // marginLeft: "12%",
+                  // borderRadius: "30px",
+                  
                 }}
               >
                 <img
@@ -87,9 +86,9 @@ export class Description extends Component {
                   src={feat1}
                   alt="기능설명1"
                 ></img>
-                <div
+                <div className="feat_title"
                   style={{
-                    fontSize: "20px",
+                    // fontSize: "20px",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "2%",
@@ -97,13 +96,13 @@ export class Description extends Component {
                 >
                   신체 데이터 관리
                 </div>
-                <div
+                <div className="feat_content"
                   style={{
                     width: "80%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     marginTop: "2%",
-                    fontSize: "18px",
+                    // fontSize: "18px",
                     textAlign: "center",
                   }}
                 >
@@ -113,14 +112,13 @@ export class Description extends Component {
                 </div>
               </div>
               <div
-                className="feat2"
+                className="feat feat2 border-gray-100 border-2 border-solid shadow-xl hover:bg-purple-100"
                 style={{
-                  width: "20%",
-                  height: "250px",
-                  marginTop: "auto",
-                  marginBottom: "auto",
-                  borderRadius: "30px",
-                  backgroundColor: "rgb(255,255,255)",
+                  // width: "30%",
+                //   height: "250px",
+                //   marginTop: "auto",
+                //   marginBottom: "auto",
+                //   borderRadius: "30px",
                 }}
               >
                 <img
@@ -133,9 +131,9 @@ export class Description extends Component {
                   src={feat2}
                   alt="기능설명2"
                 ></img>
-                <div
+                <div className="feat_title"
                   style={{
-                    fontSize: "20px",
+                    // fontSize: "20px",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "2%",
@@ -143,13 +141,13 @@ export class Description extends Component {
                 >
                   신체 데이터 관리
                 </div>
-                <div
+                <div className="feat_content"
                   style={{
                     width: "80%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     marginTop: "2%",
-                    fontSize: "18px",
+                    // fontSize: "18px",
                     textAlign: "center",
                   }}
                 >
@@ -159,15 +157,14 @@ export class Description extends Component {
                 </div>
               </div>
               <div
-                className="feat3"
+                className="feat feat3 border-gray-100 border-2 border-solid shadow-xl hover:bg-purple-100"
                 style={{
-                  width: "20%",
-                  height: "250px",
-                  marginTop: "auto",
-                  marginBottom: "auto",
-                  marginRight: "12%",
-                  borderRadius: "30px",
-                  backgroundColor: "rgb(255,255,255)",
+                  // width: "30%",
+                //   height: "250px",
+                //   marginTop: "auto",
+                //   marginBottom: "auto",
+                //   marginRight: "12%",
+                //   borderRadius: "30px",
                 }}
               >
                 <img
@@ -180,9 +177,9 @@ export class Description extends Component {
                   src={feat3}
                   alt="기능설명3"
                 ></img>
-                <div
+                <div className="feat_title"
                   style={{
-                    fontSize: "20px",
+                    // fontSize: "20px",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "2%",
@@ -190,13 +187,13 @@ export class Description extends Component {
                 >
                   신체 데이터 관리
                 </div>
-                <div
+                <div className="feat_content"
                   style={{
                     width: "80%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     marginTop: "2%",
-                    fontSize: "18px",
+                    // fontSize: "18px",
                     textAlign: "center",
                   }}
                 >
@@ -205,25 +202,24 @@ export class Description extends Component {
                   원동력을 제공합니다.
                 </div>
               </div>
-            </div>
-            <div
+            
+            {/* <div
               style={{
                 width: "100%",
                 height: "300px",
                 display: "flex",
                 justifyContent: "space-around",
               }}
-            >
+            > */}
               <div
-                className="feat4"
+                className="feat feat4 border-gray-100 border-2 border-solid shadow-xl hover:bg-purple-100"
                 style={{
-                  width: "20%",
-                  height: "250px",
-                  marginTop: "auto",
-                  marginBottom: "auto",
-                  marginLeft: "25%",
-                  borderRadius: "30px",
-                  backgroundColor: "rgb(255,255,255)",
+                  // width: "20%",
+                  // height: "250px",
+                  // marginTop: "auto",
+                  // marginBottom: "auto",
+                  // marginLeft: "25%",
+                  // borderRadius: "30px",
                 }}
               >
                 <img
@@ -236,9 +232,9 @@ export class Description extends Component {
                   alt="기능설명4"
                   src={feat4}
                 ></img>
-                <div
+                <div className="feat_title"
                   style={{
-                    fontSize: "20px",
+                    // fontSize: "20px",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "2%",
@@ -246,13 +242,13 @@ export class Description extends Component {
                 >
                   신체 데이터 관리
                 </div>
-                <div
+                <div className="feat_content"
                   style={{
                     width: "80%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     marginTop: "2%",
-                    fontSize: "18px",
+                    // fontSize: "18px",
                     textAlign: "center",
                   }}
                 >
@@ -262,16 +258,16 @@ export class Description extends Component {
                 </div>
               </div>
               <div
-                className="feat5"
-                style={{
-                  width: "20%",
-                  height: "250px",
-                  marginTop: "auto",
-                  marginBottom: "auto",
-                  marginRight: "25%",
-                  borderRadius: "30px",
-                  backgroundColor: "rgb(255,255,255)",
-                }}
+                className="feat feat5 border-gray-100 border-2 border-solid shadow-xl hover:bg-purple-100"
+                // style={{
+                //   width: "20%",
+                //   height: "250px",
+                //   marginTop: "auto",
+                //   marginBottom: "auto",
+                //   marginRight: "25%",
+                //   borderRadius: "30px",
+                  
+                // }}
               >
                 <img
                   style={{
@@ -283,9 +279,9 @@ export class Description extends Component {
                   alt="기능설명5"
                   src={feat5}
                 ></img>
-                <div
+                <div className="feat_title"
                   style={{
-                    fontSize: "20px",
+                    // fontSize: "20px",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "2%",
@@ -293,13 +289,13 @@ export class Description extends Component {
                 >
                   신체 데이터 관리
                 </div>
-                <div
+                <div className="feat_content"
                   style={{
                     width: "80%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     marginTop: "2%",
-                    fontSize: "18px",
+                    // fontSize: "18px",
                     textAlign: "center",
                   }}
                 >
@@ -308,13 +304,14 @@ export class Description extends Component {
                   지정, 관리 가능합니다.
                 </div>
               </div>
+            {/* </div> */}
             </div>
           </div>
 
           <div
             className="review"
             style={{
-              width: "100%",
+              // width: "100%",
               height: "180px",
               padding: "0px",
               margin: "0px",
@@ -325,7 +322,7 @@ export class Description extends Component {
             <div
               className="review1"
               style={{
-                width: "25%",
+                // width: "30%",
                 height: "130px",
                 padding: "0px",
                 marginTop: "auto",
@@ -357,7 +354,7 @@ export class Description extends Component {
                 ></img>
                 <div
                   style={{
-                    fontSize: "25px",
+                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "7%",
@@ -369,7 +366,7 @@ export class Description extends Component {
               <div
                 style={{
                   width: "75%",
-                  height: "180px",
+                  height: "190px",
                   padding: "0px",
                 }}
               >
@@ -379,17 +376,17 @@ export class Description extends Component {
                     height: "42%",
                     paddingTop: "4%",
                     backgroundColor: "white",
-                    fontSize: "20px",
+                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                   }}
                 >
                   " 뭄과 함께한지 1년 꿈꾸던 신체를 가지게 되었습니다 "
                 </div>
-                <div
+                <div className="star"
                   style={{
                     width: "100%",
-                    height: "40%",
+                    // height: "55%",
                     display: "flex",
                     justifyContent: "space-around",
                   }}
@@ -423,9 +420,9 @@ export class Description extends Component {
               </div>
             </div>
             <div
-              className="review1"
+              className="review2"
               style={{
-                width: "25%",
+                // width: "25%",
                 height: "130px",
                 padding: "0px",
                 marginTop: "auto",
@@ -457,7 +454,7 @@ export class Description extends Component {
                 ></img>
                 <div
                   style={{
-                    fontSize: "25px",
+                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "7%",
@@ -469,7 +466,7 @@ export class Description extends Component {
               <div
                 style={{
                   width: "75%",
-                  height: "180px",
+                  height: "190px",
                   padding: "0px",
                 }}
               >
@@ -479,17 +476,17 @@ export class Description extends Component {
                     height: "42%",
                     paddingTop: "4%",
                     backgroundColor: "white",
-                    fontSize: "20px",
+                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                   }}
                 >
                   "건강해짐과 동시에 <br /> 생활에 활력이 생겼어요 "
                 </div>
-                <div
+                <div className="star"
                   style={{
                     width: "100%",
-                    height: "40%",
+                    // height: "55%",
                     display: "flex",
                     justifyContent: "space-around",
                   }}
@@ -523,9 +520,9 @@ export class Description extends Component {
               </div>
             </div>
             <div
-              className="review1"
+              className="review3"
               style={{
-                width: "25%",
+                // width: "25%",
                 height: "130px",
                 padding: "0px",
                 marginTop: "auto",
@@ -557,7 +554,7 @@ export class Description extends Component {
                 ></img>
                 <div
                   style={{
-                    fontSize: "25px",
+                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                     marginTop: "7%",
@@ -569,7 +566,7 @@ export class Description extends Component {
               <div
                 style={{
                   width: "75%",
-                  height: "180px",
+                  height: "190px",
                   padding: "0px",
                 }}
               >
@@ -579,7 +576,7 @@ export class Description extends Component {
                     height: "42%",
                     paddingTop: "4%",
                     backgroundColor: "white",
-                    fontSize: "20px",
+                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                   }}
@@ -588,10 +585,10 @@ export class Description extends Component {
                   <br />
                   뭄이 최고 "
                 </div>
-                <div
+                <div className="star"
                   style={{
                     width: "100%",
-                    height: "40%",
+                    // height: "55%",
                     display: "flex",
                     justifyContent: "space-around",
                   }}

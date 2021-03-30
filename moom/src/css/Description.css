@@ -1,0 +1,119 @@
+@media (max-width: 1600px) {
+    .content_wrap {
+        /* padding: 20px 0; */
+        /* margin: 10px; */
+    }
+    .feat {
+        margin: 30px 0;
+        width: 30%;
+        border-radius: 30px;
+    }
+    .feat_title {
+        font-size: 30px;
+    }
+    .feat_content {
+        font-size: 18px;
+    }
+    .review1{
+        width: 30%;
+    }
+    .review2{
+        width: 30%;
+    }
+    .review3{
+        width: 30%;
+    }
+    .star {
+        height: 45%;
+    }
+}
+@media (max-width : 1240px) {
+    .feat {
+        border-radius: 30px;
+    }
+    .feat1 {
+        width: 30%;
+    }
+    .feat2 {
+        width: 30%;
+    }
+    .feat3 {
+        width: 30%;
+    }
+    .feat4 {
+        width: 30%;
+        margin-left: 15%;
+    }
+    .feat5 {
+        width: 30%;
+        margin-right: 15%;
+    }
+}
+@media (max-width : 768px) {
+    .content_wrap {
+        padding: 10px;
+    }
+    .feat {
+        margin: 10px;
+        border-radius: 30px;
+    }
+    .feat1 {
+        width: 30%;
+    }
+    .feat2 {
+        width: 30%;
+    }
+    .feat3 {
+        width: 30%;
+    }
+    .feat4 {
+        width: 30%;
+        margin-left: 15%;
+    }
+    .feat5 {
+        width: 30%;
+        margin-right: 15%;
+    }
+    .review {
+        width: 100%;
+    }
+    .review1 .review2 .review3{
+        width: 30%;
+    }
+}
+@media (max-width : 500px) {
+    .feat {
+        border-radius: 30px;
+        width:50%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .feat1 {
+        width: 50%;
+    }
+    .feat2 {
+        width: 50%;
+    }
+    .feat3 {
+        width: 50%;
+    }
+    .feat_title {
+        font-size:18px;
+    }
+    .feat_content {
+        font-size: 15px;
+    }
+    .review {
+        width: 100%;
+        font-size: 15px;
+    }
+    .review1{
+        width: 30%;
+    }
+    .review2{
+        width: 30%;
+    }
+    .review3{
+        width: 30%;
+    }
+}

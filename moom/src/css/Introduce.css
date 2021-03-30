@@ -5,13 +5,12 @@ body {
 }
 
 .slideshow-container {
-  width: 100%;
+  
+  width: 90%;
   height: 550px;
-  max-width: 1700px;
-  min-width: 1600px;
   max-height: 550px;
   position: relative;
-  margin-top: 90px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
@@ -97,99 +96,52 @@ body {
 }
 
 /* Caption text */
-.text1 {
+.text_ad {
   color: #410539;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
   position: absolute;
-  top: 40%;
-  right: 5%;
 }
-.subtext1 {
-  color: #410539;
-  font-size: 20px;
-  position: absolute;
-  top: 53%;
-  right: 12%;
+.text_ad1_h {
+  top: 20%;
+  right: 3%;
 }
-.startbutton1 {
-  color: #410539;
-  font-size: 20px;
-  padding: 10px;
-  position: absolute;
-  font-weight: bold;
-  top: 51%;
-  right: 30%;
-  border-radius: 10px;
-  border: 1px solid black;
-}
-
-.startbutton1:hover {
-  background-color: rgb(224, 250, 253);
-  cursor: pointer;
-}
-.text2 {
-  color: #410539;
-  font-size: 35px;
-  font-weight: bold;
-  position: absolute;
-  top: 60%;
+.text_ad2_h {
+  top: 20%;
   left: 8%;
 }
-.subtext2 {
+.text_ad3_h {
+  top: 23%;
+  left: 8%;
+}
+.subtext {
   color: #410539;
   font-size: 20px;
   position: absolute;
-  top: 73%;
-  left: 18%;
 }
-.startbutton2 {
-  color: #410539;
-  font-size: 20px;
-  padding: 10px;
-  position: absolute;
-  font-weight: bold;
-  top: 71%;
-  left: 9%;
-  border-radius: 10px;
-  border: 1px solid black;
+.subtext1_h {
+  top: 30%;
+  right: 3%;
 }
-
-.startbutton2:hover {
-  background-color: rgb(224, 250, 253);
-  cursor: pointer;
+.subtext2_h {
+  top: 30%;
+  left: 8%;
 }
-.text3 {
-  color: #410539;
-  font-size: 38px;
-  font-weight: bold;
-  position: absolute;
-  top: 43%;
-  left: 20%;
+.subtext3_h {
+  top: 32%;
+  left: 8%;
 }
-.subtext3 {
-  color: #410539;
-  font-size: 20px;
-  position: absolute;
-  top: 55%;
-  left: 32%;
-  text-align: center;
+.button1_h {
+  position: relative;
+  left: 100px;
 }
-.startbutton3 {
-  color: #410539;
-  font-size: 20px;
-  padding: 10px;
-  position: absolute;
-  font-weight: bold;
-  top: 53%;
-  right: 69%;
-  border-radius: 10px;
-  border: 1px solid black;
+.button2_h {
+  position: relative;
+  left: 150px;
 }
-
-.startbutton3:hover {
-  background-color: rgb(224, 250, 253);
-  cursor: pointer;
+.button3_h {
+  position: relative;
+  left: 150px;
 }
 
 /* Number text (1/3 etc) */
@@ -221,6 +173,71 @@ body {
 .active,
 .dot:hover {
   background-color: #717171;
+}
+
+@media (max-width: 1240px) {
+  .text_ad { font-size: 30px; }
+  .subtext { font-size: 20px; }
+  
+}
+@media (max-width: 768px) {
+  .text_ad { font-size: 25px; }
+  .text_ad1_h {
+    width: 250px;
+  }
+  .text_ad2_h {
+    width: 250px;
+  }
+  .text_ad3_h {
+    left: 8%;
+  }
+  .subtext { 
+    font-size: 15px; 
+  }
+  .subtext1_h {
+    margin-top: 8px;
+    right: 8%;
+  }
+  .subtext2_h {
+    margin-top: 8px;
+  }
+  .button1_h {
+    position: relative;
+    left: 100px;
+  }
+}
+@media (max-width: 500px) {
+  .text_ad1_h { 
+    width: 200px;
+    font-size: 20px;
+    right: 0;
+  }
+  .text_ad2_h { 
+    width: 200px;
+    font-size: 20px; 
+  }
+  .text_ad3_h { 
+    width: 300px;
+    font-size: 20px;
+    left: 8%; 
+  }
+
+    .subtext1_h {
+      right: 10%;
+    }
+    .button1_h {
+      position: relative;
+      left: 50px;
+    }
+    .button2_h {
+      position: relative;
+      left: 150px;
+    }
+    .button3_h {
+      position: relative;
+      left: 150px;
+    }
+  .subtext { font-size: 10px; }
 }
 
 @-webkit-keyframes fade {
