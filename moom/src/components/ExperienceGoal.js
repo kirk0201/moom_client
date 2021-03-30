@@ -1,5 +1,6 @@
 import React, { Component, useContext } from "react";
 import { User } from "../store/store";
+import "../css/ExperienceGoal.css"
 
 export default class ExperienceGoal extends Component {
   static contextType = User;
@@ -212,18 +213,18 @@ export default class ExperienceGoal extends Component {
     return (
       <>
         {this.props.show ? (
-          <div className="container border-t border-l border-r border-solid rounded-bl-3xl rounded-br-3xl border-gray-200  bg-gray-50 rounded-md m-auto">
-            <div className="flex-row border-4 border-gray-400 w-100 md:h-64 bg-100 shadow-2xl rounded-lg p-6">
+          // <div className="container border-t border-l border-r border-solid rounded-bl-3xl rounded-br-3xl border-gray-200  bg-gray-50 rounded-md">
+            <div className=" border-4 border-gray-400 shadow-2xl rounded-lg p-6">
               {/* <!-- 묶음 입력 --> */}
-              <div className=" flex pb-7 space-x-10">
+              <div className="flex pb-7">
                 {/* <!-- 최측 입력  div --> */}
-                <div className=" w-1/2 shadow-xl text-2xl border-solid border-2 border-gray-200 rounded-2xl">
-                  <div className="mt-2 mb-1 mx-20 shadow text-center border-gray-200 border-solid border-b-2">
-                    <span className=" text-gray-400 text-2xl font-bold">
-                      Your{" "}
+                <div className="w-1/2 shadow-xl text-2xl border-solid border-2 border-gray-200 rounded-2xl">
+                  <div className=" mt-2 mb-1 mx-4 shadow text-center border-gray-200 border-solid border-b-2">
+                    <span className="goal_title subtext1 mr-2 text-gray-400 font-bold">
+                      Your 
                     </span>
-                    <span className="text-purple-600 text-2xl font-bold ">
-                      Goal
+                    <span className="goal_title subtext2 text-purple-600 font-bold">
+                       Goal
                     </span>
                   </div>
                   <div className="text-center h-14">
@@ -234,29 +235,29 @@ export default class ExperienceGoal extends Component {
                       onChange={this.handleGoalChange}
                       maxLength="4"
                       value={resultL}
-                      className="h-full font-bold hover:bg-gray-200 focus:outline-none text-3xl w-1/2 text-center"
+                      className="input_text h-full font-bold hover:bg-gray-200 focus:outline-none w-1/2 text-center"
                     />
-                    <span className="text-gray-400 font-bold text-2xl">
+                    <span className="input_text text-gray-400 font-bold">
                       {this.props.isClick ? this.state.unitR : this.state.unitL}
                     </span>
                   </div>
                 </div>
                 {/* <!-- 우측 입력 --> */}
                 <div className=" w-1/2 shadow-xl text-2xl border-solid border-2 border-gray-200 rounded-2xl">
-                  <div className="mt-2 mb-1 shadow mx-14 text-center border-b-2 border-solid border-gray-200">
-                    <span className=" text-gray-400  font-bold">Current </span>
-                    <span className="text-purple-600 font-bold">
+                  <div className="mt-2 mb-1 shadow mx-4 text-center border-b-2 border-solid border-gray-200">
+                    <span className="goal_title text-gray-400  font-bold">Current </span>
+                    <span className="goal_title text-purple-600 font-bold">
                       {this.props.name}
                     </span>
                   </div>
-                  <div className="text-center h-14">
+                  <div className="goal_unit text-center h-14">
                     <input
                       type="text"
                       readOnly
                       value={currentValue}
-                      className="h-full focus:outline-none font-bold cursor-not-allowed text-3xl w-1/2 text-center"
+                      className="input_text h-full focus:outline-none font-bold cursor-not-allowed w-1/2 text-center"
                     />
-                    <span className="text-gray-400 font-bold text-2xl">
+                    <span className="input_text text-gray-400 font-bold">
                       {this.props.isClick ? this.state.unitR : this.state.unitL}
                     </span>
                   </div>
@@ -264,31 +265,31 @@ export default class ExperienceGoal extends Component {
               </div>
               {/* <!-- 하단 입력 --> */}
 
-              <div className="border-2 border-solid border-gray-200 rounded-lg h-1/3 shadow-lg">
+              <div className="result_text pb-2 border-2 border-solid border-gray-200 rounded-lg h-1/3 shadow-lg">
                 <div className="flex justify-center mt-3">
-                  <span className=" text-3xl pr-2 text-blue-400 animate-bounce font-bold">
+                  <span className="pr-2 text-blue-400 animate-bounce font-bold">
                     목표
                   </span>
-                  <span className=" text-3xl pr-6">까지</span>
+                  <span className="">까지</span>
                   <input
                     type="text"
                     readOnly
                     className={
                       Number(resultR) < 0
-                        ? " text-red-500 focus:outline-none font-bold border-none w-1/4 text-center border text-3xl"
-                        : "text-blue-500 focus:outline-none font-bold border-none w-1/4 text-center border text-3xl"
+                        ? " text-red-500 focus:outline-none font-bold border-none w-1/4 text-center border "
+                        : "text-blue-500 focus:outline-none font-bold border-none w-1/4 text-center border "
                     }
-                    // className={"border-none w-1/4 text-center border text-3xl"}
+                    // className={"border-none w-1/4 text-center border "}
                     value={resultR}
                   />
-                  <span className="text-2xl pr-6 mt-2 font-bold text-gray-500">
+                  <span className="pr-2 font-bold text-gray-500">
                     {this.props.isClick ? this.state.unitR : this.state.unitL}
                   </span>
-                  <span className="text-3xl">남았습니다</span>
-                  <span className="text-3xl font-bold italic ml-2">!!!</span>
+                  <span className="">남았습니다</span>
+                  <span className=" font-bold italic ml-2">!!!</span>
                 </div>
               </div>
-            </div>
+            {/* </div> */}
           </div>
         ) : null}
       </>

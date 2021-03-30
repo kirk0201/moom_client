@@ -1,0 +1,35 @@
+
+@media (max-width: 572px) {
+    .subtext1 {
+        margin: 0;
+    }
+    .subtext2 {
+        display: block;
+    }
+    
+}
+@media (min-width: 401px) {
+    .goal_title {
+        font-size: 0.8em;
+    }
+}
+@media (max-width: 400px) {
+    .goal_title {
+        font-size: 0.8em;
+    }
+    .subtext1 {
+        margin: 0;
+    }
+    .subtext2 {
+        display: block;
+    }
+    .result_text {
+        font-size: 0.9em;
+    }
+    /* .goal_unit {
+        font-size: 0.7em !important;
+    } */
+    .input_text {
+        font-size: 0.9em;
+    }
+}

@@ -19,6 +19,7 @@ export class Description extends Component {
   }
 
   render() {
+    let feat_color = <span className=" text-blue-500">데이터</span>
     return (
       <>
         <div className="border-gray-100 border-solid border-2 shadow-xl"
@@ -94,7 +95,7 @@ export class Description extends Component {
                     marginTop: "2%",
                   }}
                 >
-                  신체 데이터 관리
+                  신체 {feat_color} 관리
                 </div>
                 <div className="feat_content"
                   style={{
@@ -139,7 +140,7 @@ export class Description extends Component {
                     marginTop: "2%",
                   }}
                 >
-                  신체 데이터 관리
+                  신체 {feat_color} 관리
                 </div>
                 <div className="feat_content"
                   style={{
@@ -185,7 +186,7 @@ export class Description extends Component {
                     marginTop: "2%",
                   }}
                 >
-                  신체 데이터 관리
+                  신체 {feat_color} 관리
                 </div>
                 <div className="feat_content"
                   style={{
@@ -240,7 +241,7 @@ export class Description extends Component {
                     marginTop: "2%",
                   }}
                 >
-                  신체 데이터 관리
+                  신체 <span className=" text-blue-500">데이터</span> 관리
                 </div>
                 <div className="feat_content"
                   style={{
@@ -287,7 +288,7 @@ export class Description extends Component {
                     marginTop: "2%",
                   }}
                 >
-                  신체 데이터 관리
+                  신체 {feat_color} 관리
                 </div>
                 <div className="feat_content"
                   style={{
@@ -370,13 +371,13 @@ export class Description extends Component {
                   padding: "0px",
                 }}
               >
-                <div
+                <div className="comment"
                   style={{
                     width: "100%",
                     height: "42%",
                     paddingTop: "4%",
                     backgroundColor: "white",
-                    fontSize: "1em",
+                    
                     fontWeight: "bold",
                     textAlign: "center",
                   }}
@@ -470,13 +471,13 @@ export class Description extends Component {
                   padding: "0px",
                 }}
               >
-                <div
+                <div className="comment"
                   style={{
                     width: "100%",
                     height: "42%",
                     paddingTop: "4%",
                     backgroundColor: "white",
-                    fontSize: "1em",
+                    
                     fontWeight: "bold",
                     textAlign: "center",
                   }}
@@ -570,13 +571,12 @@ export class Description extends Component {
                   padding: "0px",
                 }}
               >
-                <div
+                <div className="comment"
                   style={{
                     width: "100%",
                     height: "42%",
                     paddingTop: "4%",
                     backgroundColor: "white",
-                    fontSize: "1em",
                     fontWeight: "bold",
                     textAlign: "center",
                   }}

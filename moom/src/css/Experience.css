@@ -1,31 +1,101 @@
 /* 페이지당 높이 846px 정도로 구성함 */
 
 /* ------------------------------ */
-.exp_top {
+.contents_wrap {
   display: flex;
-  /* background-color: white; */
 }
 .exp_container {
-  background-color: white;
-  height: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.exp_container > div {
-  text-align: center;
-  margin: 1%;
+@media (min-width: 1241px) {
+  .contents_wrap {
+    display: flex;
+  }
+  .content_left {
+    width: 30%;
+  }
+  .input_title {
+    font-size: 2em !important;
+    font-weight: 800;
+  }
+  .input_maintext {
+    font-size: 1.5em;
+  }
+  .result_text {
+    font-size: 1.5em;
+  }
 }
-
-/* .left_img {
-  background: no-repeat;
-
-  background-position-x: center;
-  background-position: center;
-} */
-
-.input_size {
-  display: flex;
-  flex-direction: column;
-  /* justify-items: space-arround; */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .content_left {
+    width: 50%;
+  }
+  .input_title {
+    font-size: 2em !important;
+    font-weight: 800;
+  }
+  .result_text {
+    font-size: 1.3em;
+  }
+  .gender {
+    font-size: 0.5em !important;
+  }
+  .input_maintext {
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 401px) and (max-width: 767px) {
+  .contents_wrap {
+    display: block;
+  }
+  .gender {
+    font-size: 1em;
+  }
+  .gender_button {
+    display: inline-block;
+  }
+  .content_left {
+    width: 100%;
+  }
+  .input_title {
+    font-size: 2em !important;
+    font-weight: 700;
+  }
+  .input_maintext {
+    font-size: 1.5em;
+  }
+  .save_ {
+    padding: 10px 0;
+  }
+  .save_button {
+    width: 120px;
+    height: 80px;
+  }
+}
+@media (max-width: 400px) {
+  .contents_wrap {
+    display: block;
+  }
+  .gender_button {
+    display: inline-block;
+  }
+  .content_left {
+    width: 100%;
+  }
+  .input_title {
+    font-size: 1.4em;
+    font-weight: 700;
+    /* padding: 10px 0; */
+  }
+  .input_maintext {
+    font-size: 1.2em;
+  }
+  .save_ {
+    padding: 10px 0;
+  }
+  .save_button {
+    width: 100px;
+    height: 60px;
+  }
 }

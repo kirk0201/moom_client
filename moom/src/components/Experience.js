@@ -159,15 +159,15 @@ export class Experience extends Component {
     return (
       <>
         <div
-          className="max-w-screen-2xl m-auto pt-2 mx-20 my-20 border-solid border rounded-3xl border-gray-300 shadow-2xl"
+          className="contents_wrap max-w-screen-2xl m-auto pt-2 mx-10 my-20 border-solid border rounded-3xl border-gray-300 shadow-2xl"
           
         >
           {/* 탑 div */}
 
           {/* 성별 버튼 */}
-          <div className="flex pt-10">
-            <div className="w-2/6 text-center pr-12">
-              <div className="bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
+          <div className="content_left w-1/3">
+            <div className="text-center pt-5 pb-5">
+              <div className="gender_button bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
                 <button
                   className=" focus:bg-blue-200 inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-white rounded-l-full px-4 py-2"
                   id="radioM"
@@ -175,7 +175,7 @@ export class Experience extends Component {
                   defaultChecked
                 >
                   <img id="radioM" src={sM} alt="이미지 어디감?"/>
-                  <span id="radioM" className="font-bold">
+                  <span id="radioM" className="gender font-bold">
                     Male
                   </span>
                 </button>
@@ -185,29 +185,38 @@ export class Experience extends Component {
                   onClick={this.handleSexChange}
                 >
                   <img id="radioW" src={sW} alt="이미지 어디감?"></img>
-                  <span id="radioW" className="font-bold">
+                  <span id="radioW" className="gender font-bold">
                     Female
                   </span>
                 </button>
               </div>
             </div>
-            <div className=" hover:bg-blue-300 text-gray-400 italic shadow-lg border-gray-200 rounded-3xl mx-20 bg-indigo-100 pt-4 pb-4 flex flex-1 self-center place-content-center border-2 border-solid text-4xl font-bold">
-              Record
-              <span className="pl-5 italic text-black">Body</span>
-            </div>
-          </div>
-
-          {/* 남여 이미지 div */}
-          <div className="exp_container pb-20">
-            <div className="left_ place-content-center flex w-1/4 bg-white border-none">
+      
+            <div className="exp_container">
+            <div className="place-content-center bg-white border-none">
               <img
-                className="h-full border-solid hover:border-gray-500 shadow-lg border-gray-300 border rounded-3xl"
+                className="border-solid hover:border-gray-500 shadow-lg border-gray-300 border rounded-3xl"
                 src={this.state.sex ? female : male}
                 alt="전신 일러스트"
               ></img>
             </div>
+          </div>
+          </div>
+
+          {/* 남여 이미지 div */}
             <div className="flex whitespace-normal border-dashed border border-gray-400"></div>
-            <div className="input_size flex-col w-3/5 z-0">
+            {/* 인풋박스 */}
+            <div className="record_wrap">
+
+            <div className="input_title">
+             <div className=" hover:bg-blue-300 text-gray-400 italic shadow-lg border-gray-200 rounded-3xl mx-20 bg-indigo-100 pt-4 pb-4 text-center place-content-center border-2 border-solid">
+                Record
+              <span className="pl-5 italic text-black">Body</span>
+             </div>
+            </div>
+            
+
+            <div className="input_size">
               <ExperienceInput
                 name={part1}
                 temp="isClick1"
@@ -342,16 +351,17 @@ export class Experience extends Component {
                 show={this.state.show7}
               ></ExperienceGoal>
             </div>
-          </div>
+          {/* </div> */}
           <div className="border border-solid border-t-2 mx-auto w-5/6 border-gray-300"></div>
-          <div className="mx-20 text-center p-12">
+          <div className="save_ mx-20 text-center p-12">
             <button
               // 로그인 창으로 이동
               onClick={() => this.props.history.push("/login")}
-              className="z-50 w-48 h-32 hover:bg-gray-400 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-600 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid"
+              className="save_button w-48 h-32 hover:bg-gray-400 text-gray-100 focus:border-white focus:outline-none font-bold focus:bg-gray-600 border-2 text-3xl bg-gray-300 rounded-3xl shadow-xl border-gray-300 border-solid"
             >
               저장
             </button>
+          </div>
           </div>
         </div>
       </>

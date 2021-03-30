@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { User } from "../store/store";
 import "../css/ToggleButton.css";
-import "../index.css";
+import "../css/ExperienceInput.css"
+
 export default class ExperienceInput extends Component {
   // class컴퍼넌트에서 contexAPI 불러오기
   static contextType = User;
@@ -202,9 +203,9 @@ export default class ExperienceInput extends Component {
     }
     // 버튼 스타일
     let noError =
-      " border-b-4 shadow-lg hover:bg-gray-200 font-bold rounded-md text-3xl w-3/4 text-center focus:outline-none hover:border-blue-300 mb-2 ml-2";
+      "input_maintext border-b-4 shadow-lg hover:bg-gray-200 font-bold rounded-md w-3/4 text-center focus:outline-none hover:border-blue-300 mb-2 ml-2";
     let isError =
-      " border-b-4 border-red-200 text-red-500 font-bold shadow-lg hover:bg-gray-200 rounded-md text-3xl w-3/4 text-center focus:outline-none hover:border-red-300 mb-2 ml-2";
+      "input_maintext border-b-4 border-red-200 text-red-500 font-bold shadow-lg hover:bg-gray-200 rounded-md w-3/4 text-center focus:outline-none hover:border-red-300 mb-2 ml-2";
 
     // 목표 컴퍼넌트 state 관리
     let onToggleName;
@@ -227,10 +228,11 @@ export default class ExperienceInput extends Component {
     return (
       <>
         {/* Container (div * 3) */}
-        <div className="flex shadow-xl m-1 h-24 bg-white rounded-md border-2 border-solid border-gray-200 hover:border-gray-400">
+        <div className=" flex shadow-xl m-1 h-24 bg-white rounded-md border-2 border-solid border-gray-200 hover:border-gray-400"
+        >
           {/* 좌측 div */}
-          <div className="flex flex-col w-2/6">
-            <div className="flex ml-3 text-2xl font-bold text-purple-600 hover:text-purple-400">
+          <div className="left_title flex flex-col w-2/6 mr-2">
+            <div className="flex ml-3 font-bold text-purple-600 hover:text-purple-400">
               {this.props.name}
             </div>
             <div className="flex flex-row h-full">
@@ -243,24 +245,24 @@ export default class ExperienceInput extends Component {
                 value={resultL}
                 className={this.state.isError ? isError : noError}
               ></input>
-              <div className="mt-4 flex w-1/4 h-ful text-2xl text-gray-400 font-bold">
+              <div className="input_unit flex w-1/4 h-full text-gray-400 font-bold">
                 {this.props.isClick ? this.state.unitR : this.state.unitL}
               </div>
             </div>
           </div>
           {/* 중간 div */}
           {this.props.name === "Body fat" ? (
-            <div className="flex flex-col font-bold w-1/6 justify-evenly ">
+            <div className="middle1 flex flex-col w-1/6 justify-evenly ">
               <button
                 name={this.props.temp}
                 onClick={this.props.handleButtonFalse}
-                className="w-full border-b-4 font-bold focus:shadow-xl focus:bg-gray-500 border-gray-400 rounded-md h-1/3 justify-center justify-self-center focus:outline-none text-white rounded-br-3xl hover:bg-blue-300 bg-purple-300 rounded-tl-3xl"
+                className="w-full border-b-4 focus:shadow-xl focus:bg-gray-500 border-gray-400 rounded-md h-1/3 justify-center justify-self-center focus:outline-none text-white rounded-br-3xl hover:bg-blue-300 bg-purple-300 rounded-tl-3xl"
               >
                 {this.state.unitR}
               </button>
             </div>
           ) : (
-            <div className="flex flex-col font-bold w-1/6 justify-evenly">
+            <div className="middle1 flex flex-col font-bold w-1/6 justify-evenly">
               <button
                 name={this.props.temp}
                 onClick={this.props.handleButtonTrue}
@@ -279,8 +281,11 @@ export default class ExperienceInput extends Component {
           )}
 
           {/* 우측 div */}
-          <div className="flex pl-6 flex-col w-2/6 ">
-            <div className="flex ml-3 text-2xl font-bold text-purple-600 hover:text-purple-400 m">
+          <div className="right_title flex pl-6 flex-col w-2/6"
+          style={{
+            fontSize:"1em"
+          }}>
+            <div className="flex ml-3 font-bold text-purple-600 hover:text-purple-400 m">
               Convert
             </div>
             <div className="flex flex-row h-full">
@@ -288,9 +293,9 @@ export default class ExperienceInput extends Component {
                 type="text"
                 value={resultR}
                 readOnly
-                className=" shadow-lg cursor-not-allowed flex-grow mb-2 border-b-4 font-bold hover:border-blue-300 w-4/5 bg-white text-3xl hover:bg-gray-200 hover:border-b-2 text-center focus:outline-none rounded-md"
+                className="input_maintext shadow-lg cursor-not-allowed flex-grow mb-2 border-b-4 font-bold hover:border-blue-300 w-4/5 bg-white hover:bg-gray-200 hover:border-b-2 text-center focus:outline-none rounded-md"
               />
-              <div className="flex-grow text-2xl text-gray-400 mt-4 font-bold ">
+              <div className="input_unit flex-grow text-gray-400 font-bold ">
                 {this.props.isClick ? this.state.unitL : this.state.unitR}
               </div>
             </div>
