@@ -246,7 +246,7 @@ export default class ExperienceGoal extends Component {
                 <div className=" w-1/2 shadow-xl text-2xl border-solid border-2 border-gray-200 rounded-2xl">
                   <div className="mt-2 mb-1 shadow mx-4 text-center border-b-2 border-solid border-gray-200">
                     <span className="goal_title text-gray-400  font-bold">Current </span>
-                    <span className="goal_title text-purple-600 font-bold">
+                    <span className="goal_title subtext2 text-purple-600 font-bold">
                       {this.props.name}
                     </span>
                   </div>

@@ -325,7 +325,7 @@ class BasicBody extends Component {
             <span className=" pl-1 text-purple-400">Basic body</span>
           </div>
 
-          <div className="flex mt-4">
+          <div className="input_graph_wrap flex mt-4">
             <div className="max-w-2xl min-w-min">
               <BasicData
                 sex={sex}
@@ -347,7 +347,7 @@ class BasicBody extends Component {
                 isThighCM={isThighCM}
               />
             </div>
-            <div>
+            <div className="graph_wrap">
               {basicPartName ? (
                 <>
                   {isCertain ? (
@@ -457,7 +457,7 @@ class BasicBody extends Component {
                                   onChange={this.handleChangeChart}
                                 >
                                   <option className="hover:bg-white" value="">
-                                    CHOSSE
+                                    CHOOSE
                                   </option>
                                   <option value="CertainAllData">
                                     ALL DATA ABOUT {partName}

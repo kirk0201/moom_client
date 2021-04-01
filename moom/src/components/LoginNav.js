@@ -230,33 +230,12 @@ class LoginNav extends Component {
             <div className="block md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <Link to="/">
-                  <span
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    onClick={() => {
-                      this.handleNav("Basic part");
-                    }}
-                  >
-                    기본 부위
-                  </span>
-                </Link>
-                <Link to="/custom">
-                  <span
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    onClick={() => {
-                      this.handleNav("Custom part");
-                    }}
-                  >
-                    커스텀 부위
-                  </span>
-                </Link>
-              </div>
-              <div className="pt-4 pb-3 border-t border-gray-700">
+                <div className="pt-4 pb-3 border-t border-gray-700">
                 <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
                     <img
                       className="h-10 w-10 rounded-full"
-                      src={profile}
+                      src={profile?profile:profile_img}
                       alt="이미지 어디감?"
                     />
                   </div>
@@ -288,6 +267,28 @@ class LoginNav extends Component {
                   </span>
                 </div>
               </div>
+                <Link to="/">
+                  <span
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => {
+                      this.handleNav("Basic part");
+                    }}
+                  >
+                    기본 부위
+                  </span>
+                </Link>
+                <Link to="/custom">
+                  <span
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => {
+                      this.handleNav("Custom part");
+                    }}
+                  >
+                    커스텀 부위
+                  </span>
+                </Link>
+              </div>
+              
             </div>
           ) : (
             <></>

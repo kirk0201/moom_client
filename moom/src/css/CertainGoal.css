@@ -1,0 +1,8 @@
+@media (max-width: 500px) {
+    .login_input_title {
+        font-size: 0.8em !important;
+    }
+    .login_input_left {
+        padding-left: 30px;
+    }
+}

@@ -17,7 +17,7 @@
     width: 30%;
   }
   .input_title {
-    font-size: 2em !important;
+    font-size: 1.5em !important;
     font-weight: 800;
     margin-bottom: 30px;
   }
@@ -39,8 +39,10 @@
     width: 50%;
   }
   .input_title {
-    font-size: 2em !important;
+    font-size: 1.5em !important;
     font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 14px;
   }
   .result_text {
     font-size: 1.3em;
@@ -66,8 +68,10 @@
     width: 100%;
   }
   .input_title {
-    font-size: 2em !important;
+    font-size: 1.5em;
     font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 11px;
   }
   .input_maintext {
     font-size: 1.5em;
@@ -91,12 +95,13 @@
     width: 100%;
   }
   .input_title {
-    font-size: 1.4em;
+    font-size: 1em;
     font-weight: 700;
-    /* padding: 10px 0; */
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .input_maintext {
-    font-size: 1.2em;
+    font-size: 0.8em;
   }
   .save_ {
     padding: 10px 0;

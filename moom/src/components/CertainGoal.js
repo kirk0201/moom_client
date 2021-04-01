@@ -6,7 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import AddIcon from "@material-ui/icons/Add";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
-
+import "../css/CertainGoal.css"
 import { BASEURL } from "../helpurl";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -190,15 +190,15 @@ class CertainGoal extends Component {
                   <div className="flex pb-5 space-x-10">
                     <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
                       <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span className="tracking-tight text-gray-500 font-bold">
+                        <span className="login_input_title tracking-tight text-gray-500 font-bold">
                           YOUR
                         </span>
-                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="login_input_title pl-2 tracking-tight text-purple-600 font-bold">
                           GOAL
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <div className="pl-28 text-center mb-1">
+                        <div className="login_input_left pl-28 text-center mb-1">
                           <span className="font-extrabold text-4xl text-gray-900">
                             {goal}
                           </span>
@@ -226,10 +226,10 @@ class CertainGoal extends Component {
 
                     <div className="pb-2 w-1/2 shadow-md border border-dashed border-gray-300 rounded-2xl">
                       <div className="mt-2 mb-2 mx-10 text-base text-center border-b-2 shadow">
-                        <span className="tracking-tight text-gray-500 font-bold">
+                        <span className="login_input_title tracking-tight text-gray-500 font-bold">
                           RECENT
                         </span>
-                        <span className="pl-2 tracking-tight text-purple-600 font-bold">
+                        <span className="login_input_title pl-2 tracking-tight text-purple-600 font-bold">
                           {part}
                         </span>
                       </div>

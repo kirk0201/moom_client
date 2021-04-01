@@ -7,7 +7,7 @@ import female from "../images/femaleimg.png";
 
 import { withStyles } from "@material-ui/core/styles";
 import Alert from "@material-ui/lab/Alert";
-
+import "../css/BasicData.css"
 const styles = {
   errSex: {
     // height: "560px",
@@ -89,7 +89,7 @@ class BasicData extends Component {
       <>
 
         <div className="md:flex pl-7">
-          <div className="w-48 h-auto">
+          <div className="w-48 m-auto">
             {sex ? (
               <img
                 className="pt-16"

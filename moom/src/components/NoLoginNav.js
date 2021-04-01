@@ -35,7 +35,7 @@ class NoLoginNav extends Component {
   // 체험하기 버튼튼
   scrollToExperience = () => {
     this.handleNav("Experience");
-    window.scrollTo(0, 1550);
+    window.scrollTo(0, 1650);
   };
 
   // 비로그인시 네비 바
@@ -187,6 +187,14 @@ class NoLoginNav extends Component {
                     메인
                   </span>
                 </Link>
+                <Link to="/">
+                      <div
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-m font-medium"
+                        onClick={this.scrollToExperience}
+                      >
+                        체험하기
+                      </div>
+                    </Link>
                 <Link to="/login">
                   <span
                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"

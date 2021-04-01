@@ -6,14 +6,14 @@
   width: 630px;
   height: 350px;
   position: absolute;
-  margin-left: 12px;
-  padding-top: 13px;
+  /* margin-left: 12px; */
+  /* padding-top: 13px; */
 }
 
 .custom {
-  width: 1330px;
-  margin-left: auto;
-  margin-right: auto;
+  /* width: 1330px; */
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .nav {
@@ -22,3 +22,18 @@
   margin-right: auto;
 }
 
+@media (max-width: 500px) {
+  .input_graph_wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .certain {
+    width: 100vw;
+  }
+  .chart{
+    width: 100vw;
+  }
+  .highcharts-background {
+    resize: both;
+  }
+}
